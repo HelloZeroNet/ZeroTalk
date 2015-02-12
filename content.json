@@ -1,0 +1,49 @@
+{
+  "address": "1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ", 
+  "background-color": "#F5F5F5", 
+  "description": "Decentralized forum demo", 
+  "files": {
+    "css/all.css": {
+      "sha1": "ef27f742845b6096434ea7aca7a03254918e565e", 
+      "sha512": "cd6f1928bd41c63fce1944af68a4a21a46bae49adc9dfe998aacc06d4a0d0d33", 
+      "size": 143757
+    }, 
+    "img/loading.gif": {
+      "sha1": "a669dbd8a577f6957656fc88ba4960b93fcd23d9", 
+      "sha512": "8a42b98962faea74618113166886be488c09dad10ca47fe97005edc5fb40cc00", 
+      "size": 723
+    }, 
+    "index.html": {
+      "sha1": "761d1a040e618f1345ad1474a87222b0bc782a04", 
+      "sha512": "f9ef3e024651c7d7825159d405aeaff407615a281798ad182e9d43f0e59dc581", 
+      "size": 4626
+    }, 
+    "js/all.js": {
+      "sha1": "cae36ebe57e25c18672a0d83b6a4eb7f417066bc", 
+      "sha512": "1c6ccb36b95516d96bc683734660f425418d72c733502e11a4aae6e5f8b169dd", 
+      "size": 201644
+    }
+  }, 
+  "ignore": "((js|css)/(?!all.(js|css))|data/users/.*|publisher/.*)", 
+  "includes": {
+    "data/users/content.json": {
+      "signers": [
+        "1LSxsKfC9S9TVXGGNSM3vPHjyW82jgCX5f"
+      ], 
+      "signers_required": 1
+    }
+  }, 
+  "modified": 1423701695.871, 
+  "sign": [
+    100554475417050765712274863869416670559528521683345544177713567213277469164292, 
+    59245740357478470247264859817543978227131821683553174328878845575009338206041
+  ], 
+  "signers_sign": "HKNDz9IUHcBc/l2Jm2Bl70XQDL9HYHhJ2hUdg8AMyunACLgxyXBr7EW1/ME4hGkaFZSFmIxlInmxH+BrMVXbnLw=", 
+  "signs": {
+    "1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ": "HNC+vtoQDtugFiw1CYJNL/djCcKENpTxdeiucgznTBmOX0MCdmFQN5FvuxmTuIbZ5LV2KIpTDPo3cuIEt9eIHV8="
+  }, 
+  "signs_required": 1, 
+  "title": "ZeroTalk", 
+  "viewport": "width=device-width, initial-scale=1.0", 
+  "zeronet_version": "0.2.0"
+}
