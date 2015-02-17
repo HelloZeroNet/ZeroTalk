@@ -3,6 +3,7 @@ class ZeroTalk extends ZeroFrame
 		@log "inited!"
 		@site_info = null
 		@server_info = null
+		@local_storage = {}
 
 		@user_id_db = {} # { "address": 1 }
 		@user_address_db = {} # { 1: "address" }
@@ -25,6 +26,31 @@ class ZeroTalk extends ZeroFrame
 			$(".editbar .markdown-help").toggleClassLater("visible", 10)
 			$(".editbar .icon-help").toggleClass("active")
 			return false
+
+
+	# All page content loaded
+	pageLoaded: ->
+		$("body").addClass("loaded") # Back/forward button keep position support
+
+
+	# Wrapper websocket connection ready
+	onOpenWebsocket: (e) =>
+		@cmd "wrapperSetViewport", "width=device-width, initial-scale=1.0"
+		@cmd "wrapperGetLocalStorage", [], (res) =>
+			res ?= {}
+			@local_storage = res
+
+		@cmd "siteInfo", {}, (site) =>
+			@setSiteinfo(site)
+			@loadUserDb => # Load user DB then route url
+				@updateUserInfo()
+				@routeUrl(window.location.search.substring(1))
+
+		@cmd "serverInfo", {}, (ret) => # Get server info
+			@server_info = ret
+			version = parseInt(@server_info.version.replace(/\./g, ""))
+			if version < 20
+				@cmd "wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.2.0, please update!"]
 
 
 	routeUrl: (url) ->
@@ -101,6 +127,7 @@ class ZeroTalk extends ZeroFrame
 	loadTopicsStat: (type="normal") =>
 		s = (+ new Date)
 		@cmd "fileQuery", ["data/users/*/data.json", ""], (users) =>
+			$(".topics").css("opacity", 1)
 			stats = []
 			# Analyze user data files
 			for user in users
@@ -119,8 +146,24 @@ class ZeroTalk extends ZeroFrame
 				$("#topic_#{topic_address} .comment-num").text "#{stat.comments} comment"
 				$("#topic_#{topic_address} .added").text "last "+@formatSince(stat["last"]["added"])
 
-			@log "Topics stats loaded in", (+ new Date)-s
 
+			# Sort topics
+			topics = ([topic_address, stat.last.added] for topic_address, stat of stats)
+			topics.sort (a, b) -> # Sort by date
+				return a[1] - b[1]
+
+			for topic in topics
+				topic_address = topic[0]
+				elem = $("#topic_#{topic_address}")
+				elem.prependTo ".topics"
+				# Visited
+				visited = @local_storage["topic.#{topic_address}.visited"]
+				if not visited
+					elem.addClass("visit-none")
+				else if visited < topic[1]
+					elem.addClass("visit-newcomment")
+
+			@log "Topics stats loaded in", (+ new Date)-s
 
 
 
@@ -130,6 +173,9 @@ class ZeroTalk extends ZeroFrame
 
 		@loadTopic()
 		@loadComments("noanim")
+
+		@local_storage["topic.#{topic_id}_#{topic_user_id}.visited"] = @timestamp()
+		@cmd "wrapperSetLocalStorage", @local_storage
 
 		$(".comment-new .button-submit").on "click", =>
 			if @user_name_db[@site_info.auth_address] # Check if user exits
@@ -305,28 +351,6 @@ class ZeroTalk extends ZeroFrame
 							@loadComments "normal", ( -> if cb then cb(true) )
 				else
 					if cb then cb(false)
-
-
-
-	# All page content loaded
-	pageLoaded: ->
-		$("body").addClass("loaded") # Back/forward button keep position support
-
-
-	# Wrapper websocket connection ready
-	onOpenWebsocket: (e) =>
-		@cmd "wrapperSetViewport", "width=device-width, initial-scale=1.0"
-		@cmd "siteInfo", {}, (site) =>
-			@setSiteinfo(site)
-			@loadUserDb => # Load user DB then route url
-				@updateUserInfo()
-				@routeUrl(window.location.search.substring(1))
-
-		@cmd "serverInfo", {}, (ret) => # Get server info
-			@server_info = ret
-			version = parseInt(@server_info.version.replace(/\./g, ""))
-			if version < 20
-				@cmd "wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.2.0, please update!"]
 
 
 	loadUserDb: (cb = null) ->

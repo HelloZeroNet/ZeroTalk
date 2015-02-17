@@ -976,6 +976,7 @@ jQuery.extend( jQuery.easing,
       object_type = this.getObject(this.elem).data("object").split(":")[0];
       window.zero_talk.cmd("wrapperConfirm", ["Are you sure you sure to delete this " + object_type + "?", "Delete"], (function(_this) {
         return function(confirmed) {
+          $(".editbar .delete").addClass("loading");
           return _this.saveContent(_this.getObject(_this.elem), null, function() {
             return _this.stopEdit();
           });
@@ -1066,11 +1067,11 @@ jQuery.extend( jQuery.easing,
     function ZeroTalk() {
       this.setSiteinfo = __bind(this.setSiteinfo, this);
       this.actionSetSiteInfo = __bind(this.actionSetSiteInfo, this);
-      this.onOpenWebsocket = __bind(this.onOpenWebsocket, this);
       this.saveContent = __bind(this.saveContent, this);
       this.getObject = __bind(this.getObject, this);
       this.getContent = __bind(this.getContent, this);
       this.loadTopicsStat = __bind(this.loadTopicsStat, this);
+      this.onOpenWebsocket = __bind(this.onOpenWebsocket, this);
       return ZeroTalk.__super__.constructor.apply(this, arguments);
     }
 
@@ -1079,6 +1080,7 @@ jQuery.extend( jQuery.easing,
       this.log("inited!");
       this.site_info = null;
       this.server_info = null;
+      this.local_storage = {};
       this.user_id_db = {};
       this.user_address_db = {};
       this.user_name_db = {};
@@ -1100,6 +1102,41 @@ jQuery.extend( jQuery.easing,
           $(".editbar .markdown-help").toggleClassLater("visible", 10);
           $(".editbar .icon-help").toggleClass("active");
           return false;
+        };
+      })(this));
+    };
+
+    ZeroTalk.prototype.pageLoaded = function() {
+      return $("body").addClass("loaded");
+    };
+
+    ZeroTalk.prototype.onOpenWebsocket = function(e) {
+      this.cmd("wrapperSetViewport", "width=device-width, initial-scale=1.0");
+      this.cmd("wrapperGetLocalStorage", [], (function(_this) {
+        return function(res) {
+          if (res == null) {
+            res = {};
+          }
+          return _this.local_storage = res;
+        };
+      })(this));
+      this.cmd("siteInfo", {}, (function(_this) {
+        return function(site) {
+          _this.setSiteinfo(site);
+          return _this.loadUserDb(function() {
+            _this.updateUserInfo();
+            return _this.routeUrl(window.location.search.substring(1));
+          });
+        };
+      })(this));
+      return this.cmd("serverInfo", {}, (function(_this) {
+        return function(ret) {
+          var version;
+          _this.server_info = ret;
+          version = parseInt(_this.server_info.version.replace(/\./g, ""));
+          if (version < 20) {
+            return _this.cmd("wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.2.0, please update!"]);
+          }
         };
       })(this));
     };
@@ -1198,7 +1235,8 @@ jQuery.extend( jQuery.easing,
       s = +(new Date);
       return this.cmd("fileQuery", ["data/users/*/data.json", ""], (function(_this) {
         return function(users) {
-          var comment, comments, last, stat, stats, topic_address, user, _i, _j, _len, _len1, _ref;
+          var comment, comments, elem, last, stat, stats, topic, topic_address, topics, user, visited, _i, _j, _k, _len, _len1, _len2, _ref;
+          $(".topics").css("opacity", 1);
           stats = [];
           for (_i = 0, _len = users.length; _i < _len; _i++) {
             user = users[_i];
@@ -1228,6 +1266,30 @@ jQuery.extend( jQuery.easing,
             $("#topic_" + topic_address + " .comment-num").text(stat.comments + " comment");
             $("#topic_" + topic_address + " .added").text("last " + _this.formatSince(stat["last"]["added"]));
           }
+          topics = (function() {
+            var _results;
+            _results = [];
+            for (topic_address in stats) {
+              stat = stats[topic_address];
+              _results.push([topic_address, stat.last.added]);
+            }
+            return _results;
+          })();
+          topics.sort(function(a, b) {
+            return a[1] - b[1];
+          });
+          for (_k = 0, _len2 = topics.length; _k < _len2; _k++) {
+            topic = topics[_k];
+            topic_address = topic[0];
+            elem = $("#topic_" + topic_address);
+            elem.prependTo(".topics");
+            visited = _this.local_storage["topic." + topic_address + ".visited"];
+            if (!visited) {
+              elem.addClass("visit-none");
+            } else if (visited < topic[1]) {
+              elem.addClass("visit-newcomment");
+            }
+          }
           return _this.log("Topics stats loaded in", (+(new Date)) - s);
         };
       })(this));
@@ -1238,6 +1300,8 @@ jQuery.extend( jQuery.easing,
       this.topic_user_id = topic_user_id;
       this.loadTopic();
       this.loadComments("noanim");
+      this.local_storage["topic." + topic_id + "_" + topic_user_id + ".visited"] = this.timestamp();
+      this.cmd("wrapperSetLocalStorage", this.local_storage);
       return $(".comment-new .button-submit").on("click", (function(_this) {
         return function() {
           if (_this.user_name_db[_this.site_info.auth_address]) {
@@ -1495,33 +1559,6 @@ jQuery.extend( jQuery.easing,
               }
             }
           });
-        };
-      })(this));
-    };
-
-    ZeroTalk.prototype.pageLoaded = function() {
-      return $("body").addClass("loaded");
-    };
-
-    ZeroTalk.prototype.onOpenWebsocket = function(e) {
-      this.cmd("wrapperSetViewport", "width=device-width, initial-scale=1.0");
-      this.cmd("siteInfo", {}, (function(_this) {
-        return function(site) {
-          _this.setSiteinfo(site);
-          return _this.loadUserDb(function() {
-            _this.updateUserInfo();
-            return _this.routeUrl(window.location.search.substring(1));
-          });
-        };
-      })(this));
-      return this.cmd("serverInfo", {}, (function(_this) {
-        return function(ret) {
-          var version;
-          _this.server_info = ret;
-          version = parseInt(_this.server_info.version.replace(/\./g, ""));
-          if (version < 20) {
-            return _this.cmd("wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.2.0, please update!"]);
-          }
         };
       })(this));
     };
