@@ -10,6 +10,27 @@
 
 
 
+/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/lib/LimitRate.coffee ---- */
+
+
+(function() {
+  var limits;
+
+  limits = {};
+
+  window.LimitRate = function(fn, interval) {
+    if (!limits[fn]) {
+      return limits[fn] = setTimeout((function() {
+        fn();
+        return delete limits[fn];
+      }), interval);
+    }
+  };
+
+}).call(this);
+
+
+
 /* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/lib/ZeroFrame.coffee ---- */
 
 
@@ -1070,6 +1091,7 @@ jQuery.extend( jQuery.easing,
       this.saveContent = __bind(this.saveContent, this);
       this.getObject = __bind(this.getObject, this);
       this.getContent = __bind(this.getContent, this);
+      this.textToColor = __bind(this.textToColor, this);
       this.loadTopicsStat = __bind(this.loadTopicsStat, this);
       this.onOpenWebsocket = __bind(this.onOpenWebsocket, this);
       return ZeroTalk.__super__.constructor.apply(this, arguments);
@@ -1085,6 +1107,7 @@ jQuery.extend( jQuery.easing,
       this.user_address_db = {};
       this.user_name_db = {};
       this.user_max_size = null;
+      this.thread_sorter = null;
       _ref = $("textarea");
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         textarea = _ref[_i];
@@ -1212,14 +1235,21 @@ jQuery.extend( jQuery.easing,
             "overflow": "auto",
             "height": "auto"
           });
-          if (parseInt($(".topics-loading").css("top")) === 0) {
-            $(".topics-loading").css("top", "-30px").removeLater();
+          if (parseInt($(".topics-loading").css("top")) > -30) {
+            $(".topics-loading").css("top", "-30px");
           } else {
             $(".topics-loading").remove();
           }
           _this.log("Topics loaded in", (+(new Date)) - s);
           _this.addInlineEditors();
-          _this.loadTopicsStat(type);
+          if (_this.site_info.tasks === 0) {
+            _this.loadTopicsStat(type);
+          } else {
+            clearInterval(_this.thread_sorter);
+            _this.thread_sorter = setTimeout((function() {
+              return _this.loadTopicsStat(type);
+            }), 100);
+          }
           if (cb) {
             return cb();
           }
@@ -1235,17 +1265,31 @@ jQuery.extend( jQuery.easing,
       s = +(new Date);
       return this.cmd("fileQuery", ["data/users/*/data.json", ""], (function(_this) {
         return function(users) {
-          var comment, comments, elem, last, stat, stats, topic, topic_address, topics, user, visited, _i, _j, _k, _len, _len1, _len2, _ref;
+          var comment, comments, elem, last, stat, stats, topic, topic_address, topics, user, user_id, visited, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1;
           $(".topics").css("opacity", 1);
           stats = [];
           for (_i = 0, _len = users.length; _i < _len; _i++) {
             user = users[_i];
-            _ref = user["comments"];
-            for (topic_address in _ref) {
-              comments = _ref[topic_address];
+            _ref = user.topics;
+            for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
+              topic = _ref[_j];
+              user_id = _this.user_id_db[user.inner_path];
+              topic_address = topic.topic_id + "_" + user_id;
+              if (stats[topic_address] == null) {
+                stats[topic_address] = {
+                  "comments": 0,
+                  "last": {
+                    "added": topic.added
+                  }
+                };
+              }
+            }
+            _ref1 = user["comments"];
+            for (topic_address in _ref1) {
+              comments = _ref1[topic_address];
               topic_address = topic_address.replace("@", "_");
-              for (_j = 0, _len1 = comments.length; _j < _len1; _j++) {
-                comment = comments[_j];
+              for (_k = 0, _len2 = comments.length; _k < _len2; _k++) {
+                comment = comments[_k];
                 if (stats[topic_address] == null) {
                   stats[topic_address] = {
                     "comments": 0,
@@ -1263,8 +1307,10 @@ jQuery.extend( jQuery.easing,
           }
           for (topic_address in stats) {
             stat = stats[topic_address];
-            $("#topic_" + topic_address + " .comment-num").text(stat.comments + " comment");
-            $("#topic_" + topic_address + " .added").text("last " + _this.formatSince(stat["last"]["added"]));
+            if (stat.comments > 0) {
+              $("#topic_" + topic_address + " .comment-num").text(stat.comments + " comment");
+              $("#topic_" + topic_address + " .added").text("last " + _this.formatSince(stat["last"]["added"]));
+            }
           }
           topics = (function() {
             var _results;
@@ -1278,8 +1324,8 @@ jQuery.extend( jQuery.easing,
           topics.sort(function(a, b) {
             return a[1] - b[1];
           });
-          for (_k = 0, _len2 = topics.length; _k < _len2; _k++) {
-            topic = topics[_k];
+          for (_l = 0, _len3 = topics.length; _l < _len3; _l++) {
+            topic = topics[_l];
             topic_address = topic[0];
             elem = $("#topic_" + topic_address);
             elem.prependTo(".topics");
@@ -1300,8 +1346,6 @@ jQuery.extend( jQuery.easing,
       this.topic_user_id = topic_user_id;
       this.loadTopic();
       this.loadComments("noanim");
-      this.local_storage["topic." + topic_id + "_" + topic_user_id + ".visited"] = this.timestamp();
-      this.cmd("wrapperSetLocalStorage", this.local_storage);
       return $(".comment-new .button-submit").on("click", (function(_this) {
         return function() {
           if (_this.user_name_db[_this.site_info.auth_address]) {
@@ -1343,6 +1387,8 @@ jQuery.extend( jQuery.easing,
         cb = false;
       }
       topic_address = this.topic_id + "@" + this.topic_user_id;
+      this.local_storage["topic." + this.topic_id + "_" + this.topic_user_id + ".visited"] = this.timestamp();
+      this.cmd("wrapperSetLocalStorage", this.local_storage);
       return this.cmd("fileQuery", ["data/users/*/data.json", "comments." + topic_address], (function(_this) {
         return function(comments) {
           var comment, comment_address, elem, _i, _len;
@@ -1375,7 +1421,7 @@ jQuery.extend( jQuery.easing,
     };
 
     ZeroTalk.prototype.applyTopicData = function(elem, topic, type) {
-      var body, match, title_hash, user_id;
+      var body, match, title_hash, user_id, username;
       if (type == null) {
         type = "normal";
       }
@@ -1384,7 +1430,7 @@ jQuery.extend( jQuery.easing,
       $(".title .title-link", elem).text(topic.title);
       $(".title .title-link, a.image, .comment-num", elem).attr("href", "?Topic:" + topic.topic_id + "@" + user_id + "/" + title_hash);
       body = topic.body;
-      match = topic.body.match(/http[s]{0,1}:\/\/[^"' $]+/);
+      match = topic.body.match(/http[s]{0,1}:\/\/[^"', $]+/);
       if (match) {
         if (type !== "full") {
           body = body.replace(/http[s]{0,1}:\/\/[^"' $]+/g, "");
@@ -1403,7 +1449,8 @@ jQuery.extend( jQuery.easing,
       } else {
         $(".body", elem).text(body);
       }
-      $(".username", elem).text(this.user_name_db[topic.inner_path]);
+      username = this.user_name_db[topic.inner_path];
+      $(".username", elem).text(username);
       $(".added", elem).text(this.formatSince(topic.added));
       if (topic.inner_path === this.site_info.auth_address) {
         $(elem).attr("data-object", "Topic:" + topic.topic_id + "@" + user_id).attr("data-deletable", "yes");
@@ -1412,13 +1459,30 @@ jQuery.extend( jQuery.easing,
       }
     };
 
+    ZeroTalk.prototype.textToColor = function(text) {
+      var color, hash, i, value, _i, _j, _ref;
+      hash = 0;
+      for (i = _i = 0, _ref = text.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+        hash = text.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      color = '#';
+      return "hsl(" + (hash % 360) + ",30%,50%)";
+      for (i = _j = 0; _j <= 2; i = ++_j) {
+        value = (hash >> (i * 8)) & 0xFF;
+        color += ('00' + value.toString(16)).substr(-2);
+      }
+      return color;
+    };
+
     ZeroTalk.prototype.applyCommentData = function(elem, comment) {
       var comment_id, topic_address, user_id, username;
       username = this.user_name_db[comment.inner_path];
       $(".body", elem).html(marked(comment.body, {
         "sanitize": true
       }));
-      $(".username", elem).text(username);
+      $(".username", elem).text(username).css({
+        "color": this.textToColor(username)
+      });
       $(".added", elem).text(this.formatSince(comment.added));
       if (comment.inner_path === this.site_info.auth_address) {
         user_id = this.user_id_db[comment.inner_path];
@@ -1601,7 +1665,7 @@ jQuery.extend( jQuery.easing,
           $(".button.signup").removeClass("loading");
         }
         $(".head-user.registered").css("display", "");
-        $(".username-my").text(user_name);
+        $(".username-my").text(user_name).css("color", this.textToColor(user_name));
         return this.cmd("fileGet", ["data/users/" + address + "/content.json"], (function(_this) {
           return function(content) {
             var details, relative_path, sum, _ref;
@@ -1817,13 +1881,17 @@ jQuery.extend( jQuery.easing,
         this.loadUserDb();
       }
       if (res.params.event && res.params.event[0] === "file_done" && res.params.event[1].match(/.*users.*data.json$/)) {
-        if ($("body").hasClass("page-topic")) {
-          this.loadTopic();
-          this.loadComments();
-        }
-        if ($("body").hasClass("page-main")) {
-          return this.loadTopics();
-        }
+        return LimitRate(((function(_this) {
+          return function() {
+            if ($("body").hasClass("page-topic")) {
+              _this.loadTopic();
+              _this.loadComments();
+            }
+            if ($("body").hasClass("page-main")) {
+              return _this.loadTopics();
+            }
+          };
+        })(this)), 500);
       }
     };
 

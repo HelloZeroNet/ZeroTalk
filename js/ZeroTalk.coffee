@@ -11,6 +11,8 @@ class ZeroTalk extends ZeroFrame
 
 		@user_max_size = null # Max total file size allowed to user
 
+		@thread_sorter = null
+
 		# Autoexpand
 		for textarea in $("textarea")
 			@autoExpand $(textarea)
@@ -109,8 +111,9 @@ class ZeroTalk extends ZeroFrame
 			$("body").css({"overflow": "auto", "height": "auto"}) # Auto height body
 
 			# Hide loading
-			if parseInt($(".topics-loading").css("top")) == 0 # Loading visible, animate it
-				$(".topics-loading").css("top", "-30px").removeLater()
+
+			if parseInt($(".topics-loading").css("top")) > -30 # Loading visible, animate it
+				$(".topics-loading").css("top", "-30px")
 			else
 				$(".topics-loading").remove()
 
@@ -118,7 +121,14 @@ class ZeroTalk extends ZeroFrame
 
 			@addInlineEditors()
 
-			@loadTopicsStat(type)
+			if @site_info.tasks == 0 # No tasks active, sort it now
+				@loadTopicsStat(type)
+			else # Workers active, wait 100ms before sort
+				clearInterval(@thread_sorter)
+				@thread_sorter = setTimeout (=>
+					@loadTopicsStat(type)
+				), 100
+
 
 			if cb then cb()
 
@@ -131,6 +141,12 @@ class ZeroTalk extends ZeroFrame
 			stats = []
 			# Analyze user data files
 			for user in users
+				for topic in user.topics
+					user_id = @user_id_db[user.inner_path]
+					topic_address = "#{topic.topic_id}_#{user_id}"
+					if not stats[topic_address]?
+						stats[topic_address] = {"comments": 0, "last": {"added": topic.added}}
+
 				for topic_address, comments of user["comments"]
 					topic_address = topic_address.replace("@", "_")
 					for comment in comments
@@ -143,8 +159,9 @@ class ZeroTalk extends ZeroFrame
 
 			# Set html elements
 			for topic_address, stat of stats
-				$("#topic_#{topic_address} .comment-num").text "#{stat.comments} comment"
-				$("#topic_#{topic_address} .added").text "last "+@formatSince(stat["last"]["added"])
+				if stat.comments > 0
+					$("#topic_#{topic_address} .comment-num").text "#{stat.comments} comment"
+					$("#topic_#{topic_address} .added").text "last "+@formatSince(stat["last"]["added"])
 
 
 			# Sort topics
@@ -174,9 +191,6 @@ class ZeroTalk extends ZeroFrame
 		@loadTopic()
 		@loadComments("noanim")
 
-		@local_storage["topic.#{topic_id}_#{topic_user_id}.visited"] = @timestamp()
-		@cmd "wrapperSetLocalStorage", @local_storage
-
 		$(".comment-new .button-submit").on "click", =>
 			if @user_name_db[@site_info.auth_address] # Check if user exits
 				@buttonComment()
@@ -201,6 +215,11 @@ class ZeroTalk extends ZeroFrame
 
 	loadComments: (type="normal", cb=false) ->
 		topic_address = @topic_id+"@"+@topic_user_id
+
+		# Update visited info
+		@local_storage["topic.#{@topic_id}_#{@topic_user_id}.visited"] = @timestamp()
+		@cmd "wrapperSetLocalStorage", @local_storage
+
 		# Load comments
 		@cmd "fileQuery", ["data/users/*/data.json", "comments.#{topic_address}"], (comments) =>
 			comments.sort (a, b) -> # Sort by date desc
@@ -235,7 +254,7 @@ class ZeroTalk extends ZeroFrame
 
 		# Get links in body
 		body = topic.body
-		match = topic.body.match /http[s]{0,1}:\/\/[^"' $]+/
+		match = topic.body.match /http[s]{0,1}:\/\/[^"', $]+/
 		if match # Link type topic
 			if type != "full" then body = body.replace /http[s]{0,1}:\/\/[^"' $]+/g, "" # Remove links
 			$(".image .icon", elem).removeClass("icon-topic-chat").addClass("icon-topic-link")
@@ -250,7 +269,8 @@ class ZeroTalk extends ZeroFrame
 		else
 			$(".body", elem).text body
 
-		$(".username", elem).text(@user_name_db[topic.inner_path])
+		username = @user_name_db[topic.inner_path]
+		$(".username", elem).text(username)
 		$(".added", elem).text @formatSince(topic.added)
 
 		# My topic
@@ -260,13 +280,25 @@ class ZeroTalk extends ZeroFrame
 			$(".body", elem).attr("data-editable", "body").data("content", topic.body)
 
 
+	textToColor: (text) =>
+		hash = 0
+		for i in [0..text.length-1]
+			hash = text.charCodeAt(i) + ((hash << 5) - hash)
+		color = '#'
+		return "hsl(" + (hash % 360) + ",30%,50%)";
+		for i in [0..2]
+			value = (hash >> (i * 8)) & 0xFF
+			color += ('00' + value.toString(16)).substr(-2)
+		return color
+
 
 	# Update elem based on data of comment dict
 	applyCommentData: (elem, comment) ->
 		username = @user_name_db[comment.inner_path]
 		$(".body", elem).html(marked(comment.body, {"sanitize": true}))
-		$(".username", elem).text(username)
+		$(".username", elem).text(username).css("color": @textToColor(username))
 		$(".added", elem).text @formatSince(comment.added)
+		# elem.css("border-left", "2px solid #{@textToColor(username)}")
 
 
 		# My comment
@@ -377,7 +409,7 @@ class ZeroTalk extends ZeroFrame
 				$(".button.signup").removeClass("loading") 
 
 			$(".head-user.registered").css("display", "")
-			$(".username-my").text(user_name)
+			$(".username-my").text(user_name).css("color", @textToColor(user_name))
 			@cmd "fileGet", ["data/users/#{address}/content.json"], (content) =>
 				content = JSON.parse(content)
 				sum = 0
@@ -546,11 +578,13 @@ class ZeroTalk extends ZeroFrame
 		if res.params.event and res.params.event[0] == "file_done" and res.params.event[1] == "data/users/content.json" # New user
 			@loadUserDb() # Reload userdb
 		if res.params.event and res.params.event[0] == "file_done" and res.params.event[1].match /.*users.*data.json$/  # Data changed
-			if $("body").hasClass("page-topic")
-				@loadTopic()
-				@loadComments()
-			if $("body").hasClass("page-main")
-				@loadTopics()
+			LimitRate (=>
+				if $("body").hasClass("page-topic")
+					@loadTopic()
+					@loadComments()
+				if $("body").hasClass("page-main")
+					@loadTopics()
+			), 500
 
 
 
