@@ -4,9 +4,9 @@
   "description": "Decentralized forum demo", 
   "files": {
     "css/all.css": {
-      "sha1": "c76ae52f1cd57383b1e1877db5e910116e5c9bb1", 
-      "sha512": "808cd96cedfcabb3e15a7697adb72336dfdcee255b732dcc1e4b5ca74946f8b3", 
-      "size": 144206
+      "sha1": "eaee15bceb86b802a3c05cabd4a81ae6885583e3", 
+      "sha512": "8d626adb43427910e1c49a05b5a4bbee8bb14c6e6a0de5ced84e9c173470b549", 
+      "size": 144524
     }, 
     "img/loading.gif": {
       "sha1": "a669dbd8a577f6957656fc88ba4960b93fcd23d9", 
@@ -14,14 +14,14 @@
       "size": 723
     }, 
     "index.html": {
-      "sha1": "4d4845aabe3badf09fbabc7a4ed4513f527fa624", 
-      "sha512": "4fd418533d81c2f58e021dd4703cac54717ad1aaa80a03172f7f6e5577e82124", 
-      "size": 4668
+      "sha1": "ab17450cfa19878f47d7b3574cc659812b6c381d", 
+      "sha512": "6beddd119daee5715957c0cdcdfe090114fc398ba81cc61b802202616576be33", 
+      "size": 4690
     }, 
     "js/all.js": {
-      "sha1": "b09dfa9fccd3a44f94d726c62509972f6b9a73dd", 
-      "sha512": "57fdb291741cc163eb53cbd3ba5cd233f291ea8f58efc2ea0372497eaa796190", 
-      "size": 204536
+      "sha1": "64ac85351952cc5a24db6fa623cf491a2aa8c329", 
+      "sha512": "5c692e5b97b88a3c3a18d3a04044f6fc4536d665725470ce2a5e25f5d3f504bc", 
+      "size": 209307
     }
   }, 
   "ignore": "((js|css)/(?!all.(js|css))|data/users/.*)", 
@@ -33,17 +33,17 @@
       "signers_required": 1
     }
   }, 
-  "modified": 1424538722.421, 
+  "modified": 1425250514.245, 
   "sign": [
-    28115098796321225525469683774674563020683626206006934530558881859210766320163, 
-    85669531735706364241730694951554730240181994225982173396151007166538171566242
+    66207809463890109912286135964736777909555344423812490854027447069127926424527, 
+    10233740391543917105537258017234721770504840294794623397728938704813203974703
   ], 
   "signers_sign": "HKNDz9IUHcBc/l2Jm2Bl70XQDL9HYHhJ2hUdg8AMyunACLgxyXBr7EW1/ME4hGkaFZSFmIxlInmxH+BrMVXbnLw=", 
   "signs": {
-    "1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ": "HFmfecFh0MtVJJ+M9jWbyYQaDqqE4s4UK5ePyJ0ER0NBac8+ln9sy3N8iGrHKT+0LKq8xpbzaXV6nGUqPcqfRu4="
+    "1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ": "HJKBfWTis/3rFdArpoky3VVBp0HArqxZYVYJTtgmcOm6UCSv5Zrdyfzt4bmec1xzpPquHZ2QaQ/EI3wnLQKPAqI="
   }, 
   "signs_required": 1, 
   "title": "ZeroTalk", 
   "viewport": "width=device-width, initial-scale=1.0", 
-  "zeronet_version": "0.2.3"
+  "zeronet_version": "0.2.5"
 }

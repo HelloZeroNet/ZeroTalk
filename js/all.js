@@ -10,142 +10,6 @@
 
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/lib/LimitRate.coffee ---- */
-
-
-(function() {
-  var limits;
-
-  limits = {};
-
-  window.LimitRate = function(fn, interval) {
-    if (!limits[fn]) {
-      return limits[fn] = setTimeout((function() {
-        fn();
-        return delete limits[fn];
-      }), interval);
-    }
-  };
-
-}).call(this);
-
-
-
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/lib/ZeroFrame.coffee ---- */
-
-
-(function() {
-  var ZeroFrame,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    __slice = [].slice;
-
-  ZeroFrame = (function() {
-    function ZeroFrame(url) {
-      this.onCloseWebsocket = __bind(this.onCloseWebsocket, this);
-      this.onOpenWebsocket = __bind(this.onOpenWebsocket, this);
-      this.route = __bind(this.route, this);
-      this.onMessage = __bind(this.onMessage, this);
-      this.url = url;
-      this.waiting_cb = {};
-      this.connect();
-      this.next_message_id = 1;
-      this.init();
-    }
-
-    ZeroFrame.prototype.init = function() {
-      return this;
-    };
-
-    ZeroFrame.prototype.connect = function() {
-      this.target = window.parent;
-      window.addEventListener("message", this.onMessage, false);
-      return this.cmd("innerReady");
-    };
-
-    ZeroFrame.prototype.onMessage = function(e) {
-      var cmd, message;
-      message = e.data;
-      cmd = message.cmd;
-      if (cmd === "response") {
-        if (this.waiting_cb[message.to] != null) {
-          return this.waiting_cb[message.to](message.result);
-        } else {
-          return this.log("Websocket callback not found:", message);
-        }
-      } else if (cmd === "wrapperReady") {
-        return this.cmd("innerReady");
-      } else if (cmd === "ping") {
-        return this.response(message.id, "pong");
-      } else if (cmd === "wrapperOpenedWebsocket") {
-        return this.onOpenWebsocket();
-      } else if (cmd === "wrapperClosedWebsocket") {
-        return this.onCloseWebsocket();
-      } else {
-        return this.route(cmd, message);
-      }
-    };
-
-    ZeroFrame.prototype.route = function(cmd, message) {
-      return this.log("Unknown command", message);
-    };
-
-    ZeroFrame.prototype.response = function(to, result) {
-      return this.send({
-        "cmd": "response",
-        "to": to,
-        "result": result
-      });
-    };
-
-    ZeroFrame.prototype.cmd = function(cmd, params, cb) {
-      if (params == null) {
-        params = {};
-      }
-      if (cb == null) {
-        cb = null;
-      }
-      return this.send({
-        "cmd": cmd,
-        "params": params
-      }, cb);
-    };
-
-    ZeroFrame.prototype.send = function(message, cb) {
-      if (cb == null) {
-        cb = null;
-      }
-      message.id = this.next_message_id;
-      this.next_message_id += 1;
-      this.target.postMessage(message, "*");
-      if (cb) {
-        return this.waiting_cb[message.id] = cb;
-      }
-    };
-
-    ZeroFrame.prototype.log = function() {
-      var args;
-      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-      return console.log.apply(console, ["[ZeroFrame]"].concat(__slice.call(args)));
-    };
-
-    ZeroFrame.prototype.onOpenWebsocket = function() {
-      return this.log("Websocket open");
-    };
-
-    ZeroFrame.prototype.onCloseWebsocket = function() {
-      return this.log("Websocket close");
-    };
-
-    return ZeroFrame;
-
-  })();
-
-  window.ZeroFrame = ZeroFrame;
-
-}).call(this);
-
-
-
 /* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/lib/highlight.pack.js ---- */
 
 
@@ -875,7 +739,65 @@ jQuery.extend( jQuery.easing,
 
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/InlineEditor.coffee ---- */
+/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/Class.coffee ---- */
+
+
+(function() {
+  var Class,
+    __slice = [].slice;
+
+  Class = (function() {
+    function Class() {}
+
+    Class.prototype.trace = true;
+
+    Class.prototype.log = function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      if (!this.trace) {
+        return;
+      }
+      if (typeof console === 'undefined') {
+        return;
+      }
+      args.unshift("[" + this.constructor.name + "]");
+      console.log.apply(console, args);
+      return this;
+    };
+
+    Class.prototype.logStart = function() {
+      var args, name;
+      name = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+      if (!this.trace) {
+        return;
+      }
+      this.logtimers || (this.logtimers = {});
+      this.logtimers[name] = +(new Date);
+      if (args.length > 0) {
+        this.log.apply(this, ["[" + name + "]"].concat(__slice.call(args), ["(started)"]));
+      }
+      return this;
+    };
+
+    Class.prototype.logEnd = function() {
+      var args, ms, name;
+      name = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+      ms = +(new Date) - this.logtimers[name];
+      this.log.apply(this, ["[" + name + "]"].concat(__slice.call(args), ["(Done in " + ms + "ms)"]));
+      return this;
+    };
+
+    return Class;
+
+  })();
+
+  window.Class = Class;
+
+}).call(this);
+
+
+
+/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/InlineEditor.coffee ---- */
 
 
 (function() {
@@ -995,10 +917,10 @@ jQuery.extend( jQuery.easing,
     InlineEditor.prototype.deleteObject = function() {
       var object_type;
       object_type = this.getObject(this.elem).data("object").split(":")[0];
-      window.zero_talk.cmd("wrapperConfirm", ["Are you sure you sure to delete this " + object_type + "?", "Delete"], (function(_this) {
+      Page.cmd("wrapperConfirm", ["Are you sure you sure to delete this " + object_type + "?", "Delete"], (function(_this) {
         return function(confirmed) {
           $(".editbar .delete").addClass("loading");
-          return _this.saveContent(_this.getObject(_this.elem), null, function() {
+          return Page.saveContent(_this.getObject(_this.elem), null, function() {
             return _this.stopEdit();
           });
         };
@@ -1073,110 +995,269 @@ jQuery.extend( jQuery.easing,
 
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/ZeroTalk.coffee ---- */
+/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/LimitRate.coffee ---- */
 
 
 (function() {
-  var ZeroTalk,
+  var limits;
+
+  limits = {};
+
+  window.LimitRate = function(fn, interval) {
+    if (!limits[fn]) {
+      return limits[fn] = setTimeout((function() {
+        fn();
+        return delete limits[fn];
+      }), interval);
+    }
+  };
+
+}).call(this);
+
+
+
+/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/Text.coffee ---- */
+
+
+(function() {
+  var Text;
+
+  Text = (function() {
+    function Text() {}
+
+    Text.prototype.toColor = function(text) {
+      var color, hash, i, value, _i, _j, _ref;
+      hash = 0;
+      for (i = _i = 0, _ref = text.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+        hash = text.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      color = '#';
+      return "hsl(" + (hash % 360) + ",30%,50%)";
+      for (i = _j = 0; _j <= 2; i = ++_j) {
+        value = (hash >> (i * 8)) & 0xFF;
+        color += ('00' + value.toString(16)).substr(-2);
+      }
+      return color;
+    };
+
+    Text.prototype.toMarked = function(text, options) {
+      if (options == null) {
+        options = null;
+      }
+      text = marked(text, options);
+      return this.fixLinks(text);
+    };
+
+    Text.prototype.fixLinks = function(text) {
+      return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="');
+    };
+
+    return Text;
+
+  })();
+
+  window.Text = new Text();
+
+}).call(this);
+
+
+
+/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/Time.coffee ---- */
+
+
+(function() {
+  var Time;
+
+  Time = (function() {
+    function Time() {}
+
+    Time.prototype.since = function(time) {
+      var back, now, secs;
+      now = +(new Date) / 1000;
+      secs = now - time;
+      if (secs < 60) {
+        back = "Just now";
+      } else if (secs < 60 * 60) {
+        back = (Math.round(secs / 60)) + " minutes ago";
+      } else if (secs < 60 * 60 * 24) {
+        back = (Math.round(secs / 60 / 60)) + " hours ago";
+      } else if (secs < 60 * 60 * 24 * 3) {
+        back = (Math.round(secs / 60 / 60 / 24)) + " days ago";
+      } else {
+        back = "on " + this.date(time);
+      }
+      back = back.replace(/1 ([a-z]+)s/, "1 $1");
+      return back;
+    };
+
+    Time.prototype.date = function(timestamp, format) {
+      var display, parts;
+      if (format == null) {
+        format = "short";
+      }
+      parts = (new Date(timestamp * 1000)).toString().split(" ");
+      if (format === "short") {
+        display = parts.slice(1, 4);
+      } else {
+        display = parts.slice(1, 5);
+      }
+      return display.join(" ").replace(/( [0-9]{4})/, ",$1");
+    };
+
+    Time.prototype.timestamp = function(date) {
+      if (date == null) {
+        date = "";
+      }
+      if (date === "now" || date === "") {
+        return parseInt(+(new Date) / 1000);
+      } else {
+        return parseInt(Date.parse(date) / 1000);
+      }
+    };
+
+    return Time;
+
+  })();
+
+  window.Time = new Time;
+
+}).call(this);
+
+
+
+/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/ZeroFrame.coffee ---- */
+
+
+(function() {
+  var ZeroFrame,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __slice = [].slice;
+
+  ZeroFrame = (function() {
+    function ZeroFrame(url) {
+      this.onCloseWebsocket = __bind(this.onCloseWebsocket, this);
+      this.onOpenWebsocket = __bind(this.onOpenWebsocket, this);
+      this.route = __bind(this.route, this);
+      this.onMessage = __bind(this.onMessage, this);
+      this.url = url;
+      this.waiting_cb = {};
+      this.connect();
+      this.next_message_id = 1;
+      this.init();
+    }
+
+    ZeroFrame.prototype.init = function() {
+      return this;
+    };
+
+    ZeroFrame.prototype.connect = function() {
+      this.target = window.parent;
+      window.addEventListener("message", this.onMessage, false);
+      return this.cmd("innerReady");
+    };
+
+    ZeroFrame.prototype.onMessage = function(e) {
+      var cmd, message;
+      message = e.data;
+      cmd = message.cmd;
+      if (cmd === "response") {
+        if (this.waiting_cb[message.to] != null) {
+          return this.waiting_cb[message.to](message.result);
+        } else {
+          return this.log("Websocket callback not found:", message);
+        }
+      } else if (cmd === "wrapperReady") {
+        return this.cmd("innerReady");
+      } else if (cmd === "ping") {
+        return this.response(message.id, "pong");
+      } else if (cmd === "wrapperOpenedWebsocket") {
+        return this.onOpenWebsocket();
+      } else if (cmd === "wrapperClosedWebsocket") {
+        return this.onCloseWebsocket();
+      } else {
+        return this.route(cmd, message);
+      }
+    };
+
+    ZeroFrame.prototype.route = function(cmd, message) {
+      return this.log("Unknown command", message);
+    };
+
+    ZeroFrame.prototype.response = function(to, result) {
+      return this.send({
+        "cmd": "response",
+        "to": to,
+        "result": result
+      });
+    };
+
+    ZeroFrame.prototype.cmd = function(cmd, params, cb) {
+      if (params == null) {
+        params = {};
+      }
+      if (cb == null) {
+        cb = null;
+      }
+      return this.send({
+        "cmd": cmd,
+        "params": params
+      }, cb);
+    };
+
+    ZeroFrame.prototype.send = function(message, cb) {
+      if (cb == null) {
+        cb = null;
+      }
+      message.id = this.next_message_id;
+      this.next_message_id += 1;
+      this.target.postMessage(message, "*");
+      if (cb) {
+        return this.waiting_cb[message.id] = cb;
+      }
+    };
+
+    ZeroFrame.prototype.log = function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return console.log.apply(console, ["[ZeroFrame]"].concat(__slice.call(args)));
+    };
+
+    ZeroFrame.prototype.onOpenWebsocket = function() {
+      return this.log("Websocket open");
+    };
+
+    ZeroFrame.prototype.onCloseWebsocket = function() {
+      return this.log("Websocket close");
+    };
+
+    return ZeroFrame;
+
+  })();
+
+  window.ZeroFrame = ZeroFrame;
+
+}).call(this);
+
+
+
+/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/TopicList.coffee ---- */
+
+
+(function() {
+  var TopicList,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
     __hasProp = {}.hasOwnProperty;
 
-  ZeroTalk = (function(_super) {
-    __extends(ZeroTalk, _super);
+  TopicList = (function(_super) {
+    __extends(TopicList, _super);
 
-    function ZeroTalk() {
-      this.setSiteinfo = __bind(this.setSiteinfo, this);
-      this.actionSetSiteInfo = __bind(this.actionSetSiteInfo, this);
-      this.saveContent = __bind(this.saveContent, this);
-      this.getObject = __bind(this.getObject, this);
-      this.getContent = __bind(this.getContent, this);
-      this.textToColor = __bind(this.textToColor, this);
+    function TopicList() {
       this.loadTopicsStat = __bind(this.loadTopicsStat, this);
-      this.onOpenWebsocket = __bind(this.onOpenWebsocket, this);
-      return ZeroTalk.__super__.constructor.apply(this, arguments);
+      this.thread_sorter = null;
     }
 
-    ZeroTalk.prototype.init = function() {
-      var textarea, _i, _len, _ref;
-      this.log("inited!");
-      this.site_info = null;
-      this.server_info = null;
-      this.local_storage = {};
-      this.user_id_db = {};
-      this.user_address_db = {};
-      this.user_name_db = {};
-      this.user_max_size = null;
-      this.thread_sorter = null;
-      _ref = $("textarea");
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        textarea = _ref[_i];
-        this.autoExpand($(textarea));
-      }
-      $(".button.signup").on("click", (function(_this) {
-        return function() {
-          _this.buttonSignup();
-          return false;
-        };
-      })(this));
-      return $(".editbar .icon-help").on("click", (function(_this) {
-        return function() {
-          $(".editbar .markdown-help").css("display", "block");
-          $(".editbar .markdown-help").toggleClassLater("visible", 10);
-          $(".editbar .icon-help").toggleClass("active");
-          return false;
-        };
-      })(this));
-    };
-
-    ZeroTalk.prototype.pageLoaded = function() {
-      return $("body").addClass("loaded");
-    };
-
-    ZeroTalk.prototype.onOpenWebsocket = function(e) {
-      this.cmd("wrapperSetViewport", "width=device-width, initial-scale=1.0");
-      this.cmd("wrapperGetLocalStorage", [], (function(_this) {
-        return function(res) {
-          if (res == null) {
-            res = {};
-          }
-          return _this.local_storage = res;
-        };
-      })(this));
-      this.cmd("siteInfo", {}, (function(_this) {
-        return function(site) {
-          _this.setSiteinfo(site);
-          return _this.loadUserDb(function() {
-            _this.updateUserInfo();
-            return _this.routeUrl(window.location.search.substring(1));
-          });
-        };
-      })(this));
-      return this.cmd("serverInfo", {}, (function(_this) {
-        return function(ret) {
-          var version;
-          _this.server_info = ret;
-          version = parseInt(_this.server_info.version.replace(/\./g, ""));
-          if (version < 20) {
-            return _this.cmd("wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.2.0, please update!"]);
-          }
-        };
-      })(this));
-    };
-
-    ZeroTalk.prototype.routeUrl = function(url) {
-      var match;
-      this.log("Routing url:", url);
-      if (match = url.match(/Topic:([0-9]+)@([0-9]+)/)) {
-        $("body").addClass("page-topic");
-        return this.pageTopic(parseInt(match[1]), parseInt(match[2]));
-      } else {
-        $("body").addClass("page-main");
-        return this.pageMain();
-      }
-    };
-
-    ZeroTalk.prototype.pageMain = function() {
+    TopicList.prototype.actionList = function() {
       $(".topics-loading").cssLater("top", "0px", 200);
       this.loadTopics("noanim");
       $(".topic-new-link").on("click", (function(_this) {
@@ -1188,26 +1269,25 @@ jQuery.extend( jQuery.easing,
       })(this));
       return $(".topic-new .button-submit").on("click", (function(_this) {
         return function() {
-          if (_this.user_name_db[_this.site_info.auth_address]) {
+          if (Page.user_name_db[Page.site_info.auth_address]) {
             _this.buttonCreateTopic();
           } else {
-            _this.cmd("wrapperNotification", ["info", "Please, request access before posting."]);
+            Page.cmd("wrapperNotification", ["info", "Please, request access before posting."]);
           }
           return false;
         };
       })(this));
     };
 
-    ZeroTalk.prototype.loadTopics = function(type, cb) {
-      var s;
+    TopicList.prototype.loadTopics = function(type, cb) {
       if (type == null) {
         type = "normal";
       }
       if (cb == null) {
         cb = false;
       }
-      s = +(new Date);
-      return this.cmd("fileQuery", ["data/users/*/data.json", "topics"], (function(_this) {
+      this.logStart("Loadtopics");
+      return Page.cmd("fileQuery", ["data/users/*/data.json", "topics"], (function(_this) {
         return function(topics) {
           var elem, last_elem, topic, topic_address, _i, _len;
           topics.sort(function(a, b) {
@@ -1216,7 +1296,7 @@ jQuery.extend( jQuery.easing,
           last_elem = null;
           for (_i = 0, _len = topics.length; _i < _len; _i++) {
             topic = topics[_i];
-            topic_address = topic.topic_id + "_" + _this.user_id_db[topic.inner_path];
+            topic_address = topic.topic_id + "_" + Page.user_id_db[topic.inner_path];
             elem = $("#topic_" + topic_address);
             if (elem.length === 0) {
               elem = $(".topics-list .topic.template").clone().removeClass("template").attr("id", "topic_" + topic_address);
@@ -1240,9 +1320,9 @@ jQuery.extend( jQuery.easing,
           } else {
             $(".topics-loading").remove();
           }
-          _this.log("Topics loaded in", (+(new Date)) - s);
-          _this.addInlineEditors();
-          if (_this.site_info.tasks === 0) {
+          _this.logEnd("Loadtopics");
+          Page.addInlineEditors();
+          if (Page.site_info.tasks === 0) {
             _this.loadTopicsStat(type);
           } else {
             clearInterval(_this.thread_sorter);
@@ -1257,13 +1337,13 @@ jQuery.extend( jQuery.easing,
       })(this));
     };
 
-    ZeroTalk.prototype.loadTopicsStat = function(type) {
+    TopicList.prototype.loadTopicsStat = function(type) {
       var s;
       if (type == null) {
         type = "normal";
       }
       s = +(new Date);
-      return this.cmd("fileQuery", ["data/users/*/data.json", ""], (function(_this) {
+      return Page.cmd("fileQuery", ["data/users/*/data.json", ""], (function(_this) {
         return function(users) {
           var comment, comments, elem, last, stat, stats, topic, topic_address, topics, user, user_id, visited, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1;
           $(".topics").css("opacity", 1);
@@ -1273,7 +1353,7 @@ jQuery.extend( jQuery.easing,
             _ref = user.topics;
             for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
               topic = _ref[_j];
-              user_id = _this.user_id_db[user.inner_path];
+              user_id = Page.user_id_db[user.inner_path];
               topic_address = topic.topic_id + "_" + user_id;
               if (stats[topic_address] == null) {
                 stats[topic_address] = {
@@ -1309,7 +1389,7 @@ jQuery.extend( jQuery.easing,
             stat = stats[topic_address];
             if (stat.comments > 0) {
               $("#topic_" + topic_address + " .comment-num").text(stat.comments + " comment");
-              $("#topic_" + topic_address + " .added").text("last " + _this.formatSince(stat["last"]["added"]));
+              $("#topic_" + topic_address + " .added").text("last " + Time.since(stat["last"]["added"]));
             }
           }
           topics = (function() {
@@ -1329,7 +1409,7 @@ jQuery.extend( jQuery.easing,
             topic_address = topic[0];
             elem = $("#topic_" + topic_address);
             elem.prependTo(".topics");
-            visited = _this.local_storage["topic." + topic_address + ".visited"];
+            visited = Page.local_storage["topic." + topic_address + ".visited"];
             if (!visited) {
               elem.addClass("visit-none");
             } else if (visited < topic[1]) {
@@ -1341,34 +1421,140 @@ jQuery.extend( jQuery.easing,
       })(this));
     };
 
-    ZeroTalk.prototype.pageTopic = function(topic_id, topic_user_id) {
+    TopicList.prototype.applyTopicData = function(elem, topic, type) {
+      var body, match, title_hash, url, user_id, username;
+      if (type == null) {
+        type = "normal";
+      }
+      title_hash = topic.title.replace(/[#,"'?& ]/g, "+").replace(/[+]+/g, "+").replace(/[+]+$/, "");
+      user_id = Page.user_id_db[topic.inner_path];
+      $(".title .title-link", elem).text(topic.title);
+      $(".title .title-link, a.image, .comment-num", elem).attr("href", "?Topic:" + topic.topic_id + "@" + user_id + "/" + title_hash);
+      body = topic.body;
+      match = topic.body.match(/http[s]{0,1}:\/\/[^"', $]+/);
+      if (match) {
+        url = match[0];
+        if (type !== "full") {
+          body = body.replace(/http[s]{0,1}:\/\/[^"' $]+/g, "");
+        }
+        $(".image .icon", elem).removeClass("icon-topic-chat").addClass("icon-topic-link");
+        $(".link", elem).css("display", "").attr("href", url.replace(/http:\/\/(127.0.0.1|localhost):43110/, ""));
+        $(".link .link-url", elem).text(url);
+      } else {
+        $(".image .icon", elem).removeClass("icon-topic-link").addClass("icon-topic-chat");
+        $(".link", elem).css("display", "none");
+      }
+      if (type === "full") {
+        $(".body", elem).html(Text.toMarked(body, {
+          "sanitize": true
+        }));
+      } else {
+        $(".body", elem).text(body);
+      }
+      username = Page.user_name_db[topic.inner_path];
+      $(".username", elem).text(username);
+      $(".added", elem).text(Time.since(topic.added));
+      if (topic.inner_path === Page.site_info.auth_address) {
+        $(elem).attr("data-object", "Topic:" + topic.topic_id + "@" + user_id).attr("data-deletable", "yes");
+        $(".title .title-link", elem).attr("data-editable", "title").data("content", topic.title);
+        return $(".body", elem).attr("data-editable", "body").data("content", topic.body);
+      }
+    };
+
+    TopicList.prototype.buttonCreateTopic = function() {
+      var body, inner_path, title;
+      if (!Page.hasOpenPort()) {
+        return false;
+      }
+      title = $(".topic-new #topic_title").val();
+      body = $(".topic-new #topic_body").val();
+      if (!title) {
+        return $(".topic-new #topic_title").focus();
+      }
+      $(".topic-new .button-submit").addClass("loading");
+      inner_path = "data/users/" + Page.site_info.auth_address + "/data.json";
+      return Page.cmd("fileGet", [inner_path], (function(_this) {
+        return function(data) {
+          data = JSON.parse(data);
+          data.topics.push({
+            "topic_id": data.next_topic_id,
+            "title": title,
+            "body": body,
+            "added": Time.timestamp()
+          });
+          data.next_topic_id += 1;
+          return Page.writePublish(inner_path, Page.jsonEncode(data), function(res) {
+            $(".topic-new .button-submit").removeClass("loading");
+            if (res === true) {
+              _this.log("File written");
+              $(".topic-new").slideUp();
+              $(".topic-new-link").slideDown();
+              setTimeout((function() {
+                return _this.loadTopics();
+              }), 600);
+              $(".topic-new #topic_body").val("");
+              return $(".topic-new #topic_title").val("");
+            } else {
+              return Page.cmd("wrapperNotification", ["error", "File write error: " + res]);
+            }
+          });
+        };
+      })(this));
+    };
+
+    return TopicList;
+
+  })(Class);
+
+  window.TopicList = new TopicList();
+
+}).call(this);
+
+
+
+/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/TopicShow.coffee ---- */
+
+
+(function() {
+  var TopicShow,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    __hasProp = {}.hasOwnProperty;
+
+  TopicShow = (function(_super) {
+    __extends(TopicShow, _super);
+
+    function TopicShow() {
+      return TopicShow.__super__.constructor.apply(this, arguments);
+    }
+
+    TopicShow.prototype.actionShow = function(topic_id, topic_user_id) {
       this.topic_id = topic_id;
       this.topic_user_id = topic_user_id;
       this.loadTopic();
       this.loadComments("noanim");
       return $(".comment-new .button-submit").on("click", (function(_this) {
         return function() {
-          if (_this.user_name_db[_this.site_info.auth_address]) {
+          if (Page.user_name_db[Page.site_info.auth_address]) {
             _this.buttonComment();
           } else {
-            _this.cmd("wrapperNotification", ["info", "Please, request access before posting."]);
+            Page.cmd("wrapperNotification", ["info", "Please, request access before posting."]);
           }
           return false;
         };
       })(this));
     };
 
-    ZeroTalk.prototype.loadTopic = function(cb) {
+    TopicShow.prototype.loadTopic = function(cb) {
       var topic_user_address;
       if (cb == null) {
         cb = false;
       }
-      topic_user_address = this.user_address_db[this.topic_user_id];
-      return this.cmd("fileQuery", ["data/users/" + topic_user_address + "/data.json", "topics.topic_id=" + this.topic_id], (function(_this) {
+      topic_user_address = Page.user_address_db[this.topic_user_id];
+      return Page.cmd("fileQuery", ["data/users/" + topic_user_address + "/data.json", "topics.topic_id=" + this.topic_id], (function(_this) {
         return function(topic) {
           topic = topic[0];
           topic["inner_path"] = topic_user_address;
-          _this.applyTopicData($(".topic-full"), topic, "full");
+          TopicList.applyTopicData($(".topic-full"), topic, "full");
           $(".topic-full").css("opacity", 1);
           $("body").addClass("page-topic");
           if (cb) {
@@ -1378,7 +1564,7 @@ jQuery.extend( jQuery.easing,
       })(this));
     };
 
-    ZeroTalk.prototype.loadComments = function(type, cb) {
+    TopicShow.prototype.loadComments = function(type, cb) {
       var topic_address;
       if (type == null) {
         type = "normal";
@@ -1387,23 +1573,27 @@ jQuery.extend( jQuery.easing,
         cb = false;
       }
       topic_address = this.topic_id + "@" + this.topic_user_id;
-      this.local_storage["topic." + this.topic_id + "_" + this.topic_user_id + ".visited"] = this.timestamp();
-      this.cmd("wrapperSetLocalStorage", this.local_storage);
-      return this.cmd("fileQuery", ["data/users/*/data.json", "comments." + topic_address], (function(_this) {
+      Page.local_storage["topic." + this.topic_id + "_" + this.topic_user_id + ".visited"] = Time.timestamp();
+      Page.cmd("wrapperSetLocalStorage", Page.local_storage);
+      return Page.cmd("fileQuery", ["data/users/*/data.json", "comments." + topic_address], (function(_this) {
         return function(comments) {
-          var comment, comment_address, elem, _i, _len;
+          var comment, comment_address, elem, user_id, _i, _len;
           comments.sort(function(a, b) {
             return b.added - a.added;
           });
           for (_i = 0, _len = comments.length; _i < _len; _i++) {
             comment = comments[_i];
-            comment_address = comment.comment_id + "_" + comment.inner_path;
+            user_id = Page.user_id_db[comment.inner_path];
+            comment_address = comment.comment_id + "_" + user_id;
             elem = $("#comment_" + comment_address);
             if (elem.length === 0) {
               elem = $(".comment.template").clone().removeClass("template").attr("id", "comment_" + comment_address).data("topic_address", topic_address);
               if (type !== "noanim") {
                 elem.cssSlideDown();
               }
+              $(".added", elem).on("click", function(e) {
+                return _this.buttonReply($(e.target).parents(".comment"));
+              });
             }
             _this.applyCommentData(elem, comment);
             elem.appendTo(".comments");
@@ -1412,7 +1602,7 @@ jQuery.extend( jQuery.easing,
             "overflow": "auto",
             "height": "auto"
           });
-          _this.addInlineEditors();
+          Page.addInlineEditors();
           if (cb) {
             return cb();
           }
@@ -1420,76 +1610,182 @@ jQuery.extend( jQuery.easing,
       })(this));
     };
 
-    ZeroTalk.prototype.applyTopicData = function(elem, topic, type) {
-      var body, match, title_hash, user_id, username;
-      if (type == null) {
-        type = "normal";
-      }
-      title_hash = topic.title.replace(/[#,"'?& ]/g, "+").replace(/[+]+/g, "+").replace(/[+]+$/, "");
-      user_id = this.user_id_db[topic.inner_path];
-      $(".title .title-link", elem).text(topic.title);
-      $(".title .title-link, a.image, .comment-num", elem).attr("href", "?Topic:" + topic.topic_id + "@" + user_id + "/" + title_hash);
-      body = topic.body;
-      match = topic.body.match(/http[s]{0,1}:\/\/[^"', $]+/);
-      if (match) {
-        if (type !== "full") {
-          body = body.replace(/http[s]{0,1}:\/\/[^"' $]+/g, "");
-        }
-        $(".image .icon", elem).removeClass("icon-topic-chat").addClass("icon-topic-link");
-        $(".link", elem).css("display", "").attr("href", match[0]);
-        $(".link .link-url", elem).text(match[0]);
-      } else {
-        $(".image .icon", elem).removeClass("icon-topic-link").addClass("icon-topic-chat");
-        $(".link", elem).css("display", "none");
-      }
-      if (type === "full") {
-        $(".body", elem).html(marked(body, {
-          "sanitize": true
-        }));
-      } else {
-        $(".body", elem).text(body);
-      }
-      username = this.user_name_db[topic.inner_path];
-      $(".username", elem).text(username);
-      $(".added", elem).text(this.formatSince(topic.added));
-      if (topic.inner_path === this.site_info.auth_address) {
-        $(elem).attr("data-object", "Topic:" + topic.topic_id + "@" + user_id).attr("data-deletable", "yes");
-        $(".title .title-link", elem).attr("data-editable", "title").data("content", topic.title);
-        return $(".body", elem).attr("data-editable", "body").data("content", topic.body);
-      }
-    };
-
-    ZeroTalk.prototype.textToColor = function(text) {
-      var color, hash, i, value, _i, _j, _ref;
-      hash = 0;
-      for (i = _i = 0, _ref = text.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
-        hash = text.charCodeAt(i) + ((hash << 5) - hash);
-      }
-      color = '#';
-      return "hsl(" + (hash % 360) + ",30%,50%)";
-      for (i = _j = 0; _j <= 2; i = ++_j) {
-        value = (hash >> (i * 8)) & 0xFF;
-        color += ('00' + value.toString(16)).substr(-2);
-      }
-      return color;
-    };
-
-    ZeroTalk.prototype.applyCommentData = function(elem, comment) {
+    TopicShow.prototype.applyCommentData = function(elem, comment) {
       var comment_id, topic_address, user_id, username;
-      username = this.user_name_db[comment.inner_path];
-      $(".body", elem).html(marked(comment.body, {
+      username = Page.user_name_db[comment.inner_path];
+      $(".body", elem).html(Text.toMarked(comment.body, {
         "sanitize": true
       }));
       $(".username", elem).text(username).css({
-        "color": this.textToColor(username)
+        "color": Text.toColor(username)
       });
-      $(".added", elem).text(this.formatSince(comment.added));
-      if (comment.inner_path === this.site_info.auth_address) {
-        user_id = this.user_id_db[comment.inner_path];
+      $(".added", elem).text(Time.since(comment.added));
+      if (comment.inner_path === Page.site_info.auth_address) {
+        user_id = Page.user_id_db[comment.inner_path];
         comment_id = elem.attr("id").replace("comment_", "").replace(/_.*$/, "");
         topic_address = elem.data("topic_address");
         $(elem).attr("data-object", "Comment:" + comment_id + "@" + topic_address).attr("data-deletable", "yes");
         return $(".body", elem).attr("data-editable", "body").data("content", comment.body);
+      }
+    };
+
+    TopicShow.prototype.buttonComment = function() {
+      var body, inner_path, topic_address;
+      if (!Page.hasOpenPort()) {
+        return false;
+      }
+      body = $(".comment-new #comment_body").val();
+      if (!body) {
+        $(".comment-new #comment_body").focus();
+      }
+      topic_address = this.topic_id + "@" + this.topic_user_id;
+      $(".comment-new .button-submit").addClass("loading");
+      inner_path = "data/users/" + Page.site_info.auth_address + "/data.json";
+      return Page.cmd("fileGet", [inner_path], (function(_this) {
+        return function(data) {
+          var _base;
+          data = JSON.parse(data);
+          if ((_base = data.comments)[topic_address] == null) {
+            _base[topic_address] = [];
+          }
+          data.comments[topic_address].push({
+            "comment_id": data.next_message_id,
+            "body": body,
+            "added": Time.timestamp()
+          });
+          data.next_message_id += 1;
+          return Page.writePublish(inner_path, Page.jsonEncode(data), function(res) {
+            $(".comment-new .button-submit").removeClass("loading");
+            if (res === true) {
+              _this.log("File written");
+              _this.loadComments();
+              return $(".comment-new #comment_body").val("");
+            }
+          });
+        };
+      })(this));
+    };
+
+    TopicShow.prototype.buttonReply = function(elem) {
+      var body_add, post_id, username;
+      this.log("Reply to", elem);
+      username = $(".username", elem).text();
+      post_id = elem.attr("id");
+      body_add = "> [" + username + "](\#" + post_id + "): ";
+      body_add += $(".body", elem).text().trim("\n").replace(/\n/g, "\n> ");
+      body_add += "\n\n";
+      $(".comment-new #comment_body").val($(".comment-new #comment_body").val() + body_add);
+      $(".comment-new #comment_body").trigger("input").focus();
+      return false;
+    };
+
+    return TopicShow;
+
+  })(Class);
+
+  window.TopicShow = new TopicShow();
+
+}).call(this);
+
+
+
+/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/ZeroTalk.coffee ---- */
+
+
+(function() {
+  var ZeroTalk,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    __hasProp = {}.hasOwnProperty;
+
+  ZeroTalk = (function(_super) {
+    __extends(ZeroTalk, _super);
+
+    function ZeroTalk() {
+      this.setSiteinfo = __bind(this.setSiteinfo, this);
+      this.actionSetSiteInfo = __bind(this.actionSetSiteInfo, this);
+      this.saveContent = __bind(this.saveContent, this);
+      this.getObject = __bind(this.getObject, this);
+      this.getContent = __bind(this.getContent, this);
+      this.onOpenWebsocket = __bind(this.onOpenWebsocket, this);
+      return ZeroTalk.__super__.constructor.apply(this, arguments);
+    }
+
+    ZeroTalk.prototype.init = function() {
+      var textarea, _i, _len, _ref;
+      this.log("inited!");
+      this.site_info = null;
+      this.server_info = null;
+      this.local_storage = {};
+      this.user_id_db = {};
+      this.user_address_db = {};
+      this.user_name_db = {};
+      this.user_max_size = null;
+      _ref = $("textarea");
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        textarea = _ref[_i];
+        this.autoExpand($(textarea));
+      }
+      $(".button.signup").on("click", (function(_this) {
+        return function() {
+          _this.buttonSignup();
+          return false;
+        };
+      })(this));
+      return $(".editbar .icon-help").on("click", (function(_this) {
+        return function() {
+          $(".editbar .markdown-help").css("display", "block");
+          $(".editbar .markdown-help").toggleClassLater("visible", 10);
+          $(".editbar .icon-help").toggleClass("active");
+          return false;
+        };
+      })(this));
+    };
+
+    ZeroTalk.prototype.onOpenWebsocket = function(e) {
+      this.cmd("wrapperSetViewport", "width=device-width, initial-scale=1.0");
+      this.cmd("wrapperGetLocalStorage", [], (function(_this) {
+        return function(res) {
+          if (res == null) {
+            res = {};
+          }
+          return _this.local_storage = res;
+        };
+      })(this));
+      this.cmd("siteInfo", {}, (function(_this) {
+        return function(site) {
+          _this.setSiteinfo(site);
+          return _this.loadUserDb(function() {
+            _this.updateUserInfo();
+            return _this.routeUrl(window.location.search.substring(1));
+          });
+        };
+      })(this));
+      return this.cmd("serverInfo", {}, (function(_this) {
+        return function(ret) {
+          var version;
+          _this.server_info = ret;
+          version = parseInt(_this.server_info.version.replace(/\./g, ""));
+          if (version < 20) {
+            return _this.cmd("wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.2.0, please update!"]);
+          }
+        };
+      })(this));
+    };
+
+    ZeroTalk.prototype.onPageLoaded = function() {
+      return $("body").addClass("loaded");
+    };
+
+    ZeroTalk.prototype.routeUrl = function(url) {
+      var match;
+      this.log("Routing url:", url);
+      if (match = url.match(/Topic:([0-9]+)@([0-9]+)/)) {
+        $("body").addClass("page-topic");
+        return TopicShow.actionShow(parseInt(match[1]), parseInt(match[2]));
+      } else {
+        $("body").addClass("page-main");
+        return TopicList.actionList();
       }
     };
 
@@ -1595,14 +1891,14 @@ jQuery.extend( jQuery.easing,
               } else {
                 if (type === "Topic") {
                   if ($("body").hasClass("page-main")) {
-                    _this.loadTopics("normal", (function() {
+                    TopicList.loadTopics("normal", (function() {
                       if (cb) {
                         return cb(true);
                       }
                     }));
                   }
                   if ($("body").hasClass("page-topic")) {
-                    _this.loadTopic((function() {
+                    TopicShow.loadTopic((function() {
                       if (cb) {
                         return cb(true);
                       }
@@ -1610,7 +1906,7 @@ jQuery.extend( jQuery.easing,
                   }
                 }
                 if (type === "Comment") {
-                  return _this.loadComments("normal", (function() {
+                  return TopicShow.loadComments("normal", (function() {
                     if (cb) {
                       return cb(true);
                     }
@@ -1665,7 +1961,7 @@ jQuery.extend( jQuery.easing,
           $(".button.signup").removeClass("loading");
         }
         $(".head-user.registered").css("display", "");
-        $(".username-my").text(user_name).css("color", this.textToColor(user_name));
+        $(".username-my").text(user_name).css("color", Text.toColor(user_name));
         return this.cmd("fileGet", ["data/users/" + address + "/content.json"], (function(_this) {
           return function(content) {
             var details, relative_path, sum, _ref;
@@ -1687,7 +1983,7 @@ jQuery.extend( jQuery.easing,
     };
 
     ZeroTalk.prototype.buttonSignup = function() {
-      if (!this.needOpenPort()) {
+      if (!this.hasOpenPort()) {
         return false;
       }
       return this.cmd("wrapperPrompt", ["Username you want to register:"], (function(_this) {
@@ -1702,84 +1998,6 @@ jQuery.extend( jQuery.easing,
             } else {
               $(".button.signup").removeClass("loading");
               return _this.cmd("wrapperNotification", ["error", "Error: " + res.responseText]);
-            }
-          });
-        };
-      })(this));
-    };
-
-    ZeroTalk.prototype.buttonCreateTopic = function() {
-      var body, inner_path, title;
-      if (!this.needOpenPort()) {
-        return false;
-      }
-      title = $(".topic-new #topic_title").val();
-      body = $(".topic-new #topic_body").val();
-      if (!title) {
-        return $(".topic-new #topic_title").focus();
-      }
-      $(".topic-new .button-submit").addClass("loading");
-      inner_path = "data/users/" + this.site_info.auth_address + "/data.json";
-      return this.cmd("fileGet", [inner_path], (function(_this) {
-        return function(data) {
-          data = JSON.parse(data);
-          data.topics.push({
-            "topic_id": data.next_topic_id,
-            "title": title,
-            "body": body,
-            "added": _this.timestamp()
-          });
-          data.next_topic_id += 1;
-          return _this.writePublish(inner_path, _this.jsonEncode(data), function(res) {
-            $(".topic-new .button-submit").removeClass("loading");
-            if (res === true) {
-              _this.log("File written");
-              $(".topic-new").slideUp();
-              $(".topic-new-link").slideDown();
-              setTimeout((function() {
-                return _this.loadTopics();
-              }), 600);
-              $(".topic-new #topic_body").val("");
-              return $(".topic-new #topic_title").val("");
-            } else {
-              return _this.cmd("wrapperNotification", ["error", "File write error: " + res]);
-            }
-          });
-        };
-      })(this));
-    };
-
-    ZeroTalk.prototype.buttonComment = function() {
-      var body, inner_path, topic_address;
-      if (!this.needOpenPort()) {
-        return false;
-      }
-      body = $(".comment-new #comment_body").val();
-      if (!body) {
-        $(".comment-new #comment_body").focus();
-      }
-      topic_address = this.topic_id + "@" + this.topic_user_id;
-      $(".comment-new .button-submit").addClass("loading");
-      inner_path = "data/users/" + this.site_info.auth_address + "/data.json";
-      return this.cmd("fileGet", [inner_path], (function(_this) {
-        return function(data) {
-          var _base;
-          data = JSON.parse(data);
-          if ((_base = data.comments)[topic_address] == null) {
-            _base[topic_address] = [];
-          }
-          data.comments[topic_address].push({
-            "comment_id": data.next_message_id,
-            "body": body,
-            "added": _this.timestamp()
-          });
-          data.next_message_id += 1;
-          return _this.writePublish(inner_path, _this.jsonEncode(data), function(res) {
-            $(".comment-new .button-submit").removeClass("loading");
-            if (res === true) {
-              _this.log("File written");
-              _this.loadComments();
-              return $(".comment-new #comment_body").val("");
             }
           });
         };
@@ -1811,56 +2029,12 @@ jQuery.extend( jQuery.easing,
       })(this));
     };
 
-    ZeroTalk.prototype.needOpenPort = function() {
+    ZeroTalk.prototype.hasOpenPort = function() {
       if (this.server_info.ip_external) {
         return true;
       } else {
-        this.cmd("wrapperNotification", ["error", "To signup please open port <b>" + this.server_info.fileserver_port + "</b> on your router"]);
+        this.cmd("wrapperNotification", ["error", "To publish new content please open port <b>" + this.server_info.fileserver_port + "</b> on your router"]);
         return false;
-      }
-    };
-
-    ZeroTalk.prototype.formatSince = function(time) {
-      var back, now, secs;
-      now = +(new Date) / 1000;
-      secs = now - time;
-      if (secs < 60) {
-        back = "Just now";
-      } else if (secs < 60 * 60) {
-        back = (Math.round(secs / 60)) + " minutes ago";
-      } else if (secs < 60 * 60 * 24) {
-        back = (Math.round(secs / 60 / 60)) + " hours ago";
-      } else if (secs < 60 * 60 * 24 * 3) {
-        back = (Math.round(secs / 60 / 60 / 24)) + " days ago";
-      } else {
-        back = "on " + this.formatDate(time);
-      }
-      back = back.replace(/1 ([a-z]+)s/, "1 $1");
-      return back;
-    };
-
-    ZeroTalk.prototype.formatDate = function(timestamp, format) {
-      var display, parts;
-      if (format == null) {
-        format = "short";
-      }
-      parts = (new Date(timestamp * 1000)).toString().split(" ");
-      if (format === "short") {
-        display = parts.slice(1, 4);
-      } else {
-        display = parts.slice(1, 5);
-      }
-      return display.join(" ").replace(/( [0-9]{4})/, ",$1");
-    };
-
-    ZeroTalk.prototype.timestamp = function(date) {
-      if (date == null) {
-        date = "";
-      }
-      if (date === "now" || date === "") {
-        return parseInt(+(new Date) / 1000);
-      } else {
-        return parseInt(Date.parse(date) / 1000);
       }
     };
 
@@ -1884,11 +2058,11 @@ jQuery.extend( jQuery.easing,
         return LimitRate(((function(_this) {
           return function() {
             if ($("body").hasClass("page-topic")) {
-              _this.loadTopic();
-              _this.loadComments();
+              TopicShow.loadTopic();
+              TopicShow.loadComments();
             }
             if ($("body").hasClass("page-main")) {
-              return _this.loadTopics();
+              return TopicList.loadTopics();
             }
           };
         })(this)), 500);
@@ -1927,22 +2101,12 @@ jQuery.extend( jQuery.easing,
       } else {
         return elem.height("48px");
       }
-
-      /*
-      		elem.on 'keydown', (e) ->
-      			if e.which == 9
-      				e.preventDefault()
-      				s = this.selectionStart
-      				val = elem.val()
-      				elem.val(val.substring(0,this.selectionStart) + "\t" + val.substring(this.selectionEnd))
-      				this.selectionEnd = s+1;
-       */
     };
 
     return ZeroTalk;
 
   })(ZeroFrame);
 
-  window.zero_talk = new ZeroTalk();
+  window.Page = new ZeroTalk();
 
 }).call(this);

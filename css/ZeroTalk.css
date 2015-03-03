@@ -123,11 +123,16 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .comments { margin-bottom: 60px }
 .comment { background-color: white; padding: 15px 25px; margin: 1px }
 .comment .username { font-size: 14px }
+.comment .added { color: #AAA }
 .comment .info { font-size: 12px; color: #AAA; margin-bottom: 7px }
 .comment .body { line-height: 1.5em }
 .comment .body p { margin-top: 0.5em; margin-bottom: 0.5em }
 .comment .body.editor { margin-top: 0.5em !important; margin-bottom: 0.5em !important }
 .comment .body h1, .comment .body h2, .comment .body h3 { font-size: 110% }
+.comment .body blockquote { padding: 1px 15px; border-left: 2px solid #E7E7E7; margin: 0px; margin-top: 30px }
+.comment .body blockquote:first-child { margin-top: 0px }
+.comment .body blockquote p { margin: 0px; color: #999; font-size: 90% }
+.comment .body blockquote a { color: #333 }
 
 .comment-new { margin-bottom: 5px }
 .comment-new .button-submit { }
