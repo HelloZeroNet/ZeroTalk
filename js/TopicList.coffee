@@ -15,33 +15,30 @@ class TopicList extends Class
 
 		# Create new topic
 		$(".topic-new .button-submit").on "click", =>
-			if Page.user_name_db[Page.site_info.auth_address] # Check if user exits
-				@buttonCreateTopic()
+			if Users.to_name[Users.my_address] # Check if user exits
+				@submitCreateTopic()
 			else
 				Page.cmd "wrapperNotification", ["info", "Please, request access before posting."]
 			return false
 
 
 	loadTopics: (type="normal", cb=false) ->
-		@logStart "Loadtopics"
+		@logStart "Load topics..."
 		Page.cmd "fileQuery", ["data/users/*/data.json", "topics"], (topics) =>
 			topics.sort (a, b) -> # Sort by date
 				return a.added - b.added
 			last_elem = null
 
 			for topic in topics
-				topic_address = topic.topic_id + "_" + Page.user_id_db[topic.inner_path]
+				topic_address = topic.topic_id + "_" + Users.to_id[topic.inner_path]
 				elem = $("#topic_"+topic_address)
 				if elem.length == 0 # Create if not exits yet
 					elem = $(".topics-list .topic.template").clone().removeClass("template").attr("id", "topic_"+topic_address)
 					if type != "noanim"
 						elem.cssSlideDown()
+					elem.appendTo(".topics")
 				@applyTopicData(elem, topic)
 
-				if last_elem # Add after last elem
-					last_elem.after(elem)
-				else # Add to top
-					elem.prependTo(".topics")
 			$("body").css({"overflow": "auto", "height": "auto"}) # Auto height body
 
 			# Hide loading
@@ -51,7 +48,7 @@ class TopicList extends Class
 			else
 				$(".topics-loading").remove()
 
-			@logEnd "Loadtopics"
+			@logEnd "Load topics..."
 
 			Page.addInlineEditors()
 
@@ -69,22 +66,34 @@ class TopicList extends Class
 
 	# Load all user data to fill last comments
 	loadTopicsStat: (type="normal") =>
-		s = (+ new Date)
+		@logStart "Load topics stats..."
 		Page.cmd "fileQuery", ["data/users/*/data.json", ""], (users) =>
 			$(".topics").css("opacity", 1)
 			stats = []
+			my_topic_votes = {}
 			# Analyze user data files
 			for user in users
+				user_id = Users.to_id[user.inner_path]
 				for topic in user.topics
-					user_id = Page.user_id_db[user.inner_path]
 					topic_address = "#{topic.topic_id}_#{user_id}"
 					if not stats[topic_address]?
-						stats[topic_address] = {"comments": 0, "last": {"added": topic.added}}
+						stats[topic_address] = {"comments": 0, "last": {"added": topic.added}, "votes": 1}
 
+				# Topic votes
+				for topic_address, vote of user["topic_votes"]
+					topic_address = topic_address.replace("@", "_")
+					stats[topic_address] ?= {"comments": 0, "last": null, "votes": 1}
+					if vote == 1 then stats[topic_address]["votes"] += 1
+
+				# My votes
+				if user_id == Users.my_id
+					my_topic_votes = user["topic_votes"]
+
+				# Get latest comment and count of topic
 				for topic_address, comments of user["comments"]
 					topic_address = topic_address.replace("@", "_")
 					for comment in comments
-						stats[topic_address] ?= {"comments": 0, "last": null}
+						stats[topic_address] ?= {"comments": 0, "last": null, "votes": 1}
 						last = stats[topic_address]["last"]
 						stats[topic_address]["comments"] += 1
 						if not last or comment["added"] > last["added"]
@@ -93,35 +102,49 @@ class TopicList extends Class
 
 			# Set html elements
 			for topic_address, stat of stats
-				if stat.comments > 0
-					$("#topic_#{topic_address} .comment-num").text "#{stat.comments} comment"
-					$("#topic_#{topic_address} .added").text "last "+Time.since(stat["last"]["added"])
+				elem = $("#topic_#{topic_address}")
+				# Comments
+				if stat.comments > 0 and type != "full"
+					$(".comment-num", elem).text "#{stat.comments} comment"
+					$(".added", elem).text "last "+Time.since(stat["last"]["added"])
+				# Votes
+				if my_topic_votes?[topic_address.replace("_", "@")] # Voted on it
+					$(".score-inactive .score-num", elem).text stat["votes"]-1
+					$(".score-active .score-num", elem).text stat["votes"]
+					$(".score", elem).addClass("active")
+				else # Not voted on it
+					$(".score-inactive .score-num", elem).text stat["votes"]
+					$(".score-active .score-num", elem).text stat["votes"]+1
+				$(".score", elem).off("click").on "click", @submitTopicVote
 
 
 			# Sort topics
-			topics = ([topic_address, stat.last.added] for topic_address, stat of stats)
-			topics.sort (a, b) -> # Sort by date
-				return a[1] - b[1]
+			if type != "full"
+				topics = ([topic_address, stat.last.added] for topic_address, stat of stats)
+				topics.sort (a, b) -> # Sort by date
+					return a[1] - b[1]
 
-			for topic in topics
-				topic_address = topic[0]
-				elem = $("#topic_#{topic_address}")
-				elem.prependTo ".topics"
-				# Visited
-				visited = Page.local_storage["topic.#{topic_address}.visited"]
-				if not visited
-					elem.addClass("visit-none")
-				else if visited < topic[1]
-					elem.addClass("visit-newcomment")
+				for topic in topics
+					topic_address = topic[0]
+					elem = $("#topic_#{topic_address}")
+					elem.prependTo ".topics"
+					# Visited
+					visited = Page.local_storage["topic.#{topic_address}.visited"]
+					if not visited
+						elem.addClass("visit-none")
+					else if visited < topic[1]
+						elem.addClass("visit-newcomment")
+			@logEnd "Load topics stats..."
 
-			@log "Topics stats loaded in", (+ new Date)-s
 
 
 	applyTopicData: (elem, topic, type="normal") ->
 		title_hash = topic.title.replace(/[#,"'?& ]/g, "+").replace(/[+]+/g, "+").replace(/[+]+$/, "")
-		user_id = Page.user_id_db[topic.inner_path]
+		user_id = Users.to_id[topic.inner_path]
+		topic_address = topic.topic_id+"@"+user_id
 		$(".title .title-link", elem).text(topic.title)
-		$(".title .title-link, a.image, .comment-num", elem).attr("href", "?Topic:#{topic.topic_id}@#{user_id}/#{title_hash}")
+		$(".title .title-link, a.image, .comment-num", elem).attr("href", "?Topic:#{topic_address}/#{title_hash}")
+		elem.data "topic_address", topic_address
 
 		# Get links in body
 		body = topic.body
@@ -141,18 +164,18 @@ class TopicList extends Class
 		else
 			$(".body", elem).text body
 
-		username = Page.user_name_db[topic.inner_path]
-		$(".username", elem).text(username)
-		$(".added", elem).text Time.since(topic.added)
+		user_name = Users.to_name[topic.inner_path]
+		$(".user_name", elem).text(user_name)
+		if type == "full" then $(".added", elem).text Time.since(topic.added)
 
 		# My topic
-		if topic.inner_path == Page.site_info.auth_address
-			$(elem).attr("data-object", "Topic:#{topic.topic_id}@#{user_id}").attr("data-deletable", "yes")
+		if topic.inner_path == Users.my_address
+			$(elem).attr("data-object", "Topic:#{topic_address}").attr("data-deletable", "yes")
 			$(".title .title-link", elem).attr("data-editable", "title").data("content", topic.title)
 			$(".body", elem).attr("data-editable", "body").data("content", topic.body)
 
 
-	buttonCreateTopic: ->
+	submitCreateTopic: ->
 		if not Page.hasOpenPort() then return false
 
 		title = $(".topic-new #topic_title").val()
@@ -161,7 +184,7 @@ class TopicList extends Class
 		if not title then return $(".topic-new #topic_title").focus()
 
 		$(".topic-new .button-submit").addClass("loading")
-		inner_path = "data/users/#{Page.site_info.auth_address}/data.json"
+		inner_path = "data/users/#{Users.my_address}/data.json"
 		Page.cmd "fileGet", [inner_path], (data) =>
 			data = JSON.parse(data)
 			data.topics.push {
@@ -187,5 +210,30 @@ class TopicList extends Class
 					Page.cmd "wrapperNotification", ["error", "File write error: #{res}"]
 
 
+	submitTopicVote: (e) =>
+		if not Users.my_name # Not registered
+			Page.cmd "wrapperNotification", ["info", "Please, request access before posting."]
+			return false
+		elem = $(e.currentTarget)
+		elem.toggleClass("active").addClass("loading")
+		inner_path = "data/users/#{Users.my_address}/data.json"
+		Page.cmd "fileGet", [inner_path], (data) =>
+			data = JSON.parse(data)
+			data.topic_votes ?= {}
+			topic_address = elem.parents(".topic").data("topic_address")
+			if elem.hasClass("active")
+				data.topic_votes[topic_address] = 1
+			else
+				delete data.topic_votes[topic_address]
+			Page.writePublish inner_path, Page.jsonEncode(data), (res) =>
+				elem.removeClass("loading")
+				if res == true
+					@log "File written"
+				else
+					elem.toggleClass("active") # Change back
+					#Page.cmd "wrapperNotification", ["error", "File write error: #{res}"]
+		
+		return false
+			
 
 window.TopicList = new TopicList()

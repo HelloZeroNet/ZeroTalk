@@ -44,13 +44,13 @@
  <a class='logo nolink' href="?Home">Zer0<br>Talk</a>
 
  <div class="head-user registered" style="display: none">
-  <div>Hello <span class="userbullet">&bullet;</span> <span class="username username-my">username</span>!</div>
+  <div>Hello <span class="userbullet">&bullet;</span> <span class="user_name user_name-my">user_name</span>!</div>
   <div class="size size-used">&nbsp;</div>
   <div class="size">&nbsp;</div>
  </div>
 
  <div class="head-user visitor" style="display: none">
-  <div>Hello <span class="userbullet">&bullet;</span> <span class="username username-my">Visitor</span>!</div>
+  <div>Hello <span class="userbullet">&bullet;</span> <span class="user_name user_name-my">Visitor</span>!</div>
   <a href="#Sign+up" class="button button-submit button-small signup">Request access</a>
  </div>
 
@@ -68,7 +68,7 @@
   <a href="#" class="image nolink"><div class="icon icon-topic-chat"></div></a>
   <h2 class="title"><input type="text" id="topic_title" class="text" placeholder="Topic title"></h2>
   <div class="body"><textarea id="topic_body" placeholder="Topic description"></textarea></div>
-  <div class="info"><span class="username username-my">username</span> &#9473; <span class="added">new topic</span></div>
+  <div class="info"><span class="user_name user_name-my">user_name</span> &#9473; <span class="added">new topic</span></div>
   <a href="#Add+new+topic" class="button button-submit">Add new topic</a>
   <div style="clear: both"></div>
  </div>
@@ -85,9 +85,13 @@
    <div class="body">Body</div>
    <a href="#" class="link"><div class="icon icon-link"></div> <span class="link-url"></span></a>
    <div class="info">
+    <a class="score" href="#Upvote">
+     <span class="score-inactive"> <span class="icon-up">^</span><span class="score-num">1</span> </span>
+     <span class="score-active"> <span class="icon-up">^</span><span class="score-num">2</span> </span>
+    </a>
     <a href="#" class="comment-num"></a> 
     <span class="added">added</span>
-     &#9473; posted by <span class="username">username</span>
+     &#9473; submitted by <span class="user_name">user_name</span>
    </div>
   </div>
   <!-- EOF Template: Topic main -->
@@ -105,12 +109,18 @@
   <a href="#" class="image nolink"><div class="icon icon-topic-chat"></div></a>
   <h2 class="title"><a href="#" class="title-link">Title</a></h2>
   <div class="body">Body</div>
-  <div class="info"><span class="username">username</span> posted <span class="added">added</span></div>
+  <div class="info">
+    <a class="score" href="#Upvote">
+     <span class="score-inactive"> <span class="icon-up">^</span><span class="score-num">?</span> </span>
+     <span class="score-active"> <span class="icon-up">^</span><span class="score-num">0</span> </span>
+    </a>
+   <span class="user_name">username</span> posted <span class="added">added</span>
+  </div>
  </div>
 
  <!-- New comment -->
  <div class="comment comment-new">
-  <div class="info"><span class="username username-my">username</span> &#9473; <span class="added">new comment</span></div>
+  <div class="info"><span class="user_name user_name-my">user_name</span> &#9473; <span class="added">new comment</span></div>
   <div class="body">
    <textarea id="comment_body"></textarea>
    <a href="#Submit+comment" class="button button-submit">Submit comment</a>
@@ -122,7 +132,7 @@
 
   <!-- Template: Comment -->
   <div class="comment template">
-   <div class="info"><span class="username">username</span> &#9473; <a class="added" href="#Reply" title="Reply">added</a></div>
+   <div class="info"><span class="user_name">user_name</span> &#9473; <a class="added" href="#Reply" title="Reply">added</a></div>
    <div class="body">Body</div>
   </div>
   <!-- EOF Template: Comment -->

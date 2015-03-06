@@ -12,12 +12,12 @@ class Class
 		return unless @trace
 		@logtimers or= {}
 		@logtimers[name] = +(new Date)
-		@log "[#{name}]", args..., "(started)" if args.length > 0
+		@log "#{name}", args..., "(started)" if args.length > 0
 		@
 		
 	logEnd: (name, args...) ->
 		ms = +(new Date)-@logtimers[name]
-		@log "[#{name}]", args..., "(Done in #{ms}ms)"
+		@log "#{name}", args..., "(Done in #{ms}ms)"
 		@ 
 
 window.Class = Class

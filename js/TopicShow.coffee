@@ -7,7 +7,7 @@ class TopicShow extends Class
 		@loadComments("noanim")
 
 		$(".comment-new .button-submit").on "click", =>
-			if Page.user_name_db[Page.site_info.auth_address] # Check if user exits
+			if Users.to_name[Users.my_address] # Check if user exits
 				@buttonComment()
 			else
 				Page.cmd "wrapperNotification", ["info", "Please, request access before posting."]
@@ -15,7 +15,9 @@ class TopicShow extends Class
 
 
 	loadTopic: (cb=false)->
-		topic_user_address = Page.user_address_db[@topic_user_id]
+		@logStart "Loading topic..."
+		topic_user_address = Users.to_address[@topic_user_id]
+		$(".topic-full").attr("id", "topic_#{@topic_id}_#{@topic_user_id}")
 		# Load topic data
 		Page.cmd "fileQuery", ["data/users/#{topic_user_address}/data.json", "topics.topic_id=#{@topic_id}"], (topic) =>
 			topic = topic[0]
@@ -24,11 +26,14 @@ class TopicShow extends Class
 			$(".topic-full").css("opacity", 1)
 			#$(".username-my").text(@user_name_db[user_address])
 			$("body").addClass("page-topic")
+			@logEnd "Loading topic..."
 
+			TopicList.loadTopicsStat("full")
 			if cb then cb()
 
 
 	loadComments: (type="normal", cb=false) ->
+		@logStart "Loading comments..."
 		topic_address = @topic_id+"@"+@topic_user_id
 
 		# Update visited info
@@ -41,7 +46,7 @@ class TopicShow extends Class
 				return b.added - a.added
 
 			for comment in comments
-				user_id = Page.user_id_db[comment.inner_path]
+				user_id = Users.to_id[comment.inner_path]
 				comment_address = "#{comment.comment_id}_#{user_id}"
 				elem = $("#comment_"+comment_address)
 				if elem.length == 0 # Create if not exits
@@ -56,22 +61,23 @@ class TopicShow extends Class
 			$("body").css({"overflow": "auto", "height": "auto"})
 
 			Page.addInlineEditors()
+			@logEnd "Loading comments..."
 
 			if cb then cb()
 
 
 	# Update elem based on data of comment dict
 	applyCommentData: (elem, comment) ->
-		username = Page.user_name_db[comment.inner_path]
+		user_name = Users.to_name[comment.inner_path]
 		$(".body", elem).html Text.toMarked(comment.body, {"sanitize": true})
-		$(".username", elem).text(username).css("color": Text.toColor(username))
+		$(".user_name", elem).text(user_name).css("color": Text.toColor(user_name))
 		$(".added", elem).text(Time.since(comment.added))
-		# elem.css("border-left", "2px solid #{@textToColor(username)}")
+		# elem.css("border-left", "2px solid #{@textToColor(user_name)}")
 
 
 		# My comment
 		if comment.inner_path == Page.site_info.auth_address
-			user_id = Page.user_id_db[comment.inner_path]
+			user_id = Users.to_id[comment.inner_path]
 			comment_id = elem.attr("id").replace("comment_", "").replace(/_.*$/, "")
 			topic_address = elem.data("topic_address")
 			$(elem).attr("data-object", "Comment:#{comment_id}@#{topic_address}").attr("data-deletable", "yes")
@@ -106,9 +112,9 @@ class TopicShow extends Class
 
 	buttonReply: (elem) ->
 		@log "Reply to", elem
-		username = $(".username", elem).text()
+		user_name = $(".user_name", elem).text()
 		post_id = elem.attr("id")
-		body_add = "> [#{username}](\##{post_id}): "
+		body_add = "> [#{user_name}](\##{post_id}): "
 		body_add+= $(".body", elem).text().trim("\n").replace(/\n/g, "\n> ")
 		body_add+= "\n\n"
 

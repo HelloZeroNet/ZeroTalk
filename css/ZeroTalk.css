@@ -26,7 +26,7 @@ a.nolink:active { border-bottom: none }
 .link:hover .icon-link { opacity: 1 }
 .link:active .link-url { border-bottom: 0.1em solid #333 }
 
-.username { font-weight: bold; color: #666 }
+.user_name { font-weight: bold; color: #666 }
 .userbullet { color: #AAA; }
 
 /*.center { margin-left: auto; margin-right: auto; max-width: 800px }*/
@@ -97,7 +97,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .topic .body { line-height: 1.5em; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
 .topic .body p { margin: 0px }
 .topic .link { font-size: 13px; color: #AAA; margin-bottom: 7px }
-.topic .info { font-size: 12px; color: #AAA; margin-bottom: 7px }
+.topic .info { font-size: 12px; color: #AAA; margin-bottom: 7px; margin-top: 10px }
 .topic .info span { font-weight: bold }
 .topic .comment-num { font-weight: bold; color: #666; border-bottom: 1px solid #AAA }
 .topic .comment-num:hover { border-bottom: 1px solid #333 }
@@ -111,7 +111,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .topics .body ul { margin: 0px }
 .topics-loading { 
 	background-color: #DB3207; padding: 5px 14px; display: inline-block; color: white; 
-	position: absolute; left: 50%; top: -30px; transition: all 0.3s 
+	position: absolute; left: 50%; top: -30px; transition: all 0.3s
 }
 .topics-loading img { opacity: 0.5; margin-right: 10px }
 
@@ -122,7 +122,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 /* Messages */
 .comments { margin-bottom: 60px }
 .comment { background-color: white; padding: 15px 25px; margin: 1px }
-.comment .username { font-size: 14px }
+.comment .user_name { font-size: 14px }
 .comment .added { color: #AAA }
 .comment .info { font-size: 12px; color: #AAA; margin-bottom: 7px }
 .comment .body { line-height: 1.5em }
@@ -137,6 +137,25 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .comment-new { margin-bottom: 5px }
 .comment-new .button-submit { }
 
+/* Score */
+.score { 
+	border: 1px solid #eee; margin-right: 5px; padding: 2px 7px; border-radius: 10px; color: #AAA; background-position: left center; 
+	display: inline-block; height: 1.2em; overflow: hidden; vertical-align: -0.5em; line-height: 1em; transition: background-color 0.3s
+}
+.score-active, .score-inactive { transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block }
+.score-active { display: block; margin-top: 2px }
+.score.active { background-color: #2ecc71; color: white }
+.score.loading { 
+	color: rgba(255,255,255,0); background: #2ecc71 url(../img/loading.gif) no-repeat center center; 
+	transition: background 0.5s ease-out; pointer-events: none; border: 1px solid #2ecc71
+}
+
+.score.active .score-inactive, .score:hover .score-inactive { transform: translateY(-1.2em); opacity: 0.5 }
+.score.active .score-active, .score:hover .score-active { transform: translateY(-1.2em) }
+.score:hover, .score.active { border: 1px solid #2ecc71; }
+
+.score:active {  border: 1px solid #AAA !important; transform: translateY(1px) }
+
 
 /* Pages */
 .topics-list, .topics-full, .comments, .comments-new { display: none }
@@ -144,3 +163,4 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .page-topic .comments { display: inherit }
 .page-topic .topics-full { display: inherit }
 .page-topic .comments-new { display: inherit }
+

@@ -1,4 +1,4 @@
-class ZeroFrame
+class ZeroFrame extends Class
 	constructor: (url) ->
 		@url = url
 		@waiting_cb = {}

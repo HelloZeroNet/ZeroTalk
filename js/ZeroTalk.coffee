@@ -4,12 +4,13 @@ class ZeroTalk extends ZeroFrame
 		@site_info = null
 		@server_info = null
 		@local_storage = {}
+		@publishing = false
 
-		@user_id_db = {} # { "address": 1 }
-		@user_address_db = {} # { 1: "address" }
-		@user_name_db = {} # { "address": "username" }
+		#@user_id_db = {} # { "address": 1 }
+		#@user_address_db = {} # { 1: "address" }
+		#@user_name_db = {} # { "address": "username" }
 
-		@user_max_size = null # Max total file size allowed to user
+		#@user_max_size = null # Max total file size allowed to user
 
 		# Autoexpand
 		for textarea in $("textarea")
@@ -37,8 +38,8 @@ class ZeroTalk extends ZeroFrame
 
 		@cmd "siteInfo", {}, (site) =>
 			@setSiteinfo(site)
-			@loadUserDb => # Load user DB then route url
-				@updateUserInfo()
+			Users.loadDb => # Load user DB then route url
+				Users.updateMyInfo()
 				@routeUrl(window.location.search.substring(1))
 
 		@cmd "serverInfo", {}, (ret) => # Get server info
@@ -95,7 +96,7 @@ class ZeroTalk extends ZeroFrame
 		object = @getObject(elem)
 		[type, id] = object.data("object").split(":") 
 
-		inner_path = "data/users/#{@site_info.auth_address}/data.json"
+		inner_path = "data/users/#{Users.my_address}/data.json"
 		@cmd "fileGet", [inner_path], (data) =>
 			data = JSON.parse(data)
 
@@ -138,51 +139,13 @@ class ZeroTalk extends ZeroFrame
 					if cb then cb(false)
 
 
-	loadUserDb: (cb = null) ->
-		@log "Loading userdb"
-		@cmd "fileGet", ["data/users/content.json"], (data) =>
-			data = JSON.parse(data)
-			for path, user of data["includes"]
-				address = user.signers[0]
-				@user_id_db[address] = user.user_id
-				@user_address_db[user.user_id] = address
-				@user_name_db[address] = user.user_name
-				if address == @site_info["auth_address"] # Current user
-					@user_max_size = user.max_size
-			if cb then cb()
-
-
-	updateUserInfo: ->
-		address = @site_info["auth_address"]
-		user_name = @user_name_db[address] # Set my info
-		if user_name # Registered user
-			if $(".head-user.visitor").css("display") != "none" # Just registered successfuly
-				$(".head-user.visitor").css("display", "none")
-				@cmd "wrapperNotification", ["done", "Hello <b>#{user_name}</b>!<br>Congratulations, your registration is done!", 10000]
-				$(".button.signup").removeClass("loading") 
-
-			$(".head-user.registered").css("display", "")
-			$(".username-my").text(user_name).css("color", Text.toColor(user_name))
-			@cmd "fileGet", ["data/users/#{address}/content.json"], (content) =>
-				content = JSON.parse(content)
-				sum = 0
-				for relative_path, details of content.files
-					sum += details.size
-				$(".head-user .size").text("Used: #{(sum/1000).toFixed(1)}k / #{parseInt(@user_max_size/1000)}k")
-				$(".head-user .size-used").width(parseFloat(sum/@user_max_size)*100)
-
-
-		else # Not registered yet
-			$(".head-user.visitor").css("display", "")
-			$(".username-my").text("Visitor")
-
 
 	buttonSignup: ->
 		if not @hasOpenPort() then return false
 
 		@cmd "wrapperPrompt", ["Username you want to register:"], (user_name) => # Prompt the username
 			$(".button.signup").addClass("loading") 
-			$.post("http://demo.zeronet.io/ZeroTalk/signup.php", {"user_name": user_name, "auth_address": @site_info.auth_address}).always (res) =>
+			$.post("http://demo.zeronet.io/ZeroTalk/signup.php", {"user_name": user_name, "auth_address": Users.my_address}).always (res) =>
 				if res == "OK"
 					@cmd "wrapperNotification", ["done", "Your registration has been sent!", 10000]
 				else
@@ -195,13 +158,20 @@ class ZeroTalk extends ZeroFrame
 
 
 	writePublish: (inner_path, data, cb) ->
+		if @publishing
+			@cmd "wrapperNotification", ["error", "Publishing in progress, please wait until its finished."]
+			cb(false)
+			return false
+		@publishing = true
 		@cmd "fileWrite", [inner_path, data], (res) =>
 			if res != "ok" # fileWrite failed
 				@cmd "wrapperNotification", ["error", "File write error: #{res}"]
 				cb(false)
+				@publishing = false
 				return false
 
 			@cmd "sitePublish", {"inner_path": inner_path}, (res) =>
+				@publishing = false
 				if res == "ok"
 					cb(true)
 				else
@@ -226,12 +196,13 @@ class ZeroTalk extends ZeroFrame
 
 	# Siteinfo changed
 	actionSetSiteInfo: (res) =>
-		@setSiteinfo(res.params)
-		if res.params.event and res.params.event[0] == "file_done" and res.params.event[1] == "data/users/#{@site_info.auth_address}/data.json" # Registration successful
-			@updateUserInfo() # Set my info
-		if res.params.event and res.params.event[0] == "file_done" and res.params.event[1] == "data/users/content.json" # New user
-			@loadUserDb() # Reload userdb
-		if res.params.event and res.params.event[0] == "file_done" and res.params.event[1].match /.*users.*data.json$/  # Data changed
+		site_info = res.params
+		@setSiteinfo(site_info)
+		if site_info.event and site_info.event[0] == "file_done" and site_info.event[1] == "data/users/#{Users.my_address}/data.json" # Registration successful
+			Users.updateMyInfo() # Set my info
+		if site_info.event and site_info.event[0] == "file_done" and site_info.event[1] == "data/users/content.json" # New user
+			Users.loadDb() # Reload userdb
+		if site_info.event and site_info.event[0] == "file_done" and site_info.event[1].match /.*users.*data.json$/  # Data changed
 			LimitRate (=>
 				if $("body").hasClass("page-topic")
 					TopicShow.loadTopic()
@@ -244,6 +215,7 @@ class ZeroTalk extends ZeroFrame
 
 	setSiteinfo: (site_info) =>
 		@site_info = site_info
+		Users.my_address = site_info.auth_address
 
 
 	autoExpand: (elem) ->
