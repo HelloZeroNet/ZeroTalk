@@ -1,0 +1,84 @@
+{
+	"db_name": "ZeroTalk",
+	"db_file": "data/users/zerotalk.db",
+	"maps": {
+		".*/data.json": {
+			"to_table": [
+				{"node": "topics", "table": "topic"},
+				{"node": "comments", "table": "comment", "key_col": "topic_hash"},
+				{"node": "comment_votes", "table": "comment_vote", "key_col": "comment_hash", "val_col": "vote"},
+				{"node": "topic_votes", "table": "topic_vote", "key_col": "topic_hash", "val_col": "vote"}
+			],
+			"to_keyvalue": ["next_message_id", "next_topic_id"]
+		},
+		"content.json": {
+			"to_table": [
+				{
+					"node": "includes", 
+					"table": "user", 
+					"key_col": "path", 
+					"import_cols": ["user_id", "user_name", "max_size", "added"], 
+					"replaces": {
+						"path": {"content.json": "data.json"} 
+					}
+				}
+			]
+		}
+	},
+	"tables": {
+		"topic": {
+			"cols": [
+				["topic_id", "INTEGER"], 
+				["title", "TEXT"],
+				["body", "TEXT"],
+				["type", "TEXT"],
+				["parent_topic_hash", "TEXT"],
+				["added", "DATETIME"],
+				["json_id", "INTEGER REFERENCES json (json_id)"]
+			],
+			"indexes": ["CREATE UNIQUE INDEX topic_key ON topic(topic_id, json_id)"],
+			"schema_changed": 1426195822
+		},
+		"comment": {
+			"cols": [
+				["comment_id", "INTEGER"], 
+				["body", "TEXT"],
+				["topic_hash", "TEXT"],
+				["added", "DATETIME"],
+				["json_id", "INTEGER REFERENCES json (json_id)"]
+			],
+			"indexes": ["CREATE INDEX topic_hash ON comment(topic_hash)", "CREATE UNIQUE INDEX comment_key ON comment(json_id, comment_id)"],
+			"schema_changed": 1426195824
+		},
+		"comment_vote": {
+			"cols": [
+				["comment_hash", "TEXT"],
+				["vote", "INTEGER"],
+				["json_id", "INTEGER REFERENCES json (json_id)"]
+			],
+			"indexes": ["CREATE UNIQUE INDEX comment_vote_key ON comment_vote(comment_hash, json_id)", "CREATE INDEX comment_vote_hash ON comment_vote(comment_hash)"],
+			"schema_changed": 1426195826
+		},
+		"topic_vote": {
+			"cols": [
+				["topic_hash", "TEXT"],
+				["vote", "INTEGER"],
+				["json_id", "INTEGER REFERENCES json (json_id)"]
+			],
+			"indexes": ["CREATE UNIQUE INDEX topic_vote_topic_key ON topic_vote(topic_hash, json_id)", "CREATE INDEX topic_vote_hash ON topic_vote(topic_hash)"],
+			"schema_changed": 1426195825
+		},
+		"user": {
+			"cols": [
+				["user_id", "INTEGER"],
+				["user_name", "TEXT"],
+				["max_size", "INTEGER"],
+				["path", "TEXT"],
+				["added", "INTEGER"],
+				["json_id", "INTEGER REFERENCES json (json_id)"]
+			],
+			"indexes": ["CREATE UNIQUE INDEX user_id ON user(user_id)", "CREATE UNIQUE INDEX user_path ON user(path)"],
+			"schema_changed": 1426195825
+		}
+	}
+}
