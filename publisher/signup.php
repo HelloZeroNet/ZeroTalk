@@ -58,18 +58,6 @@ fclose($f);
 chmod($user_dir."/data.json", 0666);
 
 
-// Signing user dir...
-chdir($zeronet_dir);
-exec("python zeronet.py --debug siteSign $site $private_key --inner_path data/users/$auth_address/content.json 2>&1", $out);
-$out = implode("\n", $out);
-
-if (strpos($out, "content.json signed!") === false) {
-	header("HTTP/1.0 500 Internal Server Error");
-	die("User signing error");
-}
-chmod($user_dir."/content.json", 0666);
-
-
 // Adding user...
 $data->includes->{$auth_address."/content.json"} = array(
 	"user_name" => $user_name,
@@ -99,6 +87,19 @@ if (strpos($out, "content.json signed!") === false) {
 	header("HTTP/1.0 500 Internal Server Error");
 	die("Users signing error");
 }
+
+
+// Signing user dir...
+chdir($zeronet_dir);
+exec("python zeronet.py --debug siteSign $site $private_key --inner_path data/users/$auth_address/content.json 2>&1", $out);
+$out = implode("\n", $out);
+
+if (strpos($out, "content.json signed!") === false) {
+	header("HTTP/1.0 500 Internal Server Error");
+	die("User signing error");
+}
+chmod($user_dir."/content.json", 0666);
+
 
 // Publishing content...
 $out = array();

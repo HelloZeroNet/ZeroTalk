@@ -21,5 +21,8 @@ class Text
 		return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="')
 
 
+	toUrl: (text) =>
+		return text.replace(/[#,"'?& ]/g, "+").replace(/[+]+/g, "+").replace(/[+]+$/, "")
+
 
 window.Text = new Text()

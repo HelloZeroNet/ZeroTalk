@@ -5,12 +5,8 @@ class ZeroTalk extends ZeroFrame
 		@server_info = null
 		@local_storage = {}
 		@publishing = false
-
-		#@user_id_db = {} # { "address": 1 }
-		#@user_address_db = {} # { 1: "address" }
-		#@user_name_db = {} # { "address": "username" }
-
-		#@user_max_size = null # Max total file size allowed to user
+		@has_db = true
+		@site_address = window.location.href.replace(/^.*\/([A-Za-z0-9]+)\/.*?$/, "$1")
 
 		# Autoexpand
 		for textarea in $("textarea")
@@ -36,17 +32,23 @@ class ZeroTalk extends ZeroFrame
 			res ?= {}
 			@local_storage = res
 
-		@cmd "siteInfo", {}, (site) =>
-			@setSiteinfo(site)
-			Users.loadDb => # Load user DB then route url
-				Users.updateMyInfo()
-				@routeUrl(window.location.search.substring(1))
-
 		@cmd "serverInfo", {}, (ret) => # Get server info
 			@server_info = ret
 			version = parseInt(@server_info.version.replace(/\./g, ""))
 			if version < 20
 				@cmd "wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.2.0, please update!"]
+			if version < 26
+				@has_db = false
+
+		@cmd "siteInfo", {}, (site) =>
+			@setSiteinfo(site)
+			if @has_db
+				Users.dbUpdateMyInfo =>
+					@routeUrl(window.location.search.substring(1))
+			else
+				Users.loadDb => # Load user DB then route url
+					@routeUrl(window.location.search.substring(1))
+					Users.updateMyInfo()
 
 
 	# All page content loaded
@@ -59,18 +61,23 @@ class ZeroTalk extends ZeroFrame
 		if match = url.match /Topic:([0-9]+)@([0-9]+)/
 			$("body").addClass("page-topic")
 			TopicShow.actionShow parseInt(match[1]), parseInt(match[2])
+		else if match = url.match /Topics:([0-9]+)@([0-9]+)/
+			$("body").addClass("page-topics")
+			TopicList.actionList parseInt(match[1]), parseInt(match[2])
 		else
 			$("body").addClass("page-main")
 			TopicList.actionList()
 
 
 	addInlineEditors: ->
+		@logStart "Adding inline editors"
 		elems = $("[data-editable]") 
 		for elem in elems
 			elem = $(elem)
 			if not elem.data("editor") and not elem.hasClass("editor")
 				editor = new InlineEditor(elem, @getContent, @saveContent, @getObject)
 				elem.data("editor", editor)
+		@logEnd "Adding inline editors"
 
 
 	# Get content
@@ -131,7 +138,7 @@ class ZeroTalk extends ZeroFrame
 						elem.fancySlideUp()
 					else # Update
 						if type == "Topic"
-							if $("body").hasClass("page-main") then TopicList.loadTopics "normal", ( -> if cb then cb(true) )
+							if $("body").hasClass("page-main") or $("body").hasClass("page-topics") then TopicList.loadTopics "list", ( -> if cb then cb(true) )
 							if $("body").hasClass("page-topic") then TopicShow.loadTopic ( -> if cb then cb(true) )
 						if type == "Comment"
 							TopicShow.loadComments "normal", ( -> if cb then cb(true) )
@@ -145,7 +152,7 @@ class ZeroTalk extends ZeroFrame
 
 		@cmd "wrapperPrompt", ["Username you want to register:"], (user_name) => # Prompt the username
 			$(".button.signup").addClass("loading") 
-			$.post("http://demo.zeronet.io/ZeroTalk/signup.php", {"user_name": user_name, "auth_address": Users.my_address}).always (res) =>
+			$.post("http://demo.zeronet.io/ZeroTalk/signup.php", {"user_name": user_name, "auth_address": Users.my_address, "site": @site_address}).always (res) =>
 				if res == "OK"
 					@cmd "wrapperNotification", ["done", "Your registration has been sent!", 10000]
 				else
@@ -207,7 +214,7 @@ class ZeroTalk extends ZeroFrame
 				if $("body").hasClass("page-topic")
 					TopicShow.loadTopic()
 					TopicShow.loadComments()
-				if $("body").hasClass("page-main")
+				if $("body").hasClass("page-main") or $("body").hasClass("page-topics")
 					TopicList.loadTopics()
 			), 500
 
