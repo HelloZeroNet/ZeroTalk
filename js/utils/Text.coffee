@@ -22,7 +22,7 @@ class Text
 
 
 	toUrl: (text) =>
-		return text.replace(/[#,"'?& ]/g, "+").replace(/[+]+/g, "+").replace(/[+]+$/, "")
+		return text.replace(/[^A-Za-z0-9]/g, "+").replace(/[+]+/g, "+").replace(/[+]+$/, "")
 
 
 window.Text = new Text()

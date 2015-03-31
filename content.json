@@ -2,26 +2,42 @@
   "address": "1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ", 
   "background-color": "#F5F5F5", 
   "description": "Decentralized forum demo", 
+  "domain": "Talk.ZeroNetwork.bit", 
   "files": {
     "css/all.css": {
-      "sha1": "730b1b4aa774854ebfe91638f42fc60bfbf3cd21", 
-      "sha512": "05fbb9b3df7386407f4ddfa803c1dc352aee2e2ff5e3bdff769825abe3bc9b15", 
-      "size": 146746
+      "sha1": "4a781f823bc7a09fa4b44c33314c61e8f5641ee0", 
+      "sha512": "ef97a97f1f0cb84239f3be36bb6596ad8bd9ee1e949d59699ada1b9940691911", 
+      "size": 148321
+    }, 
+    "dbschema.json": {
+      "sha1": "f8a429f19c81f21d070895114d8f831b18234f9b", 
+      "sha512": "0e937451017a460efcacc2f199fc4e1e56d51c55907b8c13ea5e0ed8f4d5af8f", 
+      "size": 2543
     }, 
     "img/loading.gif": {
       "sha1": "a669dbd8a577f6957656fc88ba4960b93fcd23d9", 
       "sha512": "8a42b98962faea74618113166886be488c09dad10ca47fe97005edc5fb40cc00", 
       "size": 723
     }, 
+    "img/topic-chat.png": {
+      "sha1": "9b19bd2b9eda1f6877f4bd611a584cbd114a426a", 
+      "sha512": "f41719987d5f5d797591857648c0d4cf33a11d7f1a42428a2456c28e0957c88e", 
+      "size": 238
+    }, 
+    "img/topic-group.png": {
+      "sha1": "a4089d8c73edde7bb25fbc2886dc4b7daf8ae452", 
+      "sha512": "1f9305544e3350d62f0c76caf5202e256848206d18485e0451dc050201f86a7b", 
+      "size": 310
+    }, 
     "index.html": {
-      "sha1": "9f4702c5717eae460d1f159f6d96d95432cb08af", 
-      "sha512": "4d8f63e5e511f8513ab7fc0b2d17a5fb08afad83a60b6335f93abf84e51867e1", 
-      "size": 5228
+      "sha1": "015baf0b018b0377787e232c2b73c98e46142365", 
+      "sha512": "516b6c0d509716d56922b8542375e37e141d477df065e7169e49a07c76a48c2a", 
+      "size": 5735
     }, 
     "js/all.js": {
-      "sha1": "357951c3d9d6d2cfb6bcb5aa8f8e2ef39860d28f", 
-      "sha512": "eb9d6d8c011a55375d23de005e5a01c2e821e4dc617fd802382c1730f71cc420", 
-      "size": 213799
+      "sha1": "ea4c7d7618f205087ffb759fb964cc4418272788", 
+      "sha512": "e71fdf2870bf84ef4f2a1bdcec4d534bbc42943ce7d8e1b3fa1bf302282cf71d", 
+      "size": 237206
     }
   }, 
   "ignore": "((js|css)/(?!all.(js|css))|data/users/.*)", 
@@ -33,17 +49,17 @@
       "signers_required": 1
     }
   }, 
-  "modified": 1425600381.362, 
+  "modified": 1427469596.012, 
   "sign": [
-    57938245372641132553917984673472983916822006482607054704132354895336542225430, 
-    31030230030819534477684645452975832902723838753678569116002348027140204419951
+    94170300414416021150664627217489101721569151683548917502721026724595915168119, 
+    84738341273941381931309422320555108694463764316762577082233425007218664167919
   ], 
   "signers_sign": "HKNDz9IUHcBc/l2Jm2Bl70XQDL9HYHhJ2hUdg8AMyunACLgxyXBr7EW1/ME4hGkaFZSFmIxlInmxH+BrMVXbnLw=", 
   "signs": {
-    "1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ": "G4Mmy34IYrA2l7ZTfkAEAMhwyYDATn55MGj5iqKCUTGtCRl1zynmiXP1khPtupESPh+hatAKpUAzUD6YY+7O6C8="
+    "1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ": "HLFm8DNPykmWMI6v6PE8u/k0VMeiibZSBgdbYK5kKWSQBLIT6wa8xrdmIcajlIIKw0P/mtMW8H0td34LoNiAIUU="
   }, 
   "signs_required": 1, 
   "title": "ZeroTalk", 
   "viewport": "width=device-width, initial-scale=1.0", 
-  "zeronet_version": "0.2.5"
+  "zeronet_version": "0.2.7"
 }

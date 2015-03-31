@@ -88,8 +88,8 @@ class TopicList extends Class
 
 				if topic.type == "group"
 					if topic_group_after[topic.row_topic_hash] # Has after
-						elem.insertAfter(topic_group_after[topic.row_topic_hash])
-						# Sorting messed, dont insert next intem after it: Do not update last elem
+						elem.insertBefore topic_group_after[topic.row_topic_hash].nextAll(":not(.topic-group):first") # Add before the next non-topic group
+						# Sorting messed, dont insert next item after it: Do not update last elem
 					else
 						elem.insertAfter(last_elem)
 						last_elem = elem
@@ -341,7 +341,7 @@ class TopicList extends Class
 			$(".title .title-link, a.image, .comment-num", elem).attr("href", "?Topics:#{topic_address}/#{title_hash}")
 		else if url_match # Link type topic
 			url = url_match[0]
-			if type != "show" then body = body.replace /http[s]{0,1}:\/\/[^"' $]+/g, "" # Remove links
+			if type != "show" then body = body.replace /http[s]{0,1}:\/\/[^"' $]+$/g, "" # Remove links from end
 			$(".image .icon", elem).removeClass("icon-topic-chat").addClass("icon-topic-link")
 			$(".link", elem).css("display", "").attr "href", url.replace(/http:\/\/(127.0.0.1|localhost):43110/, "")
 			$(".link .link-url", elem).text(url)
