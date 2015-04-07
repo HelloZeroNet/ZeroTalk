@@ -11,7 +11,9 @@ class Text
 		return color
 
 
-	toMarked: (text, options=null) ->
+	toMarked: (text, options={}) ->
+		options["gfm"] = true
+		options["breaks"] = true
 		text = marked(text, options)
 		return @fixLinks text
 

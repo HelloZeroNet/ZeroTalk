@@ -6,7 +6,7 @@ class ZeroTalk extends ZeroFrame
 		@local_storage = {}
 		@publishing = false
 		@has_db = true
-		@site_address = window.location.href.replace(/^.*\/([A-Za-z0-9]+)\/.*?$/, "$1")
+		@site_address = null
 
 		# Autoexpand
 		for textarea in $("textarea")
@@ -41,6 +41,7 @@ class ZeroTalk extends ZeroFrame
 				@has_db = false
 
 		@cmd "siteInfo", {}, (site) =>
+			@site_address = site.address
 			@setSiteinfo(site)
 			if @has_db
 				Users.dbUpdateMyInfo =>
@@ -148,7 +149,7 @@ class ZeroTalk extends ZeroFrame
 
 
 	buttonSignup: ->
-		if not @hasOpenPort() then return false
+		# if not @hasOpenPort() then return false
 
 		@cmd "wrapperPrompt", ["Username you want to register:"], (user_name) => # Prompt the username
 			$(".button.signup").addClass("loading") 
@@ -249,3 +250,4 @@ class ZeroTalk extends ZeroFrame
 
 
 window.Page = new ZeroTalk()
+

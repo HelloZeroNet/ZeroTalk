@@ -118,7 +118,7 @@ class TopicShow extends Class
 					elem = $(".comment.template").clone().removeClass("template").attr("id", "comment_"+comment_address).data("topic_address", topic_address)
 					if type != "noanim"
 						elem.cssSlideDown()
-					$(".added", elem).on "click", (e) => # Reply link
+					$(".reply", elem).on "click", (e) => # Reply link
 						return @buttonReply $(e.target).parents(".comment")
 					$(".score", elem).attr("id", "comment_score_#{comment_address}").on "click", @submitCommentVote # Submit vote
 				@applyCommentData(elem, comment)
@@ -155,7 +155,7 @@ class TopicShow extends Class
 					elem = $(".comment.template").clone().removeClass("template").attr("id", "comment_"+comment_address).data("topic_address", topic_address)
 					if type != "noanim"
 						elem.cssSlideDown()
-					$(".added", elem).on "click", (e) => # Reply link
+					$(".reply", elem).on "click", (e) => # Reply link
 						return @buttonReply $(e.target).parents(".comment")
 					$(".score", elem).attr("id", "comment_score_#{comment_address}").on "click", @submitCommentVote # Submit vote
 				@applyCommentData(elem, comment)
@@ -179,7 +179,7 @@ class TopicShow extends Class
 			user_address = comment.inner_path
 		$(".body", elem).html Text.toMarked(comment.body, {"sanitize": true})
 		$(".user_name", elem).text(user_name).css("color": Text.toColor(user_name)).attr("title", user_address)
-		$(".added", elem).text(Time.since(comment.added))
+		$(".added", elem).text(Time.since(comment.added)).attr("title", Time.date(comment.added, "long"))
 		
 		if Page.has_db # DB apply comment votes
 			comment_id = elem.attr("id").replace("comment_", "")
@@ -220,7 +220,7 @@ class TopicShow extends Class
 
 
 	submitComment: ->
-		if not Page.hasOpenPort() then return false
+		# if not Page.hasOpenPort() then return false
 		if not Users.my_name # Not registered
 			Page.cmd "wrapperNotification", ["info", "Please, request access before posting."]
 			return false

@@ -1,11 +1,11 @@
 class InlineEditor
 	constructor: (@elem, @getContent, @saveContent, @getObject) ->
-		@edit_button = $("<a href='#Edit' class='editable-edit'>§</a>")
+		@edit_button = $("<a href='#Edit' class='editable-edit icon-edit'></a>")
 		@edit_button.on "click", @startEdit
 		@elem.addClass("editable").before(@edit_button)
 		@editor = null
 		@elem.on "mouseenter", (e) =>
-			@edit_button.css("opacity", "1")
+			@edit_button.css("opacity", "0.4")
 			# Keep in display
 			scrolltop = $(window).scrollTop()
 			top = @edit_button.offset().top-parseInt(@edit_button.css("margin-top"))

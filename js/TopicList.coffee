@@ -400,7 +400,7 @@ class TopicList extends Class
 
 
 	submitCreateTopic: ->
-		if not Page.hasOpenPort() then return false
+		# if not Page.hasOpenPort() then return false
 		if not Users.my_name # Not registered
 			Page.cmd "wrapperNotification", ["info", "Please, request access before posting."]
 			return false
