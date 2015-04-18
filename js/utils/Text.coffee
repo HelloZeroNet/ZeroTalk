@@ -1,3 +1,7 @@
+class Renderer extends marked.Renderer
+	image: (href, title, text) ->
+		return ("<code>![#{text}](#{href})</code>")
+
 class Text
 	toColor: (text) ->
 		hash = 0
@@ -14,6 +18,7 @@ class Text
 	toMarked: (text, options={}) ->
 		options["gfm"] = true
 		options["breaks"] = true
+		options["renderer"] = renderer
 		text = marked(text, options)
 		return @fixLinks text
 
@@ -26,5 +31,5 @@ class Text
 	toUrl: (text) =>
 		return text.replace(/[^A-Za-z0-9]/g, "+").replace(/[+]+/g, "+").replace(/[+]+$/, "")
 
-
+window.renderer = new Renderer()
 window.Text = new Text()

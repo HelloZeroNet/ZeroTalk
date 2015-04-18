@@ -208,7 +208,9 @@ class TopicShow extends Class
 		user_name = $(".user_name", elem).text()
 		post_id = elem.attr("id")
 		body_add = "> [#{user_name}](\##{post_id}): "
-		body_add+= $(".body", elem).text().trim("\n").replace(/\n/g, "\n> ")
+		elem_quote = $(".body", elem).clone()
+		$("blockquote", elem_quote).remove() # Remove other people's quotes
+		body_add+= elem_quote.text().trim("\n").replace(/\n/g, "\n> ")
 		body_add+= "\n\n"
 
 

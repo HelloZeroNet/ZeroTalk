@@ -705,8 +705,25 @@ jQuery.extend( jQuery.easing,
 
 
 (function() {
-  var Text,
+  var Renderer, Text,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    __hasProp = {}.hasOwnProperty,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+  Renderer = (function(_super) {
+    __extends(Renderer, _super);
+
+    function Renderer() {
+      return Renderer.__super__.constructor.apply(this, arguments);
+    }
+
+    Renderer.prototype.image = function(href, title, text) {
+      return "<code>![" + text + "](" + href + ")</code>";
+    };
+
+    return Renderer;
+
+  })(marked.Renderer);
 
   Text = (function() {
     function Text() {
@@ -734,6 +751,7 @@ jQuery.extend( jQuery.easing,
       }
       options["gfm"] = true;
       options["breaks"] = true;
+      options["renderer"] = renderer;
       text = marked(text, options);
       return this.fixLinks(text);
     };
@@ -749,6 +767,8 @@ jQuery.extend( jQuery.easing,
     return Text;
 
   })();
+
+  window.renderer = new Renderer();
 
   window.Text = new Text();
 
@@ -1763,12 +1783,14 @@ jQuery.extend( jQuery.easing,
     };
 
     TopicShow.prototype.buttonReply = function(elem) {
-      var body_add, post_id, user_name;
+      var body_add, elem_quote, post_id, user_name;
       this.log("Reply to", elem);
       user_name = $(".user_name", elem).text();
       post_id = elem.attr("id");
       body_add = "> [" + user_name + "](\#" + post_id + "): ";
-      body_add += $(".body", elem).text().trim("\n").replace(/\n/g, "\n> ");
+      elem_quote = $(".body", elem).clone();
+      $("blockquote", elem_quote).remove();
+      body_add += elem_quote.text().trim("\n").replace(/\n/g, "\n> ");
       body_add += "\n\n";
       $(".comment-new #comment_body").val($(".comment-new #comment_body").val() + body_add);
       $(".comment-new #comment_body").trigger("input").focus();
@@ -1855,7 +1877,6 @@ jQuery.extend( jQuery.easing,
   window.TopicShow = new TopicShow();
 
 }).call(this);
-
 
 
 /* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/Users.coffee ---- */
