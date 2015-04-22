@@ -20,16 +20,28 @@ class Text
 		options["breaks"] = true
 		options["renderer"] = renderer
 		text = marked(text, options)
-		return @fixLinks text
+		return @fixHtmlLinks text
 
 
-	# Convert zeronet links to relaitve
-	fixLinks: (text) ->
-		return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="')
+	# Convert zeronet html links to relaitve
+	fixHtmlLinks: (text) ->
+		if window.is_proxy
+			return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="http://zero')
+		else
+			return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, '')
+
+
+	# Convert a single link to relative
+	fixLink: (link) ->
+		if window.is_proxy
+			return link.replace(/http:\/\/(127.0.0.1|localhost):43110/, 'http://zero')
+		else
+			return link.replace(/http:\/\/(127.0.0.1|localhost):43110/, '')
 
 
 	toUrl: (text) =>
 		return text.replace(/[^A-Za-z0-9]/g, "+").replace(/[+]+/g, "+").replace(/[+]+$/, "")
 
+window.is_proxy = (window.location.pathname == "/")
 window.renderer = new Renderer()
 window.Text = new Text()

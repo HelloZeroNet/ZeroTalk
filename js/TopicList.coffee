@@ -343,7 +343,7 @@ class TopicList extends Class
 			url = url_match[0]
 			if type != "show" then body = body.replace /http[s]{0,1}:\/\/[^"' $]+$/g, "" # Remove links from end
 			$(".image .icon", elem).removeClass("icon-topic-chat").addClass("icon-topic-link")
-			$(".link", elem).css("display", "").attr "href", url.replace(/http:\/\/(127.0.0.1|localhost):43110/, "")
+			$(".link", elem).css("display", "").attr "href", Text.fixLink(url)
 			$(".link .link-url", elem).text(url)
 		else # Normal type topic
 			$(".image .icon", elem).removeClass("icon-topic-link").addClass("icon-topic-chat")

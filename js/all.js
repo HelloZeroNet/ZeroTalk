@@ -34,6 +34,7 @@
     });
     setTimeout((function() {
       var height;
+      elem.css("display", "");
       height = elem.outerHeight();
       elem.css({
         "height": 0,
@@ -753,11 +754,23 @@ jQuery.extend( jQuery.easing,
       options["breaks"] = true;
       options["renderer"] = renderer;
       text = marked(text, options);
-      return this.fixLinks(text);
+      return this.fixHtmlLinks(text);
     };
 
-    Text.prototype.fixLinks = function(text) {
-      return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="');
+    Text.prototype.fixHtmlLinks = function(text) {
+      if (window.is_proxy) {
+        return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="http://zero');
+      } else {
+        return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, '');
+      }
+    };
+
+    Text.prototype.fixLink = function(link) {
+      if (window.is_proxy) {
+        return link.replace(/http:\/\/(127.0.0.1|localhost):43110/, 'http://zero');
+      } else {
+        return link.replace(/http:\/\/(127.0.0.1|localhost):43110/, '');
+      }
     };
 
     Text.prototype.toUrl = function(text) {
@@ -768,11 +781,14 @@ jQuery.extend( jQuery.easing,
 
   })();
 
+  window.is_proxy = window.location.pathname === "/";
+
   window.renderer = new Renderer();
 
   window.Text = new Text();
 
 }).call(this);
+
 
 
 /* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/Time.coffee ---- */
@@ -1391,7 +1407,7 @@ jQuery.extend( jQuery.easing,
           body = body.replace(/http[s]{0,1}:\/\/[^"' $]+$/g, "");
         }
         $(".image .icon", elem).removeClass("icon-topic-chat").addClass("icon-topic-link");
-        $(".link", elem).css("display", "").attr("href", url.replace(/http:\/\/(127.0.0.1|localhost):43110/, ""));
+        $(".link", elem).css("display", "").attr("href", Text.fixLink(url));
         $(".link .link-url", elem).text(url);
       } else {
         $(".image .icon", elem).removeClass("icon-topic-link").addClass("icon-topic-chat");
