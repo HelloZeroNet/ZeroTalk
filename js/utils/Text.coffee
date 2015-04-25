@@ -28,7 +28,7 @@ class Text
 		if window.is_proxy
 			return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="http://zero')
 		else
-			return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, '')
+			return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="')
 
 
 	# Convert a single link to relative

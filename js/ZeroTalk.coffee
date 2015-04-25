@@ -166,10 +166,10 @@ class ZeroTalk extends ZeroFrame
 
 
 	writePublish: (inner_path, data, cb) ->
-		if @publishing
-			@cmd "wrapperNotification", ["error", "Publishing in progress, please wait until its finished."]
-			cb(false)
-			return false
+		#if @publishing
+		#	@cmd "wrapperNotification", ["error", "Publishing in progress, please wait until its finished."]
+		#	cb(false)
+		#	return false
 		@publishing = true
 		@cmd "fileWrite", [inner_path, data], (res) =>
 			if res != "ok" # fileWrite failed

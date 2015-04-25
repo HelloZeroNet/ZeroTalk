@@ -761,7 +761,7 @@ jQuery.extend( jQuery.easing,
       if (window.is_proxy) {
         return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="http://zero');
       } else {
-        return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, '');
+        return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="');
       }
     };
 
@@ -2334,11 +2334,6 @@ jQuery.extend( jQuery.easing,
     };
 
     ZeroTalk.prototype.writePublish = function(inner_path, data, cb) {
-      if (this.publishing) {
-        this.cmd("wrapperNotification", ["error", "Publishing in progress, please wait until its finished."]);
-        cb(false);
-        return false;
-      }
       this.publishing = true;
       return this.cmd("fileWrite", [inner_path, data], (function(_this) {
         return function(res) {
