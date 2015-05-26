@@ -5,39 +5,36 @@
   "domain": "Talk.ZeroNetwork.bit", 
   "files": {
     "css/all.css": {
-      "sha1": "4a781f823bc7a09fa4b44c33314c61e8f5641ee0", 
-      "sha512": "ef97a97f1f0cb84239f3be36bb6596ad8bd9ee1e949d59699ada1b9940691911", 
-      "size": 148321
+      "sha512": "a5c5b61e538f59168e83fba7948331760d09b5533480418547f1c8b7c7876858", 
+      "size": 149716
     }, 
     "dbschema.json": {
-      "sha1": "f8a429f19c81f21d070895114d8f831b18234f9b", 
       "sha512": "0e937451017a460efcacc2f199fc4e1e56d51c55907b8c13ea5e0ed8f4d5af8f", 
       "size": 2543
     }, 
+    "img/edit.png": {
+      "sha512": "60ba4297e205b038bf7852ead2b88f9373cd8848408bb258dbcebb086d43f056", 
+      "size": 237
+    }, 
     "img/loading.gif": {
-      "sha1": "a669dbd8a577f6957656fc88ba4960b93fcd23d9", 
       "sha512": "8a42b98962faea74618113166886be488c09dad10ca47fe97005edc5fb40cc00", 
       "size": 723
     }, 
     "img/topic-chat.png": {
-      "sha1": "9b19bd2b9eda1f6877f4bd611a584cbd114a426a", 
       "sha512": "f41719987d5f5d797591857648c0d4cf33a11d7f1a42428a2456c28e0957c88e", 
       "size": 238
     }, 
     "img/topic-group.png": {
-      "sha1": "a4089d8c73edde7bb25fbc2886dc4b7daf8ae452", 
       "sha512": "1f9305544e3350d62f0c76caf5202e256848206d18485e0451dc050201f86a7b", 
       "size": 310
     }, 
     "index.html": {
-      "sha1": "015baf0b018b0377787e232c2b73c98e46142365", 
-      "sha512": "516b6c0d509716d56922b8542375e37e141d477df065e7169e49a07c76a48c2a", 
-      "size": 5735
+      "sha512": "145d56f7a1340dd491b943cee0e292d7e8d7cb6be8a07051096200a5cf4ff193", 
+      "size": 5830
     }, 
     "js/all.js": {
-      "sha1": "ea4c7d7618f205087ffb759fb964cc4418272788", 
-      "sha512": "e71fdf2870bf84ef4f2a1bdcec4d534bbc42943ce7d8e1b3fa1bf302282cf71d", 
-      "size": 237206
+      "sha512": "510c996a5ed2b880cb37977164e3fc44bc4392c6720cfc7649ac0f38d58b3591", 
+      "size": 228780
     }
   }, 
   "ignore": "((js|css)/(?!all.(js|css))|data/users/.*)", 
@@ -49,17 +46,17 @@
       "signers_required": 1
     }
   }, 
-  "modified": 1427469596.012, 
+  "modified": 1430003732.303, 
   "sign": [
-    94170300414416021150664627217489101721569151683548917502721026724595915168119, 
-    84738341273941381931309422320555108694463764316762577082233425007218664167919
+    32410459703090678893963037979875838554473357503004243738609353733434568090079, 
+    14050413446844381228986499545272677447290360070426280407263794777234119332303
   ], 
   "signers_sign": "HKNDz9IUHcBc/l2Jm2Bl70XQDL9HYHhJ2hUdg8AMyunACLgxyXBr7EW1/ME4hGkaFZSFmIxlInmxH+BrMVXbnLw=", 
   "signs": {
-    "1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ": "HLFm8DNPykmWMI6v6PE8u/k0VMeiibZSBgdbYK5kKWSQBLIT6wa8xrdmIcajlIIKw0P/mtMW8H0td34LoNiAIUU="
+    "1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ": "HHbBlX+Tv7MkZutsRFVXZkK/InwzH/oO6Owj1oHVG+jEYiPJL3jNPZGAzrHDtcWYm/eNlVHZb+wn5RPg+eMFvCE="
   }, 
   "signs_required": 1, 
   "title": "ZeroTalk", 
   "viewport": "width=device-width, initial-scale=1.0", 
-  "zeronet_version": "0.2.7"
+  "zeronet_version": "0.2.9"
 }

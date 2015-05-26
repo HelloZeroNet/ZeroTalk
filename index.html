@@ -9,7 +9,7 @@
  <base href="" target="_top" id="base">
  <script>
  setTimeout(function() {
- 	base.href = document.location.href.replace("/media", "").replace("index.html", "").replace(/[&?]wrapper=False/, "") // Fix urls
+ 	base.href = document.location.href.replace("/media", "").replace("index.html", "").replace(/([&?])wrapper=False/, "$1").replace(/&$/, "") // Fix urls
  }, 100) // 100ms later, to workaround double js download in chrome
  </script>
 </head>
@@ -137,11 +137,12 @@
    <div class="info">
     <span class="user_name">user_name</span>
     &#9473; 
-    <a class="added" href="#Reply" title="Reply">added</a>
+    <span class="added">added</span>
     <a class="score" href="#Upvote">
      <span class="score-inactive"> <span class="icon-up">^</span><span class="score-num">1</span> </span>
      <span class="score-active"> <span class="icon-up">^</span><span class="score-num">2</span> </span>
     </a>
+    <a href="#Reply" class="reply"><div class="icon icon-reply"></div> <span class="reply-text">Reply</span></a>
    </div>
    <div class="body">Body</div>
   </div>
