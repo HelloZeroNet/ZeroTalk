@@ -682,6 +682,7 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+
 /* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/LimitRate.coffee ---- */
 
 
@@ -788,7 +789,6 @@ jQuery.extend( jQuery.easing,
   window.Text = new Text();
 
 }).call(this);
-
 
 
 /* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/Time.coffee ---- */

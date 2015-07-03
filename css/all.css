@@ -7,7 +7,7 @@
 .editable { outline: none }
 .editable-edit:hover { opacity: 1; border: none; color: #333 }
 .editable-edit { 
-	opacity: 0; float: left; margin-top: -6px; margin-left: -40px; padding: 8px 20px; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -o-transition: all 0.3s; -ms-transition: all 0.3s; transition: all 0.3s ; width: 0px; display: inline-block;
+	opacity: 0; float: left; margin-top: -6px; margin-left: -40px; padding: 8px 20px; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -o-transition: all 0.3s; -ms-transition: all 0.3s; transition: all 0.3s ; width: 0px; display: inline-block; padding-right: 0px;
 	color: rgba(100,100,100,0.5); text-decoration: none; font-size: 18px; font-weight: normal; border: none; position: absolute;
 }
 /*.editing { white-space: pre-wrap; z-index: 1; position: relative; outline: 10000px solid rgba(255,255,255,0.9) !important; }
@@ -42,10 +42,11 @@
 .icon-help.active { background-color: #EEE } 
 
 
+
 /* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/css/ZeroTalk.css ---- */
 
 
-body { background-color: #F5F5F5; color: #333332; margin: 10px; padding: 0px; font-family: 'Roboto', sans-serif; height: 15000px; overflow: hidden }
+body { background-color: #F5F5F5; color: #333332; margin: 10px; padding: 0px; font-family: 'Roboto', sans-serif; height: 15000px; overflow: hidden; backface-visibility: hidden }
 body.loaded { height: auto; overflow: auto }
 
 h1, h2, h3, h4 { font-family: 'Roboto', sans-serif; font-weight: normal; margin: 0px; padding: 0px }
