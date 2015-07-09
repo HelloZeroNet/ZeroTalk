@@ -159,6 +159,7 @@ class TopicShow extends Class
 			return
 
 		$(".comment-new .button-submit").addClass("loading")
+		
 		User.getData (data) =>
 			data.comment[@topic_uri] ?= []
 			data.comment[@topic_uri].push {
@@ -172,7 +173,7 @@ class TopicShow extends Class
 				if res == true
 					@log "File written"
 					@loadComments()
-					$(".comment-new #comment_body").val("")
+					$(".comment-new #comment_body").val("").delay(600).animate({"height": 72}, {"duration": 1000, "easing": "easeInOutCubic"})
 
 
 

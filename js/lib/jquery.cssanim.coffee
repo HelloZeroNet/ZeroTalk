@@ -19,6 +19,6 @@ jQuery.fn.fancySlideDown = ->
 
 jQuery.fn.fancySlideUp = ->
 	elem = @
-	elem.delay(600).slideUp(600).animate({"opacity": 0, "scale": 0.9}, {"duration": 600, "queue": false, "easing": "easeOutQuad"})
+	elem.css("backface-visibility", "hidden").delay(600).slideUp(600).animate({"opacity": 0, "scale": 0.9}, {"duration": 600, "queue": false, "easing": "easeOutQuad"})
 
 window.transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend'

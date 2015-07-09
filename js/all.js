@@ -75,7 +75,7 @@
   jQuery.fn.fancySlideUp = function() {
     var elem;
     elem = this;
-    return elem.delay(600).slideUp(600).animate({
+    return elem.css("backface-visibility", "hidden").delay(600).slideUp(600).animate({
       "opacity": 0,
       "scale": 0.9
     }, {
@@ -1468,7 +1468,12 @@ jQuery.extend( jQuery.easing,
             if (res === true) {
               _this.log("File written");
               _this.loadComments();
-              return $(".comment-new #comment_body").val("");
+              return $(".comment-new #comment_body").val("").delay(600).animate({
+                "height": 72
+              }, {
+                "duration": 1000,
+                "easing": "easeInOutCubic"
+              });
             }
           });
         };
@@ -1612,7 +1617,7 @@ jQuery.extend( jQuery.easing,
       var current_size_kb;
       if (current_size) {
         current_size_kb = current_size / 1000;
-        $(".user-size").text("used: " + (current_size_kb.toFixed(1)) + "k/" + (Math.round(this.rules.max_size / 1000)) + "k");
+        $(".user-size").text("used: " + (current_size_kb.toFixed(1)) + "k/" + (Math.round(this.rules.max_size / 1000)) + "k").attr("title", "Every new user has limited space to store comments, topics and votes.\n" + "This indicator shows your used/total allowed KBytes.\n" + "The site admin can increase it if you about to run out of it.");
         return $(".user-size-used").css("width", Math.round(70 * current_size / this.rules.max_size));
       } else {
         return $(".user-size").text("");

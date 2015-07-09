@@ -62,7 +62,11 @@ class User extends Class
 	setCurrentSize: (current_size) ->
 		if current_size
 			current_size_kb = current_size/1000
-			$(".user-size").text("used: #{current_size_kb.toFixed(1)}k/#{Math.round(@rules.max_size/1000)}k")
+			$(".user-size").text("used: #{current_size_kb.toFixed(1)}k/#{Math.round(@rules.max_size/1000)}k").attr("title", 
+				"Every new user has limited space to store comments, topics and votes.\n" +
+				"This indicator shows your used/total allowed KBytes.\n"+
+				"The site admin can increase it if you about to run out of it."
+			)
 			$(".user-size-used").css("width", Math.round(70*current_size/@rules.max_size))
 		else
 			$(".user-size").text("")
