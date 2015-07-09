@@ -16,6 +16,7 @@
 <body>
 
 <!-- editbar -->
+<div class="editbg"></div>
 <div class="editbar bottombar">
  <ul class="markdown-help">
   <li># H1</li>
@@ -42,18 +43,6 @@
 <!-- Head -->
 <div class="head">
  <a class='logo nolink' href="?Home">Zer0<br>Talk</a>
-
- <div class="head-user registered" style="display: none">
-  <div>Hello <span class="userbullet">&bullet;</span> <span class="user_name user_name-my">user_name</span>!</div>
-  <div class="size size-used">&nbsp;</div>
-  <div class="size">&nbsp;</div>
- </div>
-
- <div class="head-user visitor" style="display: none">
-  <div>Hello <span class="userbullet">&bullet;</span> <span class="user_name user_name-my">Visitor</span>!</div>
-  <a href="#Sign+up" class="button button-submit button-small signup">Request access</a>
- </div>
-
 </div>
 <!-- EOF Head -->
 
@@ -68,7 +57,7 @@
   <a href="#" class="image nolink"><div class="icon icon-topic-chat"></div></a>
   <h2 class="title"><input type="text" id="topic_title" class="text" placeholder="Topic title"></h2>
   <div class="body"><textarea id="topic_body" placeholder="Topic description"></textarea></div>
-  <div class="info"><span class="user_name user_name-my">user_name</span> &#9473; <span class="added">new topic</span></div>
+  <div class="info"><a class="user_name user_name-my certselect" href="#Change+user" title='Change user'>user_name</a> &#9473; <span class="added">new topic</span></div>
   <a href="#Add+new+topic" class="button button-submit">Add new topic</a>
   <div style="clear: both"></div>
  </div>
@@ -122,10 +111,15 @@
 
  <!-- New comment -->
  <div class="comment comment-new">
-  <div class="info"><span class="user_name user_name-my">user_name</span> &#9473; <span class="added">new comment</span></div>
+  <div class="info"><a class="user_name user_name-my certselect" href="#Change+user" title='Change user'>user_name</a> &#9473; <span class="added">new comment</span></div>
   <div class="body">
+   <a class="button button-submit button-certselect certselect" href="#Change+user"><div class='icon-profile'></div>Sign in as...</a>
    <textarea id="comment_body"></textarea>
-   <a href="#Submit+comment" class="button button-submit">Submit comment</a>
+   <a href="#Submit+comment" class="button button-submit button-submit-form">Submit comment</a>
+   <div style='float: right; margin-top: -6px'>
+    <div class="user-size user-size-used">Used space: 22k/100k</div>
+    <div class="user-size">Used space: 22k/100k</div>
+   </div>
    <div style="clear: both"></div>
   </div>
  </div>

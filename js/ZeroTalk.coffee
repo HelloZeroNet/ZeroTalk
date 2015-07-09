@@ -1,21 +1,20 @@
+# Variable namings:
+# comment_uri: #{comment_id}_#{topic_id}_#{topic_user_id}
+# topic_uri: #{topic_id}_#{topic_user_id}
+
+
 class ZeroTalk extends ZeroFrame
 	init: ->
 		@log "inited!"
-		@site_info = null
-		@server_info = null
-		@local_storage = {}
-		@publishing = false
-		@has_db = true
-		@site_address = null
+		@site_info = null  # Last site info response
+		@server_info = null  # Last server info response
+		@local_storage = {}  # Visited topics
+		@site_address = null  # Site bitcoin address
 
 		# Autoexpand
 		for textarea in $("textarea")
 			@autoExpand $(textarea)
-
-		# Sign up
-		$(".button.signup").on "click", =>
-			@buttonSignup()
-			return false
+		
 
 		# Markdown help
 		$(".editbar .icon-help").on "click", =>
@@ -32,24 +31,17 @@ class ZeroTalk extends ZeroFrame
 			res ?= {}
 			@local_storage = res
 
-		@cmd "serverInfo", {}, (ret) => # Get server info
-			@server_info = ret
-			version = parseInt(@server_info.version.replace(/\./g, ""))
-			if version < 20
-				@cmd "wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.2.0, please update!"]
-			if version < 26
-				@has_db = false
-
 		@cmd "siteInfo", {}, (site) =>
 			@site_address = site.address
 			@setSiteinfo(site)
-			if @has_db
-				Users.dbUpdateMyInfo =>
-					@routeUrl(window.location.search.substring(1))
-			else
-				Users.loadDb => # Load user DB then route url
-					@routeUrl(window.location.search.substring(1))
-					Users.updateMyInfo()
+			User.updateMyInfo =>
+				@routeUrl(window.location.search.substring(1))
+
+		@cmd "serverInfo", {}, (ret) => # Get server info
+			@server_info = ret
+			version = parseInt(@server_info.version.replace(/\./g, ""))
+			if version < 31
+				@cmd "wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.3.1, please update!"]
 
 
 	# All page content loaded
@@ -59,13 +51,15 @@ class ZeroTalk extends ZeroFrame
 
 	routeUrl: (url) ->
 		@log "Routing url:", url
-		if match = url.match /Topic:([0-9]+)@([0-9]+)/
+		if match = url.match /Topic:([0-9]+)_([0-9a-zA-Z]+)/  # Topic
 			$("body").addClass("page-topic")
-			TopicShow.actionShow parseInt(match[1]), parseInt(match[2])
-		else if match = url.match /Topics:([0-9]+)@([0-9]+)/
+			TopicShow.actionShow parseInt(match[1]), Text.toBitcoinAddress(match[2])
+			
+		else if match = url.match /Topics:([0-9]+)_([0-9a-zA-Z]+)/  # Sub-topics
 			$("body").addClass("page-topics")
-			TopicList.actionList parseInt(match[1]), parseInt(match[2])
-		else
+			TopicList.actionList parseInt(match[1]), Text.toBitcoinAddress(match[2])
+			
+		else  # Main
 			$("body").addClass("page-main")
 			TopicList.actionList()
 
@@ -104,36 +98,33 @@ class ZeroTalk extends ZeroFrame
 		object = @getObject(elem)
 		[type, id] = object.data("object").split(":") 
 
-		inner_path = "data/users/#{Users.my_address}/data.json"
-		@cmd "fileGet", [inner_path], (data) =>
-			data = JSON.parse(data)
-
+		User.getData (data) =>
 			if type == "Topic"
-				[topic_id, user_id] = id.split("@")
+				[topic_id, user_address] = id.split("_")
 				topic_id = parseInt(topic_id)
 
-				topic = (topic for topic in data.topics when topic.topic_id == topic_id)[0] 
+				topic = (topic for topic in data.topic when topic.topic_id == topic_id)[0] 
 
 				if delete_object # Delete
-					data.topics.splice(data.topics.indexOf(topic), 1)
+					data.topic.splice(data.topic.indexOf(topic), 1)
 				else # Update
 					topic[elem.data("editable")] = content
 
 			if type == "Comment"
-				[comment_id, topic_id, topic_user_id] = id.split("@")
+				[comment_uri, topic_uri] = id.split("@")
+				[comment_id, user_address] = comment_uri.split("_")
+				[topic_id, topic_creator_address] = topic_uri.split("_")
 				comment_id = parseInt(comment_id)
-				topic_address = topic_id+"@"+topic_user_id
 
-				comment = (comment for comment in data.comments[topic_address] when comment.comment_id == comment_id)[0]
+				comment = (comment for comment in data.comment[topic_uri] when comment.comment_id == comment_id)[0]
 
 				if delete_object # Delete
-					data.comments[topic_address].splice(data.comments[topic_address].indexOf(comment), 1)
+					data.comment[topic_uri].splice(data.comment[topic_uri].indexOf(comment), 1)
 				else # Update
 					comment[elem.data("editable")] = content
 
-
-			@writePublish inner_path, @jsonEncode(data), (res) =>
-				if res == true
+			User.publishData data, (res) =>
+				if res
 					if delete_object # Delete
 						if cb then cb(true)
 						elem.fancySlideUp()
@@ -147,83 +138,45 @@ class ZeroTalk extends ZeroFrame
 					if cb then cb(false)
 
 
-
-	buttonSignup: ->
-		# if not @hasOpenPort() then return false
-
-		@cmd "wrapperPrompt", ["Username you want to register:"], (user_name) => # Prompt the username
-			$(".button.signup").addClass("loading") 
-			$.post("http://demo.zeronet.io/ZeroTalk/signup.php", {"user_name": user_name, "auth_address": Users.my_address, "site": @site_address}).always (res) =>
-				if res == "OK"
-					@cmd "wrapperNotification", ["done", "Your registration has been sent!", 10000]
-				else
-					$(".button.signup").removeClass("loading") 
-					@cmd "wrapperNotification", ["error", "Error: #{res.responseText}"]
-
-
-	jsonEncode: (obj) ->
-		return btoa(unescape(encodeURIComponent(JSON.stringify(obj, undefined, '\t'))))
-
-
-	writePublish: (inner_path, data, cb) ->
-		#if @publishing
-		#	@cmd "wrapperNotification", ["error", "Publishing in progress, please wait until its finished."]
-		#	cb(false)
-		#	return false
-		@publishing = true
-		@cmd "fileWrite", [inner_path, data], (res) =>
-			if res != "ok" # fileWrite failed
-				@cmd "wrapperNotification", ["error", "File write error: #{res}"]
-				cb(false)
-				@publishing = false
-				return false
-
-			@cmd "sitePublish", {"inner_path": inner_path}, (res) =>
-				@publishing = false
-				if res == "ok"
-					cb(true)
-				else
-					cb(res)
-
-					
-	hasOpenPort: ->
-		if @server_info.ip_external 
-			return true
-		else # No port open
-			@cmd "wrapperNotification", ["error", "To publish new content please open port <b>#{@server_info.fileserver_port}</b> on your router"]
-			return false
-
-
-	# Route incoming requests
-	route: (cmd, message) ->
+	# Incoming request from ZeroNet API
+	onRequest: (cmd, message) ->
 		if cmd == "setSiteInfo" # Site updated
 			@actionSetSiteInfo(message)
 		else
 			@log "Unknown command", message
 
 
+	writePublish: (inner_path, data, cb) ->
+		@cmd "fileWrite", [inner_path, data], (res) =>
+			if res != "ok" # fileWrite failed
+				@cmd "wrapperNotification", ["error", "File write error: #{res}"]
+				cb(false)
+				return false
+
+			@cmd "sitePublish", {"inner_path": inner_path}, (res) =>
+				if res == "ok"
+					cb(true)
+				else
+					cb(res)
+
+
 	# Siteinfo changed
 	actionSetSiteInfo: (res) =>
 		site_info = res.params
 		@setSiteinfo(site_info)
-		if site_info.event and site_info.event[0] == "file_done" and site_info.event[1] == "data/users/#{Users.my_address}/data.json" # Registration successful
-			Users.updateMyInfo() # Set my info
-		if site_info.event and site_info.event[0] == "file_done" and site_info.event[1] == "data/users/content.json" # New user
-			Users.loadDb() # Reload userdb
 		if site_info.event and site_info.event[0] == "file_done" and site_info.event[1].match /.*users.*data.json$/  # Data changed
-			LimitRate (=>
+			RateLimit 500, =>
 				if $("body").hasClass("page-topic")
 					TopicShow.loadTopic()
 					TopicShow.loadComments()
 				if $("body").hasClass("page-main") or $("body").hasClass("page-topics")
 					TopicList.loadTopics()
-			), 500
 
 
 
 	setSiteinfo: (site_info) =>
 		@site_info = site_info
-		Users.my_address = site_info.auth_address
+		User.checkCert()
 
 
 	autoExpand: (elem) ->
@@ -250,4 +203,3 @@ class ZeroTalk extends ZeroFrame
 
 
 window.Page = new ZeroTalk()
-

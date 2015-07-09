@@ -23,10 +23,9 @@ class InlineEditor
 		@content_before = @elem.html() # Save current to restore on cancel
 
 		@editor = $("<textarea class='editor'></textarea>")
-		@editor.css("outline", "10000px solid rgba(255,255,255,0)").cssLater("transition", "outline 0.3s", 5).cssLater("outline", "10000px solid rgba(255,255,255,0.9)", 10) # Animate other elements fadeout
 		@editor.val @getContent(@elem, "raw")
 		@elem.after(@editor)
-
+		$(".editbg").css("display", "block").cssLater("opacity", 0.9, 10)
 		@elem.html [1..50].join("fill the width") # To make sure we span the editor as far as we can
 		@copyStyle(@elem, @editor) # Copy elem style to editor
 		@elem.html @content_before # Restore content
@@ -63,9 +62,11 @@ class InlineEditor
 
 
 	stopEdit: =>
-		@editor.remove()
+		if @editor
+			@editor.remove()
 		@editor = null
 		@elem.css("display", "")
+		$(".editbg").css("opacity", 0).cssLater("display", "none", 300)
 
 		$(".editable-edit").css("display", "") # Show edit buttons
 
@@ -144,9 +145,10 @@ class InlineEditor
 		elem.on "input", ->
 			if editor.scrollHeight > elem.height()
 				elem.height(1).height(editor.scrollHeight + parseFloat(elem.css("borderTopWidth")) + parseFloat(elem.css("borderBottomWidth")))
-		elem.trigger "input"
+		elem.trigger "input" 
 
 		# Tab key support
+		
 		elem.on 'keydown', (e) ->
 			if e.which == 9
 				e.preventDefault()
@@ -154,6 +156,7 @@ class InlineEditor
 				val = elem.val()
 				elem.val(val.substring(0,this.selectionStart) + "\t" + val.substring(this.selectionEnd))
 				this.selectionEnd = s+1; 
+		
 
  
 window.InlineEditor = InlineEditor

@@ -6,8 +6,9 @@ jQuery.fn.cssSlideDown = ->
 		height = elem.outerHeight()
 		elem.css({"height": 0, "display": ""}).cssLater("transition", "all 0.3s ease-out", 20)
 		elem.cssLater({"height": height, "opacity": 1, "margin-bottom": "", "margin-top": "", "padding-bottom": "", "padding-top": "", "transform": "scale(1)"}, null, 40)
-		elem.cssLater("transition", "", 1000)
-	), 10
+		elem.one transitionEnd, ->
+			elem.css("transition", "", 1000).css("transform", "", 2000)
+	), 300
 	return @
 
 
@@ -19,3 +20,5 @@ jQuery.fn.fancySlideDown = ->
 jQuery.fn.fancySlideUp = ->
 	elem = @
 	elem.delay(600).slideUp(600).animate({"opacity": 0, "scale": 0.9}, {"duration": 600, "queue": false, "easing": "easeOutQuad"})
+
+window.transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend'

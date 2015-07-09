@@ -1,6 +1,6 @@
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/lib/00-jquery.min.js ---- */
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/00-jquery.min.js ---- */
 
 
 /*! jQuery v2.1.3 | (c) 2005, 2014 jQuery Foundation, Inc. | jquery.org/license */
@@ -10,13 +10,13 @@
 
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/lib/highlight.pack.js ---- */
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/highlight.pack.js ---- */
 
 
 !function(e){"undefined"!=typeof exports?e(exports):(window.hljs=e({}),"function"==typeof define&&define.amd&&define([],function(){return window.hljs}))}(function(e){function n(e){return e.replace(/&/gm,"&amp;").replace(/</gm,"&lt;").replace(/>/gm,"&gt;")}function t(e){return e.nodeName.toLowerCase()}function r(e,n){var t=e&&e.exec(n);return t&&0==t.index}function a(e){var n=(e.className+" "+(e.parentNode?e.parentNode.className:"")).split(/\s+/);return n=n.map(function(e){return e.replace(/^lang(uage)?-/,"")}),n.filter(function(e){return N(e)||/no(-?)highlight/.test(e)})[0]}function o(e,n){var t={};for(var r in e)t[r]=e[r];if(n)for(var r in n)t[r]=n[r];return t}function i(e){var n=[];return function r(e,a){for(var o=e.firstChild;o;o=o.nextSibling)3==o.nodeType?a+=o.nodeValue.length:1==o.nodeType&&(n.push({event:"start",offset:a,node:o}),a=r(o,a),t(o).match(/br|hr|img|input/)||n.push({event:"stop",offset:a,node:o}));return a}(e,0),n}function c(e,r,a){function o(){return e.length&&r.length?e[0].offset!=r[0].offset?e[0].offset<r[0].offset?e:r:"start"==r[0].event?e:r:e.length?e:r}function i(e){function r(e){return" "+e.nodeName+'="'+n(e.value)+'"'}l+="<"+t(e)+Array.prototype.map.call(e.attributes,r).join("")+">"}function c(e){l+="</"+t(e)+">"}function u(e){("start"==e.event?i:c)(e.node)}for(var s=0,l="",f=[];e.length||r.length;){var g=o();if(l+=n(a.substr(s,g[0].offset-s)),s=g[0].offset,g==e){f.reverse().forEach(c);do u(g.splice(0,1)[0]),g=o();while(g==e&&g.length&&g[0].offset==s);f.reverse().forEach(i)}else"start"==g[0].event?f.push(g[0].node):f.pop(),u(g.splice(0,1)[0])}return l+n(a.substr(s))}function u(e){function n(e){return e&&e.source||e}function t(t,r){return RegExp(n(t),"m"+(e.cI?"i":"")+(r?"g":""))}function r(a,i){if(!a.compiled){if(a.compiled=!0,a.k=a.k||a.bK,a.k){var c={},u=function(n,t){e.cI&&(t=t.toLowerCase()),t.split(" ").forEach(function(e){var t=e.split("|");c[t[0]]=[n,t[1]?Number(t[1]):1]})};"string"==typeof a.k?u("keyword",a.k):Object.keys(a.k).forEach(function(e){u(e,a.k[e])}),a.k=c}a.lR=t(a.l||/\b[A-Za-z0-9_]+\b/,!0),i&&(a.bK&&(a.b="\\b("+a.bK.split(" ").join("|")+")\\b"),a.b||(a.b=/\B|\b/),a.bR=t(a.b),a.e||a.eW||(a.e=/\B|\b/),a.e&&(a.eR=t(a.e)),a.tE=n(a.e)||"",a.eW&&i.tE&&(a.tE+=(a.e?"|":"")+i.tE)),a.i&&(a.iR=t(a.i)),void 0===a.r&&(a.r=1),a.c||(a.c=[]);var s=[];a.c.forEach(function(e){e.v?e.v.forEach(function(n){s.push(o(e,n))}):s.push("self"==e?a:e)}),a.c=s,a.c.forEach(function(e){r(e,a)}),a.starts&&r(a.starts,i);var l=a.c.map(function(e){return e.bK?"\\.?("+e.b+")\\.?":e.b}).concat([a.tE,a.i]).map(n).filter(Boolean);a.t=l.length?t(l.join("|"),!0):{exec:function(){return null}}}}r(e)}function s(e,t,a,o){function i(e,n){for(var t=0;t<n.c.length;t++)if(r(n.c[t].bR,e))return n.c[t]}function c(e,n){return r(e.eR,n)?e:e.eW?c(e.parent,n):void 0}function f(e,n){return!a&&r(n.iR,e)}function g(e,n){var t=x.cI?n[0].toLowerCase():n[0];return e.k.hasOwnProperty(t)&&e.k[t]}function p(e,n,t,r){var a=r?"":E.classPrefix,o='<span class="'+a,i=t?"":"</span>";return o+=e+'">',o+n+i}function d(){if(!w.k)return n(y);var e="",t=0;w.lR.lastIndex=0;for(var r=w.lR.exec(y);r;){e+=n(y.substr(t,r.index-t));var a=g(w,r);a?(B+=a[1],e+=p(a[0],n(r[0]))):e+=n(r[0]),t=w.lR.lastIndex,r=w.lR.exec(y)}return e+n(y.substr(t))}function h(){if(w.sL&&!R[w.sL])return n(y);var e=w.sL?s(w.sL,y,!0,L[w.sL]):l(y);return w.r>0&&(B+=e.r),"continuous"==w.subLanguageMode&&(L[w.sL]=e.top),p(e.language,e.value,!1,!0)}function v(){return void 0!==w.sL?h():d()}function b(e,t){var r=e.cN?p(e.cN,"",!0):"";e.rB?(M+=r,y=""):e.eB?(M+=n(t)+r,y=""):(M+=r,y=t),w=Object.create(e,{parent:{value:w}})}function m(e,t){if(y+=e,void 0===t)return M+=v(),0;var r=i(t,w);if(r)return M+=v(),b(r,t),r.rB?0:t.length;var a=c(w,t);if(a){var o=w;o.rE||o.eE||(y+=t),M+=v();do w.cN&&(M+="</span>"),B+=w.r,w=w.parent;while(w!=a.parent);return o.eE&&(M+=n(t)),y="",a.starts&&b(a.starts,""),o.rE?0:t.length}if(f(t,w))throw new Error('Illegal lexeme "'+t+'" for mode "'+(w.cN||"<unnamed>")+'"');return y+=t,t.length||1}var x=N(e);if(!x)throw new Error('Unknown language: "'+e+'"');u(x);for(var w=o||x,L={},M="",k=w;k!=x;k=k.parent)k.cN&&(M=p(k.cN,"",!0)+M);var y="",B=0;try{for(var C,j,I=0;;){if(w.t.lastIndex=I,C=w.t.exec(t),!C)break;j=m(t.substr(I,C.index-I),C[0]),I=C.index+j}m(t.substr(I));for(var k=w;k.parent;k=k.parent)k.cN&&(M+="</span>");return{r:B,value:M,language:e,top:w}}catch(A){if(-1!=A.message.indexOf("Illegal"))return{r:0,value:n(t)};throw A}}function l(e,t){t=t||E.languages||Object.keys(R);var r={r:0,value:n(e)},a=r;return t.forEach(function(n){if(N(n)){var t=s(n,e,!1);t.language=n,t.r>a.r&&(a=t),t.r>r.r&&(a=r,r=t)}}),a.language&&(r.second_best=a),r}function f(e){return E.tabReplace&&(e=e.replace(/^((<[^>]+>|\t)+)/gm,function(e,n){return n.replace(/\t/g,E.tabReplace)})),E.useBR&&(e=e.replace(/\n/g,"<br>")),e}function g(e,n,t){var r=n?x[n]:t,a=[e.trim()];return e.match(/(\s|^)hljs(\s|$)/)||a.push("hljs"),r&&a.push(r),a.join(" ").trim()}function p(e){var n=a(e);if(!/no(-?)highlight/.test(n)){var t;E.useBR?(t=document.createElementNS("http://www.w3.org/1999/xhtml","div"),t.innerHTML=e.innerHTML.replace(/\n/g,"").replace(/<br[ \/]*>/g,"\n")):t=e;var r=t.textContent,o=n?s(n,r,!0):l(r),u=i(t);if(u.length){var p=document.createElementNS("http://www.w3.org/1999/xhtml","div");p.innerHTML=o.value,o.value=c(u,i(p),r)}o.value=f(o.value),e.innerHTML=o.value,e.className=g(e.className,n,o.language),e.result={language:o.language,re:o.r},o.second_best&&(e.second_best={language:o.second_best.language,re:o.second_best.r})}}function d(e){E=o(E,e)}function h(){if(!h.called){h.called=!0;var e=document.querySelectorAll("pre code");Array.prototype.forEach.call(e,p)}}function v(){addEventListener("DOMContentLoaded",h,!1),addEventListener("load",h,!1)}function b(n,t){var r=R[n]=t(e);r.aliases&&r.aliases.forEach(function(e){x[e]=n})}function m(){return Object.keys(R)}function N(e){return R[e]||R[x[e]]}var E={classPrefix:"hljs-",tabReplace:null,useBR:!1,languages:void 0},R={},x={};return e.highlight=s,e.highlightAuto=l,e.fixMarkup=f,e.highlightBlock=p,e.configure=d,e.initHighlighting=h,e.initHighlightingOnLoad=v,e.registerLanguage=b,e.listLanguages=m,e.getLanguage=N,e.inherit=o,e.IR="[a-zA-Z][a-zA-Z0-9_]*",e.UIR="[a-zA-Z_][a-zA-Z0-9_]*",e.NR="\\b\\d+(\\.\\d+)?",e.CNR="(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)",e.BNR="\\b(0b[01]+)",e.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~",e.BE={b:"\\\\[\\s\\S]",r:0},e.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[e.BE]},e.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[e.BE]},e.PWM={b:/\b(a|an|the|are|I|I'm|isn't|don't|doesn't|won't|but|just|should|pretty|simply|enough|gonna|going|wtf|so|such)\b/},e.CLCM={cN:"comment",b:"//",e:"$",c:[e.PWM]},e.CBCM={cN:"comment",b:"/\\*",e:"\\*/",c:[e.PWM]},e.HCM={cN:"comment",b:"#",e:"$",c:[e.PWM]},e.NM={cN:"number",b:e.NR,r:0},e.CNM={cN:"number",b:e.CNR,r:0},e.BNM={cN:"number",b:e.BNR,r:0},e.CSSNM={cN:"number",b:e.NR+"(%|em|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|in|pt|pc|px|deg|grad|rad|turn|s|ms|Hz|kHz|dpi|dpcm|dppx)?",r:0},e.RM={cN:"regexp",b:/\//,e:/\/[gimuy]*/,i:/\n/,c:[e.BE,{b:/\[/,e:/\]/,r:0,c:[e.BE]}]},e.TM={cN:"title",b:e.IR,r:0},e.UTM={cN:"title",b:e.UIR,r:0},e});hljs.registerLanguage("cpp",function(t){var i={keyword:"false int float while private char catch export virtual operator sizeof dynamic_cast|10 typedef const_cast|10 const struct for static_cast|10 union namespace unsigned long volatile static protected bool template mutable if public friend do goto auto void enum else break extern using true class asm case typeid short reinterpret_cast|10 default double register explicit signed typename try this switch continue wchar_t inline delete alignof char16_t char32_t constexpr decltype noexcept nullptr static_assert thread_local restrict _Bool complex _Complex _Imaginaryintmax_t uintmax_t int8_t uint8_t int16_t uint16_t int32_t uint32_t  int64_t uint64_tint_least8_t uint_least8_t int_least16_t uint_least16_t int_least32_t uint_least32_tint_least64_t uint_least64_t int_fast8_t uint_fast8_t int_fast16_t uint_fast16_t int_fast32_tuint_fast32_t int_fast64_t uint_fast64_t intptr_t uintptr_t atomic_bool atomic_char atomic_scharatomic_uchar atomic_short atomic_ushort atomic_int atomic_uint atomic_long atomic_ulong atomic_llongatomic_ullong atomic_wchar_t atomic_char16_t atomic_char32_t atomic_intmax_t atomic_uintmax_tatomic_intptr_t atomic_uintptr_t atomic_size_t atomic_ptrdiff_t atomic_int_least8_t atomic_int_least16_tatomic_int_least32_t atomic_int_least64_t atomic_uint_least8_t atomic_uint_least16_t atomic_uint_least32_tatomic_uint_least64_t atomic_int_fast8_t atomic_int_fast16_t atomic_int_fast32_t atomic_int_fast64_tatomic_uint_fast8_t atomic_uint_fast16_t atomic_uint_fast32_t atomic_uint_fast64_t",built_in:"std string cin cout cerr clog stringstream istringstream ostringstream auto_ptr deque list queue stack vector map set bitset multiset multimap unordered_set unordered_map unordered_multiset unordered_multimap array shared_ptr abort abs acos asin atan2 atan calloc ceil cosh cos exit exp fabs floor fmod fprintf fputs free frexp fscanf isalnum isalpha iscntrl isdigit isgraph islower isprint ispunct isspace isupper isxdigit tolower toupper labs ldexp log10 log malloc memchr memcmp memcpy memset modf pow printf putchar puts scanf sinh sin snprintf sprintf sqrt sscanf strcat strchr strcmp strcpy strcspn strlen strncat strncmp strncpy strpbrk strrchr strspn strstr tanh tan vfprintf vprintf vsprintf"};return{aliases:["c","h","c++","h++"],k:i,i:"</",c:[t.CLCM,t.CBCM,t.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},t.CNM,{cN:"preprocessor",b:"#",e:"$",k:"if else elif endif define undef warning error line pragma",c:[{b:'include\\s*[<"]',e:'[>"]',k:"include",i:"\\n"},t.CLCM]},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:i,c:["self"]},{b:t.IR+"::"},{bK:"new throw return",r:0},{cN:"function",b:"("+t.IR+"\\s+)+"+t.IR+"\\s*\\(",rB:!0,e:/[{;=]/,eE:!0,k:i,c:[{b:t.IR+"\\s*\\(",rB:!0,c:[t.TM],r:0},{cN:"params",b:/\(/,e:/\)/,k:i,r:0,c:[t.CBCM]},t.CLCM,t.CBCM]}]}});hljs.registerLanguage("ruby",function(e){var b="[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?",r="and false then defined module in return redo if BEGIN retry end for true self when next until do begin unless END rescue nil else break undef not super class case require yield alias while ensure elsif or include attr_reader attr_writer attr_accessor",c={cN:"yardoctag",b:"@[A-Za-z]+"},a={cN:"value",b:"#<",e:">"},s={cN:"comment",v:[{b:"#",e:"$",c:[c]},{b:"^\\=begin",e:"^\\=end",c:[c],r:10},{b:"^__END__",e:"\\n$"}]},n={cN:"subst",b:"#\\{",e:"}",k:r},t={cN:"string",c:[e.BE,n],v:[{b:/'/,e:/'/},{b:/"/,e:/"/},{b:/`/,e:/`/},{b:"%[qQwWx]?\\(",e:"\\)"},{b:"%[qQwWx]?\\[",e:"\\]"},{b:"%[qQwWx]?{",e:"}"},{b:"%[qQwWx]?<",e:">"},{b:"%[qQwWx]?/",e:"/"},{b:"%[qQwWx]?%",e:"%"},{b:"%[qQwWx]?-",e:"-"},{b:"%[qQwWx]?\\|",e:"\\|"},{b:/\B\?(\\\d{1,3}|\\x[A-Fa-f0-9]{1,2}|\\u[A-Fa-f0-9]{4}|\\?\S)\b/}]},i={cN:"params",b:"\\(",e:"\\)",k:r},d=[t,a,s,{cN:"class",bK:"class module",e:"$|;",i:/=/,c:[e.inherit(e.TM,{b:"[A-Za-z_]\\w*(::\\w+)*(\\?|\\!)?"}),{cN:"inheritance",b:"<\\s*",c:[{cN:"parent",b:"("+e.IR+"::)?"+e.IR}]},s]},{cN:"function",bK:"def",e:" |$|;",r:0,c:[e.inherit(e.TM,{b:b}),i,s]},{cN:"constant",b:"(::)?(\\b[A-Z]\\w*(::)?)+",r:0},{cN:"symbol",b:e.UIR+"(\\!|\\?)?:",r:0},{cN:"symbol",b:":",c:[t,{b:b}],r:0},{cN:"number",b:"(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",r:0},{cN:"variable",b:"(\\$\\W)|((\\$|\\@\\@?)(\\w+))"},{b:"("+e.RSR+")\\s*",c:[a,s,{cN:"regexp",c:[e.BE,n],i:/\n/,v:[{b:"/",e:"/[a-z]*"},{b:"%r{",e:"}[a-z]*"},{b:"%r\\(",e:"\\)[a-z]*"},{b:"%r!",e:"![a-z]*"},{b:"%r\\[",e:"\\][a-z]*"}]}],r:0}];n.c=d,i.c=d;var l="[>?]>",u="[\\w#]+\\(\\w+\\):\\d+:\\d+>",N="(\\w+-)?\\d+\\.\\d+\\.\\d(p\\d+)?[^>]+>",o=[{b:/^\s*=>/,cN:"status",starts:{e:"$",c:d}},{cN:"prompt",b:"^("+l+"|"+u+"|"+N+")",starts:{e:"$",c:d}}];return{aliases:["rb","gemspec","podspec","thor","irb"],k:r,c:[s].concat(o).concat(d)}});hljs.registerLanguage("apache",function(e){var r={cN:"number",b:"[\\$%]\\d+"};return{aliases:["apacheconf"],cI:!0,c:[e.HCM,{cN:"tag",b:"</?",e:">"},{cN:"keyword",b:/\w+/,r:0,k:{common:"order deny allow setenv rewriterule rewriteengine rewritecond documentroot sethandler errordocument loadmodule options header listen serverroot servername"},starts:{e:/$/,r:0,k:{literal:"on off all"},c:[{cN:"sqbracket",b:"\\s\\[",e:"\\]$"},{cN:"cbracket",b:"[\\$%]\\{",e:"\\}",c:["self",r]},r,e.QSM]}}],i:/\S/}});hljs.registerLanguage("python",function(e){var r={cN:"prompt",b:/^(>>>|\.\.\.) /},b={cN:"string",c:[e.BE],v:[{b:/(u|b)?r?'''/,e:/'''/,c:[r],r:10},{b:/(u|b)?r?"""/,e:/"""/,c:[r],r:10},{b:/(u|r|ur)'/,e:/'/,r:10},{b:/(u|r|ur)"/,e:/"/,r:10},{b:/(b|br)'/,e:/'/},{b:/(b|br)"/,e:/"/},e.ASM,e.QSM]},l={cN:"number",r:0,v:[{b:e.BNR+"[lLjJ]?"},{b:"\\b(0o[0-7]+)[lLjJ]?"},{b:e.CNR+"[lLjJ]?"}]},c={cN:"params",b:/\(/,e:/\)/,c:["self",r,l,b]};return{aliases:["py","gyp"],k:{keyword:"and elif is global as in if from raise for except finally print import pass return exec else break not with class assert yield try while continue del or def lambda nonlocal|10 None True False",built_in:"Ellipsis NotImplemented"},i:/(<\/|->|\?)/,c:[r,l,b,e.HCM,{v:[{cN:"function",bK:"def",r:10},{cN:"class",bK:"class"}],e:/:/,i:/[${=;\n]/,c:[e.UTM,c]},{cN:"decorator",b:/@/,e:/$/},{b:/\b(print|exec)\(/}]}});hljs.registerLanguage("javascript",function(r){return{aliases:["js"],k:{keyword:"in if for while finally var new function do return void else break catch instanceof with throw case default try this switch continue typeof delete let yield const class",literal:"true false null undefined NaN Infinity",built_in:"eval isFinite isNaN parseFloat parseInt decodeURI decodeURIComponent encodeURI encodeURIComponent escape unescape Object Function Boolean Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError Number Math Date String RegExp Array Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require module console window document"},c:[{cN:"pi",r:10,v:[{b:/^\s*('|")use strict('|")/},{b:/^\s*('|")use asm('|")/}]},r.ASM,r.QSM,r.CLCM,r.CBCM,r.CNM,{b:"("+r.RSR+"|\\b(case|return|throw)\\b)\\s*",k:"return throw case",c:[r.CLCM,r.CBCM,r.RM,{b:/</,e:/>;/,r:0,sL:"xml"}],r:0},{cN:"function",bK:"function",e:/\{/,eE:!0,c:[r.inherit(r.TM,{b:/[A-Za-z$_][0-9A-Za-z$_]*/}),{cN:"params",b:/\(/,e:/\)/,c:[r.CLCM,r.CBCM],i:/["'\(]/}],i:/\[|%/},{b:/\$[(.]/},{b:"\\."+r.IR,r:0}]}});hljs.registerLanguage("coffeescript",function(e){var c={keyword:"in if for while finally new do return else break catch instanceof throw try this switch continue typeof delete debugger super then unless until loop of by when and or is isnt not",literal:"true false null undefined yes no on off",reserved:"case default function var void with const let enum export import native __hasProp __extends __slice __bind __indexOf",built_in:"npm require console print module global window document"},n="[A-Za-z$_][0-9A-Za-z$_]*",t={cN:"subst",b:/#\{/,e:/}/,k:c},r=[e.BNM,e.inherit(e.CNM,{starts:{e:"(\\s*/)?",r:0}}),{cN:"string",v:[{b:/'''/,e:/'''/,c:[e.BE]},{b:/'/,e:/'/,c:[e.BE]},{b:/"""/,e:/"""/,c:[e.BE,t]},{b:/"/,e:/"/,c:[e.BE,t]}]},{cN:"regexp",v:[{b:"///",e:"///",c:[t,e.HCM]},{b:"//[gim]*",r:0},{b:/\/(?![ *])(\\\/|.)*?\/[gim]*(?=\W|$)/}]},{cN:"property",b:"@"+n},{b:"`",e:"`",eB:!0,eE:!0,sL:"javascript"}];t.c=r;var i=e.inherit(e.TM,{b:n}),s="(\\(.*\\))?\\s*\\B[-=]>",o={cN:"params",b:"\\([^\\(]",rB:!0,c:[{b:/\(/,e:/\)/,k:c,c:["self"].concat(r)}]};return{aliases:["coffee","cson","iced"],k:c,i:/\/\*/,c:r.concat([{cN:"comment",b:"###",e:"###",c:[e.PWM]},e.HCM,{cN:"function",b:"^\\s*"+n+"\\s*=\\s*"+s,e:"[-=]>",rB:!0,c:[i,o]},{b:/[:\(,=]\s*/,r:0,c:[{cN:"function",b:s,e:"[-=]>",rB:!0,c:[o]}]},{cN:"class",bK:"class",e:"$",i:/[:="\[\]]/,c:[{bK:"extends",eW:!0,i:/[:="\[\]]/,c:[i]},i]},{cN:"attribute",b:n+":",e:":",rB:!0,rE:!0,r:0}])}});hljs.registerLanguage("http",function(){return{i:"\\S",c:[{cN:"status",b:"^HTTP/[0-9\\.]+",e:"$",c:[{cN:"number",b:"\\b\\d{3}\\b"}]},{cN:"request",b:"^[A-Z]+ (.*?) HTTP/[0-9\\.]+$",rB:!0,e:"$",c:[{cN:"string",b:" ",e:" ",eB:!0,eE:!0}]},{cN:"attribute",b:"^\\w",e:": ",eE:!0,i:"\\n|\\s|=",starts:{cN:"string",e:"$"}},{b:"\\n\\n",starts:{sL:"",eW:!0}}]}});hljs.registerLanguage("css",function(e){var c="[a-zA-Z-][a-zA-Z0-9_-]*",a={cN:"function",b:c+"\\(",rB:!0,eE:!0,e:"\\("};return{cI:!0,i:"[=/|']",c:[e.CBCM,{cN:"id",b:"\\#[A-Za-z0-9_-]+"},{cN:"class",b:"\\.[A-Za-z0-9_-]+",r:0},{cN:"attr_selector",b:"\\[",e:"\\]",i:"$"},{cN:"pseudo",b:":(:)?[a-zA-Z0-9\\_\\-\\+\\(\\)\\\"\\']+"},{cN:"at_rule",b:"@(font-face|page)",l:"[a-z-]+",k:"font-face page"},{cN:"at_rule",b:"@",e:"[{;]",c:[{cN:"keyword",b:/\S+/},{b:/\s/,eW:!0,eE:!0,r:0,c:[a,e.ASM,e.QSM,e.CSSNM]}]},{cN:"tag",b:c,r:0},{cN:"rules",b:"{",e:"}",i:"[^\\s]",r:0,c:[e.CBCM,{cN:"rule",b:"[^\\s]",rB:!0,e:";",eW:!0,c:[{cN:"attribute",b:"[A-Z\\_\\.\\-]+",e:":",eE:!0,i:"[^\\s]",starts:{cN:"value",eW:!0,eE:!0,c:[a,e.CSSNM,e.QSM,e.ASM,e.CBCM,{cN:"hexcolor",b:"#[0-9A-Fa-f]+"},{cN:"important",b:"!important"}]}}]}]}]}});hljs.registerLanguage("ini",function(e){return{cI:!0,i:/\S/,c:[{cN:"comment",b:";",e:"$"},{cN:"title",b:"^\\[",e:"\\]"},{cN:"setting",b:"^[a-z0-9\\[\\]_-]+[ \\t]*=[ \\t]*",e:"$",c:[{cN:"value",eW:!0,k:"on off true false yes no",c:[e.QSM,e.NM],r:0}]}]}});hljs.registerLanguage("objectivec",function(e){var t={keyword:"int float while char export sizeof typedef const struct for union unsigned long volatile static bool mutable if do return goto void enum else break extern asm case short default double register explicit signed typename this switch continue wchar_t inline readonly assign readwrite self @synchronized id typeof nonatomic super unichar IBOutlet IBAction strong weak copy in out inout bycopy byref oneway __strong __weak __block __autoreleasing @private @protected @public @try @property @end @throw @catch @finally @autoreleasepool @synthesize @dynamic @selector @optional @required",literal:"false true FALSE TRUE nil YES NO NULL",built_in:"NSString NSData NSDictionary CGRect CGPoint UIButton UILabel UITextView UIWebView MKMapView NSView NSViewController NSWindow NSWindowController NSSet NSUUID NSIndexSet UISegmentedControl NSObject UITableViewDelegate UITableViewDataSource NSThread UIActivityIndicator UITabbar UIToolBar UIBarButtonItem UIImageView NSAutoreleasePool UITableView BOOL NSInteger CGFloat NSException NSLog NSMutableString NSMutableArray NSMutableDictionary NSURL NSIndexPath CGSize UITableViewCell UIView UIViewController UINavigationBar UINavigationController UITabBarController UIPopoverController UIPopoverControllerDelegate UIImage NSNumber UISearchBar NSFetchedResultsController NSFetchedResultsChangeType UIScrollView UIScrollViewDelegate UIEdgeInsets UIColor UIFont UIApplication NSNotFound NSNotificationCenter NSNotification UILocalNotification NSBundle NSFileManager NSTimeInterval NSDate NSCalendar NSUserDefaults UIWindow NSRange NSArray NSError NSURLRequest NSURLConnection NSURLSession NSURLSessionDataTask NSURLSessionDownloadTask NSURLSessionUploadTask NSURLResponseUIInterfaceOrientation MPMoviePlayerController dispatch_once_t dispatch_queue_t dispatch_sync dispatch_async dispatch_once"},o=/[a-zA-Z@][a-zA-Z0-9_]*/,a="@interface @class @protocol @implementation";return{aliases:["m","mm","objc","obj-c"],k:t,l:o,i:"</",c:[e.CLCM,e.CBCM,e.CNM,e.QSM,{cN:"string",v:[{b:'@"',e:'"',i:"\\n",c:[e.BE]},{b:"'",e:"[^\\\\]'",i:"[^\\\\][^']"}]},{cN:"preprocessor",b:"#",e:"$",c:[{cN:"title",v:[{b:'"',e:'"'},{b:"<",e:">"}]}]},{cN:"class",b:"("+a.split(" ").join("|")+")\\b",e:"({|$)",eE:!0,k:a,l:o,c:[e.UTM]},{cN:"variable",b:"\\."+e.UIR,r:0}]}});hljs.registerLanguage("bash",function(e){var t={cN:"variable",v:[{b:/\$[\w\d#@][\w\d_]*/},{b:/\$\{(.*?)\}/}]},s={cN:"string",b:/"/,e:/"/,c:[e.BE,t,{cN:"variable",b:/\$\(/,e:/\)/,c:[e.BE]}]},a={cN:"string",b:/'/,e:/'/};return{aliases:["sh","zsh"],l:/-?[a-z\.]+/,k:{keyword:"if then else elif fi for while in do done case esac function",literal:"true false",built_in:"break cd continue eval exec exit export getopts hash pwd readonly return shift test times trap umask unset alias bind builtin caller command declare echo enable help let local logout mapfile printf read readarray source type typeset ulimit unalias set shopt autoload bg bindkey bye cap chdir clone comparguments compcall compctl compdescribe compfiles compgroups compquote comptags comptry compvalues dirs disable disown echotc echoti emulate fc fg float functions getcap getln history integer jobs kill limit log noglob popd print pushd pushln rehash sched setcap setopt stat suspend ttyctl unfunction unhash unlimit unsetopt vared wait whence where which zcompile zformat zftp zle zmodload zparseopts zprof zpty zregexparse zsocket zstyle ztcp",operator:"-ne -eq -lt -gt -f -d -e -s -l -a"},c:[{cN:"shebang",b:/^#![^\n]+sh\s*$/,r:10},{cN:"function",b:/\w[\w\d_]*\s*\(\s*\)\s*\{/,rB:!0,c:[e.inherit(e.TM,{b:/\w[\w\d_]*/})],r:0},e.HCM,e.NM,s,a,t]}});hljs.registerLanguage("markdown",function(){return{aliases:["md","mkdown","mkd"],c:[{cN:"header",v:[{b:"^#{1,6}",e:"$"},{b:"^.+?\\n[=-]{2,}$"}]},{b:"<",e:">",sL:"xml",r:0},{cN:"bullet",b:"^([*+-]|(\\d+\\.))\\s+"},{cN:"strong",b:"[*_]{2}.+?[*_]{2}"},{cN:"emphasis",v:[{b:"\\*.+?\\*"},{b:"_.+?_",r:0}]},{cN:"blockquote",b:"^>\\s+",e:"$"},{cN:"code",v:[{b:"`.+?`"},{b:"^( {4}|	)",e:"$",r:0}]},{cN:"horizontal_rule",b:"^[-\\*]{3,}",e:"$"},{b:"\\[.+?\\][\\(\\[].*?[\\)\\]]",rB:!0,c:[{cN:"link_label",b:"\\[",e:"\\]",eB:!0,rE:!0,r:0},{cN:"link_url",b:"\\]\\(",e:"\\)",eB:!0,eE:!0},{cN:"link_reference",b:"\\]\\[",e:"\\]",eB:!0,eE:!0}],r:10},{b:"^\\[.+\\]:",rB:!0,c:[{cN:"link_reference",b:"\\[",e:"\\]:",eB:!0,eE:!0,starts:{cN:"link_url",e:"$"}}]}]}});hljs.registerLanguage("java",function(e){var a=e.UIR+"(<"+e.UIR+">)?",t="false synchronized int abstract float private char boolean static null if const for true while long strictfp finally protected import native final void enum else break transient catch instanceof byte super volatile case assert short package default double public try this switch continue throws protected public private",c="(\\b(0b[01_]+)|\\b0[xX][a-fA-F0-9_]+|(\\b[\\d_]+(\\.[\\d_]*)?|\\.[\\d_]+)([eE][-+]?\\d+)?)[lLfF]?",r={cN:"number",b:c,r:0};return{aliases:["jsp"],k:t,i:/<\//,c:[{cN:"javadoc",b:"/\\*\\*",e:"\\*/",r:0,c:[{cN:"javadoctag",b:"(^|\\s)@[A-Za-z]+"}]},e.CLCM,e.CBCM,e.ASM,e.QSM,{cN:"class",bK:"class interface",e:/[{;=]/,eE:!0,k:"class interface",i:/[:"\[\]]/,c:[{bK:"extends implements"},e.UTM]},{bK:"new throw return",r:0},{cN:"function",b:"("+a+"\\s+)+"+e.UIR+"\\s*\\(",rB:!0,e:/[{;=]/,eE:!0,k:t,c:[{b:e.UIR+"\\s*\\(",rB:!0,r:0,c:[e.UTM]},{cN:"params",b:/\(/,e:/\)/,k:t,r:0,c:[e.ASM,e.QSM,e.CNM,e.CBCM]},e.CLCM,e.CBCM]},r,{cN:"annotation",b:"@[A-Za-z]+"}]}});hljs.registerLanguage("diff",function(){return{aliases:["patch"],c:[{cN:"chunk",r:10,v:[{b:/^\@\@ +\-\d+,\d+ +\+\d+,\d+ +\@\@$/},{b:/^\*\*\* +\d+,\d+ +\*\*\*\*$/},{b:/^\-\-\- +\d+,\d+ +\-\-\-\-$/}]},{cN:"header",v:[{b:/Index: /,e:/$/},{b:/=====/,e:/=====$/},{b:/^\-\-\-/,e:/$/},{b:/^\*{3} /,e:/$/},{b:/^\+\+\+/,e:/$/},{b:/\*{5}/,e:/\*{5}$/}]},{cN:"addition",b:"^\\+",e:"$"},{cN:"deletion",b:"^\\-",e:"$"},{cN:"change",b:"^\\!",e:"$"}]}});hljs.registerLanguage("perl",function(e){var t="getpwent getservent quotemeta msgrcv scalar kill dbmclose undef lc ma syswrite tr send umask sysopen shmwrite vec qx utime local oct semctl localtime readpipe do return format read sprintf dbmopen pop getpgrp not getpwnam rewinddir qqfileno qw endprotoent wait sethostent bless s|0 opendir continue each sleep endgrent shutdown dump chomp connect getsockname die socketpair close flock exists index shmgetsub for endpwent redo lstat msgctl setpgrp abs exit select print ref gethostbyaddr unshift fcntl syscall goto getnetbyaddr join gmtime symlink semget splice x|0 getpeername recv log setsockopt cos last reverse gethostbyname getgrnam study formline endhostent times chop length gethostent getnetent pack getprotoent getservbyname rand mkdir pos chmod y|0 substr endnetent printf next open msgsnd readdir use unlink getsockopt getpriority rindex wantarray hex system getservbyport endservent int chr untie rmdir prototype tell listen fork shmread ucfirst setprotoent else sysseek link getgrgid shmctl waitpid unpack getnetbyname reset chdir grep split require caller lcfirst until warn while values shift telldir getpwuid my getprotobynumber delete and sort uc defined srand accept package seekdir getprotobyname semop our rename seek if q|0 chroot sysread setpwent no crypt getc chown sqrt write setnetent setpriority foreach tie sin msgget map stat getlogin unless elsif truncate exec keys glob tied closedirioctl socket readlink eval xor readline binmode setservent eof ord bind alarm pipe atan2 getgrent exp time push setgrent gt lt or ne m|0 break given say state when",r={cN:"subst",b:"[$@]\\{",e:"\\}",k:t},s={b:"->{",e:"}"},n={cN:"variable",v:[{b:/\$\d/},{b:/[\$\%\@](\^\w\b|#\w+(\:\:\w+)*|{\w+}|\w+(\:\:\w*)*)/},{b:/[\$\%\@][^\s\w{]/,r:0}]},o={cN:"comment",b:"^(__END__|__DATA__)",e:"\\n$",r:5},i=[e.BE,r,n],c=[n,e.HCM,o,{cN:"comment",b:"^\\=\\w",e:"\\=cut",eW:!0},s,{cN:"string",c:i,v:[{b:"q[qwxr]?\\s*\\(",e:"\\)",r:5},{b:"q[qwxr]?\\s*\\[",e:"\\]",r:5},{b:"q[qwxr]?\\s*\\{",e:"\\}",r:5},{b:"q[qwxr]?\\s*\\|",e:"\\|",r:5},{b:"q[qwxr]?\\s*\\<",e:"\\>",r:5},{b:"qw\\s+q",e:"q",r:5},{b:"'",e:"'",c:[e.BE]},{b:'"',e:'"'},{b:"`",e:"`",c:[e.BE]},{b:"{\\w+}",c:[],r:0},{b:"-?\\w+\\s*\\=\\>",c:[],r:0}]},{cN:"number",b:"(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",r:0},{b:"(\\/\\/|"+e.RSR+"|\\b(split|return|print|reverse|grep)\\b)\\s*",k:"split return print reverse grep",r:0,c:[e.HCM,o,{cN:"regexp",b:"(s|tr|y)/(\\\\.|[^/])*/(\\\\.|[^/])*/[a-z]*",r:10},{cN:"regexp",b:"(m|qr)?/",e:"/[a-z]*",c:[e.BE],r:0}]},{cN:"sub",bK:"sub",e:"(\\s*\\(.*?\\))?[;{]",r:5},{cN:"operator",b:"-\\w\\b",r:0}];return r.c=c,s.c=c,{aliases:["pl"],k:t,c:c}});hljs.registerLanguage("makefile",function(e){var a={cN:"variable",b:/\$\(/,e:/\)/,c:[e.BE]};return{aliases:["mk","mak"],c:[e.HCM,{b:/^\w+\s*\W*=/,rB:!0,r:0,starts:{cN:"constant",e:/\s*\W*=/,eE:!0,starts:{e:/$/,r:0,c:[a]}}},{cN:"title",b:/^[\w]+:\s*$/},{cN:"phony",b:/^\.PHONY:/,e:/$/,k:".PHONY",l:/[\.\w]+/},{b:/^\t+/,e:/$/,r:0,c:[e.QSM,a]}]}});hljs.registerLanguage("cs",function(e){var r="abstract as base bool break byte case catch char checked const continue decimal default delegate do double else enum event explicit extern false finally fixed float for foreach goto if implicit in int interface internal is lock long null object operator out override params private protected public readonly ref sbyte sealed short sizeof stackalloc static string struct switch this true try typeof uint ulong unchecked unsafe ushort using virtual volatile void while async protected public private internal ascending descending from get group into join let orderby partial select set value var where yield",t=e.IR+"(<"+e.IR+">)?";return{aliases:["csharp"],k:r,i:/::/,c:[{cN:"comment",b:"///",e:"$",rB:!0,c:[{cN:"xmlDocTag",v:[{b:"///",r:0},{b:"<!--|-->"},{b:"</?",e:">"}]}]},e.CLCM,e.CBCM,{cN:"preprocessor",b:"#",e:"$",k:"if else elif endif define undef warning error line region endregion pragma checksum"},{cN:"string",b:'@"',e:'"',c:[{b:'""'}]},e.ASM,e.QSM,e.CNM,{bK:"class namespace interface",e:/[{;=]/,i:/[^\s:]/,c:[e.TM,e.CLCM,e.CBCM]},{bK:"new return throw await",r:0},{cN:"function",b:"("+t+"\\s+)+"+e.IR+"\\s*\\(",rB:!0,e:/[{;=]/,eE:!0,k:r,c:[{b:e.IR+"\\s*\\(",rB:!0,c:[e.TM],r:0},{cN:"params",b:/\(/,e:/\)/,k:r,r:0,c:[e.ASM,e.QSM,e.CNM,e.CBCM]},e.CLCM,e.CBCM]}]}});hljs.registerLanguage("json",function(e){var t={literal:"true false null"},i=[e.QSM,e.CNM],l={cN:"value",e:",",eW:!0,eE:!0,c:i,k:t},c={b:"{",e:"}",c:[{cN:"attribute",b:'\\s*"',e:'"\\s*:\\s*',eB:!0,eE:!0,c:[e.BE],i:"\\n",starts:l}],i:"\\S"},n={b:"\\[",e:"\\]",c:[e.inherit(l,{cN:null})],i:"\\S"};return i.splice(i.length,0,c,n),{c:i,k:t,i:"\\S"}});hljs.registerLanguage("nginx",function(e){var r={cN:"variable",v:[{b:/\$\d+/},{b:/\$\{/,e:/}/},{b:"[\\$\\@]"+e.UIR}]},b={eW:!0,l:"[a-z/_]+",k:{built_in:"on off yes no true false none blocked debug info notice warn error crit select break last permanent redirect kqueue rtsig epoll poll /dev/poll"},r:0,i:"=>",c:[e.HCM,{cN:"string",c:[e.BE,r],v:[{b:/"/,e:/"/},{b:/'/,e:/'/}]},{cN:"url",b:"([a-z]+):/",e:"\\s",eW:!0,eE:!0,c:[r]},{cN:"regexp",c:[e.BE,r],v:[{b:"\\s\\^",e:"\\s|{|;",rE:!0},{b:"~\\*?\\s+",e:"\\s|{|;",rE:!0},{b:"\\*(\\.[a-z\\-]+)+"},{b:"([a-z\\-]+\\.)+\\*"}]},{cN:"number",b:"\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(:\\d{1,5})?\\b"},{cN:"number",b:"\\b\\d+[kKmMgGdshdwy]*\\b",r:0},r]};return{aliases:["nginxconf"],c:[e.HCM,{b:e.UIR+"\\s",e:";|{",rB:!0,c:[{cN:"title",b:e.UIR,starts:b}],r:0}],i:"[^\\s\\}]"}});hljs.registerLanguage("sql",function(e){var t={cN:"comment",b:"--",e:"$"};return{cI:!0,i:/[<>]/,c:[{cN:"operator",bK:"begin end start commit rollback savepoint lock alter create drop rename call delete do handler insert load replace select truncate update set show pragma grant merge describe use explain help declare prepare execute deallocate savepoint release unlock purge reset change stop analyze cache flush optimize repair kill install uninstall checksum restore check backup",e:/;/,eW:!0,k:{keyword:"abs absolute acos action add adddate addtime aes_decrypt aes_encrypt after aggregate all allocate alter analyze and any are as asc ascii asin assertion at atan atan2 atn2 authorization authors avg backup before begin benchmark between bin binlog bit_and bit_count bit_length bit_or bit_xor both by cache call cascade cascaded case cast catalog ceil ceiling chain change changed char_length character_length charindex charset check checksum checksum_agg choose close coalesce coercibility collate collation collationproperty column columns columns_updated commit compress concat concat_ws concurrent connect connection connection_id consistent constraint constraints continue contributors conv convert convert_tz corresponding cos cot count count_big crc32 create cross cume_dist curdate current current_date current_time current_timestamp current_user cursor curtime data database databases datalength date_add date_format date_sub dateadd datediff datefromparts datename datepart datetime2fromparts datetimeoffsetfromparts day dayname dayofmonth dayofweek dayofyear deallocate declare decode default deferrable deferred degrees delayed delete des_decrypt des_encrypt des_key_file desc describe descriptor diagnostics difference disconnect distinct distinctrow div do domain double drop dumpfile each else elt enclosed encode encrypt end end-exec engine engines eomonth errors escape escaped event eventdata events except exception exec execute exists exp explain export_set extended external extract fast fetch field fields find_in_set first first_value floor flush for force foreign format found found_rows from from_base64 from_days from_unixtime full function get get_format get_lock getdate getutcdate global go goto grant grants greatest group group_concat grouping grouping_id gtid_subset gtid_subtract handler having help hex high_priority hosts hour ident_current ident_incr ident_seed identified identity if ifnull ignore iif ilike immediate in index indicator inet6_aton inet6_ntoa inet_aton inet_ntoa infile initially inner innodb input insert install instr intersect into is is_free_lock is_ipv4 is_ipv4_compat is_ipv4_mapped is_not is_not_null is_used_lock isdate isnull isolation join key kill language last last_day last_insert_id last_value lcase lead leading least leaves left len lenght level like limit lines ln load load_file local localtime localtimestamp locate lock log log10 log2 logfile logs low_priority lower lpad ltrim make_set makedate maketime master master_pos_wait match matched max md5 medium merge microsecond mid min minute mod mode module month monthname mutex name_const names national natural nchar next no no_write_to_binlog not now nullif nvarchar oct octet_length of old_password on only open optimize option optionally or ord order outer outfile output pad parse partial partition password patindex percent_rank percentile_cont percentile_disc period_add period_diff pi plugin position pow power pragma precision prepare preserve primary prior privileges procedure procedure_analyze processlist profile profiles public publishingservername purge quarter query quick quote quotename radians rand read references regexp relative relaylog release release_lock rename repair repeat replace replicate reset restore restrict return returns reverse revoke right rlike rollback rollup round row row_count rows rpad rtrim savepoint schema scroll sec_to_time second section select serializable server session session_user set sha sha1 sha2 share show sign sin size slave sleep smalldatetimefromparts snapshot some soname soundex sounds_like space sql sql_big_result sql_buffer_result sql_cache sql_calc_found_rows sql_no_cache sql_small_result sql_variant_property sqlstate sqrt square start starting status std stddev stddev_pop stddev_samp stdev stdevp stop str str_to_date straight_join strcmp string stuff subdate substr substring subtime subtring_index sum switchoffset sysdate sysdatetime sysdatetimeoffset system_user sysutcdatetime table tables tablespace tan temporary terminated tertiary_weights then time time_format time_to_sec timediff timefromparts timestamp timestampadd timestampdiff timezone_hour timezone_minute to to_base64 to_days to_seconds todatetimeoffset trailing transaction translation trigger trigger_nestlevel triggers trim truncate try_cast try_convert try_parse ucase uncompress uncompressed_length unhex unicode uninstall union unique unix_timestamp unknown unlock update upgrade upped upper usage use user user_resources using utc_date utc_time utc_timestamp uuid uuid_short validate_password_strength value values var var_pop var_samp variables variance varp version view warnings week weekday weekofyear weight_string when whenever where with work write xml xor year yearweek zon",literal:"true false null",built_in:"array bigint binary bit blob boolean char character date dec decimal float int integer interval number numeric real serial smallint varchar varying int8 serial8 text"},c:[{cN:"string",b:"'",e:"'",c:[e.BE,{b:"''"}]},{cN:"string",b:'"',e:'"',c:[e.BE,{b:'""'}]},{cN:"string",b:"`",e:"`",c:[e.BE]},e.CNM,e.CBCM,t]},e.CBCM,t]}});hljs.registerLanguage("xml",function(){var t="[A-Za-z0-9\\._:-]+",e={b:/<\?(php)?(?!\w)/,e:/\?>/,sL:"php",subLanguageMode:"continuous"},c={eW:!0,i:/</,r:0,c:[e,{cN:"attribute",b:t,r:0},{b:"=",r:0,c:[{cN:"value",c:[e],v:[{b:/"/,e:/"/},{b:/'/,e:/'/},{b:/[^\s\/>]+/}]}]}]};return{aliases:["html","xhtml","rss","atom","xsl","plist"],cI:!0,c:[{cN:"doctype",b:"<!DOCTYPE",e:">",r:10,c:[{b:"\\[",e:"\\]"}]},{cN:"comment",b:"<!--",e:"-->",r:10},{cN:"cdata",b:"<\\!\\[CDATA\\[",e:"\\]\\]>",r:10},{cN:"tag",b:"<style(?=\\s|>|$)",e:">",k:{title:"style"},c:[c],starts:{e:"</style>",rE:!0,sL:"css"}},{cN:"tag",b:"<script(?=\\s|>|$)",e:">",k:{title:"script"},c:[c],starts:{e:"</script>",rE:!0,sL:"javascript"}},e,{cN:"pi",b:/<\?\w+/,e:/\?>/,r:10},{cN:"tag",b:"</?",e:"/?>",c:[{cN:"title",b:/[^ \/><\n\t]+/,r:0},c]}]}});hljs.registerLanguage("php",function(e){var c={cN:"variable",b:"\\$+[a-zA-Z_-ÿ][a-zA-Z0-9_-ÿ]*"},i={cN:"preprocessor",b:/<\?(php)?|\?>/},a={cN:"string",c:[e.BE,i],v:[{b:'b"',e:'"'},{b:"b'",e:"'"},e.inherit(e.ASM,{i:null}),e.inherit(e.QSM,{i:null})]},n={v:[e.BNM,e.CNM]};return{aliases:["php3","php4","php5","php6"],cI:!0,k:"and include_once list abstract global private echo interface as static endswitch array null if endwhile or const for endforeach self var while isset public protected exit foreach throw elseif include __FILE__ empty require_once do xor return parent clone use __CLASS__ __LINE__ else break print eval new catch __METHOD__ case exception default die require __FUNCTION__ enddeclare final try switch continue endfor endif declare unset true false trait goto instanceof insteadof __DIR__ __NAMESPACE__ yield finally",c:[e.CLCM,e.HCM,{cN:"comment",b:"/\\*",e:"\\*/",c:[{cN:"phpdoc",b:"\\s@[A-Za-z]+"},i]},{cN:"comment",b:"__halt_compiler.+?;",eW:!0,k:"__halt_compiler",l:e.UIR},{cN:"string",b:"<<<['\"]?\\w+['\"]?$",e:"^\\w+;",c:[e.BE]},i,c,{b:/->+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/},{cN:"function",bK:"function",e:/[;{]/,eE:!0,i:"\\$|\\[|%",c:[e.UTM,{cN:"params",b:"\\(",e:"\\)",c:["self",c,e.CBCM,a,n]}]},{cN:"class",bK:"class interface",e:"{",eE:!0,i:/[:\(\$"]/,c:[{bK:"extends implements"},e.UTM]},{bK:"namespace",e:";",i:/[\.']/,c:[e.UTM]},{bK:"use",e:";",c:[e.UTM]},{b:"=>"},a,n]}});
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/lib/jquery.cssanim.coffee ---- */
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.cssanim.coffee ---- */
 
 
 (function() {
@@ -49,8 +49,10 @@
         "padding-top": "",
         "transform": "scale(1)"
       }, null, 40);
-      return elem.cssLater("transition", "", 1000);
-    }), 10);
+      return elem.one(transitionEnd, function() {
+        return elem.css("transition", "", 1000).css("transform", "", 2000);
+      });
+    }), 300);
     return this;
   };
 
@@ -83,10 +85,13 @@
     });
   };
 
+  window.transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend';
+
 }).call(this);
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/lib/jquery.cssanim.js ---- */
+
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.cssanim.js ---- */
 
 
 jQuery.cssHooks['scale'] = {
@@ -118,7 +123,7 @@ jQuery.fx.step.scale = function(fx) {
 };
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/lib/jquery.csslater.coffee ---- */
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.csslater.coffee ---- */
 
 
 (function() {
@@ -207,7 +212,8 @@ jQuery.fx.step.scale = function(fx) {
 }).call(this);
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/lib/jquery.easing.1.3.js ---- */
+
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.easing.1.3.js ---- */
 
 
 /*
@@ -417,7 +423,7 @@ jQuery.extend( jQuery.easing,
  */
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/lib/marked.min.js ---- */
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/marked.min.js ---- */
 
 
 /**
@@ -428,7 +434,7 @@ jQuery.extend( jQuery.easing,
 (function(){var block={newline:/^\n+/,code:/^( {4}[^\n]+\n*)+/,fences:noop,hr:/^( *[-*_]){3,} *(?:\n+|$)/,heading:/^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)/,nptable:noop,lheading:/^([^\n]+)\n *(=|-){2,} *(?:\n+|$)/,blockquote:/^( *>[^\n]+(\n(?!def)[^\n]+)*\n*)+/,list:/^( *)(bull) [\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull )\n*|\s*$)/,html:/^ *(?:comment|closed|closing) *(?:\n{2,}|\s*$)/,def:/^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$)/,table:noop,paragraph:/^((?:[^\n]+\n?(?!hr|heading|lheading|blockquote|tag|def))+)\n*/,text:/^[^\n]+/};block.bullet=/(?:[*+-]|\d+\.)/;block.item=/^( *)(bull) [^\n]*(?:\n(?!\1bull )[^\n]*)*/;block.item=replace(block.item,"gm")(/bull/g,block.bullet)();block.list=replace(block.list)(/bull/g,block.bullet)("hr","\\n+(?=\\1?(?:[-*_] *){3,}(?:\\n+|$))")("def","\\n+(?="+block.def.source+")")();block.blockquote=replace(block.blockquote)("def",block.def)();block._tag="(?!(?:"+"a|em|strong|small|s|cite|q|dfn|abbr|data|time|code"+"|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo"+"|span|br|wbr|ins|del|img)\\b)\\w+(?!:/|[^\\w\\s@]*@)\\b";block.html=replace(block.html)("comment",/<!--[\s\S]*?-->/)("closed",/<(tag)[\s\S]+?<\/\1>/)("closing",/<tag(?:"[^"]*"|'[^']*'|[^'">])*?>/)(/tag/g,block._tag)();block.paragraph=replace(block.paragraph)("hr",block.hr)("heading",block.heading)("lheading",block.lheading)("blockquote",block.blockquote)("tag","<"+block._tag)("def",block.def)();block.normal=merge({},block);block.gfm=merge({},block.normal,{fences:/^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/,paragraph:/^/});block.gfm.paragraph=replace(block.paragraph)("(?!","(?!"+block.gfm.fences.source.replace("\\1","\\2")+"|"+block.list.source.replace("\\1","\\3")+"|")();block.tables=merge({},block.gfm,{nptable:/^ *(\S.*\|.*)\n *([-:]+ *\|[-| :]*)\n((?:.*\|.*(?:\n|$))*)\n*/,table:/^ *\|(.+)\n *\|( *[-:]+[-| :]*)\n((?: *\|.*(?:\n|$))*)\n*/});function Lexer(options){this.tokens=[];this.tokens.links={};this.options=options||marked.defaults;this.rules=block.normal;if(this.options.gfm){if(this.options.tables){this.rules=block.tables}else{this.rules=block.gfm}}}Lexer.rules=block;Lexer.lex=function(src,options){var lexer=new Lexer(options);return lexer.lex(src)};Lexer.prototype.lex=function(src){src=src.replace(/\r\n|\r/g,"\n").replace(/\t/g,"    ").replace(/\u00a0/g," ").replace(/\u2424/g,"\n");return this.token(src,true)};Lexer.prototype.token=function(src,top,bq){var src=src.replace(/^ +$/gm,""),next,loose,cap,bull,b,item,space,i,l;while(src){if(cap=this.rules.newline.exec(src)){src=src.substring(cap[0].length);if(cap[0].length>1){this.tokens.push({type:"space"})}}if(cap=this.rules.code.exec(src)){src=src.substring(cap[0].length);cap=cap[0].replace(/^ {4}/gm,"");this.tokens.push({type:"code",text:!this.options.pedantic?cap.replace(/\n+$/,""):cap});continue}if(cap=this.rules.fences.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"code",lang:cap[2],text:cap[3]});continue}if(cap=this.rules.heading.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"heading",depth:cap[1].length,text:cap[2]});continue}if(top&&(cap=this.rules.nptable.exec(src))){src=src.substring(cap[0].length);item={type:"table",header:cap[1].replace(/^ *| *\| *$/g,"").split(/ *\| */),align:cap[2].replace(/^ *|\| *$/g,"").split(/ *\| */),cells:cap[3].replace(/\n$/,"").split("\n")};for(i=0;i<item.align.length;i++){if(/^ *-+: *$/.test(item.align[i])){item.align[i]="right"}else if(/^ *:-+: *$/.test(item.align[i])){item.align[i]="center"}else if(/^ *:-+ *$/.test(item.align[i])){item.align[i]="left"}else{item.align[i]=null}}for(i=0;i<item.cells.length;i++){item.cells[i]=item.cells[i].split(/ *\| */)}this.tokens.push(item);continue}if(cap=this.rules.lheading.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"heading",depth:cap[2]==="="?1:2,text:cap[1]});continue}if(cap=this.rules.hr.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"hr"});continue}if(cap=this.rules.blockquote.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"blockquote_start"});cap=cap[0].replace(/^ *> ?/gm,"");this.token(cap,top,true);this.tokens.push({type:"blockquote_end"});continue}if(cap=this.rules.list.exec(src)){src=src.substring(cap[0].length);bull=cap[2];this.tokens.push({type:"list_start",ordered:bull.length>1});cap=cap[0].match(this.rules.item);next=false;l=cap.length;i=0;for(;i<l;i++){item=cap[i];space=item.length;item=item.replace(/^ *([*+-]|\d+\.) +/,"");if(~item.indexOf("\n ")){space-=item.length;item=!this.options.pedantic?item.replace(new RegExp("^ {1,"+space+"}","gm"),""):item.replace(/^ {1,4}/gm,"")}if(this.options.smartLists&&i!==l-1){b=block.bullet.exec(cap[i+1])[0];if(bull!==b&&!(bull.length>1&&b.length>1)){src=cap.slice(i+1).join("\n")+src;i=l-1}}loose=next||/\n\n(?!\s*$)/.test(item);if(i!==l-1){next=item.charAt(item.length-1)==="\n";if(!loose)loose=next}this.tokens.push({type:loose?"loose_item_start":"list_item_start"});this.token(item,false,bq);this.tokens.push({type:"list_item_end"})}this.tokens.push({type:"list_end"});continue}if(cap=this.rules.html.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:this.options.sanitize?"paragraph":"html",pre:cap[1]==="pre"||cap[1]==="script"||cap[1]==="style",text:cap[0]});continue}if(!bq&&top&&(cap=this.rules.def.exec(src))){src=src.substring(cap[0].length);this.tokens.links[cap[1].toLowerCase()]={href:cap[2],title:cap[3]};continue}if(top&&(cap=this.rules.table.exec(src))){src=src.substring(cap[0].length);item={type:"table",header:cap[1].replace(/^ *| *\| *$/g,"").split(/ *\| */),align:cap[2].replace(/^ *|\| *$/g,"").split(/ *\| */),cells:cap[3].replace(/(?: *\| *)?\n$/,"").split("\n")};for(i=0;i<item.align.length;i++){if(/^ *-+: *$/.test(item.align[i])){item.align[i]="right"}else if(/^ *:-+: *$/.test(item.align[i])){item.align[i]="center"}else if(/^ *:-+ *$/.test(item.align[i])){item.align[i]="left"}else{item.align[i]=null}}for(i=0;i<item.cells.length;i++){item.cells[i]=item.cells[i].replace(/^ *\| *| *\| *$/g,"").split(/ *\| */)}this.tokens.push(item);continue}if(top&&(cap=this.rules.paragraph.exec(src))){src=src.substring(cap[0].length);this.tokens.push({type:"paragraph",text:cap[1].charAt(cap[1].length-1)==="\n"?cap[1].slice(0,-1):cap[1]});continue}if(cap=this.rules.text.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"text",text:cap[0]});continue}if(src){throw new Error("Infinite loop on byte: "+src.charCodeAt(0))}}return this.tokens};var inline={escape:/^\\([\\`*{}\[\]()#+\-.!_>])/,autolink:/^<([^ >]+(@|:\/)[^ >]+)>/,url:noop,tag:/^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,link:/^!?\[(inside)\]\(href\)/,reflink:/^!?\[(inside)\]\s*\[([^\]]*)\]/,nolink:/^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/,strong:/^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/,em:/^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,code:/^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,br:/^ {2,}\n(?!\s*$)/,del:noop,text:/^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/};inline._inside=/(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/;inline._href=/\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/;inline.link=replace(inline.link)("inside",inline._inside)("href",inline._href)();inline.reflink=replace(inline.reflink)("inside",inline._inside)();inline.normal=merge({},inline);inline.pedantic=merge({},inline.normal,{strong:/^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,em:/^_(?=\S)([\s\S]*?\S)_(?!_)|^\*(?=\S)([\s\S]*?\S)\*(?!\*)/});inline.gfm=merge({},inline.normal,{escape:replace(inline.escape)("])","~|])")(),url:/^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/,del:/^~~(?=\S)([\s\S]*?\S)~~/,text:replace(inline.text)("]|","~]|")("|","|https?://|")()});inline.breaks=merge({},inline.gfm,{br:replace(inline.br)("{2,}","*")(),text:replace(inline.gfm.text)("{2,}","*")()});function InlineLexer(links,options){this.options=options||marked.defaults;this.links=links;this.rules=inline.normal;this.renderer=this.options.renderer||new Renderer;this.renderer.options=this.options;if(!this.links){throw new Error("Tokens array requires a `links` property.")}if(this.options.gfm){if(this.options.breaks){this.rules=inline.breaks}else{this.rules=inline.gfm}}else if(this.options.pedantic){this.rules=inline.pedantic}}InlineLexer.rules=inline;InlineLexer.output=function(src,links,options){var inline=new InlineLexer(links,options);return inline.output(src)};InlineLexer.prototype.output=function(src){var out="",link,text,href,cap;while(src){if(cap=this.rules.escape.exec(src)){src=src.substring(cap[0].length);out+=cap[1];continue}if(cap=this.rules.autolink.exec(src)){src=src.substring(cap[0].length);if(cap[2]==="@"){text=cap[1].charAt(6)===":"?this.mangle(cap[1].substring(7)):this.mangle(cap[1]);href=this.mangle("mailto:")+text}else{text=escape(cap[1]);href=text}out+=this.renderer.link(href,null,text);continue}if(!this.inLink&&(cap=this.rules.url.exec(src))){src=src.substring(cap[0].length);text=escape(cap[1]);href=text;out+=this.renderer.link(href,null,text);continue}if(cap=this.rules.tag.exec(src)){if(!this.inLink&&/^<a /i.test(cap[0])){this.inLink=true}else if(this.inLink&&/^<\/a>/i.test(cap[0])){this.inLink=false}src=src.substring(cap[0].length);out+=this.options.sanitize?escape(cap[0]):cap[0];continue}if(cap=this.rules.link.exec(src)){src=src.substring(cap[0].length);this.inLink=true;out+=this.outputLink(cap,{href:cap[2],title:cap[3]});this.inLink=false;continue}if((cap=this.rules.reflink.exec(src))||(cap=this.rules.nolink.exec(src))){src=src.substring(cap[0].length);link=(cap[2]||cap[1]).replace(/\s+/g," ");link=this.links[link.toLowerCase()];if(!link||!link.href){out+=cap[0].charAt(0);src=cap[0].substring(1)+src;continue}this.inLink=true;out+=this.outputLink(cap,link);this.inLink=false;continue}if(cap=this.rules.strong.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.strong(this.output(cap[2]||cap[1]));continue}if(cap=this.rules.em.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.em(this.output(cap[2]||cap[1]));continue}if(cap=this.rules.code.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.codespan(escape(cap[2],true));continue}if(cap=this.rules.br.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.br();continue}if(cap=this.rules.del.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.del(this.output(cap[1]));continue}if(cap=this.rules.text.exec(src)){src=src.substring(cap[0].length);out+=escape(this.smartypants(cap[0]));continue}if(src){throw new Error("Infinite loop on byte: "+src.charCodeAt(0))}}return out};InlineLexer.prototype.outputLink=function(cap,link){var href=escape(link.href),title=link.title?escape(link.title):null;return cap[0].charAt(0)!=="!"?this.renderer.link(href,title,this.output(cap[1])):this.renderer.image(href,title,escape(cap[1]))};InlineLexer.prototype.smartypants=function(text){if(!this.options.smartypants)return text;return text.replace(/--/g,"—").replace(/(^|[-\u2014/(\[{"\s])'/g,"$1‘").replace(/'/g,"’").replace(/(^|[-\u2014/(\[{\u2018\s])"/g,"$1“").replace(/"/g,"”").replace(/\.{3}/g,"…")};InlineLexer.prototype.mangle=function(text){var out="",l=text.length,i=0,ch;for(;i<l;i++){ch=text.charCodeAt(i);if(Math.random()>.5){ch="x"+ch.toString(16)}out+="&#"+ch+";"}return out};function Renderer(options){this.options=options||{}}Renderer.prototype.code=function(code,lang,escaped){if(this.options.highlight){var out=this.options.highlight(code,lang);if(out!=null&&out!==code){escaped=true;code=out}}if(!lang){return"<pre><code>"+(escaped?code:escape(code,true))+"\n</code></pre>"}return'<pre><code class="'+this.options.langPrefix+escape(lang,true)+'">'+(escaped?code:escape(code,true))+"\n</code></pre>\n"};Renderer.prototype.blockquote=function(quote){return"<blockquote>\n"+quote+"</blockquote>\n"};Renderer.prototype.html=function(html){return html};Renderer.prototype.heading=function(text,level,raw){return"<h"+level+' id="'+this.options.headerPrefix+raw.toLowerCase().replace(/[^\w]+/g,"-")+'">'+text+"</h"+level+">\n"};Renderer.prototype.hr=function(){return this.options.xhtml?"<hr/>\n":"<hr>\n"};Renderer.prototype.list=function(body,ordered){var type=ordered?"ol":"ul";return"<"+type+">\n"+body+"</"+type+">\n"};Renderer.prototype.listitem=function(text){return"<li>"+text+"</li>\n"};Renderer.prototype.paragraph=function(text){return"<p>"+text+"</p>\n"};Renderer.prototype.table=function(header,body){return"<table>\n"+"<thead>\n"+header+"</thead>\n"+"<tbody>\n"+body+"</tbody>\n"+"</table>\n"};Renderer.prototype.tablerow=function(content){return"<tr>\n"+content+"</tr>\n"};Renderer.prototype.tablecell=function(content,flags){var type=flags.header?"th":"td";var tag=flags.align?"<"+type+' style="text-align:'+flags.align+'">':"<"+type+">";return tag+content+"</"+type+">\n"};Renderer.prototype.strong=function(text){return"<strong>"+text+"</strong>"};Renderer.prototype.em=function(text){return"<em>"+text+"</em>"};Renderer.prototype.codespan=function(text){return"<code>"+text+"</code>"};Renderer.prototype.br=function(){return this.options.xhtml?"<br/>":"<br>"};Renderer.prototype.del=function(text){return"<del>"+text+"</del>"};Renderer.prototype.link=function(href,title,text){if(this.options.sanitize){try{var prot=decodeURIComponent(unescape(href)).replace(/[^\w:]/g,"").toLowerCase()}catch(e){return""}if(prot.indexOf("javascript:")===0){return""}}var out='<a href="'+href+'"';if(title){out+=' title="'+title+'"'}out+=">"+text+"</a>";return out};Renderer.prototype.image=function(href,title,text){var out='<img src="'+href+'" alt="'+text+'"';if(title){out+=' title="'+title+'"'}out+=this.options.xhtml?"/>":">";return out};function Parser(options){this.tokens=[];this.token=null;this.options=options||marked.defaults;this.options.renderer=this.options.renderer||new Renderer;this.renderer=this.options.renderer;this.renderer.options=this.options}Parser.parse=function(src,options,renderer){var parser=new Parser(options,renderer);return parser.parse(src)};Parser.prototype.parse=function(src){this.inline=new InlineLexer(src.links,this.options,this.renderer);this.tokens=src.reverse();var out="";while(this.next()){out+=this.tok()}return out};Parser.prototype.next=function(){return this.token=this.tokens.pop()};Parser.prototype.peek=function(){return this.tokens[this.tokens.length-1]||0};Parser.prototype.parseText=function(){var body=this.token.text;while(this.peek().type==="text"){body+="\n"+this.next().text}return this.inline.output(body)};Parser.prototype.tok=function(){switch(this.token.type){case"space":{return""}case"hr":{return this.renderer.hr()}case"heading":{return this.renderer.heading(this.inline.output(this.token.text),this.token.depth,this.token.text)}case"code":{return this.renderer.code(this.token.text,this.token.lang,this.token.escaped)}case"table":{var header="",body="",i,row,cell,flags,j;cell="";for(i=0;i<this.token.header.length;i++){flags={header:true,align:this.token.align[i]};cell+=this.renderer.tablecell(this.inline.output(this.token.header[i]),{header:true,align:this.token.align[i]})}header+=this.renderer.tablerow(cell);for(i=0;i<this.token.cells.length;i++){row=this.token.cells[i];cell="";for(j=0;j<row.length;j++){cell+=this.renderer.tablecell(this.inline.output(row[j]),{header:false,align:this.token.align[j]})}body+=this.renderer.tablerow(cell)}return this.renderer.table(header,body)}case"blockquote_start":{var body="";while(this.next().type!=="blockquote_end"){body+=this.tok()}return this.renderer.blockquote(body)}case"list_start":{var body="",ordered=this.token.ordered;while(this.next().type!=="list_end"){body+=this.tok()}return this.renderer.list(body,ordered)}case"list_item_start":{var body="";while(this.next().type!=="list_item_end"){body+=this.token.type==="text"?this.parseText():this.tok()}return this.renderer.listitem(body)}case"loose_item_start":{var body="";while(this.next().type!=="list_item_end"){body+=this.tok()}return this.renderer.listitem(body)}case"html":{var html=!this.token.pre&&!this.options.pedantic?this.inline.output(this.token.text):this.token.text;return this.renderer.html(html)}case"paragraph":{return this.renderer.paragraph(this.inline.output(this.token.text))}case"text":{return this.renderer.paragraph(this.parseText())}}};function escape(html,encode){return html.replace(!encode?/&(?!#?\w+;)/g:/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}function unescape(html){return html.replace(/&([#\w]+);/g,function(_,n){n=n.toLowerCase();if(n==="colon")return":";if(n.charAt(0)==="#"){return n.charAt(1)==="x"?String.fromCharCode(parseInt(n.substring(2),16)):String.fromCharCode(+n.substring(1))}return""})}function replace(regex,opt){regex=regex.source;opt=opt||"";return function self(name,val){if(!name)return new RegExp(regex,opt);val=val.source||val;val=val.replace(/(^|[^\[])\^/g,"$1");regex=regex.replace(name,val);return self}}function noop(){}noop.exec=noop;function merge(obj){var i=1,target,key;for(;i<arguments.length;i++){target=arguments[i];for(key in target){if(Object.prototype.hasOwnProperty.call(target,key)){obj[key]=target[key]}}}return obj}function marked(src,opt,callback){if(callback||typeof opt==="function"){if(!callback){callback=opt;opt=null}opt=merge({},marked.defaults,opt||{});var highlight=opt.highlight,tokens,pending,i=0;try{tokens=Lexer.lex(src,opt)}catch(e){return callback(e)}pending=tokens.length;var done=function(err){if(err){opt.highlight=highlight;return callback(err)}var out;try{out=Parser.parse(tokens,opt)}catch(e){err=e}opt.highlight=highlight;return err?callback(err):callback(null,out)};if(!highlight||highlight.length<3){return done()}delete opt.highlight;if(!pending)return done();for(;i<tokens.length;i++){(function(token){if(token.type!=="code"){return--pending||done()}return highlight(token.text,token.lang,function(err,code){if(err)return done(err);if(code==null||code===token.text){return--pending||done()}token.text=code;token.escaped=true;--pending||done()})})(tokens[i])}return}try{if(opt)opt=merge({},marked.defaults,opt);return Parser.parse(Lexer.lex(src,opt),opt)}catch(e){e.message+="\nPlease report this to https://github.com/chjj/marked.";if((opt||marked.defaults).silent){return"<p>An error occured:</p><pre>"+escape(e.message+"",true)+"</pre>"}throw e}}marked.options=marked.setOptions=function(opt){merge(marked.defaults,opt);return marked};marked.defaults={gfm:true,tables:true,breaks:false,pedantic:false,sanitize:false,smartLists:false,silent:false,highlight:null,langPrefix:"lang-",smartypants:false,headerPrefix:"",renderer:new Renderer,xhtml:false};marked.Parser=Parser;marked.parser=Parser.parse;marked.Renderer=Renderer;marked.Lexer=Lexer;marked.lexer=Lexer.lex;marked.InlineLexer=InlineLexer;marked.inlineLexer=InlineLexer.output;marked.parse=marked;if(typeof module!=="undefined"&&typeof exports==="object"){module.exports=marked}else if(typeof define==="function"&&define.amd){define(function(){return marked})}else{this.marked=marked}}).call(function(){return this||(typeof window!=="undefined"?window:global)}());
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/Class.coffee ---- */
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Class.coffee ---- */
 
 
 (function() {
@@ -485,7 +491,8 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/InlineEditor.coffee ---- */
+
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/InlineEditor.coffee ---- */
 
 
 (function() {
@@ -534,9 +541,9 @@ jQuery.extend( jQuery.easing,
       var _i, _results;
       this.content_before = this.elem.html();
       this.editor = $("<textarea class='editor'></textarea>");
-      this.editor.css("outline", "10000px solid rgba(255,255,255,0)").cssLater("transition", "outline 0.3s", 5).cssLater("outline", "10000px solid rgba(255,255,255,0.9)", 10);
       this.editor.val(this.getContent(this.elem, "raw"));
       this.elem.after(this.editor);
+      $(".editbg").css("display", "block").cssLater("opacity", 0.9, 10);
       this.elem.html((function() {
         _results = [];
         for (_i = 1; _i <= 50; _i++){ _results.push(_i); }
@@ -570,9 +577,12 @@ jQuery.extend( jQuery.easing,
     };
 
     InlineEditor.prototype.stopEdit = function() {
-      this.editor.remove();
+      if (this.editor) {
+        this.editor.remove();
+      }
       this.editor = null;
       this.elem.css("display", "");
+      $(".editbg").css("opacity", 0).cssLater("display", "none", 300);
       $(".editable-edit").css("display", "");
       $(".editbar").cssLater("display", "none", 1000).removeClass("visible");
       $(".publishbar").css("opacity", 1);
@@ -683,34 +693,43 @@ jQuery.extend( jQuery.easing,
 
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/LimitRate.coffee ---- */
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/RateLimit.coffee ---- */
 
 
 (function() {
-  var limits;
+  var call_after_interval, limits;
 
   limits = {};
 
-  window.LimitRate = function(fn, interval) {
+  call_after_interval = {};
+
+  window.RateLimit = function(interval, fn) {
     if (!limits[fn]) {
+      call_after_interval[fn] = false;
+      fn();
       return limits[fn] = setTimeout((function() {
-        fn();
-        return delete limits[fn];
+        if (call_after_interval[fn]) {
+          fn();
+        }
+        delete limits[fn];
+        return delete call_after_interval[fn];
       }), interval);
+    } else {
+      return call_after_interval[fn] = true;
     }
   };
 
 }).call(this);
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/Text.coffee ---- */
+
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Text.coffee ---- */
 
 
 (function() {
   var Renderer, Text,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __hasProp = {}.hasOwnProperty,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+    __hasProp = {}.hasOwnProperty;
 
   Renderer = (function(_super) {
     __extends(Renderer, _super);
@@ -728,23 +747,22 @@ jQuery.extend( jQuery.easing,
   })(marked.Renderer);
 
   Text = (function() {
-    function Text() {
-      this.toUrl = __bind(this.toUrl, this);
-    }
+    function Text() {}
 
     Text.prototype.toColor = function(text) {
-      var color, hash, i, value, _i, _j, _ref;
+      var hash, i, _i, _ref;
       hash = 0;
       for (i = _i = 0, _ref = text.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
-        hash = text.charCodeAt(i) + ((hash << 5) - hash);
+        hash += text.charCodeAt(i) * i;
       }
-      color = '#';
       return "hsl(" + (hash % 360) + ",30%,50%)";
-      for (i = _j = 0; _j <= 2; i = ++_j) {
-        value = (hash >> (i * 8)) & 0xFF;
-        color += ('00' + value.toString(16)).substr(-2);
-      }
-      return color;
+
+      /*
+      		for i in [0..2]
+      			value = (hash >> (i * 8)) & 0xFF
+      			color += ('00' + value.toString(16)).substr(-2)
+      		return color
+       */
     };
 
     Text.prototype.toMarked = function(text, options) {
@@ -778,6 +796,14 @@ jQuery.extend( jQuery.easing,
       return text.replace(/[^A-Za-z0-9]/g, "+").replace(/[+]+/g, "+").replace(/[+]+$/, "");
     };
 
+    Text.prototype.toBitcoinAddress = function(text) {
+      return text.replace(/[^A-Za-z0-9]/g, "");
+    };
+
+    Text.prototype.jsonEncode = function(obj) {
+      return btoa(unescape(encodeURIComponent(JSON.stringify(obj, void 0, '\t'))));
+    };
+
     return Text;
 
   })();
@@ -791,7 +817,8 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/Time.coffee ---- */
+
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Time.coffee ---- */
 
 
 (function() {
@@ -853,15 +880,15 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/utils/ZeroFrame.coffee ---- */
+
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/ZeroFrame.coffee ---- */
 
 
 (function() {
   var ZeroFrame,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __hasProp = {}.hasOwnProperty,
-    __slice = [].slice;
+    __hasProp = {}.hasOwnProperty;
 
   ZeroFrame = (function(_super) {
     __extends(ZeroFrame, _super);
@@ -869,7 +896,7 @@ jQuery.extend( jQuery.easing,
     function ZeroFrame(url) {
       this.onCloseWebsocket = __bind(this.onCloseWebsocket, this);
       this.onOpenWebsocket = __bind(this.onOpenWebsocket, this);
-      this.route = __bind(this.route, this);
+      this.onRequest = __bind(this.onRequest, this);
       this.onMessage = __bind(this.onMessage, this);
       this.url = url;
       this.waiting_cb = {};
@@ -907,12 +934,12 @@ jQuery.extend( jQuery.easing,
       } else if (cmd === "wrapperClosedWebsocket") {
         return this.onCloseWebsocket();
       } else {
-        return this.route(cmd, message);
+        return this.onRequest(cmd, message);
       }
     };
 
-    ZeroFrame.prototype.route = function(cmd, message) {
-      return this.log("Unknown command", message);
+    ZeroFrame.prototype.onRequest = function(cmd, message) {
+      return this.log("Unknown request", message);
     };
 
     ZeroFrame.prototype.response = function(to, result) {
@@ -948,12 +975,6 @@ jQuery.extend( jQuery.easing,
       }
     };
 
-    ZeroFrame.prototype.log = function() {
-      var args;
-      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-      return console.log.apply(console, ["[ZeroFrame]"].concat(__slice.call(args)));
-    };
-
     ZeroFrame.prototype.onOpenWebsocket = function() {
       return this.log("Websocket open");
     };
@@ -971,7 +992,8 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/TopicList.coffee ---- */
+
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicList.coffee ---- */
 
 
 (function() {
@@ -985,18 +1007,17 @@ jQuery.extend( jQuery.easing,
 
     function TopicList() {
       this.submitTopicVote = __bind(this.submitTopicVote, this);
-      this.loadTopicsStat = __bind(this.loadTopicsStat, this);
       this.thread_sorter = null;
-      this.parent_topic_hash = void 0;
-      this.topic_parent_hashes = {};
+      this.parent_topic_uri = void 0;
+      this.topic_parent_uris = {};
     }
 
-    TopicList.prototype.actionList = function(parent_topic_id, parent_topic_user_id) {
+    TopicList.prototype.actionList = function(parent_topic_id, parent_topic_user_address) {
       $(".topics-loading").cssLater("top", "0px", 200);
       if (parent_topic_id) {
         $(".topics-title").html("&nbsp;");
-        this.parent_topic_hash = parent_topic_id + "@" + parent_topic_user_id;
-        Page.local_storage["topic." + parent_topic_id + "_" + parent_topic_user_id + ".visited"] = Time.timestamp();
+        this.parent_topic_uri = parent_topic_id + "_" + parent_topic_user_address;
+        Page.local_storage["topic." + parent_topic_id + "_" + parent_topic_user_address + ".visited"] = Time.timestamp();
         Page.cmd("wrapperSetLocalStorage", Page.local_storage);
       } else {
         $(".topics-title").html("Newest topics");
@@ -1017,8 +1038,8 @@ jQuery.extend( jQuery.easing,
       })(this));
     };
 
-    TopicList.prototype.dbloadTopics = function(type, cb) {
-      var last_elem, topic_group_action, topic_group_after, where;
+    TopicList.prototype.loadTopics = function(type, cb) {
+      var last_elem, query, topic_group_action, topic_group_after, where;
       if (type == null) {
         type = "list";
       }
@@ -1028,46 +1049,47 @@ jQuery.extend( jQuery.easing,
       this.logStart("Load topics...");
       topic_group_action = {};
       topic_group_after = {};
-      if (this.parent_topic_hash) {
-        where = "WHERE parent_topic_hash = '" + this.parent_topic_hash + "' OR row_topic_hash = '" + this.parent_topic_hash + "'";
+      if (this.parent_topic_uri) {
+        where = "WHERE parent_topic_uri = '" + this.parent_topic_uri + "' OR row_topic_uri = '" + this.parent_topic_uri + "'";
       } else {
         where = "";
       }
       last_elem = $(".topics-list .topic.template");
-      return Page.cmd("dbQuery", ["SELECT COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, topic.*, topic_creator_user.user_name AS topic_creator_user_name, topic_creator_user.user_id AS topic_creator_user_id, topic_creator_user.path AS topic_creator_file, topic.topic_id || '@' || topic_creator_user.user_id AS row_topic_hash, (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_hash = topic.topic_id || '@' || topic_creator_user.user_id)+1 AS votes FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) LEFT JOIN user AS topic_creator_user ON (topic_creator_json.path = topic_creator_user.path) LEFT JOIN comment ON (comment.topic_hash = row_topic_hash) " + where + " GROUP BY topic.topic_id, topic.json_id ORDER BY CASE WHEN last_comment THEN last_comment ELSE topic.added END DESC"], (function(_this) {
+      query = "SELECT \n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes\nFROM topic \nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_uri)\n" + where + "\nGROUP BY topic.topic_id, topic.json_id\nORDER BY CASE WHEN last_comment THEN last_comment ELSE topic.added END DESC";
+      return Page.cmd("dbQuery", [query], (function(_this) {
         return function(topics) {
-          var elem, topic, topic_address, topic_parent, _i, _len;
+          var elem, topic, topic_parent, topic_uri, _i, _len;
           for (_i = 0, _len = topics.length; _i < _len; _i++) {
             topic = topics[_i];
-            if (topic.parent_topic_hash && !topic_group_action[topic.parent_topic_hash]) {
+            topic_uri = topic.row_topic_uri;
+            if (topic.parent_topic_uri && !topic_group_action[topic.parent_topic_uri]) {
               if (topic.last_comment) {
-                topic_group_action[topic.parent_topic_hash] = topic.last_comment;
+                topic_group_action[topic.parent_topic_uri] = topic.last_comment;
               } else {
-                topic_group_action[topic.parent_topic_hash] = topic.added;
+                topic_group_action[topic.parent_topic_uri] = topic.added;
               }
-              topic_group_after[topic.parent_topic_hash] = last_elem;
+              topic_group_after[topic.parent_topic_uri] = last_elem;
             }
-            if (topic.parent_topic_hash && _this.parent_topic_hash !== topic.parent_topic_hash) {
+            if (topic.parent_topic_uri && _this.parent_topic_uri !== topic.parent_topic_uri) {
               continue;
             }
-            if (_this.parent_topic_hash && topic.row_topic_hash === _this.parent_topic_hash) {
+            if (_this.parent_topic_uri && topic_uri === _this.parent_topic_uri) {
               topic_parent = topic;
               continue;
             }
             if (topic.type === "group") {
-              topic.last_comment = topic_group_action[topic.row_topic_hash];
+              topic.last_comment = topic_group_action[topic_uri];
             }
-            topic_address = topic.row_topic_hash.replace("@", "_");
-            elem = $("#topic_" + topic_address);
+            elem = $("#topic_" + topic_uri);
             if (elem.length === 0) {
-              elem = $(".topics-list .topic.template").clone().removeClass("template").attr("id", "topic_" + topic_address);
+              elem = $(".topics-list .topic.template").clone().removeClass("template").attr("id", "topic_" + topic_uri);
               if (type !== "noanim") {
                 elem.cssSlideDown();
               }
             }
             if (topic.type === "group") {
-              if (topic_group_after[topic.row_topic_hash]) {
-                elem.insertBefore(topic_group_after[topic.row_topic_hash].nextAll(":not(.topic-group):first"));
+              if (topic_group_after[topic_uri]) {
+                elem.insertBefore(topic_group_after[topic.row_topic_uri].nextAll(":not(.topic-group):first"));
               } else {
                 elem.insertAfter(last_elem);
                 last_elem = elem;
@@ -1089,318 +1111,34 @@ jQuery.extend( jQuery.easing,
           } else {
             $(".topics-loading").remove();
           }
-          if (_this.parent_topic_hash) {
+          if (_this.parent_topic_uri) {
             $(".topics-title").html("<span class='parent-link'><a href='?Main'>Main</a> &rsaquo;</span> " + topic_parent.title);
           }
           $(".topics").css("opacity", 1);
           if (cb) {
             return cb();
           }
-        };
-      })(this));
-    };
-
-    TopicList.prototype.loadTopics = function(type, cb) {
-      if (type == null) {
-        type = "list";
-      }
-      if (cb == null) {
-        cb = false;
-      }
-      if (Page.has_db) {
-        return this.dbloadTopics(type, cb);
-      }
-      this.logStart("Load topics...");
-      return Page.cmd("fileQuery", ["data/users/*/data.json", "topics"], (function(_this) {
-        return function(topics) {
-          var elem, last_elem, topic, topic_address, topic_hash, topic_parent, _i, _len;
-          topics.sort(function(a, b) {
-            return a.added - b.added;
-          });
-          last_elem = null;
-          topic_parent = null;
-          for (_i = 0, _len = topics.length; _i < _len; _i++) {
-            topic = topics[_i];
-            topic_address = topic.topic_id + "_" + Users.to_id[topic.inner_path];
-            topic_hash = topic_address.replace("_", "@");
-            if (topic_hash === _this.parent_topic_hash) {
-              topic_parent = topic;
-            }
-            if (topic.parent_topic_hash) {
-              _this.topic_parent_hashes[topic_hash] = topic.parent_topic_hash;
-            }
-            if (topic.parent_topic_hash !== _this.parent_topic_hash) {
-              continue;
-            }
-            elem = $("#topic_" + topic_address);
-            if (elem.length === 0) {
-              elem = $(".topics-list .topic.template").clone().removeClass("template").attr("id", "topic_" + topic_address);
-              if (type !== "noanim") {
-                elem.cssSlideDown();
-              }
-              elem.appendTo(".topics");
-            }
-            _this.applyTopicData(elem, topic);
-          }
-          $("body").css({
-            "overflow": "auto",
-            "height": "auto"
-          });
-          if (parseInt($(".topics-loading").css("top")) > -30) {
-            $(".topics-loading").css("top", "-30px");
-          } else {
-            $(".topics-loading").remove();
-          }
-          if (_this.parent_topic_hash) {
-            $(".topics-title").html("<span class='parent-link'><a href='?Main'>Main</a> &rsaquo;</span> " + topic_parent.title);
-          }
-          _this.logEnd("Load topics...");
-          Page.addInlineEditors();
-          if (Page.site_info.tasks === 0) {
-            _this.loadTopicsStat(type);
-          } else {
-            clearInterval(_this.thread_sorter);
-            _this.thread_sorter = setTimeout((function() {
-              return _this.loadTopicsStat(type);
-            }), 100);
-          }
-          if (cb) {
-            return cb();
-          }
-        };
-      })(this));
-    };
-
-    TopicList.prototype.loadTopicsStat = function(type) {
-      if (type == null) {
-        type = "list";
-      }
-      this.logStart("Load topics stats...");
-      return Page.cmd("fileQuery", ["data/users/*/data.json", ""], (function(_this) {
-        return function(users) {
-          var comment, comment_address, comment_stats, comments, elem, last, my_comment_votes, my_topic_votes, parent_topic_address, parent_topic_id, stat, stats, topic, topic_address, topic_hash, topics, user, user_id, visited, vote, votes, _base, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3, _ref4;
-          $(".topics").css("opacity", 1);
-          stats = {};
-          comment_stats = {};
-          my_topic_votes = {};
-          my_comment_votes = {};
-          for (_i = 0, _len = users.length; _i < _len; _i++) {
-            user = users[_i];
-            user_id = Users.to_id[user.inner_path];
-            _ref = user.topics;
-            for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
-              topic = _ref[_j];
-              topic_address = topic.topic_id + "_" + user_id;
-              if (stats[topic_address] == null) {
-                stats[topic_address] = {
-                  "comments": 0,
-                  "last": {
-                    "added": topic.added
-                  },
-                  "votes": 1
-                };
-              }
-              if (!stats[topic_address]["last"]) {
-                stats[topic_address]["last"] = {
-                  "added": topic.added
-                };
-              }
-              if (topic.parent_topic_hash) {
-                parent_topic_id = topic.parent_topic_hash.replace("@", "_");
-                if (stats[parent_topic_id] == null) {
-                  stats[parent_topic_id] = {
-                    "comments": 0,
-                    "last": {
-                      "added": topic.added
-                    },
-                    "votes": 1
-                  };
-                }
-                if ((_base = stats[parent_topic_id])["last"] == null) {
-                  _base["last"] = {
-                    "added": topic.added
-                  };
-                }
-                stats[parent_topic_id]["group"] = true;
-                if (topic.added > stats[parent_topic_id]["last"]["added"]) {
-                  stats[parent_topic_id]["last"]["added"] = topic.added;
-                }
-              }
-              if (type === "show" && topic_address.replace("_", "@") === TopicShow.topic.parent_topic_hash) {
-                $(".topic-title").html("<span class='parent-link'><a href='?Main'>Main</a> &rsaquo;</span> <span class='parent-link'><a href='?Topics:" + topic.topic_id + "@" + user_id + "/" + (Text.toUrl(topic.title)) + "'>" + topic.title + "</a> &rsaquo;</span> " + TopicShow.topic.title);
-              }
-            }
-            _ref1 = user["topic_votes"];
-            for (topic_address in _ref1) {
-              vote = _ref1[topic_address];
-              topic_address = topic_address.replace("@", "_");
-              if (stats[topic_address] == null) {
-                stats[topic_address] = {
-                  "comments": 0,
-                  "last": null,
-                  "votes": 1
-                };
-              }
-              if (vote === 1) {
-                stats[topic_address]["votes"] += 1;
-              }
-            }
-            if (type === "show") {
-              _ref2 = user["comment_votes"];
-              for (comment_address in _ref2) {
-                vote = _ref2[comment_address];
-                comment_address = comment_address.replace("@", "_");
-                if (comment_stats[comment_address] == null) {
-                  comment_stats[comment_address] = 1;
-                }
-                if (vote === 1) {
-                  comment_stats[comment_address] += 1;
-                }
-              }
-            }
-            if (user_id === Users.my_id) {
-              if (user["topic_votes"]) {
-                my_topic_votes = user["topic_votes"];
-              }
-              if (user["comment_votes"]) {
-                my_comment_votes = user["comment_votes"];
-              }
-            }
-            _ref3 = user["comments"];
-            for (topic_hash in _ref3) {
-              comments = _ref3[topic_hash];
-              topic_address = topic_hash.replace("@", "_");
-              for (_k = 0, _len2 = comments.length; _k < _len2; _k++) {
-                comment = comments[_k];
-                if (stats[topic_address] == null) {
-                  stats[topic_address] = {
-                    "comments": 0,
-                    "last": null,
-                    "votes": 1
-                  };
-                }
-                last = stats[topic_address]["last"];
-                stats[topic_address]["comments"] += 1;
-                if (!last || comment["added"] > last["added"]) {
-                  comment["auth_address"] = user["inner_path"];
-                  stats[topic_address]["last"] = comment;
-                }
-                parent_topic_address = (_ref4 = _this.topic_parent_hashes[topic_hash]) != null ? _ref4.replace("@", "_") : void 0;
-                if (parent_topic_address) {
-                  if (stats[parent_topic_address] == null) {
-                    stats[parent_topic_address] = {
-                      "comments": 0,
-                      "last": null,
-                      "votes": 1
-                    };
-                  }
-                  last = stats[parent_topic_address]["last"];
-                  stats[parent_topic_address]["comments"] += 1;
-                  if (!last || comment["added"] > last["added"]) {
-                    comment["auth_address"] = user["inner_path"];
-                    stats[parent_topic_address]["last"] = $.extend({}, comment);
-                  }
-                }
-              }
-            }
-          }
-          for (topic_address in stats) {
-            stat = stats[topic_address];
-            elem = $("#topic_" + topic_address);
-            if (stat["last"] == null) {
-              stat["last"] = {
-                "added": 0
-              };
-            }
-            if (type !== "show") {
-              if (stat.group) {
-                $(".comment-num", elem).text("last activity");
-                $(".added", elem).text(Time.since(stat["last"]["added"]));
-              } else if (stat.comments > 0) {
-                $(".comment-num", elem).text(stat.comments + " comment");
-                $(".added", elem).text("last " + Time.since(stat["last"]["added"]));
-              } else {
-                $(".comment-num", elem).text("0 comments");
-                $(".added", elem).text(Time.since(stat["last"]["added"]));
-              }
-            }
-            if (my_topic_votes[topic_address.replace("_", "@")]) {
-              $(".score-inactive .score-num", elem).text(stat["votes"] - 1);
-              $(".score-active .score-num", elem).text(stat["votes"]);
-              $(".score", elem).addClass("active");
-            } else {
-              $(".score-inactive .score-num", elem).text(stat["votes"]);
-              $(".score-active .score-num", elem).text(stat["votes"] + 1);
-            }
-            $(".score", elem).off("click").on("click", _this.submitTopicVote);
-          }
-          if (type !== "show") {
-            topics = (function() {
-              var _results;
-              _results = [];
-              for (topic_address in stats) {
-                stat = stats[topic_address];
-                _results.push([topic_address, stat.last.added]);
-              }
-              return _results;
-            })();
-            topics.sort(function(a, b) {
-              return a[1] - b[1];
-            });
-            for (_l = 0, _len3 = topics.length; _l < _len3; _l++) {
-              topic = topics[_l];
-              topic_address = topic[0];
-              elem = $("#topic_" + topic_address);
-              elem.prependTo(".topics");
-              visited = Page.local_storage["topic." + topic_address + ".visited"];
-              if (!visited) {
-                elem.addClass("visit-none");
-              } else if (visited < topic[1]) {
-                elem.addClass("visit-newcomment");
-              }
-            }
-          }
-          if (type === "show") {
-            for (comment_address in comment_stats) {
-              votes = comment_stats[comment_address];
-              elem = $("#comment_score_" + comment_address);
-              if (my_comment_votes[comment_address.replace("_", "@")]) {
-                $(".score-inactive .score-num", elem).text(votes - 1);
-                $(".score-active .score-num", elem).text(votes);
-                elem.addClass("active");
-              } else {
-                $(".score-inactive .score-num", elem).text(votes);
-                $(".score-active .score-num", elem).text(votes + 1);
-              }
-            }
-          }
-          return _this.logEnd("Load topics stats...");
         };
       })(this));
     };
 
     TopicList.prototype.applyTopicData = function(elem, topic, type) {
-      var body, last_action, title_hash, topic_address, url, url_match, user_id, user_name, visited;
+      var body, last_action, title_hash, topic_uri, url, url_match, visited;
       if (type == null) {
         type = "list";
       }
       title_hash = Text.toUrl(topic.title);
-      if (topic.row_topic_hash) {
-        topic_address = topic.row_topic_hash;
-      } else {
-        user_id = Users.to_id[topic.inner_path];
-        topic_address = topic.topic_id + "@" + user_id;
-      }
+      topic_uri = topic.row_topic_uri;
       $(".title .title-link", elem).text(topic.title);
-      $(".title .title-link, a.image, .comment-num", elem).attr("href", "?Topic:" + topic_address + "/" + title_hash);
-      elem.data("topic_address", topic_address);
+      $(".title .title-link, a.image, .comment-num", elem).attr("href", "?Topic:" + topic_uri + "/" + title_hash);
+      elem.data("topic_uri", topic_uri);
       body = topic.body;
-      url_match = topic.body.match(/http[s]{0,1}:\/\/[^"', $]+/);
+      url_match = body.match(/http[s]{0,1}:\/\/[^"', $]+/);
       if (topic.type === "group") {
         $(elem).addClass("topic-group");
         $(".image .icon", elem).removeClass("icon-topic-chat").addClass("icon-topic-group");
         $(".link", elem).css("display", "none");
-        $(".title .title-link, a.image, .comment-num", elem).attr("href", "?Topics:" + topic_address + "/" + title_hash);
+        $(".title .title-link, a.image, .comment-num", elem).attr("href", "?Topics:" + topic_uri + "/" + title_hash);
       } else if (url_match) {
         url = url_match[0];
         if (type !== "show") {
@@ -1420,54 +1158,49 @@ jQuery.extend( jQuery.easing,
       } else {
         $(".body", elem).text(body);
       }
-      if (Page.has_db) {
-        if (type !== "show") {
-          last_action = Math.max(topic.last_comment, topic.added);
-          if (topic.type === "group") {
-            $(".comment-num", elem).text("last activity");
-            $(".added", elem).text(Time.since(last_action));
-          } else if (topic.comments_num > 0) {
-            $(".comment-num", elem).text(topic.comments_num + " comment");
-            $(".added", elem).text("last " + Time.since(last_action));
-          } else {
-            $(".comment-num", elem).text("0 comments");
-            $(".added", elem).text(Time.since(last_action));
-          }
-        }
-        $(".user_name", elem).text(topic.topic_creator_user_name).attr("title", topic.topic_creator_file.replace("/data.json", ""));
-        if (Users.my_topic_votes[topic_address]) {
-          $(".score-inactive .score-num", elem).text(topic.votes - 1);
-          $(".score-active .score-num", elem).text(topic.votes);
-          $(".score", elem).addClass("active");
+      if (type !== "show") {
+        last_action = Math.max(topic.last_comment, topic.added);
+        if (topic.type === "group") {
+          $(".comment-num", elem).text("last activity");
+          $(".added", elem).text(Time.since(last_action));
+        } else if (topic.comments_num > 0) {
+          $(".comment-num", elem).text(topic.comments_num + " comment");
+          $(".added", elem).text("last " + Time.since(last_action));
         } else {
-          $(".score-inactive .score-num", elem).text(topic.votes);
-          $(".score-active .score-num", elem).text(topic.votes + 1);
+          $(".comment-num", elem).text("0 comments");
+          $(".added", elem).text(Time.since(last_action));
         }
-        $(".score", elem).off("click").on("click", this.submitTopicVote);
-        visited = Page.local_storage["topic." + (topic_address.replace("@", "_")) + ".visited"];
-        if (!visited) {
-          elem.addClass("visit-none");
-        } else if (visited < last_action) {
-          elem.addClass("visit-newcomment");
-        }
+      }
+      $(".user_name", elem).text(topic.topic_creator_user_name.replace(/@.*/, "")).attr("title", topic.topic_creator_user_name + ": " + topic.topic_creator_address);
+      if (User.my_topic_votes[topic_uri]) {
+        $(".score-inactive .score-num", elem).text(topic.votes - 1);
+        $(".score-active .score-num", elem).text(topic.votes);
+        $(".score", elem).addClass("active");
       } else {
-        user_name = Users.to_name[topic.inner_path];
-        $(".user_name", elem).text(user_name).attr("title", topic.inner_path);
+        $(".score-inactive .score-num", elem).text(topic.votes);
+        $(".score-active .score-num", elem).text(topic.votes + 1);
+      }
+      $(".score", elem).off("click").on("click", this.submitTopicVote);
+      visited = Page.local_storage["topic." + topic_uri + ".visited"];
+      if (!visited) {
+        elem.addClass("visit-none");
+      } else if (visited < last_action) {
+        elem.addClass("visit-newcomment");
       }
       if (type === "show") {
         $(".added", elem).text(Time.since(topic.added));
       }
-      if (topic.inner_path === Users.my_address || topic.topic_creator_user_id === Users.my_id) {
-        $(elem).attr("data-object", "Topic:" + topic_address).attr("data-deletable", "yes");
+      if (topic.topic_creator_address === Page.site_info.auth_address) {
+        $(elem).attr("data-object", "Topic:" + topic_uri).attr("data-deletable", "yes");
         $(".title .title-link", elem).attr("data-editable", "title").data("content", topic.title);
         return $(".body", elem).attr("data-editable", "body").data("content", topic.body);
       }
     };
 
     TopicList.prototype.submitCreateTopic = function() {
-      var body, inner_path, title;
-      if (!Users.my_name) {
-        Page.cmd("wrapperNotification", ["info", "Please, request access before posting."]);
+      var body, title;
+      if (!Page.site_info.cert_user_id) {
+        Page.cmd("wrapperNotification", ["info", "Please, your choose account before creating a topic."]);
         return false;
       }
       title = $(".topic-new #topic_title").val();
@@ -1476,36 +1209,29 @@ jQuery.extend( jQuery.easing,
         return $(".topic-new #topic_title").focus();
       }
       $(".topic-new .button-submit").addClass("loading");
-      inner_path = "data/users/" + Users.my_address + "/data.json";
-      return Page.cmd("fileGet", [inner_path], (function(_this) {
+      return User.getData((function(_this) {
         return function(data) {
           var topic;
-          data = JSON.parse(data);
           topic = {
             "topic_id": data.next_topic_id,
             "title": title,
             "body": body,
             "added": Time.timestamp()
           };
-          if (_this.parent_topic_hash) {
-            topic.parent_topic_hash = _this.parent_topic_hash;
+          if (_this.parent_topic_uri) {
+            topic.parent_topic_uri = _this.parent_topic_uri;
           }
-          data.topics.push(topic);
+          data.topic.push(topic);
           data.next_topic_id += 1;
-          return Page.writePublish(inner_path, Page.jsonEncode(data), function(res) {
+          return User.publishData(data, function(res) {
             $(".topic-new .button-submit").removeClass("loading");
-            if (res === true) {
-              _this.log("File written");
-              $(".topic-new").slideUp();
-              $(".topic-new-link").slideDown();
-              setTimeout((function() {
-                return _this.loadTopics();
-              }), 600);
-              $(".topic-new #topic_body").val("");
-              return $(".topic-new #topic_title").val("");
-            } else {
-              return Page.cmd("wrapperNotification", ["error", "File write error: " + res]);
-            }
+            $(".topic-new").slideUp();
+            $(".topic-new-link").slideDown();
+            setTimeout((function() {
+              return _this.loadTopics();
+            }), 600);
+            $(".topic-new #topic_body").val("");
+            return $(".topic-new #topic_title").val("");
           });
         };
       })(this));
@@ -1513,33 +1239,27 @@ jQuery.extend( jQuery.easing,
 
     TopicList.prototype.submitTopicVote = function(e) {
       var elem, inner_path;
-      if (!Users.my_name) {
-        Page.cmd("wrapperNotification", ["info", "Please, request access before posting."]);
+      if (!Page.site_info.cert_user_id) {
+        Page.cmd("wrapperNotification", ["info", "Please, your choose account before upvoting."]);
         return false;
       }
       elem = $(e.currentTarget);
       elem.toggleClass("active").addClass("loading");
-      inner_path = "data/users/" + Users.my_address + "/data.json";
-      Page.cmd("fileGet", [inner_path], (function(_this) {
+      inner_path = "data/users/" + User.my_address + "/data.json";
+      User.getData((function(_this) {
         return function(data) {
-          var topic_address;
-          data = JSON.parse(data);
-          if (data.topic_votes == null) {
-            data.topic_votes = {};
+          var topic_uri;
+          if (data.topic_vote == null) {
+            data.topic_vote = {};
           }
-          topic_address = elem.parents(".topic").data("topic_address");
+          topic_uri = elem.parents(".topic").data("topic_uri");
           if (elem.hasClass("active")) {
-            data.topic_votes[topic_address] = 1;
+            data.topic_vote[topic_uri] = 1;
           } else {
-            delete data.topic_votes[topic_address];
+            delete data.topic_vote[topic_uri];
           }
-          return Page.writePublish(inner_path, Page.jsonEncode(data), function(res) {
-            elem.removeClass("loading");
-            if (res === true) {
-              return _this.log("File written");
-            } else {
-              return elem.toggleClass("active");
-            }
+          return User.publishData(data, function(res) {
+            return elem.removeClass("loading");
           });
         };
       })(this));
@@ -1555,7 +1275,8 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/TopicShow.coffee ---- */
+
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicShow.coffee ---- */
 
 
 (function() {
@@ -1572,43 +1293,59 @@ jQuery.extend( jQuery.easing,
       return TopicShow.__super__.constructor.apply(this, arguments);
     }
 
-    TopicShow.prototype.actionShow = function(topic_id, topic_user_id) {
+    TopicShow.prototype.actionShow = function(topic_id, topic_user_address) {
+      var textarea;
       this.topic_id = topic_id;
-      this.topic_user_id = topic_user_id;
+      this.topic_user_address = topic_user_address;
+      this.topic_uri = this.topic_id + "_" + this.topic_user_address;
       this.topic = null;
       this.loadTopic();
       this.loadComments("noanim");
-      return $(".comment-new .button-submit").on("click", (function(_this) {
+      $(".comment-new .button-submit-form").on("click", (function(_this) {
         return function() {
           _this.submitComment();
           return false;
         };
       })(this));
+      textarea = $(".comment-new #comment_body");
+      return $(".comment-new #comment_body").on("input", (function(_this) {
+        return function() {
+          var current_size;
+          if (User.rules.max_size) {
+            if (textarea.val().length > 0) {
+              current_size = User.rules.current_size + textarea.val().length + 90;
+            } else {
+              current_size = User.rules.current_size;
+            }
+            return User.setCurrentSize(current_size);
+          }
+        };
+      })(this));
     };
 
-    TopicShow.prototype.queryTopic = function(topic_id, topic_user_id) {
-      return "SELECT topic.*, topic_creator_user.user_name AS topic_creator_user_name, topic_creator_user.user_id AS topic_creator_user_id, topic_creator_user.path AS topic_creator_file, topic.topic_id || '@' || topic_creator_user.user_id AS row_topic_hash, (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_hash = topic.topic_id || '@' || topic_creator_user.user_id)+1 AS votes FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) LEFT JOIN user AS topic_creator_user ON (topic_creator_json.path = topic_creator_user.path) WHERE topic.topic_id = " + topic_id + " AND topic_creator_user_id = " + topic_user_id + " LIMIT 1";
+    TopicShow.prototype.queryTopic = function(topic_id, topic_user_address) {
+      return "SELECT topic.*, topic_creator_user.value AS topic_creator_user_name, topic_creator_content.directory AS topic_creator_address, topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri, (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) LEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json') LEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id') WHERE topic.topic_id = " + topic_id + " AND topic_creator_address = '" + topic_user_address + "' LIMIT 1";
     };
 
-    TopicShow.prototype.dbLoadTopic = function(cb) {
+    TopicShow.prototype.loadTopic = function(cb) {
       if (cb == null) {
         cb = false;
       }
       this.logStart("Loading topic...");
-      $(".topic-full").attr("id", "topic_" + this.topic_id + "_" + this.topic_user_id);
+      $(".topic-full").attr("id", "topic_" + this.topic_uri);
       $(".topic-title").css("display", "none");
-      return Page.cmd("dbQuery", [this.queryTopic(this.topic_id, this.topic_user_id)], (function(_this) {
+      return Page.cmd("dbQuery", [this.queryTopic(this.topic_id, this.topic_user_address)], (function(_this) {
         return function(res) {
-          var parent_topic_id, parent_topic_user_id, _ref;
+          var parent_topic_id, parent_topic_user_address, _ref;
           _this.topic = res[0];
           TopicList.applyTopicData($(".topic-full"), _this.topic, "show");
           if (_this.topic.parent_topic_hash) {
             $(".topic-title").html("&nbsp;").css("display", "");
-            _ref = _this.topic.parent_topic_hash.split("@"), parent_topic_id = _ref[0], parent_topic_user_id = _ref[1];
-            Page.cmd("dbQuery", [_this.queryTopic(parent_topic_id, parent_topic_user_id)], function(parent_res) {
+            _ref = _this.topic.parent_topic_hash.split("@"), parent_topic_id = _ref[0], parent_topic_user_address = _ref[1];
+            Page.cmd("dbQuery", [_this.queryTopic(parent_topic_id, parent_topic_user_address)], function(parent_res) {
               var parent_topic;
               parent_topic = parent_res[0];
-              return $(".topic-title").html("<span class='parent-link'><a href='?Main'>Main</a> &rsaquo;</span> <span class='parent-link'><a href='?Topics:" + parent_topic.topic_id + "@" + parent_topic.topic_creator_user_id + "/" + (Text.toUrl(parent_topic.title)) + "'>" + parent_topic.title + "</a> &rsaquo;</span> " + _this.topic.title);
+              return $(".topic-title").html("<span class='parent-link'><a href='?Main'>Main</a> &rsaquo;</span> <span class='parent-link'><a href='?Topics:" + parent_topic.topic_id + "_" + parent_topic.topic_creator_user_id + "/" + (Text.toUrl(parent_topic.title)) + "'>" + parent_topic.title + "</a> &rsaquo;</span> " + _this.topic.title);
             });
           }
           $(".topic-full").css("opacity", 1);
@@ -1621,125 +1358,35 @@ jQuery.extend( jQuery.easing,
       })(this));
     };
 
-    TopicShow.prototype.loadTopic = function(cb) {
-      var topic_user_address;
-      if (cb == null) {
-        cb = false;
-      }
-      if (Page.has_db) {
-        return this.dbLoadTopic(cb);
-      }
-      this.logStart("Loading topic...");
-      topic_user_address = Users.to_address[this.topic_user_id];
-      $(".topic-full").attr("id", "topic_" + this.topic_id + "_" + this.topic_user_id);
-      $(".topic-title").css("display", "none");
-      return Page.cmd("fileQuery", ["data/users/" + topic_user_address + "/data.json", "topics.topic_id=" + this.topic_id], (function(_this) {
-        return function(topic) {
-          topic = topic[0];
-          _this.topic = topic;
-          topic["inner_path"] = topic_user_address;
-          TopicList.applyTopicData($(".topic-full"), topic, "show");
-          $(".topic-full").css("opacity", 1);
-          $("body").addClass("page-topic");
-          if (topic.parent_topic_hash) {
-            $(".topic-title").html("&nbsp;").css("display", "");
-          }
-
-          /*
-          			if not topic.parent_topic_hash
-          				$(".topic-title").html("
-          					<span class='parent-link'><a href='?Main'>Main</a> &rsaquo;</span>
-          					#{topic.title}")
-           */
-          _this.logEnd("Loading topic...");
-          TopicList.loadTopicsStat("show");
-          if (cb) {
-            return cb();
-          }
-        };
-      })(this));
-    };
-
-    TopicShow.prototype.dbLoadComments = function(type, cb) {
-      var topic_address;
-      if (type == null) {
-        type = "show";
-      }
-      if (cb == null) {
-        cb = false;
-      }
-      topic_address = this.topic_id + "@" + this.topic_user_id;
-      Page.local_storage["topic." + this.topic_id + "_" + this.topic_user_id + ".visited"] = Time.timestamp();
-      Page.cmd("wrapperSetLocalStorage", Page.local_storage);
-      this.logStart("Loading comments...");
-      return Page.cmd("dbQuery", ["SELECT comment.*, user.user_name, user.user_id, json.path, (SELECT COUNT(*) FROM comment_vote WHERE comment_vote.comment_hash = comment.comment_id || '@' || user.user_id)+1 AS votes FROM comment LEFT JOIN json USING (json_id) LEFT JOIN user USING (path) WHERE topic_hash = '" + this.topic_id + "@" + this.topic_user_id + "' ORDER BY added DESC"], (function(_this) {
-        return function(comments) {
-          var comment, comment_address, elem, _i, _len;
-          _this.logEnd("Loading comments...");
-          for (_i = 0, _len = comments.length; _i < _len; _i++) {
-            comment = comments[_i];
-            comment_address = comment.comment_id + "_" + comment.user_id;
-            elem = $("#comment_" + comment_address);
-            if (elem.length === 0) {
-              elem = $(".comment.template").clone().removeClass("template").attr("id", "comment_" + comment_address).data("topic_address", topic_address);
-              if (type !== "noanim") {
-                elem.cssSlideDown();
-              }
-              $(".reply", elem).on("click", function(e) {
-                return _this.buttonReply($(e.target).parents(".comment"));
-              });
-              $(".score", elem).attr("id", "comment_score_" + comment_address).on("click", _this.submitCommentVote);
-            }
-            _this.applyCommentData(elem, comment);
-            elem.appendTo(".comments");
-          }
-          $("body").css({
-            "overflow": "auto",
-            "height": "auto"
-          });
-          Page.addInlineEditors();
-          if (cb) {
-            return cb();
-          }
-        };
-      })(this));
-    };
-
     TopicShow.prototype.loadComments = function(type, cb) {
-      var topic_address;
+      var query;
       if (type == null) {
         type = "show";
       }
       if (cb == null) {
         cb = false;
       }
-      if (Page.has_db) {
-        return this.dbLoadComments(type, cb);
-      }
-      this.logStart("Loading comments...");
-      topic_address = this.topic_id + "@" + this.topic_user_id;
-      Page.local_storage["topic." + this.topic_id + "_" + this.topic_user_id + ".visited"] = Time.timestamp();
+      Page.local_storage["topic." + this.topic_id + "_" + this.topic_user_address + ".visited"] = Time.timestamp();
       Page.cmd("wrapperSetLocalStorage", Page.local_storage);
-      return Page.cmd("fileQuery", ["data/users/*/data.json", "comments." + topic_address], (function(_this) {
+      this.logStart("Loading comments...");
+      query = "SELECT comment.*, user.value AS user_name, user_json_content.directory AS user_address, (SELECT COUNT(*) FROM comment_vote WHERE comment_vote.comment_uri = comment.comment_id || '_' || user_json_content.directory)+1 AS votes FROM comment LEFT JOIN json AS user_json_data ON (user_json_data.json_id = comment.json_id) LEFT JOIN json AS user_json_content ON (user_json_content.directory = user_json_data.directory AND user_json_content.file_name = 'content.json') LEFT JOIN keyvalue AS user ON (user.json_id = user_json_content.json_id AND user.key = 'cert_user_id') WHERE comment.topic_uri = '" + this.topic_id + "_" + this.topic_user_address + "' ORDER BY added DESC";
+      return Page.cmd("dbQuery", [query], (function(_this) {
         return function(comments) {
-          var comment, comment_address, elem, user_id, _i, _len;
-          comments.sort(function(a, b) {
-            return b.added - a.added;
-          });
+          var comment, comment_uri, elem, _i, _len;
+          _this.logEnd("Loading comments...");
           for (_i = 0, _len = comments.length; _i < _len; _i++) {
             comment = comments[_i];
-            user_id = Users.to_id[comment.inner_path];
-            comment_address = comment.comment_id + "_" + user_id;
-            elem = $("#comment_" + comment_address);
+            comment_uri = comment.comment_id + "_" + comment.user_address;
+            elem = $("#comment_" + comment_uri);
             if (elem.length === 0) {
-              elem = $(".comment.template").clone().removeClass("template").attr("id", "comment_" + comment_address).data("topic_address", topic_address);
+              elem = $(".comment.template").clone().removeClass("template").attr("id", "comment_" + comment_uri).data("topic_uri", _this.topic_uri);
               if (type !== "noanim") {
                 elem.cssSlideDown();
               }
               $(".reply", elem).on("click", function(e) {
                 return _this.buttonReply($(e.target).parents(".comment"));
               });
-              $(".score", elem).attr("id", "comment_score_" + comment_address).on("click", _this.submitCommentVote);
+              $(".score", elem).attr("id", "comment_score_" + comment_uri).on("click", _this.submitCommentVote);
             }
             _this.applyCommentData(elem, comment);
             elem.appendTo(".comments");
@@ -1749,7 +1396,6 @@ jQuery.extend( jQuery.easing,
             "height": "auto"
           });
           Page.addInlineEditors();
-          _this.logEnd("Loading comments...");
           if (cb) {
             return cb();
           }
@@ -1758,42 +1404,26 @@ jQuery.extend( jQuery.easing,
     };
 
     TopicShow.prototype.applyCommentData = function(elem, comment) {
-      var comment_id, topic_address, user_address, user_id, user_name;
-      if (comment.user_name) {
-        user_name = comment.user_name;
-        user_address = comment.path.replace("/data.json", "");
-      } else {
-        user_name = Users.to_name[comment.inner_path];
-        user_address = comment.inner_path;
-      }
+      var comment_uri, user_name;
+      user_name = comment.user_name;
       $(".body", elem).html(Text.toMarked(comment.body, {
         "sanitize": true
       }));
-      $(".user_name", elem).text(user_name).css({
+      $(".user_name", elem).text(user_name.replace(/@.*/, "")).css({
         "color": Text.toColor(user_name)
-      }).attr("title", user_address);
+      }).attr("title", user_name + ": " + comment.user_address);
       $(".added", elem).text(Time.since(comment.added)).attr("title", Time.date(comment.added, "long"));
-      if (Page.has_db) {
-        comment_id = elem.attr("id").replace("comment_", "");
-        if (Users.my_comment_votes[comment_id.replace("_", "@")]) {
-          $(".score-inactive .score-num", elem).text(comment.votes - 1);
-          $(".score-active .score-num", elem).text(comment.votes);
-          $(".score", elem).addClass("active");
-        } else {
-          $(".score-inactive .score-num", elem).text(comment.votes);
-          $(".score-active .score-num", elem).text(comment.votes + 1);
-        }
+      comment_uri = elem.attr("id").replace("comment_", "");
+      if (User.my_comment_votes[comment_uri]) {
+        $(".score-inactive .score-num", elem).text(comment.votes - 1);
+        $(".score-active .score-num", elem).text(comment.votes);
+        $(".score", elem).addClass("active");
+      } else {
+        $(".score-inactive .score-num", elem).text(comment.votes);
+        $(".score-active .score-num", elem).text(comment.votes + 1);
       }
-      if (user_address === Page.site_info.auth_address) {
-        if (comment.user_id) {
-          user_id = comment.user_id;
-        }
-        ({
-          "else": user_id = Users.to_id[comment.inner_path]
-        });
-        comment_id = elem.attr("id").replace("comment_", "").replace(/_.*$/, "");
-        topic_address = elem.data("topic_address");
-        $(elem).attr("data-object", "Comment:" + comment_id + "@" + topic_address).attr("data-deletable", "yes");
+      if (comment.user_address === Page.site_info.auth_address) {
+        $(elem).attr("data-object", "Comment:" + comment_uri + "@" + this.topic_uri).attr("data-deletable", "yes");
         return $(".body", elem).attr("data-editable", "body").data("content", comment.body);
       }
     };
@@ -1814,32 +1444,26 @@ jQuery.extend( jQuery.easing,
     };
 
     TopicShow.prototype.submitComment = function() {
-      var body, inner_path, topic_address;
-      if (!Users.my_name) {
-        Page.cmd("wrapperNotification", ["info", "Please, request access before posting."]);
-        return false;
-      }
+      var body;
       body = $(".comment-new #comment_body").val();
       if (!body) {
         $(".comment-new #comment_body").focus();
+        return;
       }
-      topic_address = this.topic_id + "@" + this.topic_user_id;
       $(".comment-new .button-submit").addClass("loading");
-      inner_path = "data/users/" + Page.site_info.auth_address + "/data.json";
-      return Page.cmd("fileGet", [inner_path], (function(_this) {
+      return User.getData((function(_this) {
         return function(data) {
-          var _base;
-          data = JSON.parse(data);
-          if ((_base = data.comments)[topic_address] == null) {
-            _base[topic_address] = [];
+          var _base, _name;
+          if ((_base = data.comment)[_name = _this.topic_uri] == null) {
+            _base[_name] = [];
           }
-          data.comments[topic_address].push({
-            "comment_id": data.next_message_id,
+          data.comment[_this.topic_uri].push({
+            "comment_id": data.next_comment_id,
             "body": body,
             "added": Time.timestamp()
           });
-          data.next_message_id += 1;
-          return Page.writePublish(inner_path, Page.jsonEncode(data), function(res) {
+          data.next_comment_id += 1;
+          return User.publishData(data, function(res) {
             $(".comment-new .button-submit").removeClass("loading");
             if (res === true) {
               _this.log("File written");
@@ -1852,34 +1476,27 @@ jQuery.extend( jQuery.easing,
     };
 
     TopicShow.prototype.submitCommentVote = function(e) {
-      var elem, inner_path;
-      if (!Users.my_name) {
-        Page.cmd("wrapperNotification", ["info", "Please, request access before voting."]);
+      var elem;
+      if (!Page.site_info.cert_user_id) {
+        Page.cmd("wrapperNotification", ["info", "Please, your choose account before upvoting."]);
         return false;
       }
       elem = $(e.currentTarget);
       elem.toggleClass("active").addClass("loading");
-      inner_path = "data/users/" + Users.my_address + "/data.json";
-      Page.cmd("fileGet", [inner_path], (function(_this) {
+      User.getData((function(_this) {
         return function(data) {
-          var comment_address;
-          data = JSON.parse(data);
-          if (data.comment_votes == null) {
-            data.comment_votes = {};
+          var comment_uri;
+          if (data.comment_vote == null) {
+            data.comment_vote = {};
           }
-          comment_address = elem.attr("id").match("_([0-9]+_[0-9]+)$")[1].replace("_", "@");
+          comment_uri = elem.attr("id").match("_([0-9]+_[A-Za-z0-9]+)$")[1];
           if (elem.hasClass("active")) {
-            data.comment_votes[comment_address] = 1;
+            data.comment_vote[comment_uri] = 1;
           } else {
-            delete data.comment_votes[comment_address];
+            delete data.comment_vote[comment_uri];
           }
-          return Page.writePublish(inner_path, Page.jsonEncode(data), function(res) {
-            elem.removeClass("loading");
-            if (res === true) {
-              return _this.log("File written");
-            } else {
-              return elem.toggleClass("active");
-            }
+          return User.publishData(data, function(res) {
+            return elem.removeClass("loading");
           });
         };
       })(this));
@@ -1895,118 +1512,49 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/Users.coffee ---- */
+
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/User.coffee ---- */
 
 
 (function() {
-  var Users,
+  var User,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
     __hasProp = {}.hasOwnProperty;
 
-  Users = (function(_super) {
-    __extends(Users, _super);
+  User = (function(_super) {
+    __extends(User, _super);
 
-    function Users() {
-      this.to_id = {};
-      this.to_address = {};
-      this.to_name = {};
-      this.my_address = null;
-      this.my_id = null;
-      this.my_name = null;
-      this.my_max_size = null;
+    function User() {
       this.my_topic_votes = {};
       this.my_comment_votes = {};
+      this.rules = {};
+      this.certselectButtons();
     }
 
-    Users.prototype.loadDb = function(cb) {
-      if (cb == null) {
-        cb = null;
-      }
-      if (Page.has_db) {
-        return;
-      }
-      this.logStart("Loading userDB");
-      return Page.cmd("fileGet", ["data/users/content.json"], (function(_this) {
-        return function(data) {
-          var address, path, user, _ref;
-          data = JSON.parse(data);
-          _ref = data["includes"];
-          for (path in _ref) {
-            user = _ref[path];
-            address = user.signers[0];
-            _this.to_id[address] = user.user_id;
-            _this.to_address[user.user_id] = address;
-            _this.to_name[address] = user.user_name;
-            if (address === _this.my_address) {
-              _this.my_max_size = user.max_size;
-            }
-          }
-          _this.logEnd("Loading userDB");
-          if (cb) {
-            return cb();
-          }
-        };
-      })(this));
-    };
-
-    Users.prototype.dbUpdateMyInfo = function(cb) {
+    User.prototype.updateMyInfo = function(cb) {
       if (cb == null) {
         cb = null;
       }
       this.log("Updating user info...", this.my_address);
-      return Page.cmd("dbQuery", ["SELECT user.*, json.json_id AS data_json_id FROM user LEFT JOIN json USING(path) WHERE path='" + this.my_address + "/data.json'"], (function(_this) {
-        return function(res) {
-          if (res.error || res.length === 0) {
-            $(".head-user.visitor").css("display", "");
-            $(".user_name-my").text("Visitor");
-            if (cb) {
-              cb();
-            }
-            return;
-          }
-          _this.my_row = res[0];
-          _this.my_id = _this.my_row["user_id"];
-          _this.my_name = _this.my_row["user_name"];
-          _this.my_max_size = _this.my_row["max_size"];
-          if ($(".head-user.visitor").css("display") !== "none") {
-            $(".head-user.visitor").css("display", "none");
-            Page.cmd("wrapperNotification", ["done", "Hello <b>" + _this.my_name + "</b>!<br>Congratulations, your registration is done!", 10000]);
-            $(".button.signup").removeClass("loading");
-          }
-          $(".head-user.registered").css("display", "");
-          $(".user_name-my").text(_this.my_name).css("color", Text.toColor(_this.my_name)).attr("title", _this.my_address);
-          _this.dbUpdateMyVotes(cb);
-          return Page.cmd("fileGet", ["data/users/" + _this.my_address + "/content.json"], function(content) {
-            var details, relative_path, sum, used, _ref;
-            content = JSON.parse(content);
-            sum = 0;
-            _ref = content.files;
-            for (relative_path in _ref) {
-              details = _ref[relative_path];
-              sum += details.size;
-            }
-            used = (sum / 1000).toFixed(1);
-            $(".head-user .size").text("Used: " + used + "k / " + (parseInt(_this.my_max_size / 1000)) + "k");
-            return $(".head-user .size-used").width(parseFloat(sum / _this.my_max_size) * 100);
-          });
-        };
-      })(this));
+      return this.updateMyVotes(cb);
     };
 
-    Users.prototype.dbUpdateMyVotes = function(cb) {
+    User.prototype.updateMyVotes = function(cb) {
+      var query;
       if (cb == null) {
         cb = null;
       }
-      Page.cmd("dbQuery", ["SELECT 'topic_vote' AS type, topic_hash AS hash FROM topic_vote WHERE json_id = " + this.my_row.data_json_id + " UNION SELECT 'comment_vote' AS type, comment_hash AS hash FROM comment_vote WHERE json_id = " + this.my_row.data_json_id], (function(_this) {
+      query = "SELECT 'topic_vote' AS type, topic_uri AS uri FROM json LEFT JOIN topic_vote USING (json_id) WHERE directory = \"" + Page.site_info.auth_address + "\" AND file_name = 'data.json'\nUNION\nSELECT 'comment_vote' AS type, comment_uri AS uri FROM json LEFT JOIN comment_vote USING (json_id) WHERE directory = \"" + Page.site_info.auth_address + "\" AND file_name = 'data.json'";
+      Page.cmd("dbQuery", [query], (function(_this) {
         return function(votes) {
           var vote, _i, _len, _results;
           _results = [];
           for (_i = 0, _len = votes.length; _i < _len; _i++) {
             vote = votes[_i];
             if (vote.type === "topic_vote") {
-              _results.push(_this.my_topic_votes[vote.hash] = true);
+              _results.push(_this.my_topic_votes[vote.uri] = true);
             } else {
-              _results.push(_this.my_comment_votes[vote.hash] = true);
+              _results.push(_this.my_comment_votes[vote.uri] = true);
             }
           }
           return _results;
@@ -2017,55 +1565,109 @@ jQuery.extend( jQuery.easing,
       }
     };
 
-    Users.prototype.updateMyInfo = function() {
-      var address, user_name;
-      if (Page.has_db) {
-        return this.dbUpdateMyInfo();
-      }
-      this.log("Updating user info...", this.my_address);
-      address = this.my_address;
-      user_name = this.to_name[address];
-      if (user_name) {
-        this.my_name = user_name;
-        this.my_id = this.to_id[address];
-        if ($(".head-user.visitor").css("display") !== "none") {
-          $(".head-user.visitor").css("display", "none");
-          Page.cmd("wrapperNotification", ["done", "Hello <b>" + user_name + "</b>!<br>Congratulations, your registration is done!", 10000]);
-          $(".button.signup").removeClass("loading");
+    User.prototype.certselectButtons = function() {
+      return $(".certselect").on("click", (function(_this) {
+        return function() {
+          if (Page.server_info.rev < 160) {
+            Page.cmd("wrapperNotification", ["error", "Comments requires at least ZeroNet 0.3.0 Please upgade!"]);
+          } else {
+            Page.cmd("certSelect", [["zeroid.bit"]]);
+          }
+          return false;
+        };
+      })(this));
+    };
+
+    User.prototype.checkCert = function(type) {
+      var last_cert_user_id;
+      last_cert_user_id = $(".user_name-my").text();
+      if ($(".comment-new .user_name").text() !== Page.site_info.cert_user_id || type === "updaterules") {
+        if (Page.site_info.cert_user_id) {
+          $(".comment-new").removeClass("comment-nocert");
+          $(".user_name-my").text(Page.site_info.cert_user_id).css({
+            "color": Text.toColor(Page.site_info.cert_user_id)
+          });
+        } else {
+          $(".comment-new").addClass("comment-nocert");
+          $(".user_name-my").text("Please sign in");
         }
-        $(".head-user.registered").css("display", "");
-        $(".user_name-my").text(user_name).css("color", Text.toColor(user_name)).attr("title", address);
-        return Page.cmd("fileGet", ["data/users/" + address + "/content.json"], (function(_this) {
-          return function(content) {
-            var details, relative_path, sum, used, _ref;
-            content = JSON.parse(content);
-            sum = 0;
-            _ref = content.files;
-            for (relative_path in _ref) {
-              details = _ref[relative_path];
-              sum += details.size;
-            }
-            used = (sum / 1000).toFixed(1);
-            $(".head-user .size").text("Used: " + used + "k / " + (parseInt(_this.my_max_size / 1000)) + "k");
-            return $(".head-user .size-used").width(parseFloat(sum / _this.my_max_size) * 100);
-          };
-        })(this));
-      } else {
-        $(".head-user.visitor").css("display", "");
-        return $(".user_name-my").text("Visitor");
+        if (Page.site_info.cert_user_id) {
+          return Page.cmd("fileRules", "data/users/" + Page.site_info.auth_address + "/content.json", (function(_this) {
+            return function(rules) {
+              _this.rules = rules;
+              if (rules.max_size) {
+                return _this.setCurrentSize(rules.current_size);
+              } else {
+                return _this.setCurrentSize(0);
+              }
+            };
+          })(this));
+        } else {
+          return this.setCurrentSize(0);
+        }
       }
     };
 
-    return Users;
+    User.prototype.setCurrentSize = function(current_size) {
+      var current_size_kb;
+      if (current_size) {
+        current_size_kb = current_size / 1000;
+        $(".user-size").text("used: " + (current_size_kb.toFixed(1)) + "k/" + (Math.round(this.rules.max_size / 1000)) + "k");
+        return $(".user-size-used").css("width", Math.round(70 * current_size / this.rules.max_size));
+      } else {
+        return $(".user-size").text("");
+      }
+    };
+
+    User.prototype.getData = function(cb) {
+      var inner_path;
+      inner_path = "data/users/" + Page.site_info.auth_address + "/data.json";
+      return Page.cmd("fileGet", {
+        "inner_path": inner_path,
+        "required": false
+      }, (function(_this) {
+        return function(data) {
+          if (data) {
+            data = JSON.parse(data);
+          } else {
+            data = {
+              "next_topic_id": 1,
+              "topic": [],
+              "topic_vote": {},
+              "next_comment_id": 1,
+              "comment": {},
+              "comment_vote": {}
+            };
+          }
+          return cb(data);
+        };
+      })(this));
+    };
+
+    User.prototype.publishData = function(data, cb) {
+      var inner_path;
+      inner_path = "data/users/" + Page.site_info.auth_address + "/data.json";
+      return Page.writePublish(inner_path, Text.jsonEncode(data), (function(_this) {
+        return function(res) {
+          _this.checkCert("updaterules");
+          if (cb) {
+            return cb(res);
+          }
+        };
+      })(this));
+    };
+
+    return User;
 
   })(Class);
 
-  window.Users = new Users();
+  window.User = new User();
 
 }).call(this);
 
 
-/* ---- data/1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ/js/ZeroTalk.coffee ---- */
+
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/ZeroTalk.coffee ---- */
 
 
 (function() {
@@ -2093,20 +1695,12 @@ jQuery.extend( jQuery.easing,
       this.site_info = null;
       this.server_info = null;
       this.local_storage = {};
-      this.publishing = false;
-      this.has_db = true;
       this.site_address = null;
       _ref = $("textarea");
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         textarea = _ref[_i];
         this.autoExpand($(textarea));
       }
-      $(".button.signup").on("click", (function(_this) {
-        return function() {
-          _this.buttonSignup();
-          return false;
-        };
-      })(this));
       return $(".editbar .icon-help").on("click", (function(_this) {
         return function() {
           $(".editbar .markdown-help").css("display", "block");
@@ -2127,32 +1721,22 @@ jQuery.extend( jQuery.easing,
           return _this.local_storage = res;
         };
       })(this));
-      this.cmd("serverInfo", {}, (function(_this) {
+      this.cmd("siteInfo", {}, (function(_this) {
+        return function(site) {
+          _this.site_address = site.address;
+          _this.setSiteinfo(site);
+          return User.updateMyInfo(function() {
+            return _this.routeUrl(window.location.search.substring(1));
+          });
+        };
+      })(this));
+      return this.cmd("serverInfo", {}, (function(_this) {
         return function(ret) {
           var version;
           _this.server_info = ret;
           version = parseInt(_this.server_info.version.replace(/\./g, ""));
-          if (version < 20) {
-            _this.cmd("wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.2.0, please update!"]);
-          }
-          if (version < 26) {
-            return _this.has_db = false;
-          }
-        };
-      })(this));
-      return this.cmd("siteInfo", {}, (function(_this) {
-        return function(site) {
-          _this.site_address = site.address;
-          _this.setSiteinfo(site);
-          if (_this.has_db) {
-            return Users.dbUpdateMyInfo(function() {
-              return _this.routeUrl(window.location.search.substring(1));
-            });
-          } else {
-            return Users.loadDb(function() {
-              _this.routeUrl(window.location.search.substring(1));
-              return Users.updateMyInfo();
-            });
+          if (version < 31) {
+            return _this.cmd("wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.3.1, please update!"]);
           }
         };
       })(this));
@@ -2165,12 +1749,12 @@ jQuery.extend( jQuery.easing,
     ZeroTalk.prototype.routeUrl = function(url) {
       var match;
       this.log("Routing url:", url);
-      if (match = url.match(/Topic:([0-9]+)@([0-9]+)/)) {
+      if (match = url.match(/Topic:([0-9]+)_([0-9a-zA-Z]+)/)) {
         $("body").addClass("page-topic");
-        return TopicShow.actionShow(parseInt(match[1]), parseInt(match[2]));
-      } else if (match = url.match(/Topics:([0-9]+)@([0-9]+)/)) {
+        return TopicShow.actionShow(parseInt(match[1]), Text.toBitcoinAddress(match[2]));
+      } else if (match = url.match(/Topics:([0-9]+)_([0-9a-zA-Z]+)/)) {
         $("body").addClass("page-topics");
-        return TopicList.actionList(parseInt(match[1]), parseInt(match[2]));
+        return TopicList.actionList(parseInt(match[1]), Text.toBitcoinAddress(match[2]));
       } else {
         $("body").addClass("page-main");
         return TopicList.actionList();
@@ -2208,7 +1792,7 @@ jQuery.extend( jQuery.easing,
     };
 
     ZeroTalk.prototype.saveContent = function(elem, content, cb) {
-      var delete_object, id, inner_path, object, type, _ref;
+      var delete_object, id, object, type, _ref;
       if (cb == null) {
         cb = false;
       }
@@ -2219,17 +1803,15 @@ jQuery.extend( jQuery.easing,
       }
       object = this.getObject(elem);
       _ref = object.data("object").split(":"), type = _ref[0], id = _ref[1];
-      inner_path = "data/users/" + Users.my_address + "/data.json";
-      return this.cmd("fileGet", [inner_path], (function(_this) {
+      return User.getData((function(_this) {
         return function(data) {
-          var comment, comment_id, topic, topic_address, topic_id, topic_user_id, user_id, _ref1, _ref2;
-          data = JSON.parse(data);
+          var comment, comment_id, comment_uri, topic, topic_creator_address, topic_id, topic_uri, user_address, _ref1, _ref2, _ref3, _ref4;
           if (type === "Topic") {
-            _ref1 = id.split("@"), topic_id = _ref1[0], user_id = _ref1[1];
+            _ref1 = id.split("_"), topic_id = _ref1[0], user_address = _ref1[1];
             topic_id = parseInt(topic_id);
             topic = ((function() {
               var _i, _len, _ref2, _results;
-              _ref2 = data.topics;
+              _ref2 = data.topic;
               _results = [];
               for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
                 topic = _ref2[_i];
@@ -2240,21 +1822,22 @@ jQuery.extend( jQuery.easing,
               return _results;
             })())[0];
             if (delete_object) {
-              data.topics.splice(data.topics.indexOf(topic), 1);
+              data.topic.splice(data.topic.indexOf(topic), 1);
             } else {
               topic[elem.data("editable")] = content;
             }
           }
           if (type === "Comment") {
-            _ref2 = id.split("@"), comment_id = _ref2[0], topic_id = _ref2[1], topic_user_id = _ref2[2];
+            _ref2 = id.split("@"), comment_uri = _ref2[0], topic_uri = _ref2[1];
+            _ref3 = comment_uri.split("_"), comment_id = _ref3[0], user_address = _ref3[1];
+            _ref4 = topic_uri.split("_"), topic_id = _ref4[0], topic_creator_address = _ref4[1];
             comment_id = parseInt(comment_id);
-            topic_address = topic_id + "@" + topic_user_id;
             comment = ((function() {
-              var _i, _len, _ref3, _results;
-              _ref3 = data.comments[topic_address];
+              var _i, _len, _ref5, _results;
+              _ref5 = data.comment[topic_uri];
               _results = [];
-              for (_i = 0, _len = _ref3.length; _i < _len; _i++) {
-                comment = _ref3[_i];
+              for (_i = 0, _len = _ref5.length; _i < _len; _i++) {
+                comment = _ref5[_i];
                 if (comment.comment_id === comment_id) {
                   _results.push(comment);
                 }
@@ -2262,13 +1845,13 @@ jQuery.extend( jQuery.easing,
               return _results;
             })())[0];
             if (delete_object) {
-              data.comments[topic_address].splice(data.comments[topic_address].indexOf(comment), 1);
+              data.comment[topic_uri].splice(data.comment[topic_uri].indexOf(comment), 1);
             } else {
               comment[elem.data("editable")] = content;
             }
           }
-          return _this.writePublish(inner_path, _this.jsonEncode(data), function(res) {
-            if (res === true) {
+          return User.publishData(data, function(res) {
+            if (res) {
               if (delete_object) {
                 if (cb) {
                   cb(true);
@@ -2309,44 +1892,25 @@ jQuery.extend( jQuery.easing,
       })(this));
     };
 
-    ZeroTalk.prototype.buttonSignup = function() {
-      return this.cmd("wrapperPrompt", ["Username you want to register:"], (function(_this) {
-        return function(user_name) {
-          $(".button.signup").addClass("loading");
-          return $.post("http://demo.zeronet.io/ZeroTalk/signup.php", {
-            "user_name": user_name,
-            "auth_address": Users.my_address,
-            "site": _this.site_address
-          }).always(function(res) {
-            if (res === "OK") {
-              return _this.cmd("wrapperNotification", ["done", "Your registration has been sent!", 10000]);
-            } else {
-              $(".button.signup").removeClass("loading");
-              return _this.cmd("wrapperNotification", ["error", "Error: " + res.responseText]);
-            }
-          });
-        };
-      })(this));
-    };
-
-    ZeroTalk.prototype.jsonEncode = function(obj) {
-      return btoa(unescape(encodeURIComponent(JSON.stringify(obj, void 0, '\t'))));
+    ZeroTalk.prototype.onRequest = function(cmd, message) {
+      if (cmd === "setSiteInfo") {
+        return this.actionSetSiteInfo(message);
+      } else {
+        return this.log("Unknown command", message);
+      }
     };
 
     ZeroTalk.prototype.writePublish = function(inner_path, data, cb) {
-      this.publishing = true;
       return this.cmd("fileWrite", [inner_path, data], (function(_this) {
         return function(res) {
           if (res !== "ok") {
             _this.cmd("wrapperNotification", ["error", "File write error: " + res]);
             cb(false);
-            _this.publishing = false;
             return false;
           }
           return _this.cmd("sitePublish", {
             "inner_path": inner_path
           }, function(res) {
-            _this.publishing = false;
             if (res === "ok") {
               return cb(true);
             } else {
@@ -2357,35 +1921,12 @@ jQuery.extend( jQuery.easing,
       })(this));
     };
 
-    ZeroTalk.prototype.hasOpenPort = function() {
-      if (this.server_info.ip_external) {
-        return true;
-      } else {
-        this.cmd("wrapperNotification", ["error", "To publish new content please open port <b>" + this.server_info.fileserver_port + "</b> on your router"]);
-        return false;
-      }
-    };
-
-    ZeroTalk.prototype.route = function(cmd, message) {
-      if (cmd === "setSiteInfo") {
-        return this.actionSetSiteInfo(message);
-      } else {
-        return this.log("Unknown command", message);
-      }
-    };
-
     ZeroTalk.prototype.actionSetSiteInfo = function(res) {
       var site_info;
       site_info = res.params;
       this.setSiteinfo(site_info);
-      if (site_info.event && site_info.event[0] === "file_done" && site_info.event[1] === ("data/users/" + Users.my_address + "/data.json")) {
-        Users.updateMyInfo();
-      }
-      if (site_info.event && site_info.event[0] === "file_done" && site_info.event[1] === "data/users/content.json") {
-        Users.loadDb();
-      }
       if (site_info.event && site_info.event[0] === "file_done" && site_info.event[1].match(/.*users.*data.json$/)) {
-        return LimitRate(((function(_this) {
+        return RateLimit(500, (function(_this) {
           return function() {
             if ($("body").hasClass("page-topic")) {
               TopicShow.loadTopic();
@@ -2395,13 +1936,13 @@ jQuery.extend( jQuery.easing,
               return TopicList.loadTopics();
             }
           };
-        })(this)), 500);
+        })(this));
       }
     };
 
     ZeroTalk.prototype.setSiteinfo = function(site_info) {
       this.site_info = site_info;
-      return Users.my_address = site_info.auth_address;
+      return User.checkCert();
     };
 
     ZeroTalk.prototype.autoExpand = function(elem) {

@@ -34,11 +34,11 @@ class ZeroFrame extends Class
 		else if cmd == "wrapperClosedWebsocket"
 			@onCloseWebsocket()
 		else
-			@route cmd, message
+			@onRequest cmd, message
 
 
-	route: (cmd, message) =>
-		@log "Unknown command", message
+	onRequest: (cmd, message) =>
+		@log "Unknown request", message
 
 
 	response: (to, result) ->
@@ -55,11 +55,7 @@ class ZeroFrame extends Class
 		@target.postMessage(message, "*")
 		if cb
 			@waiting_cb[message.id] = cb
-
-
-	log: (args...) ->
-		console.log "[ZeroFrame]", args...
-
+			
 
 	onOpenWebsocket: =>
 		@log "Websocket open"
