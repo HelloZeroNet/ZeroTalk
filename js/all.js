@@ -1039,7 +1039,7 @@ jQuery.extend( jQuery.easing,
     };
 
     TopicList.prototype.loadTopics = function(type, cb) {
-      var last_elem, query, topic_group_action, topic_group_after, where;
+      var last_elem, query, where;
       if (type == null) {
         type = "list";
       }
@@ -1047,38 +1047,32 @@ jQuery.extend( jQuery.easing,
         cb = false;
       }
       this.logStart("Load topics...");
-      topic_group_action = {};
-      topic_group_after = {};
       if (this.parent_topic_uri) {
         where = "WHERE parent_topic_uri = '" + this.parent_topic_uri + "' OR row_topic_uri = '" + this.parent_topic_uri + "'";
       } else {
-        where = "";
+        where = "WHERE topic.type IS NULL AND topic.parent_topic_uri IS NULL ";
       }
       last_elem = $(".topics-list .topic.template");
-      query = "SELECT \n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes\nFROM topic \nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_uri)\n" + where + "\nGROUP BY topic.topic_id, topic.json_id\nORDER BY CASE WHEN last_comment THEN last_comment ELSE topic.added END DESC";
+      query = "SELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, topic.added as last_added,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n NULL AS row_topic_sub_uri,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_uri)\n" + where + "\nGROUP BY topic.topic_id, topic.json_id";
+      if (!this.parent_topic_uri) {
+        query += "			\nUNION ALL\n\nSELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, MAX(topic_sub.added) AS last_added,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN topic AS topic_sub ON (topic_sub.parent_topic_uri = topic.topic_id || '_' || topic_creator_content.directory)\nLEFT JOIN json AS topic_sub_creator_json ON (topic_sub_creator_json.json_id = topic_sub.json_id)\nLEFT JOIN json AS topic_sub_creator_content ON (topic_sub_creator_content.directory = topic_sub_creator_json.directory AND topic_sub_creator_content.file_name = 'content.json')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri)\nWHERE topic.type = \"group\"\nGROUP BY topic.topic_id";
+      }
       return Page.cmd("dbQuery", [query], (function(_this) {
         return function(topics) {
           var elem, topic, topic_parent, topic_uri, _i, _len;
+          topics.sort(function(a, b) {
+            return Math.max(b.last_comment, b.last_added) - Math.max(a.last_comment, a.last_added);
+          });
           for (_i = 0, _len = topics.length; _i < _len; _i++) {
             topic = topics[_i];
             topic_uri = topic.row_topic_uri;
-            if (topic.parent_topic_uri && !topic_group_action[topic.parent_topic_uri]) {
-              if (topic.last_comment) {
-                topic_group_action[topic.parent_topic_uri] = topic.last_comment;
-              } else {
-                topic_group_action[topic.parent_topic_uri] = topic.added;
-              }
-              topic_group_after[topic.parent_topic_uri] = last_elem;
+            if (topic.last_added) {
+              topic.added = topic.last_added;
             }
-            if (topic.parent_topic_uri && _this.parent_topic_uri !== topic.parent_topic_uri) {
-              continue;
-            }
+            _this.log(topic);
             if (_this.parent_topic_uri && topic_uri === _this.parent_topic_uri) {
               topic_parent = topic;
               continue;
-            }
-            if (topic.type === "group") {
-              topic.last_comment = topic_group_action[topic_uri];
             }
             elem = $("#topic_" + topic_uri);
             if (elem.length === 0) {
@@ -1087,17 +1081,8 @@ jQuery.extend( jQuery.easing,
                 elem.cssSlideDown();
               }
             }
-            if (topic.type === "group") {
-              if (topic_group_after[topic_uri]) {
-                elem.insertBefore(topic_group_after[topic.row_topic_uri].nextAll(":not(.topic-group):first"));
-              } else {
-                elem.insertAfter(last_elem);
-                last_elem = elem;
-              }
-            } else {
-              elem.insertAfter(last_elem);
-              last_elem = elem;
-            }
+            elem.insertAfter(last_elem);
+            last_elem = elem;
             _this.applyTopicData(elem, topic);
           }
           Page.addInlineEditors();

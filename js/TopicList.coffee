@@ -35,68 +35,76 @@ class TopicList extends Class
 
 	loadTopics: (type="list", cb=false) ->
 		@logStart "Load topics..."
-		topic_group_action = {}
-		topic_group_after = {}
-		if @parent_topic_uri
+		if @parent_topic_uri # Topic group listing
 			where = "WHERE parent_topic_uri = '#{@parent_topic_uri}' OR row_topic_uri = '#{@parent_topic_uri}'"
-		else
-			where = ""
+		else # Main listing
+			where = "WHERE topic.type IS NULL AND topic.parent_topic_uri IS NULL "
 		last_elem = $(".topics-list .topic.template")
 		
 		query = """
-			SELECT 
-			 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment,
+			SELECT
+			 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, topic.added as last_added,
 			 topic.*,
 			 topic_creator_user.value AS topic_creator_user_name,
 			 topic_creator_content.directory AS topic_creator_address,
 			 topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,
+			 NULL AS row_topic_sub_uri,
 			 (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes
-			FROM topic 
+			FROM topic
 			LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
 			LEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')
 			LEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')
 			LEFT JOIN comment ON (comment.topic_uri = row_topic_uri)
 			#{where}
 			GROUP BY topic.topic_id, topic.json_id
-			ORDER BY CASE WHEN last_comment THEN last_comment ELSE topic.added END DESC
 		"""
+		
+		if not @parent_topic_uri # Union topic groups
+			query += """
+			
+				UNION ALL
+				
+				SELECT
+				 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, MAX(topic_sub.added) AS last_added,
+				 topic.*,
+				 topic_creator_user.value AS topic_creator_user_name,
+				 topic_creator_content.directory AS topic_creator_address,
+				 topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,
+				 topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,
+				 (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes
+				FROM topic
+				LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
+				LEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')
+				LEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')
+				LEFT JOIN topic AS topic_sub ON (topic_sub.parent_topic_uri = topic.topic_id || '_' || topic_creator_content.directory)
+				LEFT JOIN json AS topic_sub_creator_json ON (topic_sub_creator_json.json_id = topic_sub.json_id)
+				LEFT JOIN json AS topic_sub_creator_content ON (topic_sub_creator_content.directory = topic_sub_creator_json.directory AND topic_sub_creator_content.file_name = 'content.json')
+				LEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri)
+				WHERE topic.type = "group"
+				GROUP BY topic.topic_id
+			"""
 
 		Page.cmd "dbQuery", [query], (topics) =>
+			topics.sort (a,b) ->
+				return Math.max(b.last_comment, b.last_added)-Math.max(a.last_comment, a.last_added)
 			for topic in topics
 				topic_uri = topic.row_topic_uri
-				# Save the latest action of topic group
-				if topic.parent_topic_uri and not topic_group_action[topic.parent_topic_uri] 
-					if topic.last_comment
-						topic_group_action[topic.parent_topic_uri] = topic.last_comment
-					else
-						topic_group_action[topic.parent_topic_uri] = topic.added
-					topic_group_after[topic.parent_topic_uri] = last_elem
-
-				# Skip it if we not in the subcategory
-				if topic.parent_topic_uri and @parent_topic_uri != topic.parent_topic_uri then continue 
-
+				if topic.last_added
+					topic.added = topic.last_added
+				@log topic
+				
 				# Parent topic for group that we currently listing
 				if @parent_topic_uri and topic_uri == @parent_topic_uri
 					topic_parent = topic
 					continue # Dont display it
-
-				if topic.type == "group" then topic.last_comment = topic_group_action[topic_uri]
-				
+					
 				elem = $("#topic_"+topic_uri)
 				if elem.length == 0 # Create if not exits yet
 					elem = $(".topics-list .topic.template").clone().removeClass("template").attr("id", "topic_"+topic_uri)
 					if type != "noanim" then elem.cssSlideDown()
 
-				if topic.type == "group"
-					if topic_group_after[topic_uri] # Has after
-						elem.insertBefore topic_group_after[topic.row_topic_uri].nextAll(":not(.topic-group):first") # Add before the next non-topic group
-						# Sorting messed, dont insert next item after it: Do not update last elem
-					else
-						elem.insertAfter(last_elem)
-						last_elem = elem
-				else
-					elem.insertAfter(last_elem)
-					last_elem = elem
+				elem.insertAfter(last_elem)
+				last_elem = elem
 				
 				
 				@applyTopicData(elem, topic)

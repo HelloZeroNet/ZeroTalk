@@ -1,0 +1,42 @@
+/* Editable */
+.editable { outline: none }
+.editable-edit:hover { opacity: 1; border: none; color: #333 }
+.editable-edit { 
+	opacity: 0; float: left; margin-top: -6px; margin-left: -40px; padding: 8px 20px; transition: all 0.3s; width: 0px; display: inline-block; padding-right: 0px;
+	color: rgba(100,100,100,0.5); text-decoration: none; font-size: 18px; font-weight: normal; border: none; position: absolute;
+}
+/*.editing { white-space: pre-wrap; z-index: 1; position: relative; outline: 10000px solid rgba(255,255,255,0.9) !important; }
+.editing p { margin: 0px; padding: 0px }*/ /* IE FIX */
+.editor { 
+	width: auto; display: block; overflow: hidden; resize: none; border: none; box-sizing: border-box; z-index: 900; position: relative; 
+	max-height: none !important; white-space: pre-wrap !important;
+}
+.editor:focus { border: 0px; outline-offset: 0px }
+
+/* -- Editbar -- */
+
+.bottombar { 
+	display: none; position: fixed; padding: 10px 20px; opacity: 0; background-color: rgba(255,255,255,0.9);
+	right: 30px; bottom: 0px; z-index: 999; transition: all 0.3s; transform: translateY(50px) 
+}
+.bottombar.visible { transform: translateY(0px); opacity: 1 }
+.publishbar { z-index: 990}
+.publishbar.visible { display: inline-block; }
+.editbar { perspective: 900px }
+
+.bottombar .object { margin-right: 10px }
+
+.markdown-help { 
+	position: absolute; bottom: 30px; transform: translateX(0px) rotateY(-40deg); transform-origin: right; right: 0px; 
+	list-style-type: none; background-color: rgba(255,255,255,0.9); padding: 10px; opacity: 0; transition: all 0.6s; display: none
+}
+.markdown-help.visible { transform: none; opacity: 1 }
+.markdown-help li { margin: 10px 0px }
+.markdown-help code { font-size: 100% }
+.icon-help { border: 1px solid #EEE; padding: 2px; display: inline-block; width: 17px; text-align: center; font-size: 13px; margin-right: 6px; vertical-align: 1px }
+.icon-help.active { background-color: #EEE } 
+
+.editbg {
+	display: none; width: 100%; height: 100%; position: fixed; opacity: 0; background-color: white; transition: opacity 0.5s; 
+	left: 0px; top: 0px; z-index: 500; backface-visibility: hidden;
+}
