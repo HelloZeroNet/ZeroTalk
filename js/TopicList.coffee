@@ -3,6 +3,7 @@ class TopicList extends Class
 		@thread_sorter = null
 		@parent_topic_uri = undefined
 		@topic_parent_uris = {}
+		@topic_sticky_uris = { "2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj": 1, "1_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj": 1 }
 
 
 	actionList: (parent_topic_id, parent_topic_user_address) ->
@@ -40,7 +41,7 @@ class TopicList extends Class
 		else # Main listing
 			where = "WHERE topic.type IS NULL AND topic.parent_topic_uri IS NULL "
 		last_elem = $(".topics-list .topic.template")
-		
+
 		query = """
 			SELECT
 			 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, topic.added as last_added,
@@ -58,12 +59,12 @@ class TopicList extends Class
 			#{where}
 			GROUP BY topic.topic_id, topic.json_id
 		"""
-		
+
 		if not @parent_topic_uri # Union topic groups
 			query += """
-			
+
 				UNION ALL
-				
+
 				SELECT
 				 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, MAX(topic_sub.added) AS last_added,
 				 topic.*,
@@ -86,18 +87,24 @@ class TopicList extends Class
 
 		Page.cmd "dbQuery", [query], (topics) =>
 			topics.sort (a,b) ->
-				return Math.max(b.last_comment, b.last_added)-Math.max(a.last_comment, a.last_added)
+				booster_a = booster_b = 0
+				# Boost position to top for sticky topics
+				if window.TopicList.topic_sticky_uris[a.row_topic_uri]
+					booster_a = window.TopicList.topic_sticky_uris[a.row_topic_uri]*10000000
+				if window.TopicList.topic_sticky_uris[b.row_topic_uri]
+					booster_b = window.TopicList.topic_sticky_uris[b.row_topic_uri]*10000000
+				return Math.max(b.last_comment+booster_b, b.last_added+booster_b)-Math.max(a.last_comment+booster_a, a.last_added+booster_a)
+
 			for topic in topics
 				topic_uri = topic.row_topic_uri
 				if topic.last_added
 					topic.added = topic.last_added
-				@log topic
-				
+
 				# Parent topic for group that we currently listing
 				if @parent_topic_uri and topic_uri == @parent_topic_uri
 					topic_parent = topic
 					continue # Dont display it
-					
+
 				elem = $("#topic_"+topic_uri)
 				if elem.length == 0 # Create if not exits yet
 					elem = $(".topics-list .topic.template").clone().removeClass("template").attr("id", "topic_"+topic_uri)
@@ -105,8 +112,8 @@ class TopicList extends Class
 
 				elem.insertAfter(last_elem)
 				last_elem = elem
-				
-				
+
+
 				@applyTopicData(elem, topic)
 
 			Page.addInlineEditors()
@@ -115,7 +122,7 @@ class TopicList extends Class
 			$("body").css({"overflow": "auto", "height": "auto"}) # Auto height body
 
 			@logEnd "Load topics..."
-			
+
 			# Hide loading
 			if parseInt($(".topics-loading").css("top")) > -30 # Loading visible, animate it
 				$(".topics-loading").css("top", "-30px")
@@ -140,7 +147,7 @@ class TopicList extends Class
 
 		# Get links in body
 		body = topic.body
-		url_match = body.match /http[s]{0,1}:\/\/[^"', $]+/
+		url_match = body.match /http[s]{0,1}:\/\/[^"', \r\n)$]+/
 		if topic.type == "group" # Group type topic
 			$(elem).addClass("topic-group")
 			$(".image .icon", elem).removeClass("icon-topic-chat").addClass("icon-topic-group")
@@ -149,7 +156,7 @@ class TopicList extends Class
 			$(".title .title-link, a.image, .comment-num", elem).attr("href", "?Topics:#{topic_uri}/#{title_hash}")
 		else if url_match # Link type topic
 			url = url_match[0]
-			if type != "show" then body = body.replace /http[s]{0,1}:\/\/[^"' $]+$/g, "" # Remove links from end
+			if type != "show" then body = body.replace /http[s]{0,1}:\/\/[^"' \r\n)$]+$/g, "" # Remove links from end
 			$(".image .icon", elem).removeClass("icon-topic-chat").addClass("icon-topic-link")
 			$(".link", elem).css("display", "").attr "href", Text.fixLink(url)
 			$(".link .link-url", elem).text(url)
@@ -161,6 +168,9 @@ class TopicList extends Class
 			$(".body", elem).html Text.toMarked(body, {"sanitize": true})
 		else # No format on listing
 			$(".body", elem).text body
+
+		if window.TopicList.topic_sticky_uris[topic_uri]
+			elem.addClass("topic-sticky")
 
 		# Last activity and comment num
 		if type != "show"
@@ -174,12 +184,12 @@ class TopicList extends Class
 			else
 				$(".comment-num", elem).text "0 comments"
 				$(".added", elem).text Time.since(last_action)
-		
+
 		# Creator address and user name
 		$(".user_name", elem)
 			.text(topic.topic_creator_user_name.replace(/@.*/, ""))
 			.attr("title", topic.topic_creator_user_name+": "+topic.topic_creator_address)
-		
+
 		# Apply topic score
 		if User.my_topic_votes[topic_uri] # Voted on topic
 			$(".score-inactive .score-num", elem).text topic.votes-1
@@ -195,7 +205,7 @@ class TopicList extends Class
 			elem.addClass("visit-none")
 		else if visited < last_action
 			elem.addClass("visit-newcomment")
-		
+
 		if type == "show" then $(".added", elem).text Time.since(topic.added)
 
 
@@ -243,14 +253,14 @@ class TopicList extends Class
 		if not Page.site_info.cert_user_id # No selected cert
 			Page.cmd "wrapperNotification", ["info", "Please, your choose account before upvoting."]
 			return false
-			
+
 		elem = $(e.currentTarget)
 		elem.toggleClass("active").addClass("loading")
 		inner_path = "data/users/#{User.my_address}/data.json"
 		User.getData (data) =>
 			data.topic_vote ?= {}
 			topic_uri = elem.parents(".topic").data("topic_uri")
-			
+
 			if elem.hasClass("active")
 				data.topic_vote[topic_uri] = 1
 			else
@@ -258,6 +268,6 @@ class TopicList extends Class
 			User.publishData data, (res) =>
 				elem.removeClass("loading")
 		return false
-			
+
 
 window.TopicList = new TopicList()

@@ -1,11 +1,13 @@
 {
   "address": "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT", 
   "background-color": "#F5F5F5", 
+  "cloneable": true, 
   "description": "Decentralized forum with ZeroID", 
+  "domain": "Talk.ZeroNetwork.bit", 
   "files": {
     "css/all.css": {
-      "sha512": "99e1e26a1bd9401e44a1387387e81d4b41ca0a74c6920dc8ccbbc9d95cd6c3b3", 
-      "size": 152174
+      "sha512": "2b261bfd570673a4bcd635979ac9b759136890455be343e03d517cab3fddc482", 
+      "size": 152401
     }, 
     "data-default/users/content-default.json": {
       "sha512": "c1642cc2922a74c3e74991f0194e2acc46dc5e003207a0028dad63c75c41a0ec", 
@@ -36,8 +38,8 @@
       "size": 5774
     }, 
     "js/all.js": {
-      "sha512": "64c5a7600080fb0a9c1803225ace0be36fbef0187916a907850f63d04bf14d14", 
-      "size": 209151
+      "sha512": "3f43c2a71ee7935543c5eaf50c2a6050bc300c9af24dfa9b6fda63866f457362", 
+      "size": 210996
     }
   }, 
   "ignore": "((js|css)/(?!all.(js|css))|data/users/.*db|data/users/.*/.*|.*.py)", 
@@ -47,14 +49,14 @@
       "signers_required": 1
     }
   }, 
-  "modified": 1436299501.357, 
+  "modified": 1437598152.914, 
   "sign": [
-    26944229287066389428952848964304428003832508385051083532138696695658520894199, 
-    31578339172626178312020144808739217041005999807676488096260098078792616198513
+    43048981658949643860027742264409287266879385854690681145688559729857453638127, 
+    106471322358924035147186853298996199506939972824947898370002462388608150387940
   ], 
   "signers_sign": "HG/6ljsXbej7laqD3JUGsa8IEgSGE+NZs2jg9reQ3vrlo0fTnoFESCNujVxRuY1ORor143LGSyjl8PkaRdU4gx8=", 
   "signs": {
-    "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "HKh0seG6rXOUa2BEC8d7xaR5Uf04fIwYvULZ07JrfmSER4GV1HaWDYZ+dn2UQwKdSG8fndNLxJyGQxYWtg6dCew="
+    "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "G9tm97bIVk1CSwKjOpaVH/uJnDs2cXonuIue8amXqYOZw1ECLm0UyB9pVh0/hk6y2BJ/mbzxQJXLmuOI+0mFXLA="
   }, 
   "signs_required": 1, 
   "title": "nuZeroTalk", 

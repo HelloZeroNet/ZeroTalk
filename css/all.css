@@ -89,7 +89,7 @@ a.nolink:active { border-bottom: none }
 
 
 /* Input */
-input.text, textarea { 
+input.text, textarea {
 	line-height: 1.5em; width: 100%; padding: 10px; font-family: 'Roboto', sans-serif; font-size: 16px;
 	-webkit-transition: border 0.3s; -moz-transition: border 0.3s; -o-transition: border 0.3s; -ms-transition: border 0.3s; transition: border 0.3s ; border: 2px solid #eee; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box ;
 }
@@ -99,8 +99,8 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 
 /* Button */
 
-.button { 
-	padding: 5px 10px; background-color: #DDE0E0; border-bottom: 2px solid #999998; background-position: left center; 
+.button {
+	padding: 5px 10px; background-color: #DDE0E0; border-bottom: 2px solid #999998; background-position: left center;
 	-webkit-border-radius: 2px ; -moz-border-radius: 2px ; -o-border-radius: 2px ; -ms-border-radius: 2px ; border-radius: 2px  ; text-decoration: none; -webkit-transition: all 0.5s ease-out ; -moz-transition: all 0.5s ease-out ; -o-transition: all 0.5s ease-out ; -ms-transition: all 0.5s ease-out ; transition: all 0.5s ease-out  ; color: #333; display: inline-block
 }
 .button:hover, .button:active { background-color: #FFF400; border-color: white; border-bottom: 2px solid #4D4D4C; -webkit-transition: none ; -moz-transition: none ; -o-transition: none ; -ms-transition: none ; transition: none  ; color: inherit }
@@ -109,24 +109,24 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 /*.button-delete { background-color: #e74c3c; border-bottom-color: #A83F34; color: white }*/
 .button-outline { background-color: white; color: #DDD; border: 1px solid #eee }
 
-.button-delete:hover { background-color: #FF5442; border: 1px solid #FF5442; color: white } 
-.button-ok:hover { background-color: #27AE60; border: 1px solid #27AE60; color: white } 
+.button-delete:hover { background-color: #FF5442; border: 1px solid #FF5442; color: white }
+.button-ok:hover { background-color: #27AE60; border: 1px solid #27AE60; color: white }
 .button-submit { background-color: #FFF85F;border-bottom: 2px solid #CDBD1E;  padding: 5px 15px; font-size: 15px; line-height: 30px }
 .button-small { padding: 5px 10px; font-size: 12px; line-height: 16px }
 
-.button.loading { 
-	color: rgba(0,0,0,0); background: #999 url(../img/loading.gif) no-repeat center center; 
+.button.loading {
+	color: rgba(0,0,0,0); background: #999 url(../img/loading.gif) no-repeat center center;
 	-webkit-transition: all 0.5s ease-out ; -moz-transition: all 0.5s ease-out ; -o-transition: all 0.5s ease-out ; -ms-transition: all 0.5s ease-out ; transition: all 0.5s ease-out  ; pointer-events: none; border-bottom: 2px solid #666
-} 
+}
 
 
 /* Head */
 .head { float: left; padding-right: 10px; margin-bottom: 10px }
-.head .logo { 
+.head .logo {
 	background-color: #DB3207; display: inline-block; padding: 13px; margin-left: -10px;
 	color: rgba(255,255,255,1); font-size: 20px; text-transform: uppercase; line-height: 1em; font-family: consolas, monospace
 }
-.head-user { 
+.head-user {
 	display: inline-block; background-color: white; height: 66px; vertical-align: bottom;
 	padding: 12px 15px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box ; margin-left: -4px; font-size: 13px; line-height: 17px;
 }
@@ -136,21 +136,22 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 
 
 /* Topics */
-.topics-title, .topic-title { 
+.topics-title, .topic-title {
 	line-height: 1.2em; font-weight: lighter; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-	margin-bottom: 9px; padding-top: 7px; font-size: 45px; padding-left: 22px; display: inline-block; width: 100%; box-sizing: border-box 
+	margin-bottom: 9px; padding-top: 7px; font-size: 45px; padding-left: 22px; display: inline-block; width: 100%; box-sizing: border-box
 }
 .parent-link { font-size: 19px; font-weight: bold; line-height: 19px }
 .topic-new { overflow: hidden; backface-visibility: hidden }
-.topic-new-link { 
-	float: right; margin-top: -46px; margin-right: 1px; color: #AAA; padding: 6px 10px; white-space: nowrap; 
-	overflow: hidden; background-color: rgba(245,245,245,0.9); z-index: 1; position: relative; transition: all 0.3s 
+.topic-new-link {
+	float: right; margin-top: -46px; margin-right: 1px; color: #AAA; padding: 6px 10px; white-space: nowrap;
+	overflow: hidden; background-color: rgba(245,245,245,0.9); z-index: 1; position: relative; transition: all 0.3s
 }
 .topic-new-link:hover { color: #DB3207; -webkit-transition: none ; -moz-transition: none ; -o-transition: none ; -ms-transition: none ; transition: none  }
 
 .topic { background-color: white; padding: 15px 25px; margin: 1px; padding-left: 110px; position: relative; }
 .topic-group { border-left: 2px solid #DB3207; margin-left: -2px; }
 .topic-group:before { content: "\203A"; float: right; padding: 18px 0px; font-size: 25px; color: #999; font-family: Tahoma }
+.topic-sticky:before { content: "stickied"; float: right; font-size: 10px; margin-right: -25px; background-color: #F7DE6E; padding: 2px 5px; color: #827850; text-transform: uppercase; letter-spacing: 0.5px; }
 .topic .image { position: absolute; margin-left: -72px; margin-top: 5px; opacity: 0.3 }
 .topic .title { padding-bottom: 4px }
 .topic .title input { color: #DB3207; font-weight: bold; font-size: 1em }
@@ -172,8 +173,8 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .topics { margin-bottom: 60px; opacity: 0; -webkit-transition: opacity 0.3s ; -moz-transition: opacity 0.3s ; -o-transition: opacity 0.3s ; -ms-transition: opacity 0.3s ; transition: opacity 0.3s  }
 .topics .body { max-height: 1.5em; }
 .topics .body ul { margin: 0px }
-.topics-loading { 
-	background-color: #DB3207; padding: 5px 14px; display: inline-block; color: white; 
+.topics-loading {
+	background-color: #DB3207; padding: 5px 14px; display: inline-block; color: white;
 	position: absolute; left: 50%; top: -30px; transition: all 0.3s
 }
 .topics-loading img { opacity: 0.5; margin-right: 10px }
@@ -184,10 +185,10 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 
 /* Messages */
 .comments { margin-bottom: 60px }
-.comment { background-color: white; padding: 15px 25px; margin: 1px; border-bottom: 1px solid #EEE }
+.comment { background-color: white; padding: 15px 25px; margin: 1px; border-bottom: 1px solid #EEE; backface-visibility: hidden }
 .comment .user_name { font-size: 14px }
 .comment .added { color: #AAA }
-.comment .reply { color: #CCC; opacity: 0; -webkit-transition: opacity 0.3s ; -moz-transition: opacity 0.3s ; -o-transition: opacity 0.3s ; -ms-transition: opacity 0.3s ; transition: opacity 0.3s  }
+.comment .reply { color: #CCC; opacity: 0; -webkit-transition: opacity 0.3s; -moz-transition: opacity 0.3s; -o-transition: opacity 0.3s; -ms-transition: opacity 0.3s; transition: opacity 0.3s ; position: relative; }
 .comment:hover .reply { opacity: 1 }
 .comment .reply .icon { opacity: 0.3 }
 .comment .reply:hover { border-bottom: none; color: #666 }
@@ -210,7 +211,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .comment-nocert .info { opacity: 0.1; pointer-events: none }
 .comment-nocert .button-submit-form { opacity: 0.1; pointer-events: none }
 .comment-nocert .button.button-certselect { display: inherit; opacity: 1; pointer-events: default }
-.button.button-certselect { 
+.button.button-certselect {
 	position: absolute; left: 50%; white-space: nowrap; -webkit-transform: translateX(-50%); -moz-transform: translateX(-50%); -o-transform: translateX(-50%); -ms-transform: translateX(-50%); transform: translateX(-50%) ; z-index: 99;
 	margin-top: 13px; background-color: #007AFF; color: white; border-bottom-color: #3543F9; display: none
 }
@@ -218,18 +219,18 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .button.button-certselect:active { position: absolute; -webkit-transform: translateX(-50%) translateY(1px); -moz-transform: translateX(-50%) translateY(1px); -o-transform: translateX(-50%) translateY(1px); -ms-transform: translateX(-50%) translateY(1px); transform: translateX(-50%) translateY(1px) ; top: auto; }
 
 .user-size { font-size: 11px; margin-top: 6px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box ; text-transform: uppercase; display: inline-block; color: #AAA }
-.user-size-used { position: absolute; color: #B10DC9; overflow: hidden; width: 40px; white-space: nowrap }   
+.user-size-used { position: absolute; color: #B10DC9; overflow: hidden; width: 40px; white-space: nowrap }
 
 /* Score */
-.score { 
+.score {
 	border: 1px solid #eee; margin-right: 5px; padding: 2px 7px; -webkit-border-radius: 10px; -moz-border-radius: 10px; -o-border-radius: 10px; -ms-border-radius: 10px; border-radius: 10px ; color: #AAA; background-position: left center; font-weight: bold;
 	display: inline-block; height: 1.2em; overflow: hidden; vertical-align: -0.5em; line-height: 1em; -webkit-transition: background-color 0.3s; -moz-transition: background-color 0.3s; -o-transition: background-color 0.3s; -ms-transition: background-color 0.3s; transition: background-color 0.3s ; height: 20px; box-sizing: border-box
 }
 .score-active, .score-inactive { -webkit-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -moz-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -o-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -ms-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) ; display: inline-block }
 .score-active { display: block; margin-top: 2px }
 .score.active { background-color: #2ecc71; color: white }
-.score.loading { 
-	color: rgba(255,255,255,0); background: #2ecc71 url(../img/loading.gif) no-repeat center center; 
+.score.loading {
+	color: rgba(255,255,255,0); background: #2ecc71 url(../img/loading.gif) no-repeat center center;
 	-webkit-transition: background 0.5s ease-out; -moz-transition: background 0.5s ease-out; -o-transition: background 0.5s ease-out; -ms-transition: background 0.5s ease-out; transition: background 0.5s ease-out ; pointer-events: none; border: 1px solid #2ecc71
 }
 

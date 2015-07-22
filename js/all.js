@@ -50,7 +50,7 @@
         "transform": "scale(1)"
       }, null, 40);
       return elem.one(transitionEnd, function() {
-        return elem.css("transition", "", 1000).css("transform", "", 2000);
+        return elem.css("transition", "").css("transform", "");
       });
     }), 300);
     return this;
@@ -88,7 +88,6 @@
   window.transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend';
 
 }).call(this);
-
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.cssanim.js ---- */
@@ -210,7 +209,6 @@ jQuery.fx.step.scale = function(fx) {
   };
 
 }).call(this);
-
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.easing.1.3.js ---- */
@@ -491,7 +489,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/InlineEditor.coffee ---- */
 
 
@@ -692,7 +689,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/RateLimit.coffee ---- */
 
 
@@ -720,7 +716,6 @@ jQuery.extend( jQuery.easing,
   };
 
 }).call(this);
-
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Text.coffee ---- */
@@ -817,7 +812,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Time.coffee ---- */
 
 
@@ -878,7 +872,6 @@ jQuery.extend( jQuery.easing,
   window.Time = new Time;
 
 }).call(this);
-
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/ZeroFrame.coffee ---- */
@@ -992,7 +985,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicList.coffee ---- */
 
 
@@ -1010,6 +1002,10 @@ jQuery.extend( jQuery.easing,
       this.thread_sorter = null;
       this.parent_topic_uri = void 0;
       this.topic_parent_uris = {};
+      this.topic_sticky_uris = {
+        "2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj": 1,
+        "1_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj": 1
+      };
     }
 
     TopicList.prototype.actionList = function(parent_topic_id, parent_topic_user_address) {
@@ -1055,13 +1051,21 @@ jQuery.extend( jQuery.easing,
       last_elem = $(".topics-list .topic.template");
       query = "SELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, topic.added as last_added,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n NULL AS row_topic_sub_uri,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_uri)\n" + where + "\nGROUP BY topic.topic_id, topic.json_id";
       if (!this.parent_topic_uri) {
-        query += "			\nUNION ALL\n\nSELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, MAX(topic_sub.added) AS last_added,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN topic AS topic_sub ON (topic_sub.parent_topic_uri = topic.topic_id || '_' || topic_creator_content.directory)\nLEFT JOIN json AS topic_sub_creator_json ON (topic_sub_creator_json.json_id = topic_sub.json_id)\nLEFT JOIN json AS topic_sub_creator_content ON (topic_sub_creator_content.directory = topic_sub_creator_json.directory AND topic_sub_creator_content.file_name = 'content.json')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri)\nWHERE topic.type = \"group\"\nGROUP BY topic.topic_id";
+        query += "\nUNION ALL\n\nSELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, MAX(topic_sub.added) AS last_added,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN topic AS topic_sub ON (topic_sub.parent_topic_uri = topic.topic_id || '_' || topic_creator_content.directory)\nLEFT JOIN json AS topic_sub_creator_json ON (topic_sub_creator_json.json_id = topic_sub.json_id)\nLEFT JOIN json AS topic_sub_creator_content ON (topic_sub_creator_content.directory = topic_sub_creator_json.directory AND topic_sub_creator_content.file_name = 'content.json')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri)\nWHERE topic.type = \"group\"\nGROUP BY topic.topic_id";
       }
       return Page.cmd("dbQuery", [query], (function(_this) {
         return function(topics) {
           var elem, topic, topic_parent, topic_uri, _i, _len;
           topics.sort(function(a, b) {
-            return Math.max(b.last_comment, b.last_added) - Math.max(a.last_comment, a.last_added);
+            var booster_a, booster_b;
+            booster_a = booster_b = 0;
+            if (window.TopicList.topic_sticky_uris[a.row_topic_uri]) {
+              booster_a = window.TopicList.topic_sticky_uris[a.row_topic_uri] * 10000000;
+            }
+            if (window.TopicList.topic_sticky_uris[b.row_topic_uri]) {
+              booster_b = window.TopicList.topic_sticky_uris[b.row_topic_uri] * 10000000;
+            }
+            return Math.max(b.last_comment + booster_b, b.last_added + booster_b) - Math.max(a.last_comment + booster_a, a.last_added + booster_a);
           });
           for (_i = 0, _len = topics.length; _i < _len; _i++) {
             topic = topics[_i];
@@ -1069,7 +1073,6 @@ jQuery.extend( jQuery.easing,
             if (topic.last_added) {
               topic.added = topic.last_added;
             }
-            _this.log(topic);
             if (_this.parent_topic_uri && topic_uri === _this.parent_topic_uri) {
               topic_parent = topic;
               continue;
@@ -1118,7 +1121,7 @@ jQuery.extend( jQuery.easing,
       $(".title .title-link, a.image, .comment-num", elem).attr("href", "?Topic:" + topic_uri + "/" + title_hash);
       elem.data("topic_uri", topic_uri);
       body = topic.body;
-      url_match = body.match(/http[s]{0,1}:\/\/[^"', $]+/);
+      url_match = body.match(/http[s]{0,1}:\/\/[^"', \r\n)$]+/);
       if (topic.type === "group") {
         $(elem).addClass("topic-group");
         $(".image .icon", elem).removeClass("icon-topic-chat").addClass("icon-topic-group");
@@ -1127,7 +1130,7 @@ jQuery.extend( jQuery.easing,
       } else if (url_match) {
         url = url_match[0];
         if (type !== "show") {
-          body = body.replace(/http[s]{0,1}:\/\/[^"' $]+$/g, "");
+          body = body.replace(/http[s]{0,1}:\/\/[^"' \r\n)$]+$/g, "");
         }
         $(".image .icon", elem).removeClass("icon-topic-chat").addClass("icon-topic-link");
         $(".link", elem).css("display", "").attr("href", Text.fixLink(url));
@@ -1142,6 +1145,9 @@ jQuery.extend( jQuery.easing,
         }));
       } else {
         $(".body", elem).text(body);
+      }
+      if (window.TopicList.topic_sticky_uris[topic_uri]) {
+        elem.addClass("topic-sticky");
       }
       if (type !== "show") {
         last_action = Math.max(topic.last_comment, topic.added);
@@ -1502,7 +1508,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/User.coffee ---- */
 
 
@@ -1654,7 +1659,6 @@ jQuery.extend( jQuery.easing,
   window.User = new User();
 
 }).call(this);
-
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/ZeroTalk.coffee ---- */
