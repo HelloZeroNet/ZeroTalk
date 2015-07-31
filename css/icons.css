@@ -19,10 +19,10 @@
 .icon-topic-group {
 	width: 48px; height: 48px;
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAJ1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADdEvm1AAAADHRSTlMA4OYWS9GHBdmGQDzuZiI1AAAAsklEQVQ4y2OgB2BPPIMJJAsYGNjOYAMTGBiYDuAwiudAmQymjoPTgRI52Mw6CZTQWYBpDtdBoMQZbDacGXYSLIIOMIwqwXhGAIZRJZiAAlCMZpSSAwwPIg8SL8GES4INlwR7AnYJINbZgCnOfQhIAFMiUJ45BjUlAiXKdEASpijih6ZDTQRqaMZulcVRA6wSzD3BDFgloBowJXqaGbBLQDVgSgTjyIi4NDDg0sAA1EA5AADgQrEX3Q0JUAAAAABJRU5ErkJggg==);
-}	
-.icon-up { font-weight: normal !important; font-size: 15px; font-family: Tahoma; vertical-align: -4px; padding-right: 5px; display: inline-block; height: 1px; }
+}
+.icon-up { font-weight: normal !important; font-size: 15px; font-family: Tahoma; vertical-align: -4px; padding-right: 5px; display: inline; height: 1px; }
 
-.icon-edit { 
+.icon-edit {
 	width: 16px; height: 16px; background-repeat: no-repeat; background-position: 20px center;
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAOVBMVEUAAAC9w8e9w8e9w8e9w8e/xMi9w8e9w8e+w8e9w8e9w8e9w8e9w8e9w8e9w8e+w8e/xMi9w8e9w8fvY4+KAAAAEnRSTlMASPv3WQbwOTCkt4/psX4YDMWr+RRCAAAAUUlEQVQY06XLORKAMAxDUTs7kA3d/7AYGju0UfffjIgoHkxm0vB5bZyxKHx9eX0FJw0Y4bcXKQ4/CTtS5yqp5GFFOjGpVGl00k1pNDIb3Nv9AHC7BOZC4ZjvAAAAAElFTkSuQmCC+d0ckOwyAMRVGHUOO0gUyd+P8f7WApz4Iki9wFmyOEATrXLZcFp5LrGogPOxKp6zfFf9fZ1/I/cY7YZSS3U6S3XFZJmGBwL+FuJX/F1K0wUUlZyZGlXgXESthTEs4B8fh7xoVUDPGYJnsfkCRarKAgz8cAKbpD6pqDPz3XB8K6HdUEeN9NAAAAAElFTkSuQmCC);
 }

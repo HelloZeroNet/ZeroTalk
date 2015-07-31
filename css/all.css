@@ -62,7 +62,7 @@ h4 { font-size: 20px; margin-top: 1em; margin-bottom: 0.5em }
 p { margin-top: 0.9em; margin-bottom: 0.9em }
 hr { margin: 20px 0px; border: none; border-bottom: 1px solid #eee; margin-left: auto; margin-right: auto; width: 120px; }
 small { font-size: 80%; color: #999; }
-pre { border: solid 1px #e1e4e5; padding: 10px; background-color: #FBFBFB; font-family: consolas, monospace; border-bottom: 2px solid #e1e4e5; line-height: 1em; }
+pre { border: solid 1px #e1e4e5; padding: 10px; background-color: #FBFBFB; font-family: consolas, menlo, monospace; border-bottom: 2px solid #e1e4e5; line-height: 1em; }
 
 a { text-decoration: none; color: #DB3207 }
 a:hover { border-bottom: 0.1em solid #DDD }
@@ -124,7 +124,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .head { float: left; padding-right: 10px; margin-bottom: 10px }
 .head .logo {
 	background-color: #DB3207; display: inline-block; padding: 13px; margin-left: -10px;
-	color: rgba(255,255,255,1); font-size: 20px; text-transform: uppercase; line-height: 1em; font-family: consolas, monospace
+	color: rgba(255,255,255,1); font-size: 20px; text-transform: uppercase; line-height: 1em; font-family: consolas, menlo, monospace
 }
 .head-user {
 	display: inline-block; background-color: white; height: 66px; vertical-align: bottom;
@@ -152,6 +152,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .topic-group { border-left: 2px solid #DB3207; margin-left: -2px; }
 .topic-group:before { content: "\203A"; float: right; padding: 18px 0px; font-size: 25px; color: #999; font-family: Tahoma }
 .topic-sticky:before { content: "stickied"; float: right; font-size: 10px; margin-right: -25px; background-color: #F7DE6E; padding: 2px 5px; color: #827850; text-transform: uppercase; letter-spacing: 0.5px; }
+.topic-sticky { margin-bottom: 5px; margin-top: -4px }
 .topic .image { position: absolute; margin-left: -72px; margin-top: 5px; opacity: 0.3 }
 .topic .title { padding-bottom: 4px }
 .topic .title input { color: #DB3207; font-weight: bold; font-size: 1em }
@@ -224,10 +225,10 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 /* Score */
 .score {
 	border: 1px solid #eee; margin-right: 5px; padding: 2px 7px; -webkit-border-radius: 10px; -moz-border-radius: 10px; -o-border-radius: 10px; -ms-border-radius: 10px; border-radius: 10px ; color: #AAA; background-position: left center; font-weight: bold;
-	display: inline-block; height: 1.2em; overflow: hidden; vertical-align: -0.5em; line-height: 1em; -webkit-transition: background-color 0.3s; -moz-transition: background-color 0.3s; -o-transition: background-color 0.3s; -ms-transition: background-color 0.3s; transition: background-color 0.3s ; height: 20px; box-sizing: border-box
+	display: inline-block; height: 1.2em; overflow: hidden; vertical-align: -0.5em; line-height: 0em; -webkit-transition: background-color 0.3s; -moz-transition: background-color 0.3s; -o-transition: background-color 0.3s; -ms-transition: background-color 0.3s; transition: background-color 0.3s ; height: 20px; box-sizing: border-box
 }
-.score-active, .score-inactive { -webkit-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -moz-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -o-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -ms-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) ; display: inline-block }
-.score-active { display: block; margin-top: 2px }
+.score-active, .score-inactive { -webkit-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -moz-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -o-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -ms-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) ; display: inline-block; margin-top: 6px }
+.score-active { display: block; margin-top: 15px }
 .score.active { background-color: #2ecc71; color: white }
 .score.loading {
 	color: rgba(255,255,255,0); background: #2ecc71 url(../img/loading.gif) no-repeat center center;
@@ -321,10 +322,10 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .icon-topic-group {
 	width: 48px; height: 48px;
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAJ1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADdEvm1AAAADHRSTlMA4OYWS9GHBdmGQDzuZiI1AAAAsklEQVQ4y2OgB2BPPIMJJAsYGNjOYAMTGBiYDuAwiudAmQymjoPTgRI52Mw6CZTQWYBpDtdBoMQZbDacGXYSLIIOMIwqwXhGAIZRJZiAAlCMZpSSAwwPIg8SL8GES4INlwR7AnYJINbZgCnOfQhIAFMiUJ45BjUlAiXKdEASpijih6ZDTQRqaMZulcVRA6wSzD3BDFgloBowJXqaGbBLQDVgSgTjyIi4NDDg0sAA1EA5AADgQrEX3Q0JUAAAAABJRU5ErkJggg==);
-}	
-.icon-up { font-weight: normal !important; font-size: 15px; font-family: Tahoma; vertical-align: -4px; padding-right: 5px; display: inline-block; height: 1px; }
+}
+.icon-up { font-weight: normal !important; font-size: 15px; font-family: Tahoma; vertical-align: -4px; padding-right: 5px; display: inline; height: 1px; }
 
-.icon-edit { 
+.icon-edit {
 	width: 16px; height: 16px; background-repeat: no-repeat; background-position: 20px center;
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAOVBMVEUAAAC9w8e9w8e9w8e9w8e/xMi9w8e9w8e+w8e9w8e9w8e9w8e9w8e9w8e9w8e+w8e/xMi9w8e9w8fvY4+KAAAAEnRSTlMASPv3WQbwOTCkt4/psX4YDMWr+RRCAAAAUUlEQVQY06XLORKAMAxDUTs7kA3d/7AYGju0UfffjIgoHkxm0vB5bZyxKHx9eX0FJw0Y4bcXKQ4/CTtS5yqp5GFFOjGpVGl00k1pNDIb3Nv9AHC7BOZC4ZjvAAAAAElFTkSuQmCC+d0ckOwyAMRVGHUOO0gUyd+P8f7WApz4Iki9wFmyOEATrXLZcFp5LrGogPOxKp6zfFf9fZ1/I/cY7YZSS3U6S3XFZJmGBwL+FuJX/F1K0wUUlZyZGlXgXESthTEs4B8fh7xoVUDPGYJnsfkCRarKAgz8cAKbpD6pqDPz3XB8K6HdUEeN9NAAAAAElFTkSuQmCC);
 }
