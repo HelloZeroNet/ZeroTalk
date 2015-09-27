@@ -90,6 +90,7 @@
 }).call(this);
 
 
+
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.cssanim.js ---- */
 
 
@@ -209,6 +210,7 @@ jQuery.fx.step.scale = function(fx) {
   };
 
 }).call(this);
+
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.easing.1.3.js ---- */
@@ -489,6 +491,7 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/InlineEditor.coffee ---- */
 
 
@@ -689,6 +692,7 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/RateLimit.coffee ---- */
 
 
@@ -716,6 +720,7 @@ jQuery.extend( jQuery.easing,
   };
 
 }).call(this);
+
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Text.coffee ---- */
@@ -812,6 +817,7 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Time.coffee ---- */
 
 
@@ -872,6 +878,7 @@ jQuery.extend( jQuery.easing,
   window.Time = new Time;
 
 }).call(this);
+
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/ZeroFrame.coffee ---- */
@@ -983,6 +990,7 @@ jQuery.extend( jQuery.easing,
   window.ZeroFrame = ZeroFrame;
 
 }).call(this);
+
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicList.coffee ---- */
@@ -1103,6 +1111,17 @@ jQuery.extend( jQuery.easing,
             $(".topics-title").html("<span class='parent-link'><a href='?Main'>Main</a> &rsaquo;</span> " + topic_parent.title);
           }
           $(".topics").css("opacity", 1);
+          if (topics.length === 0) {
+            if (Page.site_info.bad_files) {
+              $(".message-big").text("Initial sync in progress...");
+            } else {
+              $(".message-big").text("Welcome to your own forum! :)");
+              $(".topic-new-link").trigger("click");
+            }
+            $(".message-big").css("display", "block").cssLater("opacity", 1);
+          } else {
+            $(".message-big").css("display", "none");
+          }
           if (cb) {
             return cb();
           }
@@ -1194,8 +1213,8 @@ jQuery.extend( jQuery.easing,
         Page.cmd("wrapperNotification", ["info", "Please, your choose account before creating a topic."]);
         return false;
       }
-      title = $(".topic-new #topic_title").val();
-      body = $(".topic-new #topic_body").val();
+      title = $(".topic-new #topic_title").val().trim();
+      body = $(".topic-new #topic_body").val().trim();
       if (!title) {
         return $(".topic-new #topic_title").focus();
       }
@@ -1436,7 +1455,7 @@ jQuery.extend( jQuery.easing,
 
     TopicShow.prototype.submitComment = function() {
       var body;
-      body = $(".comment-new #comment_body").val();
+      body = $(".comment-new #comment_body").val().trim();
       if (!body) {
         $(".comment-new #comment_body").focus();
         return;
@@ -1506,6 +1525,7 @@ jQuery.extend( jQuery.easing,
   window.TopicShow = new TopicShow();
 
 }).call(this);
+
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/User.coffee ---- */
@@ -1659,6 +1679,7 @@ jQuery.extend( jQuery.easing,
   window.User = new User();
 
 }).call(this);
+
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/ZeroTalk.coffee ---- */

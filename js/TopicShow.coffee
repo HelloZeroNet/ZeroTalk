@@ -11,7 +11,7 @@ class TopicShow extends Class
 		$(".comment-new .button-submit-form").on "click", =>
 			@submitComment()
 			return false
-			
+
 		textarea = $(".comment-new #comment_body")
 		$(".comment-new #comment_body").on "input", =>
 			# Update used space
@@ -73,12 +73,12 @@ class TopicShow extends Class
 		# Update visited info
 		Page.local_storage["topic.#{@topic_id}_#{@topic_user_address}.visited"] = Time.timestamp()
 		Page.cmd "wrapperSetLocalStorage", Page.local_storage
-		
+
 		@logStart "Loading comments..."
 
 		# Load comments
 		query = "
-			SELECT 
+			SELECT
 			 comment.*,
 			 user.value AS user_name,
 			 user_json_content.directory AS user_address,
@@ -118,7 +118,7 @@ class TopicShow extends Class
 		$(".body", elem).html Text.toMarked(comment.body, {"sanitize": true})
 		$(".user_name", elem).text(user_name.replace(/@.*/, "")).css("color": Text.toColor(user_name)).attr("title", user_name+": "+comment.user_address)
 		$(".added", elem).text(Time.since(comment.added)).attr("title", Time.date(comment.added, "long"))
-		
+
 		comment_uri = elem.attr("id").replace("comment_", "")
 		if User.my_comment_votes[comment_uri] # Voted on it
 			$(".score-inactive .score-num", elem).text comment.votes-1
@@ -153,17 +153,17 @@ class TopicShow extends Class
 
 
 	submitComment: ->
-		body = $(".comment-new #comment_body").val()
+		body = $(".comment-new #comment_body").val().trim()
 		if not body
 			$(".comment-new #comment_body").focus()
 			return
 
 		$(".comment-new .button-submit").addClass("loading")
-		
+
 		User.getData (data) =>
 			data.comment[@topic_uri] ?= []
 			data.comment[@topic_uri].push {
-				"comment_id": data.next_comment_id, 
+				"comment_id": data.next_comment_id,
 				"body": body,
 				"added": Time.timestamp()
 			}
@@ -181,18 +181,18 @@ class TopicShow extends Class
 		if not Page.site_info.cert_user_id # No selected cert
 			Page.cmd "wrapperNotification", ["info", "Please, your choose account before upvoting."]
 			return false
-		
+
 		elem = $(e.currentTarget)
 		elem.toggleClass("active").addClass("loading")
 		User.getData (data) =>
 			data.comment_vote ?= {}
 			comment_uri = elem.attr("id").match("_([0-9]+_[A-Za-z0-9]+)$")[1]
-			
+
 			if elem.hasClass("active")
 				data.comment_vote[comment_uri] = 1
 			else
 				delete data.comment_vote[comment_uri]
-			
+
 			User.publishData data, (res) =>
 				elem.removeClass("loading")
 		return false

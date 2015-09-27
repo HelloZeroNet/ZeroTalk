@@ -135,7 +135,19 @@ class TopicList extends Class
 
 			$(".topics").css("opacity", 1)
 
+			# Show loading / empty forum bigmessage
+			if topics.length == 0
+				if Page.site_info.bad_files
+					$(".message-big").text("Initial sync in progress...")
+				else
+					$(".message-big").text("Welcome to your own forum! :)")
+					$(".topic-new-link").trigger("click")
+				$(".message-big").css("display", "block").cssLater("opacity", 1)
+			else
+				$(".message-big").css("display", "none")
+
 			if cb then cb()
+
 
 
 	applyTopicData: (elem, topic, type="list") ->
@@ -222,8 +234,8 @@ class TopicList extends Class
 			Page.cmd "wrapperNotification", ["info", "Please, your choose account before creating a topic."]
 			return false
 
-		title = $(".topic-new #topic_title").val()
-		body = $(".topic-new #topic_body").val()
+		title = $(".topic-new #topic_title").val().trim()
+		body = $(".topic-new #topic_body").val().trim()
 		#if not body then return $(".topic-new #topic_body").focus()
 		if not title then return $(".topic-new #topic_title").focus()
 

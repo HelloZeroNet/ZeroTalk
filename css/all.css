@@ -43,14 +43,14 @@
 
 .editbg {
 	display: none; width: 100%; height: 100%; position: fixed; opacity: 0; background-color: white; -webkit-transition: opacity 0.5s; -moz-transition: opacity 0.5s; -o-transition: opacity 0.5s; -ms-transition: opacity 0.5s; transition: opacity 0.5s ; 
-	left: 0px; top: 0px; z-index: 500; backface-visibility: hidden;
+	left: 0px; top: 0px; z-index: 500; -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -o-backface-visibility: hidden; -ms-backface-visibility: hidden; backface-visibility: hidden ;
 }
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/ZeroTalk.css ---- */
 
 
-body { background-color: #F5F5F5; color: #333332; margin: 10px; padding: 0px; font-family: 'Roboto', sans-serif; height: 15000px; overflow: hidden; backface-visibility: hidden; }
+body { background-color: #F5F5F5; color: #333332; margin: 10px; padding: 0px; font-family: 'Roboto', sans-serif; height: 15000px; overflow: hidden; -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -o-backface-visibility: hidden; -ms-backface-visibility: hidden; backface-visibility: hidden ; }
 body.loaded { height: auto; overflow: auto }
 
 h1, h2, h3, h4 { font-family: 'Roboto', sans-serif; font-weight: normal; margin: 0px; padding: 0px }
@@ -62,7 +62,7 @@ h4 { font-size: 20px; margin-top: 1em; margin-bottom: 0.5em }
 p { margin-top: 0.9em; margin-bottom: 0.9em }
 hr { margin: 20px 0px; border: none; border-bottom: 1px solid #eee; margin-left: auto; margin-right: auto; width: 120px; }
 small { font-size: 80%; color: #999; }
-pre { border: solid 1px #e1e4e5; padding: 10px; background-color: #FBFBFB; font-family: consolas, menlo, monospace; border-bottom: 2px solid #e1e4e5; line-height: 1em; }
+pre { border: solid 1px #e1e4e5; padding: 10px; background-color: #FBFBFB; font-family: Consolas, Monaco, monospace; border-bottom: 2px solid #e1e4e5; line-height: 1em; }
 
 a { text-decoration: none; color: #DB3207 }
 a:hover { border-bottom: 0.1em solid #DDD }
@@ -119,7 +119,6 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 	-webkit-transition: all 0.5s ease-out ; -moz-transition: all 0.5s ease-out ; -o-transition: all 0.5s ease-out ; -ms-transition: all 0.5s ease-out ; transition: all 0.5s ease-out  ; pointer-events: none; border-bottom: 2px solid #666
 }
 
-
 /* Head */
 .head { float: left; padding-right: 10px; margin-bottom: 10px }
 .head .logo {
@@ -133,7 +132,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .head .button { margin-top: 2px }
 .head .size { font-size: 8px; background-color: #eee; width: 100px; margin-top: 6px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box ; text-indent: 21px; text-transform: uppercase; color: #999 }
 .head .size-used { position: absolute; background-color: #1abc9c; color: white; overflow: hidden; width: 0px; white-space: nowrap }
-
+.message-big { position: absolute; left: 50%; top: 50%; width: 450px; text-align: center; margin-left: -225px; font-size: 30px; text-shadow: 1px 1px white; color: #AAA; display: none; opacity: 0; -webkit-transition: all 0.5s ; -moz-transition: all 0.5s ; -o-transition: all 0.5s ; -ms-transition: all 0.5s ; transition: all 0.5s  }
 
 /* Topics */
 .topics-title, .topic-title {
@@ -141,7 +140,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 	margin-bottom: 9px; padding-top: 7px; font-size: 45px; padding-left: 22px; display: inline-block; width: 100%; box-sizing: border-box
 }
 .parent-link { font-size: 19px; font-weight: bold; line-height: 19px }
-.topic-new { overflow: hidden; backface-visibility: hidden }
+.topic-new { overflow: hidden; -webkit-backface-visibility: hidden ; -moz-backface-visibility: hidden ; -o-backface-visibility: hidden ; -ms-backface-visibility: hidden ; backface-visibility: hidden  }
 .topic-new-link {
 	float: right; margin-top: -46px; margin-right: 1px; color: #AAA; padding: 6px 10px; white-space: nowrap;
 	overflow: hidden; background-color: rgba(245,245,245,0.9); z-index: 1; position: relative; transition: all 0.3s
@@ -186,7 +185,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 
 /* Messages */
 .comments { margin-bottom: 60px }
-.comment { background-color: white; padding: 15px 25px; margin: 1px; border-bottom: 1px solid #EEE; backface-visibility: hidden }
+.comment { background-color: white; padding: 15px 25px; margin: 1px; border-bottom: 1px solid #EEE; -webkit-backface-visibility: hidden ; -moz-backface-visibility: hidden ; -o-backface-visibility: hidden ; -ms-backface-visibility: hidden ; backface-visibility: hidden  }
 .comment .user_name { font-size: 14px }
 .comment .added { color: #AAA }
 .comment .reply { color: #CCC; opacity: 0; -webkit-transition: opacity 0.3s; -moz-transition: opacity 0.3s; -o-transition: opacity 0.3s; -ms-transition: opacity 0.3s; transition: opacity 0.3s ; position: relative; }
@@ -197,7 +196,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .comment .info { font-size: 12px; color: #AAA; margin-bottom: 7px }
 .comment .info .score { margin-left: 5px }
 .comment .body { line-height: 1.5em }
-.comment .body p { margin-top: 0.5em; margin-bottom: 0.5em }
+.comment .body p { margin-top: 0.5em; margin-bottom: 0.5em; word-wrap: break-word; }
 .comment .body.editor { margin-top: 0.5em !important; margin-bottom: 0.5em !important }
 .comment .body h1, .comment .body h2, .comment .body h3 { font-size: 110% }
 .comment .body blockquote { padding: 1px 15px; border-left: 2px solid #E7E7E7; margin: 0px; margin-top: 30px }
@@ -225,10 +224,10 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 /* Score */
 .score {
 	border: 1px solid #eee; margin-right: 5px; padding: 2px 7px; -webkit-border-radius: 10px; -moz-border-radius: 10px; -o-border-radius: 10px; -ms-border-radius: 10px; border-radius: 10px ; color: #AAA; background-position: left center; font-weight: bold;
-	display: inline-block; height: 1.2em; overflow: hidden; vertical-align: -0.5em; line-height: 0em; -webkit-transition: background-color 0.3s; -moz-transition: background-color 0.3s; -o-transition: background-color 0.3s; -ms-transition: background-color 0.3s; transition: background-color 0.3s ; height: 20px; box-sizing: border-box
+	display: inline-block; height: 1.2em; overflow: hidden; vertical-align: -0.5em; line-height: 7px; -webkit-transition: background-color 0.3s; -moz-transition: background-color 0.3s; -o-transition: background-color 0.3s; -ms-transition: background-color 0.3s; transition: background-color 0.3s ; height: 20px; box-sizing: border-box
 }
-.score-active, .score-inactive { -webkit-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -moz-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -o-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -ms-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) ; display: inline-block; margin-top: 6px }
-.score-active { display: block; margin-top: 15px }
+.score-active, .score-inactive { -webkit-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -moz-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -o-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); -ms-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) ; display: inline-block; margin-top: 3px }
+.score-active { display: block; margin-top: 5px }
 .score.active { background-color: #2ecc71; color: white }
 .score.loading {
 	color: rgba(255,255,255,0); background: #2ecc71 url(../img/loading.gif) no-repeat center center;
