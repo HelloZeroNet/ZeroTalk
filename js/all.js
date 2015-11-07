@@ -90,7 +90,6 @@
 }).call(this);
 
 
-
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.cssanim.js ---- */
 
 
@@ -210,7 +209,6 @@ jQuery.fx.step.scale = function(fx) {
   };
 
 }).call(this);
-
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.easing.1.3.js ---- */
@@ -491,7 +489,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/InlineEditor.coffee ---- */
 
 
@@ -692,7 +689,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/RateLimit.coffee ---- */
 
 
@@ -720,7 +716,6 @@ jQuery.extend( jQuery.easing,
   };
 
 }).call(this);
-
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Text.coffee ---- */
@@ -772,6 +767,7 @@ jQuery.extend( jQuery.easing,
       options["gfm"] = true;
       options["breaks"] = true;
       options["renderer"] = renderer;
+      text = this.fixReply(text);
       text = marked(text, options);
       return this.fixHtmlLinks(text);
     };
@@ -794,6 +790,10 @@ jQuery.extend( jQuery.easing,
 
     Text.prototype.toUrl = function(text) {
       return text.replace(/[^A-Za-z0-9]/g, "+").replace(/[+]+/g, "+").replace(/[+]+$/, "");
+    };
+
+    Text.prototype.fixReply = function(text) {
+      return text.replace(/(>.*\n)([^\n>])/gm, "$1\n$2");
     };
 
     Text.prototype.toBitcoinAddress = function(text) {
@@ -878,7 +878,6 @@ jQuery.extend( jQuery.easing,
   window.Time = new Time;
 
 }).call(this);
-
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/ZeroFrame.coffee ---- */
@@ -990,7 +989,6 @@ jQuery.extend( jQuery.easing,
   window.ZeroFrame = ZeroFrame;
 
 }).call(this);
-
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicList.coffee ---- */
@@ -1285,7 +1283,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicShow.coffee ---- */
 
 
@@ -1527,7 +1524,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/User.coffee ---- */
 
 
@@ -1679,7 +1675,6 @@ jQuery.extend( jQuery.easing,
   window.User = new User();
 
 }).call(this);
-
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/ZeroTalk.coffee ---- */

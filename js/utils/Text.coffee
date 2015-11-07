@@ -20,6 +20,7 @@ class Text
 		options["gfm"] = true
 		options["breaks"] = true
 		options["renderer"] = renderer
+		text = @fixReply(text)
 		text = marked(text, options)
 		return @fixHtmlLinks text
 
@@ -43,14 +44,16 @@ class Text
 	toUrl: (text) ->
 		return text.replace(/[^A-Za-z0-9]/g, "+").replace(/[+]+/g, "+").replace(/[+]+$/, "")
 
+	fixReply: (text) ->
+		return text.replace(/(>.*\n)([^\n>])/gm, "$1\n$2")
 
 	toBitcoinAddress: (text) ->
 		return text.replace(/[^A-Za-z0-9]/g, "")
-	
-	
+
+
 	jsonEncode: (obj) ->
 		return btoa(unescape(encodeURIComponent(JSON.stringify(obj, undefined, '\t'))))
-		
+
 
 window.is_proxy = (window.location.pathname == "/")
 window.renderer = new Renderer()
