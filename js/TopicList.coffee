@@ -2,8 +2,9 @@ class TopicList extends Class
 	constructor: ->
 		@thread_sorter = null
 		@parent_topic_uri = undefined
+		@list_all = false
 		@topic_parent_uris = {}
-		@topic_sticky_uris = { "2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj": 1, "1_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj": 1 }
+		@topic_sticky_uris = { "2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj": 1 }
 
 
 	actionList: (parent_topic_id, parent_topic_user_address) ->
@@ -33,6 +34,12 @@ class TopicList extends Class
 			@submitCreateTopic()
 			return false
 
+		$(".topics-more").on "click", =>
+			@list_all = true
+			$(".topics-more").text("Loading...")
+			@loadTopics("noanim")
+			return false
+
 
 	loadTopics: (type="list", cb=false) ->
 		@logStart "Load topics..."
@@ -44,7 +51,7 @@ class TopicList extends Class
 
 		query = """
 			SELECT
-			 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, topic.added as last_added,
+			 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, topic.added as last_added, CASE WHEN MAX(comment.added) IS NULL THEN topic.added ELSE MAX(comment.added) END as last_action,
 			 topic.*,
 			 topic_creator_user.value AS topic_creator_user_name,
 			 topic_creator_content.directory AS topic_creator_address,
@@ -66,7 +73,7 @@ class TopicList extends Class
 				UNION ALL
 
 				SELECT
-				 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, MAX(topic_sub.added) AS last_added,
+				 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, MAX(topic_sub.added) AS last_added, CASE WHEN MAX(topic_sub.added) > MAX(comment.added) THEN MAX(topic_sub.added) ELSE MAX(comment.added) END as last_action,
 				 topic.*,
 				 topic_creator_user.value AS topic_creator_user_name,
 				 topic_creator_content.directory AS topic_creator_address,
@@ -84,6 +91,10 @@ class TopicList extends Class
 				WHERE topic.type = "group"
 				GROUP BY topic.topic_id
 			"""
+
+		if not @list_all and not @parent_topic_uri
+			query += " ORDER BY last_action DESC LIMIT 30"
+
 
 		Page.cmd "dbQuery", [query], (topics) =>
 			topics.sort (a,b) ->
@@ -145,6 +156,11 @@ class TopicList extends Class
 				$(".message-big").css("display", "block").cssLater("opacity", 1)
 			else
 				$(".message-big").css("display", "none")
+
+			if topics.length == 30
+				$(".topics-more").css("display", "block")
+			else
+				$(".topics-more").css("display", "none")
 
 			if cb then cb()
 

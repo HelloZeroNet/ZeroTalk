@@ -250,6 +250,12 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .page-topic .comments-new { display: inherit }
 
 
+.topics-more {
+	background-color: transparent; border: 1px solid #EEE; display: none; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -o-transition: all 0.3s; -ms-transition: all 0.3s; transition: all 0.3s ; margin-top: -60px;
+	padding: 10px 0px; -webkit-border-radius: 2px; -moz-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; border-radius: 2px ; width: 100%; text-align: center; color: #8C8C8C; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box ;
+}
+.topics-more:hover { border: 1px solid #999; background-color: #FFF400; -webkit-transition: none; -moz-transition: none; -o-transition: none; -ms-transition: none; transition: none ; border: 1px #FFF400 solid; }
+.topics-more:active { position: relative; top: 1px }
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/fonts.css ---- */

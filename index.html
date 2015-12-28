@@ -9,7 +9,7 @@
  <base href="" target="_top" id="base">
  <script>
  setTimeout(function() {
- 	base.href = document.location.href.replace("/media", "").replace("index.html", "").replace(/([&?])wrapper=False/, "$1").replace(/&$/, "") // Fix urls
+ 	base.href = document.location.href.replace("/media", "").replace("index.html", "").replace(/([&?])wrapper=False/, "$1").replace(/&$/, "").replace(/[&?]wrapper_nonce=[A-Za-z0-9]+/, "") // Fix urls
  }, 100) // 100ms later, to workaround double js download in chrome
  </script>
 </head>
@@ -88,6 +88,8 @@
   <!-- EOF Template: Topic main -->
 
  </div>
+
+ <a href="#More" class="topics-more">More topics</a>
 
 </div>
 <!-- EOF Page: Main -->

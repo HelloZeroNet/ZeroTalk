@@ -197,3 +197,10 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .page-topic .topics-full { display: inherit }
 .page-topic .comments-new { display: inherit }
 
+
+.topics-more {
+	background-color: transparent; border: 1px solid #EEE; display: none; transition: all 0.3s; margin-top: -60px;
+	padding: 10px 0px; border-radius: 2px; width: 100%; text-align: center; color: #8C8C8C; box-sizing: border-box;
+}
+.topics-more:hover { border: 1px solid #999; background-color: #FFF400; transition: none; border: 1px #FFF400 solid; }
+.topics-more:active { position: relative; top: 1px }

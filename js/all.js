@@ -817,7 +817,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Time.coffee ---- */
 
 
@@ -1007,10 +1006,10 @@ jQuery.extend( jQuery.easing,
       this.submitTopicVote = __bind(this.submitTopicVote, this);
       this.thread_sorter = null;
       this.parent_topic_uri = void 0;
+      this.list_all = false;
       this.topic_parent_uris = {};
       this.topic_sticky_uris = {
-        "2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj": 1,
-        "1_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj": 1
+        "2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj": 1
       };
     }
 
@@ -1032,9 +1031,17 @@ jQuery.extend( jQuery.easing,
           return false;
         };
       })(this));
-      return $(".topic-new .button-submit").on("click", (function(_this) {
+      $(".topic-new .button-submit").on("click", (function(_this) {
         return function() {
           _this.submitCreateTopic();
+          return false;
+        };
+      })(this));
+      return $(".topics-more").on("click", (function(_this) {
+        return function() {
+          _this.list_all = true;
+          $(".topics-more").text("Loading...");
+          _this.loadTopics("noanim");
           return false;
         };
       })(this));
@@ -1055,9 +1062,12 @@ jQuery.extend( jQuery.easing,
         where = "WHERE topic.type IS NULL AND topic.parent_topic_uri IS NULL ";
       }
       last_elem = $(".topics-list .topic.template");
-      query = "SELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, topic.added as last_added,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n NULL AS row_topic_sub_uri,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_uri)\n" + where + "\nGROUP BY topic.topic_id, topic.json_id";
+      query = "SELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, topic.added as last_added, CASE WHEN MAX(comment.added) IS NULL THEN topic.added ELSE MAX(comment.added) END as last_action,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n NULL AS row_topic_sub_uri,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_uri)\n" + where + "\nGROUP BY topic.topic_id, topic.json_id";
       if (!this.parent_topic_uri) {
-        query += "\nUNION ALL\n\nSELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, MAX(topic_sub.added) AS last_added,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN topic AS topic_sub ON (topic_sub.parent_topic_uri = topic.topic_id || '_' || topic_creator_content.directory)\nLEFT JOIN json AS topic_sub_creator_json ON (topic_sub_creator_json.json_id = topic_sub.json_id)\nLEFT JOIN json AS topic_sub_creator_content ON (topic_sub_creator_content.directory = topic_sub_creator_json.directory AND topic_sub_creator_content.file_name = 'content.json')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri)\nWHERE topic.type = \"group\"\nGROUP BY topic.topic_id";
+        query += "\nUNION ALL\n\nSELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, MAX(topic_sub.added) AS last_added, CASE WHEN MAX(topic_sub.added) > MAX(comment.added) THEN MAX(topic_sub.added) ELSE MAX(comment.added) END as last_action,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN topic AS topic_sub ON (topic_sub.parent_topic_uri = topic.topic_id || '_' || topic_creator_content.directory)\nLEFT JOIN json AS topic_sub_creator_json ON (topic_sub_creator_json.json_id = topic_sub.json_id)\nLEFT JOIN json AS topic_sub_creator_content ON (topic_sub_creator_content.directory = topic_sub_creator_json.directory AND topic_sub_creator_content.file_name = 'content.json')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri)\nWHERE topic.type = \"group\"\nGROUP BY topic.topic_id";
+      }
+      if (!this.list_all && !this.parent_topic_uri) {
+        query += " ORDER BY last_action DESC LIMIT 30";
       }
       return Page.cmd("dbQuery", [query], (function(_this) {
         return function(topics) {
@@ -1119,6 +1129,11 @@ jQuery.extend( jQuery.easing,
             $(".message-big").css("display", "block").cssLater("opacity", 1);
           } else {
             $(".message-big").css("display", "none");
+          }
+          if (topics.length === 30) {
+            $(".topics-more").css("display", "block");
+          } else {
+            $(".topics-more").css("display", "none");
           }
           if (cb) {
             return cb();
@@ -1281,6 +1296,7 @@ jQuery.extend( jQuery.easing,
   window.TopicList = new TopicList();
 
 }).call(this);
+
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicShow.coffee ---- */
