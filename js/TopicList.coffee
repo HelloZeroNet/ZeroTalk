@@ -40,6 +40,73 @@ class TopicList extends Class
 			@loadTopics("noanim")
 			return false
 
+		# Follow button
+		@initFollowButton()
+
+	initFollowButton: ->
+		@follow = new Follow($(".feed-follow-list"))
+		if @parent_topic_uri  # Subtopic
+			@follow.addFeed("New topics in this group", "
+				SELECT
+				 title AS title,
+				 body,
+				 added AS date_added,
+				 'topic' AS type,
+				 '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url,
+				 parent_topic_uri AS param
+				FROM topic
+				LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
+				WHERE parent_topic_uri IN (:params)
+			", true, @parent_topic_uri)
+		else
+			@follow.addFeed("New topics", "
+				SELECT
+				 title AS title,
+				 body,
+				 added AS date_added,
+				 'topic' AS type,
+				 '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url
+				FROM topic
+				LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
+				WHERE parent_topic_uri IS NULL
+			", true)
+			if Page.site_info.cert_user_id
+				username = Page.site_info.cert_user_id.replace /@.*/, ""
+				@follow.addFeed("Username mentions", "
+					SELECT
+					 'mention' AS type,
+					 comment.added AS date_added,
+					 topic.title,
+					 commenter_user.value || ': ' || comment.body AS body,
+					 topic_creator_json.directory AS topic_creator_address,
+					 topic.topic_id || '_' || topic_creator_json.directory AS row_topic_uri,
+					 '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url
+					FROM topic
+					 LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
+					 LEFT JOIN comment ON (comment.topic_uri = row_topic_uri)
+					 LEFT JOIN json AS commenter_json ON (commenter_json.json_id = comment.json_id)
+					 LEFT JOIN json AS commenter_content ON (commenter_content.directory = commenter_json.directory AND commenter_content.file_name = 'content.json')
+					 LEFT JOIN keyvalue AS commenter_user ON (commenter_user.json_id = commenter_content.json_id AND commenter_user.key = 'cert_user_id')
+					WHERE
+					 comment.body LIKE '%[#{username}%' OR comment.body LIKE '%@#{username}%'
+				", true)
+			@follow.addFeed("All comments", "
+				SELECT
+				 'comment' AS type,
+				 comment.added AS date_added,
+				 topic.title,
+				 commenter_user.value || ': ' || comment.body AS body,
+				 topic_creator_json.directory AS topic_creator_address,
+				 topic.topic_id || '_' || topic_creator_json.directory AS row_topic_uri,
+				 '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url
+				FROM topic
+				 LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
+				 LEFT JOIN comment ON (comment.topic_uri = row_topic_uri)
+				 LEFT JOIN json AS commenter_json ON (commenter_json.json_id = comment.json_id)
+				 LEFT JOIN json AS commenter_content ON (commenter_content.directory = commenter_json.directory AND commenter_content.file_name = 'content.json')
+				 LEFT JOIN keyvalue AS commenter_user ON (commenter_user.json_id = commenter_content.json_id AND commenter_user.key = 'cert_user_id')
+			")
+		@follow.init()
 
 	loadTopics: (type="list", cb=false) ->
 		@logStart "Load topics..."

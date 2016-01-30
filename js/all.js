@@ -489,6 +489,157 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Follow.coffee ---- */
+
+
+(function() {
+  var Follow,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    __hasProp = {}.hasOwnProperty,
+    __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+
+  Follow = (function(_super) {
+    __extends(Follow, _super);
+
+    function Follow(_at_elem) {
+      this.elem = _at_elem;
+      this.handleMenuClick = __bind(this.handleMenuClick, this);
+      this.init = __bind(this.init, this);
+      this.menu = new Menu(this.elem);
+      this.feeds = {};
+      this.follows = {};
+      this.elem.on("click", (function(_this) {
+        return function() {
+          if (Page.server_info.rev > 850) {
+            if (_this.elem.hasClass("following")) {
+              _this.showFeeds();
+            } else {
+              _this.followDefaultFeeds();
+            }
+          } else {
+            Page.cmd("wrapperNotification", ["info", "Please update your ZeroNet client to use this feature"]);
+          }
+          return false;
+        };
+      })(this));
+    }
+
+    Follow.prototype.init = function() {
+      if (!this.feeds) {
+        return;
+      }
+      return Page.cmd("feedListFollow", [], (function(_this) {
+        return function(_at_follows) {
+          var is_default_feed, menu_item, param, query, title, _ref, _ref1;
+          _this.follows = _at_follows;
+          _ref = _this.feeds;
+          for (title in _ref) {
+            _ref1 = _ref[title], query = _ref1[0], menu_item = _ref1[1], is_default_feed = _ref1[2], param = _ref1[3];
+            if (_this.follows[title] && __indexOf.call(_this.follows[title][1], param) >= 0) {
+              menu_item.addClass("selected");
+            } else {
+              menu_item.removeClass("selected");
+            }
+          }
+          _this.updateListitems();
+          return _this.elem.css("display", "inline-block");
+        };
+      })(this));
+    };
+
+    Follow.prototype.addFeed = function(title, query, is_default_feed, param) {
+      var menu_item;
+      if (is_default_feed == null) {
+        is_default_feed = false;
+      }
+      if (param == null) {
+        param = "";
+      }
+      menu_item = this.menu.addItem(title, this.handleMenuClick);
+      return this.feeds[title] = [query, menu_item, is_default_feed, param];
+    };
+
+    Follow.prototype.handleMenuClick = function(item) {
+      item.toggleClass("selected");
+      this.updateListitems();
+      this.saveFeeds();
+      return true;
+    };
+
+    Follow.prototype.showFeeds = function() {
+      return this.menu.show();
+    };
+
+    Follow.prototype.followDefaultFeeds = function() {
+      var is_default_feed, menu_item, param, query, title, _ref, _ref1;
+      _ref = this.feeds;
+      for (title in _ref) {
+        _ref1 = _ref[title], query = _ref1[0], menu_item = _ref1[1], is_default_feed = _ref1[2], param = _ref1[3];
+        if (is_default_feed) {
+          menu_item.addClass("selected");
+          this.log("Following", title);
+        }
+      }
+      this.updateListitems();
+      return this.saveFeeds();
+    };
+
+    Follow.prototype.updateListitems = function() {
+      if (this.menu.elem.find(".selected").length > 0) {
+        return this.elem.addClass("following");
+      } else {
+        return this.elem.removeClass("following");
+      }
+    };
+
+    Follow.prototype.saveFeeds = function() {
+      return Page.cmd("feedListFollow", [], (function(_this) {
+        return function(follows) {
+          var is_default_feed, item, menu_item, param, params, query, title, _ref, _ref1;
+          _this.follows = follows;
+          _ref = _this.feeds;
+          for (title in _ref) {
+            _ref1 = _ref[title], query = _ref1[0], menu_item = _ref1[1], is_default_feed = _ref1[2], param = _ref1[3];
+            if (follows[title]) {
+              params = (function() {
+                var _i, _len, _ref2, _results;
+                _ref2 = follows[title][1];
+                _results = [];
+                for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
+                  item = _ref2[_i];
+                  if (item !== param) {
+                    _results.push(item);
+                  }
+                }
+                return _results;
+              })();
+            } else {
+              params = [];
+            }
+            if (menu_item.hasClass("selected")) {
+              params.push(param);
+            }
+            if (params.length === 0) {
+              delete follows[title];
+            } else {
+              follows[title] = [query, params];
+            }
+          }
+          return Page.cmd("feedFollow", [follows]);
+        };
+      })(this));
+    };
+
+    return Follow;
+
+  })(Class);
+
+  window.Follow = Follow;
+
+}).call(this);
+
+
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/InlineEditor.coffee ---- */
 
 
@@ -685,6 +836,85 @@ jQuery.extend( jQuery.easing,
   })();
 
   window.InlineEditor = InlineEditor;
+
+}).call(this);
+
+
+/* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Menu.coffee ---- */
+
+
+(function() {
+  var Menu,
+    __slice = [].slice;
+
+  Menu = (function() {
+    function Menu(_at_button) {
+      this.button = _at_button;
+      this.elem = $(".menu.template").clone().removeClass("template");
+      this.elem.appendTo("body");
+      this.items = [];
+    }
+
+    Menu.prototype.show = function() {
+      var button_pos;
+      if (window.visible_menu && window.visible_menu.button[0] === this.button[0]) {
+        window.visible_menu.hide();
+        return this.hide();
+      } else {
+        button_pos = this.button.offset();
+        this.elem.css({
+          "top": button_pos.top + this.button.outerHeight(),
+          "left": button_pos.left
+        });
+        this.button.addClass("menu-active");
+        this.elem.addClass("visible");
+        if (window.visible_menu) {
+          window.visible_menu.hide();
+        }
+        return window.visible_menu = this;
+      }
+    };
+
+    Menu.prototype.hide = function() {
+      this.elem.removeClass("visible");
+      this.button.removeClass("menu-active");
+      return window.visible_menu = null;
+    };
+
+    Menu.prototype.addItem = function(title, cb) {
+      var item;
+      item = $(".menu-item.template", this.elem).clone().removeClass("template");
+      item.html(title);
+      item.on("click", (function(_this) {
+        return function() {
+          if (!cb(item)) {
+            _this.hide();
+          }
+          return false;
+        };
+      })(this));
+      item.appendTo(this.elem);
+      this.items.push(item);
+      return item;
+    };
+
+    Menu.prototype.log = function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return console.log.apply(console, ["[Menu]"].concat(__slice.call(args)));
+    };
+
+    return Menu;
+
+  })();
+
+  window.Menu = Menu;
+
+  $("body").on("click", function(e) {
+    if (window.visible_menu && e.target !== window.visible_menu.button[0] && $(e.target).parent()[0] !== window.visible_menu.elem[0]) {
+      return window.visible_menu.hide();
+    }
+  });
 
 }).call(this);
 
@@ -1037,7 +1267,7 @@ jQuery.extend( jQuery.easing,
           return false;
         };
       })(this));
-      return $(".topics-more").on("click", (function(_this) {
+      $(".topics-more").on("click", (function(_this) {
         return function() {
           _this.list_all = true;
           $(".topics-more").text("Loading...");
@@ -1045,6 +1275,23 @@ jQuery.extend( jQuery.easing,
           return false;
         };
       })(this));
+      return this.initFollowButton();
+    };
+
+    TopicList.prototype.initFollowButton = function() {
+      var username;
+      this.follow = new Follow($(".feed-follow-list"));
+      if (this.parent_topic_uri) {
+        this.follow.addFeed("New topics in this group", "SELECT title AS title, body, added AS date_added, 'topic' AS type, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url, parent_topic_uri AS param FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) WHERE parent_topic_uri IN (:params)", true, this.parent_topic_uri);
+      } else {
+        this.follow.addFeed("New topics", "SELECT title AS title, body, added AS date_added, 'topic' AS type, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) WHERE parent_topic_uri IS NULL", true);
+        if (Page.site_info.cert_user_id) {
+          username = Page.site_info.cert_user_id.replace(/@.*/, "");
+          this.follow.addFeed("Username mentions", "SELECT 'mention' AS type, comment.added AS date_added, topic.title, commenter_user.value || ': ' || comment.body AS body, topic_creator_json.directory AS topic_creator_address, topic.topic_id || '_' || topic_creator_json.directory AS row_topic_uri, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) LEFT JOIN comment ON (comment.topic_uri = row_topic_uri) LEFT JOIN json AS commenter_json ON (commenter_json.json_id = comment.json_id) LEFT JOIN json AS commenter_content ON (commenter_content.directory = commenter_json.directory AND commenter_content.file_name = 'content.json') LEFT JOIN keyvalue AS commenter_user ON (commenter_user.json_id = commenter_content.json_id AND commenter_user.key = 'cert_user_id') WHERE comment.body LIKE '%[" + username + "%' OR comment.body LIKE '%@" + username + "%'", true);
+        }
+        this.follow.addFeed("All comments", "SELECT 'comment' AS type, comment.added AS date_added, topic.title, commenter_user.value || ': ' || comment.body AS body, topic_creator_json.directory AS topic_creator_address, topic.topic_id || '_' || topic_creator_json.directory AS row_topic_uri, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) LEFT JOIN comment ON (comment.topic_uri = row_topic_uri) LEFT JOIN json AS commenter_json ON (commenter_json.json_id = comment.json_id) LEFT JOIN json AS commenter_content ON (commenter_content.directory = commenter_json.directory AND commenter_content.file_name = 'content.json') LEFT JOIN keyvalue AS commenter_user ON (commenter_user.json_id = commenter_content.json_id AND commenter_user.key = 'cert_user_id')");
+      }
+      return this.follow.init();
     };
 
     TopicList.prototype.loadTopics = function(type, cb) {
@@ -1298,7 +1545,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicShow.coffee ---- */
 
 
@@ -1322,6 +1568,7 @@ jQuery.extend( jQuery.easing,
       this.topic_user_address = topic_user_address;
       this.topic_uri = this.topic_id + "_" + this.topic_user_address;
       this.topic = null;
+      this.list_all = false;
       this.loadTopic();
       this.loadComments("noanim");
       $(".comment-new .button-submit-form").on("click", (function(_this) {
@@ -1331,7 +1578,7 @@ jQuery.extend( jQuery.easing,
         };
       })(this));
       textarea = $(".comment-new #comment_body");
-      return $(".comment-new #comment_body").on("input", (function(_this) {
+      $(".comment-new #comment_body").on("input", (function(_this) {
         return function() {
           var current_size;
           if (User.rules.max_size) {
@@ -1344,6 +1591,21 @@ jQuery.extend( jQuery.easing,
           }
         };
       })(this));
+      $(".comments-more").on("click", (function(_this) {
+        return function() {
+          _this.list_all = true;
+          $(".comments-more").text("Loading...");
+          _this.loadComments("noanim");
+          return false;
+        };
+      })(this));
+      return this.initFollowButton();
+    };
+
+    TopicShow.prototype.initFollowButton = function() {
+      this.follow = new Follow($(".feed-follow-show"));
+      this.follow.addFeed("Comments in this topic", "SELECT 'comment' AS type, comment.added AS date_added, topic.title, commenter_user.value || ': ' || comment.body AS body, topic_creator_json.directory AS topic_creator_address, topic.topic_id || '_' || topic_creator_json.directory AS row_topic_uri, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) LEFT JOIN comment ON (comment.topic_uri = row_topic_uri) LEFT JOIN json AS commenter_json ON (commenter_json.json_id = comment.json_id) LEFT JOIN json AS commenter_content ON (commenter_content.directory = commenter_json.directory AND commenter_content.file_name = 'content.json') LEFT JOIN keyvalue AS commenter_user ON (commenter_user.json_id = commenter_content.json_id AND commenter_user.key = 'cert_user_id') WHERE row_topic_uri IN (:params)", true, this.topic_uri);
+      return this.follow.init();
     };
 
     TopicShow.prototype.queryTopic = function(topic_id, topic_user_address) {
@@ -1362,13 +1624,13 @@ jQuery.extend( jQuery.easing,
           var parent_topic_id, parent_topic_user_address, _ref;
           _this.topic = res[0];
           TopicList.applyTopicData($(".topic-full"), _this.topic, "show");
-          if (_this.topic.parent_topic_hash) {
+          if (_this.topic.parent_topic_uri) {
             $(".topic-title").html("&nbsp;").css("display", "");
-            _ref = _this.topic.parent_topic_hash.split("@"), parent_topic_id = _ref[0], parent_topic_user_address = _ref[1];
+            _ref = _this.topic.parent_topic_uri.split("_"), parent_topic_id = _ref[0], parent_topic_user_address = _ref[1];
             Page.cmd("dbQuery", [_this.queryTopic(parent_topic_id, parent_topic_user_address)], function(parent_res) {
               var parent_topic;
               parent_topic = parent_res[0];
-              return $(".topic-title").html("<span class='parent-link'><a href='?Main'>Main</a> &rsaquo;</span> <span class='parent-link'><a href='?Topics:" + parent_topic.topic_id + "_" + parent_topic.topic_creator_user_id + "/" + (Text.toUrl(parent_topic.title)) + "'>" + parent_topic.title + "</a> &rsaquo;</span> " + _this.topic.title);
+              return $(".topic-title").html("<span class='parent-link'><a href='?Main'>Main</a> &rsaquo;</span> <span class='parent-link'><a href='?Topics:" + parent_topic.row_topic_uri + "/" + (Text.toUrl(parent_topic.title)) + "'>" + parent_topic.title + "</a> &rsaquo;</span> " + _this.topic.title);
             });
           }
           $(".topic-full").css("opacity", 1);
@@ -1393,10 +1655,14 @@ jQuery.extend( jQuery.easing,
       Page.cmd("wrapperSetLocalStorage", Page.local_storage);
       this.logStart("Loading comments...");
       query = "SELECT comment.*, user.value AS user_name, user_json_content.directory AS user_address, (SELECT COUNT(*) FROM comment_vote WHERE comment_vote.comment_uri = comment.comment_id || '_' || user_json_content.directory)+1 AS votes FROM comment LEFT JOIN json AS user_json_data ON (user_json_data.json_id = comment.json_id) LEFT JOIN json AS user_json_content ON (user_json_content.directory = user_json_data.directory AND user_json_content.file_name = 'content.json') LEFT JOIN keyvalue AS user ON (user.json_id = user_json_content.json_id AND user.key = 'cert_user_id') WHERE comment.topic_uri = '" + this.topic_id + "_" + this.topic_user_address + "' ORDER BY added DESC";
+      if (!this.list_all) {
+        query += " LIMIT 60";
+      }
       return Page.cmd("dbQuery", [query], (function(_this) {
         return function(comments) {
           var comment, comment_uri, elem, _i, _len;
           _this.logEnd("Loading comments...");
+          $(".comments .comment:not(.template)").attr("missing", "true");
           for (_i = 0, _len = comments.length; _i < _len; _i++) {
             comment = comments[_i];
             comment_uri = comment.comment_id + "_" + comment.user_address;
@@ -1412,13 +1678,19 @@ jQuery.extend( jQuery.easing,
               $(".score", elem).attr("id", "comment_score_" + comment_uri).on("click", _this.submitCommentVote);
             }
             _this.applyCommentData(elem, comment);
-            elem.appendTo(".comments");
+            elem.appendTo(".comments").removeAttr("missing");
           }
           $("body").css({
             "overflow": "auto",
             "height": "auto"
           });
+          $(".comment[missing]").remove();
           Page.addInlineEditors();
+          if (comments.length === 60) {
+            $(".comments-more").css("display", "block");
+          } else {
+            $(".comments-more").css("display", "none");
+          }
           if (cb) {
             return cb();
           }
@@ -1538,6 +1810,7 @@ jQuery.extend( jQuery.easing,
   window.TopicShow = new TopicShow();
 
 }).call(this);
+
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/User.coffee ---- */
