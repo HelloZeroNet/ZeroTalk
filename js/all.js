@@ -1128,6 +1128,7 @@ jQuery.extend( jQuery.easing,
       this.onMessage = __bind(this.onMessage, this);
       this.url = url;
       this.waiting_cb = {};
+      this.wrapper_nonce = document.location.href.replace(/.*wrapper_nonce=([A-Za-z0-9]+).*/, "$1");
       this.connect();
       this.next_message_id = 1;
       this.init();
@@ -1195,6 +1196,7 @@ jQuery.extend( jQuery.easing,
       if (cb == null) {
         cb = null;
       }
+      message.wrapper_nonce = this.wrapper_nonce;
       message.id = this.next_message_id;
       this.next_message_id += 1;
       this.target.postMessage(message, "*");
@@ -1218,6 +1220,7 @@ jQuery.extend( jQuery.easing,
   window.ZeroFrame = ZeroFrame;
 
 }).call(this);
+
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicList.coffee ---- */
@@ -1812,7 +1815,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/User.coffee ---- */
 
 
@@ -1913,7 +1915,7 @@ jQuery.extend( jQuery.easing,
       if (current_size) {
         current_size_kb = current_size / 1000;
         $(".user-size").text("used: " + (current_size_kb.toFixed(1)) + "k/" + (Math.round(this.rules.max_size / 1000)) + "k").attr("title", "Every new user has limited space to store comments, topics and votes.\n" + "This indicator shows your used/total allowed KBytes.\n" + "The site admin can increase it if you about to run out of it.");
-        return $(".user-size-used").css("width", Math.round(70 * current_size / this.rules.max_size));
+        return $(".user-size-used").css("width", Math.round(100 * current_size / this.rules.max_size) + "%");
       } else {
         return $(".user-size").text("");
       }

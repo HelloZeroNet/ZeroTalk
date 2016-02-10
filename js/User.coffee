@@ -3,7 +3,7 @@ class User extends Class
 		@my_topic_votes = {}
 		@my_comment_votes = {}
 		@rules = {}  # Last result for fileRules command
-		
+
 		@certselectButtons()
 
 
@@ -35,8 +35,8 @@ class User extends Class
 			else
 				Page.cmd "certSelect", [["zeroid.bit"]]
 			return false
-			
-			
+
+
 	checkCert: (type) ->
 		last_cert_user_id = $(".user_name-my").text()
 		if $(".comment-new .user_name").text() != Page.site_info.cert_user_id or type == "updaterules" # User changed
@@ -46,7 +46,7 @@ class User extends Class
 			else
 				$(".comment-new").addClass("comment-nocert")
 				$(".user_name-my").text("Please sign in")
-			
+
 			# Update used/allowed space
 			if Page.site_info.cert_user_id
 				Page.cmd "fileRules", "data/users/#{Page.site_info.auth_address}/content.json", (rules) =>
@@ -62,16 +62,16 @@ class User extends Class
 	setCurrentSize: (current_size) ->
 		if current_size
 			current_size_kb = current_size/1000
-			$(".user-size").text("used: #{current_size_kb.toFixed(1)}k/#{Math.round(@rules.max_size/1000)}k").attr("title", 
+			$(".user-size").text("used: #{current_size_kb.toFixed(1)}k/#{Math.round(@rules.max_size/1000)}k").attr("title",
 				"Every new user has limited space to store comments, topics and votes.\n" +
 				"This indicator shows your used/total allowed KBytes.\n"+
 				"The site admin can increase it if you about to run out of it."
 			)
-			$(".user-size-used").css("width", Math.round(70*current_size/@rules.max_size))
+			$(".user-size-used").css("width", Math.round(100*current_size/@rules.max_size)+"%")
 		else
 			$(".user-size").text("")
-			
-			
+
+
 	getData: (cb) ->
 		inner_path = "data/users/#{Page.site_info.auth_address}/data.json"
 		Page.cmd "fileGet", {"inner_path": inner_path, "required": false}, (data) =>
@@ -80,8 +80,8 @@ class User extends Class
 			else # Default data
 				data = {"next_topic_id": 1, "topic": [], "topic_vote": {}, "next_comment_id": 1, "comment": {}, "comment_vote": {}}
 			cb(data)
-			
-			
+
+
 	publishData: (data, cb) ->
 		inner_path = "data/users/#{Page.site_info.auth_address}/data.json"
 		Page.writePublish inner_path, Text.jsonEncode(data), (res) =>
