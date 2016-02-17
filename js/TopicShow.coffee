@@ -102,9 +102,6 @@ class TopicShow extends Class
 
 
 	loadComments: (type="show", cb=false) ->
-		# Update visited info
-		Page.local_storage["topic.#{@topic_id}_#{@topic_user_address}.visited"] = Time.timestamp()
-		Page.cmd "wrapperSetLocalStorage", Page.local_storage
 
 		@logStart "Loading comments..."
 
@@ -151,6 +148,14 @@ class TopicShow extends Class
 				$(".comments-more").css("display", "block")
 			else
 				$(".comments-more").css("display", "none")
+
+			# Update last visited
+			if comments.length > 0
+				Page.local_storage["topic.#{@topic_id}_#{@topic_user_address}.visited"] = comments[0].added
+			else
+				Page.local_storage["topic.#{@topic_id}_#{@topic_user_address}.visited"] = @topic.added
+			Page.cmd "wrapperSetLocalStorage", Page.local_storage
+
 			if cb then cb()
 
 

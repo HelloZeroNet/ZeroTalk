@@ -284,6 +284,10 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 
 .user-size { font-size: 11px; margin-top: 6px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box ; text-transform: uppercase; display: inline-block; color: #AAA }
 .user-size-used { position: absolute; color: #B10DC9; overflow: hidden; width: 40px; white-space: nowrap }
+.user-size-warning {
+	position: absolute; right: 0px; font-size: 13px; line-height: 13px; display: none;
+	color: #999; padding: 7px; white-space: nowrap; margin-top: -3px; margin-right: -8px;
+}
 
 /* Score */
 .score {

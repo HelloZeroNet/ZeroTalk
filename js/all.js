@@ -1011,8 +1011,10 @@ jQuery.extend( jQuery.easing,
     };
 
     Text.prototype.fixLink = function(link) {
+      var back;
       if (window.is_proxy) {
-        return link.replace(/http:\/\/(127.0.0.1|localhost):43110/, 'http://zero');
+        back = link.replace(/http:\/\/(127.0.0.1|localhost):43110/, 'http://zero');
+        return back.replace(/http:\/\/zero\/([^\/]+\.bit)/, "http://$1");
       } else {
         return link.replace(/http:\/\/(127.0.0.1|localhost):43110/, '');
       }
@@ -1222,7 +1224,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicList.coffee ---- */
 
 
@@ -1241,12 +1242,16 @@ jQuery.extend( jQuery.easing,
       this.parent_topic_uri = void 0;
       this.list_all = false;
       this.topic_parent_uris = {};
-      this.topic_sticky_uris = {
-        "2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj": 1
-      };
+      this.topic_sticky_uris = {};
     }
 
     TopicList.prototype.actionList = function(parent_topic_id, parent_topic_user_address) {
+      var topic_sticky_uri, _i, _len, _ref;
+      _ref = Page.site_info.content.settings.topic_sticky_uris;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        topic_sticky_uri = _ref[_i];
+        this.topic_sticky_uris[topic_sticky_uri] = 1;
+      }
       $(".topics-loading").cssLater("top", "0px", 200);
       if (parent_topic_id) {
         $(".topics-title").html("&nbsp;");
@@ -1548,6 +1553,7 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicShow.coffee ---- */
 
 
@@ -1654,8 +1660,6 @@ jQuery.extend( jQuery.easing,
       if (cb == null) {
         cb = false;
       }
-      Page.local_storage["topic." + this.topic_id + "_" + this.topic_user_address + ".visited"] = Time.timestamp();
-      Page.cmd("wrapperSetLocalStorage", Page.local_storage);
       this.logStart("Loading comments...");
       query = "SELECT comment.*, user.value AS user_name, user_json_content.directory AS user_address, (SELECT COUNT(*) FROM comment_vote WHERE comment_vote.comment_uri = comment.comment_id || '_' || user_json_content.directory)+1 AS votes FROM comment LEFT JOIN json AS user_json_data ON (user_json_data.json_id = comment.json_id) LEFT JOIN json AS user_json_content ON (user_json_content.directory = user_json_data.directory AND user_json_content.file_name = 'content.json') LEFT JOIN keyvalue AS user ON (user.json_id = user_json_content.json_id AND user.key = 'cert_user_id') WHERE comment.topic_uri = '" + this.topic_id + "_" + this.topic_user_address + "' ORDER BY added DESC";
       if (!this.list_all) {
@@ -1694,6 +1698,12 @@ jQuery.extend( jQuery.easing,
           } else {
             $(".comments-more").css("display", "none");
           }
+          if (comments.length > 0) {
+            Page.local_storage["topic." + _this.topic_id + "_" + _this.topic_user_address + ".visited"] = comments[0].added;
+          } else {
+            Page.local_storage["topic." + _this.topic_id + "_" + _this.topic_user_address + ".visited"] = _this.topic.added;
+          }
+          Page.cmd("wrapperSetLocalStorage", Page.local_storage);
           if (cb) {
             return cb();
           }
@@ -1911,11 +1921,15 @@ jQuery.extend( jQuery.easing,
     };
 
     User.prototype.setCurrentSize = function(current_size) {
-      var current_size_kb;
+      var current_size_kb, percent;
       if (current_size) {
         current_size_kb = current_size / 1000;
         $(".user-size").text("used: " + (current_size_kb.toFixed(1)) + "k/" + (Math.round(this.rules.max_size / 1000)) + "k").attr("title", "Every new user has limited space to store comments, topics and votes.\n" + "This indicator shows your used/total allowed KBytes.\n" + "The site admin can increase it if you about to run out of it.");
-        return $(".user-size-used").css("width", Math.round(100 * current_size / this.rules.max_size) + "%");
+        percent = Math.round(100 * current_size / this.rules.max_size);
+        $(".user-size-used").css("width", percent + "%");
+        if (percent > 80) {
+          return $(".user-size-warning").css("display", "block").find("a").text(Page.site_info.content.settings.admin).attr("href", Text.fixLink(Page.site_info.content.settings.admin_href));
+        }
       } else {
         return $(".user-size").text("");
       }

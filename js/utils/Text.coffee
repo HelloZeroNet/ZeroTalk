@@ -36,7 +36,8 @@ class Text
 	# Convert a single link to relative
 	fixLink: (link) ->
 		if window.is_proxy
-			return link.replace(/http:\/\/(127.0.0.1|localhost):43110/, 'http://zero')
+			back = link.replace(/http:\/\/(127.0.0.1|localhost):43110/, 'http://zero')
+			return back.replace(/http:\/\/zero\/([^\/]+\.bit)/, "http://$1")  # Domain
 		else
 			return link.replace(/http:\/\/(127.0.0.1|localhost):43110/, '')
 

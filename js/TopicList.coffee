@@ -4,10 +4,13 @@ class TopicList extends Class
 		@parent_topic_uri = undefined
 		@list_all = false
 		@topic_parent_uris = {}
-		@topic_sticky_uris = { "2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj": 1 }
+		@topic_sticky_uris = {}
 
 
 	actionList: (parent_topic_id, parent_topic_user_address) ->
+		for topic_sticky_uri in Page.site_info.content.settings.topic_sticky_uris
+			@topic_sticky_uris[topic_sticky_uri] = 1
+
 		$(".topics-loading").cssLater("top", "0px", 200)
 
 		# Topic group listing

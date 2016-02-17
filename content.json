@@ -6,8 +6,8 @@
  "domain": "Talk.ZeroNetwork.bit",
  "files": {
   "css/all.css": {
-   "sha512": "c28f162eae761b76063a6f90d5abc0ecdf9d48d9301897989093c14c5d426fa6",
-   "size": 160876
+   "sha512": "7330a7425bceedc060dd83088af5c9358982ddaacaf6909fcf850839baffda95",
+   "size": 161070
   },
   "data-default/users/content-default.json": {
    "sha512": "c1642cc2922a74c3e74991f0194e2acc46dc5e003207a0028dad63c75c41a0ec",
@@ -34,12 +34,12 @@
    "size": 310
   },
   "index.html": {
-   "sha512": "6e5864282df4c9fefb04e9ef1d162441454b25ca9b9f24abbb8066659dfaab49",
-   "size": 6524
+   "sha512": "24de1c92bead59b8965c4df3e15684b55653bcaeb4fa21b5cdedf35966bcfded",
+   "size": 6706
   },
   "js/all.js": {
-   "sha512": "1ba1ce2ac5e604cebde92c7a31b1aed0182be15e1455c9f63f3fa288c285a065",
-   "size": 224500
+   "sha512": "5c0f772ea63644e2e92855772643b49947930e82b92336e1bfb34189bbc0511f",
+   "size": 225262
   }
  },
  "ignore": "((js|css)/(?!all.(js|css))|data/users/.*db|data/users/.*/.*|.*.py)",
@@ -49,15 +49,21 @@
    "signers_required": 1
   }
  },
- "modified": 1455066172.184,
+ "inner_path": "content.json",
+ "modified": 1455714034.028,
  "postmessage_nonce_security": true,
+ "settings": {
+  "admin": "nofish",
+  "admin_href": "http://127.0.0.1:43110/Mail.ZeroNetwork.bit/?to=nofish",
+  "topic_sticky_uris": [ "2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj" ]
+ },
  "sign": [
-  94047808675080793403752293282019624115087548196190760029020437826894062335153,
-  3725575605198862033337433988986397820167538799339831877686219921214428103517
+  21481669363597320940797958488603035393019618043827148032471857206469257856899,
+  7901378121563187285768234782991420247018826489455118013307253618272547828022
  ],
  "signers_sign": "HG/6ljsXbej7laqD3JUGsa8IEgSGE+NZs2jg9reQ3vrlo0fTnoFESCNujVxRuY1ORor143LGSyjl8PkaRdU4gx8=",
  "signs": {
-  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "HBcDqZE7LtQeu39K1uUqQkiCxzU72tCNR9UehcJ0JM1ai7bwSZyGP2Lq+5EWh7n9EcWzSqiTFHduWNCOYHOSCGM="
+  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "G0YgfQ7sCPfJbXH5XLn0+gsILB0giVPXnP9TamgqtUZNRD0ZOuP0sjOHl68KTGBUtlQ2uLjtuR3QCvOXvQRdxCY="
  },
  "signs_required": 1,
  "title": "ZeroTalk",

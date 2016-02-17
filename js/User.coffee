@@ -67,7 +67,14 @@ class User extends Class
 				"This indicator shows your used/total allowed KBytes.\n"+
 				"The site admin can increase it if you about to run out of it."
 			)
-			$(".user-size-used").css("width", Math.round(100*current_size/@rules.max_size)+"%")
+			percent = Math.round(100*current_size/@rules.max_size)
+			$(".user-size-used").css("width", percent+"%")
+			if percent > 80
+				$(".user-size-warning")
+					.css("display", "block")
+					.find("a")
+					.text(Page.site_info.content.settings.admin)
+					.attr("href", Text.fixLink(Page.site_info.content.settings.admin_href))
 		else
 			$(".user-size").text("")
 
