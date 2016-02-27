@@ -1133,6 +1133,7 @@ jQuery.extend( jQuery.easing,
       this.wrapper_nonce = document.location.href.replace(/.*wrapper_nonce=([A-Za-z0-9]+).*/, "$1");
       this.connect();
       this.next_message_id = 1;
+      this.history_state = {};
       this.init();
     }
 
@@ -1143,7 +1144,25 @@ jQuery.extend( jQuery.easing,
     ZeroFrame.prototype.connect = function() {
       this.target = window.parent;
       window.addEventListener("message", this.onMessage, false);
-      return this.cmd("innerReady");
+      this.cmd("innerReady");
+      window.addEventListener("beforeunload", (function(_this) {
+        return function(e) {
+          _this.log("save scrollTop", window.pageYOffset);
+          _this.history_state["scrollTop"] = window.pageYOffset;
+          return _this.cmd("wrapperReplaceState", [_this.history_state, null]);
+        };
+      })(this));
+      return this.cmd("wrapperGetState", [], (function(_this) {
+        return function(state) {
+          if (state != null) {
+            _this.history_state = state;
+          }
+          _this.log("restore scrollTop", state, window.pageYOffset);
+          if (window.pageYOffset === 0 && state) {
+            return window.scroll(window.pageXOffset, state.scrollTop);
+          }
+        };
+      })(this));
     };
 
     ZeroFrame.prototype.onMessage = function(e) {
@@ -1222,6 +1241,7 @@ jQuery.extend( jQuery.easing,
   window.ZeroFrame = ZeroFrame;
 
 }).call(this);
+
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicList.coffee ---- */
@@ -1551,7 +1571,6 @@ jQuery.extend( jQuery.easing,
   window.TopicList = new TopicList();
 
 }).call(this);
-
 
 
 /* ---- data/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicShow.coffee ---- */
