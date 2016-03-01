@@ -226,7 +226,7 @@ class TopicShow extends Class
 
 	submitCommentVote: (e) =>
 		if not Page.site_info.cert_user_id # No selected cert
-			Page.cmd "wrapperNotification", ["info", "Please, your choose account before upvoting."]
+			Page.cmd "wrapperNotification", ["info", "Please, choose your account before upvoting."]
 			return false
 
 		elem = $(e.currentTarget)
