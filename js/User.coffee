@@ -45,7 +45,7 @@ class User extends Class
 				$(".user_name-my").text(Page.site_info.cert_user_id).css("color": Text.toColor(Page.site_info.cert_user_id))
 			else
 				$(".comment-new").addClass("comment-nocert")
-				$(".user_name-my").text("Please sign in")
+				$(".user_name-my").text(Page.lang.user.sign_in)
 
 			# Update used/allowed space
 			if Page.site_info.cert_user_id
@@ -62,11 +62,7 @@ class User extends Class
 	setCurrentSize: (current_size) ->
 		if current_size
 			current_size_kb = current_size/1000
-			$(".user-size").text("used: #{current_size_kb.toFixed(1)}k/#{Math.round(@rules.max_size/1000)}k").attr("title",
-				"Every new user has limited space to store comments, topics and votes.\n" +
-				"This indicator shows your used/total allowed KBytes.\n"+
-				"The site admin can increase it if you about to run out of it."
-			)
+			$(".user-size").text(Page.lang.user.used_size + "#{current_size_kb.toFixed(1)}k/#{Math.round(@rules.max_size/1000)}k").attr("title", Page.lang.user.used_size_title)
 			percent = Math.round(100*current_size/@rules.max_size)
 			$(".user-size-used").css("width", percent+"%")
 			if percent > 80
