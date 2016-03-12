@@ -6,8 +6,8 @@
  "domain": "Talk.ZeroNetwork.bit",
  "files": {
   "css/all.css": {
-   "sha512": "7330a7425bceedc060dd83088af5c9358982ddaacaf6909fcf850839baffda95",
-   "size": 161070
+   "sha512": "4100b4cb66d13c1168abb62345897221d063c5f3aebdfc7ad473c2aab5db8185",
+   "size": 162439
   },
   "data-default/users/content-default.json": {
    "sha512": "c1642cc2922a74c3e74991f0194e2acc46dc5e003207a0028dad63c75c41a0ec",
@@ -34,12 +34,12 @@
    "size": 310
   },
   "index.html": {
-   "sha512": "24de1c92bead59b8965c4df3e15684b55653bcaeb4fa21b5cdedf35966bcfded",
-   "size": 6706
+   "sha512": "c32861b9e4c43daec4ef042c3b4e81a15716e83d11c4b5a1865946bbebec150e",
+   "size": 7214
   },
   "js/all.js": {
-   "sha512": "5c0f772ea63644e2e92855772643b49947930e82b92336e1bfb34189bbc0511f",
-   "size": 225262
+   "sha512": "9ad8016394214c123a3c3e007c410a10ef4d0d4e10b64301be0533f6b7b35f03",
+   "size": 226150
   }
  },
  "ignore": "((js|css)/(?!all.(js|css))|data/users/.*db|data/users/.*/.*|.*.py)",
@@ -50,7 +50,7 @@
   }
  },
  "inner_path": "content.json",
- "modified": 1455714034.028,
+ "modified": 1457804737.382,
  "postmessage_nonce_security": true,
  "settings": {
   "admin": "nofish",
@@ -58,12 +58,12 @@
   "topic_sticky_uris": [ "2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj" ]
  },
  "sign": [
-  21481669363597320940797958488603035393019618043827148032471857206469257856899,
-  7901378121563187285768234782991420247018826489455118013307253618272547828022
+  51426640629448766663018273293624115192339573399972715215062326674759901779815,
+  112685986200405010899679265576397529954465119693907448586830481707753719972836
  ],
  "signers_sign": "HG/6ljsXbej7laqD3JUGsa8IEgSGE+NZs2jg9reQ3vrlo0fTnoFESCNujVxRuY1ORor143LGSyjl8PkaRdU4gx8=",
  "signs": {
-  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "G0YgfQ7sCPfJbXH5XLn0+gsILB0giVPXnP9TamgqtUZNRD0ZOuP0sjOHl68KTGBUtlQ2uLjtuR3QCvOXvQRdxCY="
+  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "HMsD7tYlvwIr3vZvWERxHhYQ8mVkFHJjVx4iUpOGbG0LA55K4B4yuB6/wthy+4V0wvynk5fh+w1Zk7YV6eSFfTw="
  },
  "signs_required": 1,
  "title": "ZeroTalk",

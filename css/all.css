@@ -120,9 +120,12 @@ h4 { font-size: 20px; margin-top: 1em; margin-bottom: 0.5em }
 p { margin-top: 0.9em; margin-bottom: 0.9em }
 hr { margin: 20px 0px; border: none; border-bottom: 1px solid #eee; margin-left: auto; margin-right: auto; width: 120px; }
 small { font-size: 80%; color: #999; }
-pre { border: solid 1px #e1e4e5; padding: 10px; background-color: #FBFBFB; font-family: Consolas, Monaco, monospace; border-bottom: 2px solid #e1e4e5; line-height: 1em; }
-code { background-color: #FBFBFB; padding: 3px 4px; border: solid 1px #e1e4e5; font-family: Consolas, Monaco, monospace; font-size: 13px;  }
-pre code { border: none; padding: 0px; background-color: transparent; border: none; }
+/*pre { border: solid 1px #e1e4e5; padding: 10px; background-color: #FBFBFB; font-family: Consolas, Monaco, monospace; border-bottom: 2px solid #e1e4e5; line-height: 1em; }*/
+code { background-color: #FBFBFB; padding: 3px 4px; border: solid 1px #e1e4e5; font-family: Consolas, Monaco, monospace; font-size: 13px }
+pre code {
+	border: none; padding: 0px; background-color: transparent; border: none; overflow-x: auto; display: inline-block; max-width: 100%;
+	border: solid 1px #e1e4e5; padding: 10px; background-color: #FBFBFB; font-family: Consolas, Monaco, monospace; border-bottom: 2px solid #e1e4e5; line-height: 1em;
+}
 
 a { text-decoration: none; color: #DB3207 }
 a:hover { border-bottom: 0.1em solid #DDD }
@@ -193,6 +196,20 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .head .size { font-size: 8px; background-color: #eee; width: 100px; margin-top: 6px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box ; text-indent: 21px; text-transform: uppercase; color: #999 }
 .head .size-used { position: absolute; background-color: #1abc9c; color: white; overflow: hidden; width: 0px; white-space: nowrap }
 .message-big { position: absolute; left: 50%; top: 50%; width: 450px; text-align: center; margin-left: -225px; font-size: 30px; text-shadow: 1px 1px white; color: #AAA; display: none; opacity: 0; -webkit-transition: all 0.5s ; -moz-transition: all 0.5s ; -o-transition: all 0.5s ; -ms-transition: all 0.5s ; transition: all 0.5s  }
+
+/* Head more */
+.head .more {
+	max-height: 24px; overflow: hidden; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -o-transition: all 0.3s; -ms-transition: all 0.3s; transition: all 0.3s ; padding: 10px; margin-left: -10px;
+	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box ; padding-top: 5px; font-family: monospace; text-transform: uppercase;
+}
+.head .more:hover { max-height: 120px }
+.head .more .open { color: #999; margin-bottom: 5px; display: inline-block; cursor: default }
+.head .more:hover .open { color: #333 }
+.head .more .links { background-color: white; padding: 9px; max-width: 0px; opacity: 1; overflow: hidden; -webkit-transition: all 0.3s ; -moz-transition: all 0.3s ; -o-transition: all 0.3s ; -ms-transition: all 0.3s ; transition: all 0.3s  }
+.head .more:hover .links { max-width: 70px; opacity: 1 }
+.head .more .links a { padding: 3px; display: inline-block; font-size: 14px; border-bottom: 1px solid transparent; }
+.head .more .links a:hover { text-decoration: underline; }
+.burger { font-size: 18px; line-height: 15px; }
 
 /* Topics */
 .topics-title, .topic-title {
