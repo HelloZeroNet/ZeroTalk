@@ -116,7 +116,7 @@ class TopicShow extends Class
 			 LEFT JOIN json AS user_json_data ON (user_json_data.json_id = comment.json_id)
 			 LEFT JOIN json AS user_json_content ON (user_json_content.directory = user_json_data.directory AND user_json_content.file_name = 'content.json')
 			 LEFT JOIN keyvalue AS user ON (user.json_id = user_json_content.json_id AND user.key = 'cert_user_id')
-			WHERE comment.topic_uri = '#{@topic_id}_#{@topic_user_address}'
+			WHERE comment.topic_uri = '#{@topic_id}_#{@topic_user_address}' AND added < #{Date.now()/1000+120}
 			ORDER BY added DESC
 			"
 

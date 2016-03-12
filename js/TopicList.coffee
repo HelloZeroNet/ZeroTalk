@@ -116,7 +116,7 @@ class TopicList extends Class
 		if @parent_topic_uri # Topic group listing
 			where = "WHERE parent_topic_uri = '#{@parent_topic_uri}' OR row_topic_uri = '#{@parent_topic_uri}'"
 		else # Main listing
-			where = "WHERE topic.type IS NULL AND topic.parent_topic_uri IS NULL "
+			where = "WHERE topic.type IS NULL AND topic.parent_topic_uri IS NULL AND (comment.added < #{Date.now()/1000+120} OR comment.added IS NULL)"
 		last_elem = $(".topics-list .topic.template")
 
 		query = """
