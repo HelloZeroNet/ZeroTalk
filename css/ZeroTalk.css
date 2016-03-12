@@ -84,6 +84,20 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .head .size-used { position: absolute; background-color: #1abc9c; color: white; overflow: hidden; width: 0px; white-space: nowrap }
 .message-big { position: absolute; left: 50%; top: 50%; width: 450px; text-align: center; margin-left: -225px; font-size: 30px; text-shadow: 1px 1px white; color: #AAA; display: none; opacity: 0; transition: all 0.5s }
 
+/* Head more */
+.head .more {
+	max-height: 24px; overflow: hidden; transition: all 0.3s; padding: 10px; margin-left: -10px;
+	box-sizing: border-box; padding-top: 5px; font-family: monospace; text-transform: uppercase;
+}
+.head .more:hover { max-height: 120px }
+.head .more .open { color: #999; margin-bottom: 5px; display: inline-block; cursor: default }
+.head .more:hover .open { color: #333 }
+.head .more .links { background-color: white; padding: 9px; max-width: 0px; opacity: 1; overflow: hidden; transition: all 0.3s }
+.head .more:hover .links { max-width: 70px; opacity: 1 }
+.head .more .links a { padding: 3px; display: inline-block; font-size: 14px; border-bottom: 1px solid transparent; }
+.head .more .links a:hover { text-decoration: underline; }
+.burger { font-size: 18px; line-height: 15px; }
+
 /* Topics */
 .topics-title, .topic-title {
 	line-height: 1.2em; font-weight: lighter; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
