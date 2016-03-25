@@ -317,7 +317,7 @@ class TopicList extends Class
 	submitCreateTopic: ->
 		# if not Page.hasOpenPort() then return false
 		if not Page.site_info.cert_user_id # No selected cert
-			Page.cmd "wrapperNotification", ["info", "Please, choose your account before creating a topic."]
+			Page.cmd "certSelect", [["zeroid.bit"]]
 			return false
 
 		title = $(".topic-new #topic_title").val().trim()
@@ -349,7 +349,7 @@ class TopicList extends Class
 
 	submitTopicVote: (e) =>
 		if not Page.site_info.cert_user_id # No selected cert
-			Page.cmd "wrapperNotification", ["info", "Please, choose your account before upvoting."]
+			Page.cmd "certSelect", [["zeroid.bit"]]
 			return false
 
 		elem = $(e.currentTarget)
