@@ -143,7 +143,7 @@ class TopicList extends Class
 				UNION ALL
 
 				SELECT
-				 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, MAX(topic_sub.added) AS last_added, CASE WHEN MAX(topic_sub.added) > MAX(comment.added) THEN MAX(topic_sub.added) ELSE MAX(comment.added) END as last_action,
+				 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, MAX(topic_sub.added) AS last_added, CASE WHEN MAX(topic_sub.added) > MAX(comment.added) OR MAX(comment.added) IS NULL THEN MAX(topic_sub.added) ELSE MAX(comment.added) END as last_action,
 				 topic.*,
 				 topic_creator_user.value AS topic_creator_user_name,
 				 topic_creator_content.directory AS topic_creator_address,
