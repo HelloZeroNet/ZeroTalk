@@ -28,7 +28,8 @@ class Text
 	# Convert zeronet html links to relaitve
 	fixHtmlLinks: (text) ->
 		if window.is_proxy
-			return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="http://zero')
+			back = text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="http://zero')
+			return back.replace(/http:\/\/zero\/([^\/]+\.bit)/g, "http://$1")  # Domain
 		else
 			return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="')
 
