@@ -124,6 +124,7 @@ class TopicShow extends Class
 			query += " LIMIT 60"
 
 		Page.cmd "dbQuery", [query], (comments) =>
+			focused = $(":focus")
 			@logEnd "Loading comments..."
 			$(".comments .comment:not(.template)").attr("missing", "true")
 			for comment in comments
@@ -155,6 +156,7 @@ class TopicShow extends Class
 			else
 				Page.local_storage["topic.#{@topic_id}_#{@topic_user_address}.visited"] = @topic.added
 			Page.cmd "wrapperSetLocalStorage", Page.local_storage
+			focused.focus()
 
 			if cb then cb()
 
