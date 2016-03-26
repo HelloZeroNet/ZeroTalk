@@ -20,7 +20,7 @@
 	transition: all 0.3s; white-space: nowrap; font-size: 14px; font-weight: normal; color: #666;
 }
 .feed-follow .text-follow { max-width: 125px; opacity: 1 }
-.feed-follow.following .text-following { max-width: 60px; opacity: 1; /*color: #229A55;*/ }
+.feed-follow.following .text-following { max-width: 70px; opacity: 1; /*color: #229A55;*/ }
 .feed-follow.following .text-follow { max-width: 0px; opacity: 0 }
 
 .feed-follow:hover { background-color: #FEFEFE; transition: none; border-color: #BBBBBB; color: black }

@@ -10,6 +10,11 @@ class ZeroTalk extends ZeroFrame
 		@server_info = null  # Last server info response
 		@local_storage = {}  # Visited topics
 		@site_address = null  # Site bitcoin address
+		@lang_name = window.navigator.userLanguage || window.navigator.language;  # selected language name
+		@lang = {}  # lang table
+		
+		if @lang_name.indexOf("-") > -1
+			@lang_name = @lang_name.split("-")[0]
 
 		# Autoexpand
 		for textarea in $("textarea")
@@ -26,22 +31,50 @@ class ZeroTalk extends ZeroFrame
 
 	# Wrapper websocket connection ready
 	onOpenWebsocket: (e) =>
-		@cmd "wrapperSetViewport", "width=device-width, initial-scale=1.0"
-		@cmd "wrapperGetLocalStorage", [], (res) =>
-			res ?= {}
-			@local_storage = res
+		@selectLang @lang_name, =>
+			@cmd "wrapperSetViewport", "width=device-width, initial-scale=1.0"
+			@cmd "wrapperGetLocalStorage", [], (res) =>
+				res ?= {}
+				@local_storage = res
 
-		@cmd "siteInfo", {}, (site) =>
-			@site_address = site.address
-			@setSiteinfo(site)
-			User.updateMyInfo =>
-				@routeUrl(window.location.search.substring(1))
+			@cmd "siteInfo", {}, (site) =>
+				@site_address = site.address
+				@setSiteinfo(site)
+				User.updateMyInfo =>
+					@routeUrl(window.location.search.substring(1))
 
-		@cmd "serverInfo", {}, (ret) => # Get server info
-			@server_info = ret
-			version = parseInt(@server_info.version.replace(/\./g, ""))
-			if version < 31
-				@cmd "wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.3.1, please update!"]
+			@cmd "serverInfo", {}, (ret) => # Get server info
+				@server_info = ret
+				version = parseInt(@server_info.version.replace(/\./g, ""))
+				if version < 31
+					@cmd "wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.3.1, please update!"]
+
+
+	selectLang: (name, callback) ->
+		@lang_name = name
+		@cmd "fileGet", ["lang/en.json", true], (lang_en) =>
+			lang_en = JSON.parse(lang_en)
+			if @lang_name != "en"
+				@cmd "fileGet", ["lang/#{@lang_name}.json", false], (lang_user) =>
+					@lang = if not lang_user then lang_en else $.extend({}, lang_en, JSON.parse(lang_user))
+					@updateLang()
+					if callback
+						callback()
+			else
+				@lang = lang_en
+				@updateLang()
+				if callback
+					callback()
+
+
+	updateLang: ->
+		$("*[data-lang]").each (index, element) =>
+			el = $(element)
+			val = el.attr("data-lang").split(".").reduce(
+				(obj, i) -> obj[i]
+				@lang
+			)
+			el.html(val)
 
 
 	# All page content loaded

@@ -1,0 +1,52 @@
+{
+	"general": {
+		"init_sync": "Initial sync in progress...",
+		"topics_title": "Newest topics",
+		"follow": "Follow in Newsfeed",
+		"following": "Following",
+		"loading": "Loading...",
+		"more_topics": "More topics",
+		"more_comments": "More comments",
+		"own_welcome": "Welcome to your own forum! :)"
+	},
+	"time": {
+		"now": "Just now",
+		"ago_mins": "minutes ago",
+		"ago_hours": "hours ago",
+		"ago_days": "days ago",
+		"on": "on"
+	},
+	"user": {
+		"sign_in": "Sign in",
+		"used_size": "Used: ",
+		"used_size_title": "Every new user has limited space to store comments, topics and votes.\nThis indicator shows your used/total allowed KBytes.\nThe site admin can increase it if you about to run out of it.",
+		"used_size_warning": "You are running out of your allowed space, please contact the site's admin at <a href=\"#\">unknown</a> to raise your limit."
+	},
+	"editbar": {
+		"editing": "Editing:",
+		"save": "Save",
+		"delete": "Delete",
+		"cancel": "Cancel"
+	},
+	"topic_new": {
+		"link_create_topic": " + Create new topic",
+		"form_create_topic": "Add new topic",
+		"new_topic": "new topic"
+	},
+	"topic_tpl": {
+		"author": "submitted by",
+		"comments_num": "comment",
+		"last_activity": "last activity",
+		"last_time": "last"
+	},
+	"topic_page": {
+		"posted_time": "posted"
+	},
+	"comment_new": {
+		"new_comment": "new comment",
+		"submit": "Submit comment"
+	},
+	"comment_tpl": {
+		"reply": "Reply"
+	}
+}

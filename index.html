@@ -35,7 +35,7 @@
   <li>&gt; Quotes</li>
   <li>--- Horizontal rule</li>
  </ul>
- <a href="#Markdown+help" class="icon-help">?</a> Editing: <span class="object">Post:21.body</span> <a href="#Save" class="button save">Save</a> <a href="#Delete" class="button button-delete button-outline delete">Delete</a> <a href="#Cancel" class="cancel">Cancel</a>
+ <a href="#Markdown+help" class="icon-help">?</a> <span data-lang="editbar.editing">Editing:</span> <span class="object">Post:21.body</span> <a href="#Save" class="button save" data-lang="editbar.save">Save</a> <a href="#Delete" class="button button-delete button-outline delete" data-lang="editbar.delete">Delete</a> <a href="#Cancel" class="cancel" data-lang="editbar.cancel">Cancel</a>
 </div>
 <!-- EOF editbar -->
 
@@ -53,21 +53,21 @@
 </div>
 <!-- EOF Head -->
 
-<div class="message-big">Initial sync in progress...</div>
+<div class="message-big" data-lang="general.init_sync">Initial sync in progress...</div>
 
 <!-- Page: Main -->
 <div class="center topics-list">
- <h1 class="topics-title">Newest topics</h1>
- <a href="#Follow" class="feed-follow feed-follow-list"><span class='text-follow'>Follow in Newsfeed</span><span class='text-following'>Following</span><div class="icon-feed"></div></a>
+ <h1 class="topics-title" data-lang="general.topics_title">Newest topics</h1>
+ <a href="#Follow" class="feed-follow feed-follow-list"><span class='text-follow' data-lang="general.follow">Follow in Newsfeed</span><span class='text-following' data-lang="general.following">Following</span><div class="icon-feed"></div></a>
 
  <!-- New Topic -->
- <a href="#New+topic" class="topic-new-link nolink"> + Create new topic</a>
+ <a href="#New+topic" class="topic-new-link nolink" data-lang="topic_new.link_create_topic"> + Create new topic</a>
  <div class="topic topic-new" style="display: none">
   <a href="#" class="image nolink"><div class="icon icon-topic-chat"></div></a>
   <h2 class="title"><input type="text" id="topic_title" class="text" placeholder="Topic title"></h2>
   <div class="body"><textarea id="topic_body" placeholder="Topic description"></textarea></div>
-  <div class="info"><a class="user_name user_name-my certselect" href="#Change+user" title='Change user'>user_name</a> &#9473; <span class="added">new topic</span></div>
-  <a href="#Add+new+topic" class="button button-submit">Add new topic</a>
+  <div class="info"><a class="user_name user_name-my certselect" href="#Change+user" title='Change user'>user_name</a> &#9473; <span class="added" data-lang="topic_new.new_topic">new topic</span></div>
+  <a href="#Add+new+topic" class="button button-submit" data-lang="topic_new.form_create_topic">Add new topic</a>
   <div style="clear: both"></div>
  </div>
  <!-- EOF New Topic -->
@@ -90,14 +90,14 @@
     </a>
     <a href="#" class="comment-num"></a>
     <span class="added">added</span>
-     &#9473; submitted by <span class="user_name">user_name</span>
+     &#9473; <span data-lang="topic_tpl.author">submitted by</span> <span class="user_name">user_name</span>
    </div>
   </div>
   <!-- EOF Template: Topic main -->
 
  </div>
 
- <a href="#More" class="topics-more">More topics</a>
+ <a href="#More" class="topics-more" data-lang="general.more_topics">More topics</a>
 
 </div>
 <!-- EOF Page: Main -->
@@ -110,7 +110,7 @@
 
  <div class="topic topic-full">
   <a href="#" class="image nolink"><div class="icon icon-topic-chat"></div></a>
-  <a href="#Follow" class="feed-follow feed-follow-show"><span class='text-follow'>Follow in Newsfeed</span><span class='text-following'>Following</span><div class="icon-feed"></div></a>
+  <a href="#Follow" class="feed-follow feed-follow-show"><span class='text-follow' data-lang="general.follow">Follow in Newsfeed</span><span class='text-following' data-lang="general.following">Following</span><div class="icon-feed"></div></a>
   <h2 class="title"><a href="#" class="title-link">Title</a></h2>
   <div class="body">Body</div>
   <div class="info">
@@ -118,17 +118,17 @@
      <span class="score-inactive"> <span class="icon-up">^</span><span class="score-num">?</span> </span>
      <span class="score-active"> <span class="icon-up">^</span><span class="score-num">0</span> </span>
     </a>
-   <span class="user_name">username</span> posted <span class="added">added</span>
+   <span class="user_name">username</span> <span data-lang="topic_page.posted_time">posted</span> <span class="added">added</span>
   </div>
  </div>
 
  <!-- New comment -->
  <div class="comment comment-new">
-  <div class="info"><a class="user_name user_name-my certselect" href="#Change+user" title='Change user'>user_name</a> &#9473; <span class="added">new comment</span></div>
+  <div class="info"><a class="user_name user_name-my certselect" href="#Change+user" title='Change user'>user_name</a> &#9473; <span class="added" data-lang="comment_new.new_comment">new comment</span></div>
   <div class="body">
-   <a class="button button-submit button-certselect certselect" href="#Change+user"><div class='icon-profile'></div>Sign in as...</a>
+   <a class="button button-submit button-certselect certselect" href="#Change+user"><div class='icon-profile'></div><span data-lang="user.sign_in">Sign in as...</span></a>
    <textarea id="comment_body"></textarea>
-   <a href="#Submit+comment" class="button button-submit button-submit-form">Submit comment</a>
+   <a href="#Submit+comment" class="button button-submit button-submit-form" data-lang="comment_new.submit">Submit comment</a>
    <div style='float: right; margin-top: -6px; position: relative; text-align: right'>
     <div class="user-size user-size-used">Used space: 22k/100k</div>
     <div class="user-size">Used space: 22k/100k</div>
@@ -156,7 +156,7 @@
   </div>
   <!-- EOF Template: Comment -->
  </div>
- <a href="#More" class="comments-more">More comments</a>
+ <a href="#More" class="comments-more" data-lang="general.more_comments">More comments</a>
 
 </div>
 <!-- EOF Page: Topic -->

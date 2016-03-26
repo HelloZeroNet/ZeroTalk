@@ -22,7 +22,7 @@ class TopicList extends Class
 			Page.local_storage["topic.#{parent_topic_id}_#{parent_topic_user_address}.visited"] = Time.timestamp()
 			Page.cmd "wrapperSetLocalStorage", Page.local_storage
 		else
-			$(".topics-title").html("Newest topics")
+			$(".topics-title").html(Page.lang.general.topics_title)
 
 		@loadTopics("noanim")
 
@@ -39,7 +39,7 @@ class TopicList extends Class
 
 		$(".topics-more").on "click", =>
 			@list_all = true
-			$(".topics-more").text("Loading...")
+			$(".topics-more").text(Page.lang.general.loading)
 			@loadTopics("noanim")
 			return false
 
@@ -219,9 +219,9 @@ class TopicList extends Class
 			# Show loading / empty forum bigmessage
 			if topics.length == 0
 				if Page.site_info.bad_files
-					$(".message-big").text("Initial sync in progress...")
+					$(".message-big").text(Page.lang.general.init_sync)
 				else
-					$(".message-big").text("Welcome to your own forum! :)")
+					$(".message-big").text(Page.lang.general.own_welcome)
 					$(".topic-new-link").trigger("click")
 				$(".message-big").css("display", "block").cssLater("opacity", 1)
 			else
@@ -274,13 +274,13 @@ class TopicList extends Class
 		if type != "show"
 			last_action = Math.max(topic.last_comment, topic.added)
 			if topic.type == "group"
-				$(".comment-num", elem).text "last activity"
+				$(".comment-num", elem).text Page.lang.topic_tpl.last_activity
 				$(".added", elem).text Time.since(last_action)
 			else if topic.comments_num > 0
-				$(".comment-num", elem).text "#{topic.comments_num} comment"
-				$(".added", elem).text "last "+Time.since(last_action)
+				$(".comment-num", elem).text topic.comments_num + " " + Page.lang.topic_tpl.comments_num
+				$(".added", elem).text Page.lang.topic_tpl.last_time+" "+Time.since(last_action)
 			else
-				$(".comment-num", elem).text "0 comments"
+				$(".comment-num", elem).text "0 " + Page.lang.topic_tpl.comments_num
 				$(".added", elem).text Time.since(last_action)
 
 		# Creator address and user name
