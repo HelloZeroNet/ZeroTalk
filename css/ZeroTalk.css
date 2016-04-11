@@ -92,7 +92,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 	max-height: 24px; overflow: hidden; transition: all 0.3s; padding: 10px; margin-left: -10px;
 	box-sizing: border-box; padding-top: 5px; font-family: monospace; text-transform: uppercase;
 }
-.head .more:hover { max-height: 120px }
+.head .more:hover { max-height: 170px }
 .head .more .open { color: #999; margin-bottom: 5px; display: inline-block; cursor: default }
 .head .more:hover .open { color: #333 }
 .head .more .links { background-color: white; padding: 9px; max-width: 0px; opacity: 1; overflow: hidden; transition: all 0.3s }
