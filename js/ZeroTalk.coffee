@@ -14,7 +14,7 @@ class ZeroTalk extends ZeroFrame
 		# Autoexpand
 		for textarea in $("textarea")
 			@autoExpand $(textarea)
-		
+
 
 		# Markdown help
 		$(".editbar .icon-help").on "click", =>
@@ -54,11 +54,11 @@ class ZeroTalk extends ZeroFrame
 		if match = url.match /Topic:([0-9]+)_([0-9a-zA-Z]+)/  # Topic
 			$("body").addClass("page-topic")
 			TopicShow.actionShow parseInt(match[1]), Text.toBitcoinAddress(match[2])
-			
+
 		else if match = url.match /Topics:([0-9]+)_([0-9a-zA-Z]+)/  # Sub-topics
 			$("body").addClass("page-topics")
 			TopicList.actionList parseInt(match[1]), Text.toBitcoinAddress(match[2])
-			
+
 		else  # Main
 			$("body").addClass("page-main")
 			TopicList.actionList()
@@ -66,7 +66,7 @@ class ZeroTalk extends ZeroFrame
 
 	addInlineEditors: ->
 		@logStart "Adding inline editors"
-		elems = $("[data-editable]") 
+		elems = $("[data-editable]")
 		for elem in elems
 			elem = $(elem)
 			if not elem.data("editor") and not elem.hasClass("editor")
@@ -82,28 +82,28 @@ class ZeroTalk extends ZeroFrame
 
 	# Returns the elem parent object
 	getObject: (elem) =>
-		if elem.data("object") 
+		if elem.data("object")
 			return elem
 		else
-			return elem.parents("[data-object]") 
+			return elem.parents("[data-object]")
 
 
 	# Save content
 	saveContent: (elem, content, cb=false) =>
-		if elem.data("deletable") and content == null # Its a delete request 
+		if elem.data("deletable") and content == null # Its a delete request
 			delete_object = true
 		else
 			delete_object = false
 
 		object = @getObject(elem)
-		[type, id] = object.data("object").split(":") 
+		[type, id] = object.data("object").split(":")
 
 		User.getData (data) =>
 			if type == "Topic"
 				[topic_id, user_address] = id.split("_")
 				topic_id = parseInt(topic_id)
 
-				topic = (topic for topic in data.topic when topic.topic_id == topic_id)[0] 
+				topic = (topic for topic in data.topic when topic.topic_id == topic_id)[0]
 
 				if delete_object # Delete
 					data.topic.splice(data.topic.indexOf(topic), 1)
