@@ -149,7 +149,7 @@ class ZeroTalk extends ZeroFrame
 	writePublish: (inner_path, data, cb) ->
 		@cmd "fileWrite", [inner_path, data], (res) =>
 			if res != "ok" # fileWrite failed
-				@cmd "wrapperNotification", ["error", "File write error: #{res}"]
+				@cmd "wrapperNotification", ["error", "File write error: #{res.error}"]
 				cb(false)
 				return false
 
