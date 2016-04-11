@@ -116,7 +116,7 @@ class TopicList extends Class
 		if @parent_topic_uri # Topic group listing
 			where = "WHERE parent_topic_uri = '#{@parent_topic_uri}' OR row_topic_uri = '#{@parent_topic_uri}'"
 		else # Main listing
-			where = "WHERE topic.type IS NULL AND topic.parent_topic_uri IS NULL AND (comment.added < #{Date.now()/1000+120} OR comment.added IS NULL)"
+			where = "WHERE topic.type IS NULL AND topic.parent_topic_uri IS NULL"
 		last_elem = $(".topics-list .topic.template")
 
 		query = """
@@ -135,6 +135,7 @@ class TopicList extends Class
 			LEFT JOIN comment ON (comment.topic_uri = row_topic_uri)
 			#{where}
 			GROUP BY topic.topic_id, topic.json_id
+			HAVING last_action < #{Date.now()/1000+120}
 		"""
 
 		if not @parent_topic_uri # Union topic groups
@@ -160,6 +161,7 @@ class TopicList extends Class
 				LEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri)
 				WHERE topic.type = "group"
 				GROUP BY topic.topic_id
+				HAVING last_action < #{Date.now()/1000+120}
 			"""
 
 		if not @list_all and not @parent_topic_uri
