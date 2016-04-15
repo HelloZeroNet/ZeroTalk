@@ -1,6 +1,6 @@
 
 
-/* ---- data-live/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/Follow.css ---- */
+/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/Follow.css ---- */
 
 
 .icon-feed {
@@ -38,7 +38,7 @@
 .feed-follow-show:hover { border: 1px solid white }
 
 
-/* ---- data-live/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/InlineEditor.css ---- */
+/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/InlineEditor.css ---- */
 
 
 /* Editable */
@@ -85,7 +85,7 @@
 }
 
 
-/* ---- data-live/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/Menu.css ---- */
+/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/Menu.css ---- */
 
 
 .menu {
@@ -105,7 +105,7 @@
 }
 
 
-/* ---- data-live/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/ZeroTalk.css ---- */
+/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/ZeroTalk.css ---- */
 
 
 body { background-color: #F5F5F5; color: #333332; margin: 10px; padding: 0px; font-family: 'Roboto', sans-serif; height: 15000px; overflow: hidden; -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -o-backface-visibility: hidden; -ms-backface-visibility: hidden; backface-visibility: hidden ; }
@@ -202,7 +202,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 	max-height: 24px; overflow: hidden; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -o-transition: all 0.3s; -ms-transition: all 0.3s; transition: all 0.3s ; padding: 10px; margin-left: -10px;
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box ; padding-top: 5px; font-family: monospace; text-transform: uppercase;
 }
-.head .more:hover { max-height: 170px }
+.head .more:hover { max-height: 190px }
 .head .more .open { color: #999; margin-bottom: 5px; display: inline-block; cursor: default }
 .head .more:hover .open { color: #333 }
 .head .more .links { background-color: white; padding: 9px; max-width: 0px; opacity: 1; overflow: hidden; -webkit-transition: all 0.3s ; -moz-transition: all 0.3s ; -o-transition: all 0.3s ; -ms-transition: all 0.3s ; transition: all 0.3s  }
@@ -343,7 +343,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .topics-more:active, .comments-more:active { position: relative; top: 1px }
 
 
-/* ---- data-live/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/fonts.css ---- */
+/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/fonts.css ---- */
 
 
 /* Base64 encoder: http://www.motobit.com/util/base64-decoder-encoder.asp */
@@ -388,7 +388,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 
 
 
-/* ---- data-live/1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/icons.css ---- */
+/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/icons.css ---- */
 
 
 .icon { display: inline-block; vertical-align: text-bottom; background-repeat: no-repeat; }

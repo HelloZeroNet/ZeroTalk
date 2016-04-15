@@ -6,8 +6,8 @@
  "domain": "Talk.ZeroNetwork.bit",
  "files": {
   "css/all.css": {
-   "sha512": "4100b4cb66d13c1168abb62345897221d063c5f3aebdfc7ad473c2aab5db8185",
-   "size": 162439
+   "sha512": "69fd39214e1909b90c8eed7e2b957124f2eac8740d5246450b300305e56ee1a0",
+   "size": 162415
   },
   "data-default/users/content-default.json": {
    "sha512": "c1642cc2922a74c3e74991f0194e2acc46dc5e003207a0028dad63c75c41a0ec",
@@ -34,12 +34,12 @@
    "size": 310
   },
   "index.html": {
-   "sha512": "c32861b9e4c43daec4ef042c3b4e81a15716e83d11c4b5a1865946bbebec150e",
-   "size": 7214
+   "sha512": "b407717f38d653b907c7bd95618ed1f84d3efaec3f1f3e66d6b00e3b9c6419a0",
+   "size": 7472
   },
   "js/all.js": {
-   "sha512": "9ad8016394214c123a3c3e007c410a10ef4d0d4e10b64301be0533f6b7b35f03",
-   "size": 226150
+   "sha512": "18ce88d829eee04626930dc5cc8551a9f7e72827d6a61b55dab5abb78ae4784e",
+   "size": 226356
   }
  },
  "ignore": "((js|css)/(?!all.(js|css))|data/users/.*db|data/users/.*/.*|.*.py)",
@@ -50,7 +50,7 @@
   }
  },
  "inner_path": "content.json",
- "modified": 1457804737.382,
+ "modified": 1460573324.255,
  "postmessage_nonce_security": true,
  "settings": {
   "admin": "nofish",
@@ -61,14 +61,14 @@
   ]
  },
  "sign": [
-  51426640629448766663018273293624115192339573399972715215062326674759901779815,
-  112685986200405010899679265576397529954465119693907448586830481707753719972836
+  30833727562218192612377604296590398083757453881422563852653523867637743116590,
+  10503316533343803021338138360705885032234037041847396108498043009238933400160
  ],
  "signers_sign": "HG/6ljsXbej7laqD3JUGsa8IEgSGE+NZs2jg9reQ3vrlo0fTnoFESCNujVxRuY1ORor143LGSyjl8PkaRdU4gx8=",
  "signs": {
-  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "HMsD7tYlvwIr3vZvWERxHhYQ8mVkFHJjVx4iUpOGbG0LA55K4B4yuB6/wthy+4V0wvynk5fh+w1Zk7YV6eSFfTw="
+  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "HLbjFsdi0MvMBqF2wOxlHiaVyk2YiuAD04N2sf5kNA3vWvpC3bVAXO5GsvYXsv4yXDvseFLPZIOwWQa2HQNN9Oc="
  },
  "signs_required": 1,
  "title": "ZeroTalk",
- "zeronet_version": "0.3.6"
+ "zeronet_version": "0.3.7"
 }
