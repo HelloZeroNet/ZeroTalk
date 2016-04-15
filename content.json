@@ -55,7 +55,10 @@
  "settings": {
   "admin": "nofish",
   "admin_href": "http://127.0.0.1:43110/Mail.ZeroNetwork.bit/?to=nofish",
-  "topic_sticky_uris": [ "2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj" ]
+  "topic_sticky_uris": [
+   "2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj",
+   "8_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj"
+  ]
  },
  "sign": [
   51426640629448766663018273293624115192339573399972715215062326674759901779815,
