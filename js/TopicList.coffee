@@ -119,6 +119,8 @@ class TopicList extends Class
 			where = "WHERE topic.type IS NULL AND topic.parent_topic_uri IS NULL"
 		last_elem = $(".topics-list .topic.template")
 
+		sql_sticky = ("WHEN '#{topic_uri}' THEN 1" for topic_uri in Page.site_info.content.settings.topic_sticky_uris).join(" ")
+
 		query = """
 			SELECT
 			 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, topic.added as last_added, CASE WHEN MAX(comment.added) IS NULL THEN topic.added ELSE MAX(comment.added) END as last_action,
@@ -127,7 +129,8 @@ class TopicList extends Class
 			 topic_creator_content.directory AS topic_creator_address,
 			 topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,
 			 NULL AS row_topic_sub_uri,
-			 (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes
+			 (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,
+			 CASE topic.topic_id || '_' || topic_creator_content.directory #{sql_sticky} ELSE 0 END AS sticky
 			FROM topic
 			LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
 			LEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')
@@ -150,7 +153,8 @@ class TopicList extends Class
 				 topic_creator_content.directory AS topic_creator_address,
 				 topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,
 				 topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,
-				 (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes
+				 (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,
+				 CASE topic.topic_id || '_' || topic_creator_content.directory #{sql_sticky} ELSE 0 END AS sticky
 				FROM topic
 				LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
 				LEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')
@@ -165,7 +169,7 @@ class TopicList extends Class
 			"""
 
 		if not @list_all and not @parent_topic_uri
-			query += " ORDER BY last_action DESC LIMIT 30"
+			query += " ORDER BY sticky DESC, last_action DESC LIMIT 30"
 
 
 		Page.cmd "dbQuery", [query], (topics) =>
