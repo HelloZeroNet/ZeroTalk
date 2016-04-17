@@ -14,8 +14,8 @@
    "size": 672
   },
   "dbschema.json": {
-   "sha512": "e9a6c08bcba672d4fa74b09a1577c1130886104b15e425f9fa4ca4669e38f542",
-   "size": 1932
+   "sha512": "7996d60b522185ed085f718fb4e2afdfa4c4358a9225190d7940d41fd701bd58",
+   "size": 3064
   },
   "img/edit.png": {
    "sha512": "60ba4297e205b038bf7852ead2b88f9373cd8848408bb258dbcebb086d43f056",
@@ -38,8 +38,8 @@
    "size": 7472
   },
   "js/all.js": {
-   "sha512": "18ce88d829eee04626930dc5cc8551a9f7e72827d6a61b55dab5abb78ae4784e",
-   "size": 226356
+   "sha512": "a2f3d89c7f4ccba3e9f42e2a116ddf148971390ad95c53b0844ec9b9ad3e79ef",
+   "size": 226791
   }
  },
  "ignore": "((js|css)/(?!all.(js|css))|data/users/.*db|data/users/.*/.*|.*.py)",
@@ -50,7 +50,7 @@
   }
  },
  "inner_path": "content.json",
- "modified": 1460573324.255,
+ "modified": 1460928970.392,
  "postmessage_nonce_security": true,
  "settings": {
   "admin": "nofish",
@@ -61,12 +61,12 @@
   ]
  },
  "sign": [
-  30833727562218192612377604296590398083757453881422563852653523867637743116590,
-  10503316533343803021338138360705885032234037041847396108498043009238933400160
+  75557058383167348730589601015272481252677978111870756272814432830291124454532,
+  90278068720252340373925338338099026253823595663061471808419428563283039268485
  ],
  "signers_sign": "HG/6ljsXbej7laqD3JUGsa8IEgSGE+NZs2jg9reQ3vrlo0fTnoFESCNujVxRuY1ORor143LGSyjl8PkaRdU4gx8=",
  "signs": {
-  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "HLbjFsdi0MvMBqF2wOxlHiaVyk2YiuAD04N2sf5kNA3vWvpC3bVAXO5GsvYXsv4yXDvseFLPZIOwWQa2HQNN9Oc="
+  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "HPbVwUll/82PVsht/nY3BkWv9bqAl4g04OoqjquIIhcq8MoLw5hNJLIGHZ3dl11HeeU2rah4GTTkcIABqR1BRWU="
  },
  "signs_required": 1,
  "title": "ZeroTalk",
