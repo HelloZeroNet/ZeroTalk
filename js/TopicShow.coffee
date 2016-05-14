@@ -6,6 +6,7 @@ class TopicShow extends Class
 		@topic = null
 
 		@list_all = false
+		$(".topic-title").css("display", "none")
 		@loadTopic()
 		@loadComments("noanim")
 
@@ -76,7 +77,6 @@ class TopicShow extends Class
 		@logStart "Loading topic..."
 
 		$(".topic-full").attr("id", "topic_#{@topic_uri}")
-		$(".topic-title").css("display", "none")
 
 		Page.cmd "dbQuery", [@queryTopic(@topic_id, @topic_user_address)], (res) =>
 			@topic = res[0]
@@ -84,7 +84,7 @@ class TopicShow extends Class
 
 			# Topic has parent, update title breadcrumb
 			if @topic.parent_topic_uri
-				$(".topic-title").html("&nbsp;").css("display", "")
+				$(".topic-title").css("display", "")
 				[parent_topic_id, parent_topic_user_address] = @topic.parent_topic_uri.split("_")
 				Page.cmd "dbQuery", [@queryTopic(parent_topic_id, parent_topic_user_address)], (parent_res) =>
 					parent_topic = parent_res[0]

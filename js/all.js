@@ -1584,7 +1584,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicShow.coffee ---- */
 
 
@@ -1609,6 +1608,7 @@ jQuery.extend( jQuery.easing,
       this.topic_uri = this.topic_id + "_" + this.topic_user_address;
       this.topic = null;
       this.list_all = false;
+      $(".topic-title").css("display", "none");
       this.loadTopic();
       this.loadComments("noanim");
       $(".comment-new .button-submit-form").on("click", (function(_this) {
@@ -1658,14 +1658,13 @@ jQuery.extend( jQuery.easing,
       }
       this.logStart("Loading topic...");
       $(".topic-full").attr("id", "topic_" + this.topic_uri);
-      $(".topic-title").css("display", "none");
       return Page.cmd("dbQuery", [this.queryTopic(this.topic_id, this.topic_user_address)], (function(_this) {
         return function(res) {
           var parent_topic_id, parent_topic_user_address, _ref;
           _this.topic = res[0];
           TopicList.applyTopicData($(".topic-full"), _this.topic, "show");
           if (_this.topic.parent_topic_uri) {
-            $(".topic-title").html("&nbsp;").css("display", "");
+            $(".topic-title").css("display", "");
             _ref = _this.topic.parent_topic_uri.split("_"), parent_topic_id = _ref[0], parent_topic_user_address = _ref[1];
             Page.cmd("dbQuery", [_this.queryTopic(parent_topic_id, parent_topic_user_address)], function(parent_res) {
               var parent_topic;
@@ -1856,6 +1855,7 @@ jQuery.extend( jQuery.easing,
   window.TopicShow = new TopicShow();
 
 }).call(this);
+
 
 
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/User.coffee ---- */

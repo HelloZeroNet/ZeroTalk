@@ -34,12 +34,12 @@
    "size": 310
   },
   "index.html": {
-   "sha512": "b407717f38d653b907c7bd95618ed1f84d3efaec3f1f3e66d6b00e3b9c6419a0",
-   "size": 7472
+   "sha512": "b31f14ad84c2eec9ab51ff24a4019d5aa67de1e557489d59a1ecdfc9be0d8275",
+   "size": 7277
   },
   "js/all.js": {
-   "sha512": "a2f3d89c7f4ccba3e9f42e2a116ddf148971390ad95c53b0844ec9b9ad3e79ef",
-   "size": 226791
+   "sha512": "9e3c0e39fedbf1edb32b6da5b6596b385c1e9420ff6eaf6db0af0efcc52b64f2",
+   "size": 226776
   }
  },
  "ignore": "((js|css)/(?!all.(js|css))|data/users/.*db|data/users/.*/.*|.*.py)",
@@ -50,7 +50,7 @@
   }
  },
  "inner_path": "content.json",
- "modified": 1460928970.392,
+ "modified": 1463247951.056,
  "postmessage_nonce_security": true,
  "settings": {
   "admin": "nofish",
@@ -61,12 +61,12 @@
   ]
  },
  "sign": [
-  75557058383167348730589601015272481252677978111870756272814432830291124454532,
-  90278068720252340373925338338099026253823595663061471808419428563283039268485
+  64578200239689719822560773557189766610082985197597783119687457226424693430545,
+  64635104780902340632535137261595156051803776719505623847082460218394972742986
  ],
  "signers_sign": "HG/6ljsXbej7laqD3JUGsa8IEgSGE+NZs2jg9reQ3vrlo0fTnoFESCNujVxRuY1ORor143LGSyjl8PkaRdU4gx8=",
  "signs": {
-  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "HPbVwUll/82PVsht/nY3BkWv9bqAl4g04OoqjquIIhcq8MoLw5hNJLIGHZ3dl11HeeU2rah4GTTkcIABqR1BRWU="
+  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "G7B3BCWqxc5lMk3a/mOo01GeSzdOeJFXXuILZepi+mp7zLYLu5INIE4C9B2tGwQ0gUnqLVnXkZNTodgHV8Ypcbk="
  },
  "signs_required": 1,
  "title": "ZeroTalk",
