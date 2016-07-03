@@ -134,7 +134,10 @@ class TopicShow extends Class
 					if type != "noanim"
 						elem.cssSlideDown()
 					$(".reply", elem).on "click", (e) => # Reply link
-						return @buttonReply $(e.target).parents(".comment")
+						if Page.site_info.cert_user_id
+							return @buttonReply $(e.target).parents(".comment")
+						else
+							Page.cmd "certSelect", [["zeroid.bit"]]
 					$(".score", elem).attr("id", "comment_score_#{comment_uri}").on "click", @submitCommentVote # Submit vote
 				@applyCommentData(elem, comment)
 				elem.appendTo(".comments").removeAttr("missing")
