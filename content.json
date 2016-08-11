@@ -6,8 +6,8 @@
  "domain": "Talk.ZeroNetwork.bit",
  "files": {
   "css/all.css": {
-   "sha512": "69fd39214e1909b90c8eed7e2b957124f2eac8740d5246450b300305e56ee1a0",
-   "size": 162415
+   "sha512": "d35ebc58531770a6420e28457766ba35166302faf9dbeca54aa57304124c6752",
+   "size": 162584
   },
   "data-default/users/content-default.json": {
    "sha512": "c1642cc2922a74c3e74991f0194e2acc46dc5e003207a0028dad63c75c41a0ec",
@@ -34,12 +34,12 @@
    "size": 310
   },
   "index.html": {
-   "sha512": "b31f14ad84c2eec9ab51ff24a4019d5aa67de1e557489d59a1ecdfc9be0d8275",
-   "size": 7277
+   "sha512": "38ab73a6c73347a7f958c65f1eb1f35639a23337108ec634be8a2b090c42b54f",
+   "size": 7312
   },
   "js/all.js": {
-   "sha512": "9e3c0e39fedbf1edb32b6da5b6596b385c1e9420ff6eaf6db0af0efcc52b64f2",
-   "size": 226776
+   "sha512": "412da37bb5a2bf261d873d736e4aea3498d20990f7a53fef269210182e9fa0ea",
+   "size": 226884
   }
  },
  "ignore": "((js|css)/(?!all.(js|css))|data/users/.*db|data/users/.*/.*|.*.py)",
@@ -50,7 +50,7 @@
   }
  },
  "inner_path": "content.json",
- "modified": 1463247951.056,
+ "modified": 1470845652.031,
  "postmessage_nonce_security": true,
  "settings": {
   "admin": "nofish",
@@ -61,14 +61,15 @@
   ]
  },
  "sign": [
-  64578200239689719822560773557189766610082985197597783119687457226424693430545,
-  64635104780902340632535137261595156051803776719505623847082460218394972742986
+  15690717754535776562465798709722570009939642708079357651205773030644392783465,
+  2919790686937928964453377433563615854526760442638572735154607952286221908901
  ],
  "signers_sign": "HG/6ljsXbej7laqD3JUGsa8IEgSGE+NZs2jg9reQ3vrlo0fTnoFESCNujVxRuY1ORor143LGSyjl8PkaRdU4gx8=",
  "signs": {
-  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "G7B3BCWqxc5lMk3a/mOo01GeSzdOeJFXXuILZepi+mp7zLYLu5INIE4C9B2tGwQ0gUnqLVnXkZNTodgHV8Ypcbk="
+  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "G/Un2/tSDA5KOhBahEgbnW2MmYLpsTbVT52WwhZaYcVmMRBjAEWhAMyq0frn2a/HydFsmnSWTHzB1GBPZ6Nxdpw="
  },
  "signs_required": 1,
  "title": "ZeroTalk",
- "zeronet_version": "0.3.7"
+ "viewport": "width=device-width, initial-scale=1.0",
+ "zeronet_version": "0.4.0"
 }

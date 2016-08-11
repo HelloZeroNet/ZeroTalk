@@ -135,7 +135,7 @@ class TopicList extends Class
 			LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
 			LEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')
 			LEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')
-			LEFT JOIN comment ON (comment.topic_uri = row_topic_uri)
+			LEFT JOIN comment ON (comment.topic_uri = row_topic_uri AND comment.added < #{Date.now()/1000+120})
 			#{where}
 			GROUP BY topic.topic_id, topic.json_id
 			HAVING last_action < #{Date.now()/1000+120}
@@ -162,7 +162,7 @@ class TopicList extends Class
 				LEFT JOIN topic AS topic_sub ON (topic_sub.parent_topic_uri = topic.topic_id || '_' || topic_creator_content.directory)
 				LEFT JOIN json AS topic_sub_creator_json ON (topic_sub_creator_json.json_id = topic_sub.json_id)
 				LEFT JOIN json AS topic_sub_creator_content ON (topic_sub_creator_content.directory = topic_sub_creator_json.directory AND topic_sub_creator_content.file_name = 'content.json')
-				LEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri)
+				LEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri AND comment.added < #{Date.now()/1000+120})
 				WHERE topic.type = "group"
 				GROUP BY topic.topic_id
 				HAVING last_action < #{Date.now()/1000+120}
