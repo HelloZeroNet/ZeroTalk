@@ -182,6 +182,9 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 	-webkit-transition: all 0.5s ease-out ; -moz-transition: all 0.5s ease-out ; -o-transition: all 0.5s ease-out ; -ms-transition: all 0.5s ease-out ; transition: all 0.5s ease-out  ; pointer-events: none; border-bottom: 2px solid #666
 }
 
+.topmenu { font-size: 13px; margin-bottom: 14px; background-color: #EEE; padding: 5px; margin-left: -10px; margin-top: -10px; color: #666; }
+.topmenu a { color: #333 }
+
 /* Head */
 .head { float: left; padding-right: 10px; margin-bottom: 10px }
 .head .logo {

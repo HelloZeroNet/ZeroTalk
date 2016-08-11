@@ -40,19 +40,21 @@
 <!-- EOF editbar -->
 
 <!-- Head -->
+<div class="topmenu">
+ <div class="links">
+  Forums:
+  <a href="http://127.0.0.1:43110/Talk.ZeroNetwork.bit">Main</a> &middot;
+  <a href="http://127.0.0.1:43110/165eqHdoQfyf7CVGqtVCGNDvMBZhwVSJBL">Español</a> &middot;
+  <a href="http://127.0.0.1:43110/1Vp5LH4wegCaqeB72yMw2jgNdVm4aR7ET">Français</a> &middot;
+  <a href="http://127.0.0.1:43110/1GRYnz73jSXoMMZNU3nSmbCFA3twuitcoo">Polish</a> &middot;
+  <a href="http://127.0.0.1:43110/1LULE6frq3kw2vbhe4i6ArUTo4YT99Czbj">Português</a> &middot;
+  <a href="http://127.0.0.1:43110/1Apr5ba6u9Nz6eFASmFrefGvyBKkM76QgE">Russian</a> &middot;
+  <a href="http://127.0.0.1:43110/1Nse6WcodQ5Mj6ZwvZvuyCVvQESwuxbCUy">中文</a>
+ </div>
+</div>
+
 <div class="head">
  <a class="logo nolink" href="?Home">Zer0<br>Talk</a>
- <div class="more">
-  <span class="open"><span class='burger'>≡</span> More</span><br>
-  <div class="links">
-   <a href="http://127.0.0.1:43110/165eqHdoQfyf7CVGqtVCGNDvMBZhwVSJBL">ESPAÑOL</a><br>
-   <a href="http://127.0.0.1:43110/1Vp5LH4wegCaqeB72yMw2jgNdVm4aR7ET">Français</a><br>
-   <a href="http://127.0.0.1:43110/1GRYnz73jSXoMMZNU3nSmbCFA3twuitcoo">Polish</a><br>
-   <a href="http://127.0.0.1:43110/1LULE6frq3kw2vbhe4i6ArUTo4YT99Czbj">PORTUGUÊS</a><br>
-   <a href="http://127.0.0.1:43110/1Apr5ba6u9Nz6eFASmFrefGvyBKkM76QgE">Russian</a>
-   <a href="http://127.0.0.1:43110/1Nse6WcodQ5Mj6ZwvZvuyCVvQESwuxbCUy">中文</a>
-  </div>
- </div>
 </div>
 <!-- EOF Head -->
 
@@ -172,7 +174,7 @@
 
 <script type="text/javascript" src="js/all.js"></script>
 <script>
-$(".head .more a").each( function(i, elem) {
+$(".topmenu a").each( function(i, elem) {
     $(elem).attr("href", Text.fixLink($(elem).attr("href")))
 });
 </script>
