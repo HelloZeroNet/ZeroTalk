@@ -523,6 +523,10 @@ jQuery.extend( jQuery.easing,
           return false;
         };
       })(this));
+      this.elem.css("display", "inline-block");
+      this.width_following = this.elem.find(".text-following").width();
+      this.width_follow = this.elem.find(".text-follow").width();
+      this.elem.css("display", "none");
     }
 
     Follow.prototype.init = function() {
@@ -587,9 +591,13 @@ jQuery.extend( jQuery.easing,
 
     Follow.prototype.updateListitems = function() {
       if (this.menu.elem.find(".selected").length > 0) {
-        return this.elem.addClass("following");
+        this.elem.addClass("following");
+        this.elem.find(".text-follow").width(0);
+        return this.elem.find(".text-following").width(this.width_following + 5);
       } else {
-        return this.elem.removeClass("following");
+        this.elem.removeClass("following");
+        this.elem.find(".text-following").width(0);
+        return this.elem.find(".text-follow").width(this.width_follow + 5);
       }
     };
 
@@ -1348,9 +1356,9 @@ jQuery.extend( jQuery.easing,
         }
         return _results;
       })()).join(" ");
-      query = "SELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, topic.added as last_added, CASE WHEN MAX(comment.added) IS NULL THEN topic.added ELSE MAX(comment.added) END as last_action,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n NULL AS row_topic_sub_uri,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,\n CASE topic.topic_id || '_' || topic_creator_content.directory " + sql_sticky + " ELSE 0 END AS sticky\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_uri AND comment.added < " + (Date.now() / 1000 + 120) + ")\n" + where + "\nGROUP BY topic.topic_id, topic.json_id\nHAVING last_action < " + (Date.now() / 1000 + 120);
+      query = "SELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, topic.added as last_added, CASE WHEN MAX(comment.added) IS NULL THEN topic.added ELSE MAX(comment.added) END as last_action,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n NULL AS row_topic_sub_uri, NULL AS row_topic_sub_title,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,\n CASE topic.topic_id || '_' || topic_creator_content.directory " + sql_sticky + " ELSE 0 END AS sticky\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_uri AND comment.added < " + (Date.now() / 1000 + 120) + ")\n" + where + "\nGROUP BY topic.topic_id, topic.json_id\nHAVING last_action < " + (Date.now() / 1000 + 120);
       if (!this.parent_topic_uri) {
-        query += "\nUNION ALL\n\nSELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, MAX(topic_sub.added) AS last_added, CASE WHEN MAX(topic_sub.added) > MAX(comment.added) OR MAX(comment.added) IS NULL THEN MAX(topic_sub.added) ELSE MAX(comment.added) END as last_action,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,\n CASE topic.topic_id || '_' || topic_creator_content.directory " + sql_sticky + " ELSE 0 END AS sticky\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN topic AS topic_sub ON (topic_sub.parent_topic_uri = topic.topic_id || '_' || topic_creator_content.directory)\nLEFT JOIN json AS topic_sub_creator_json ON (topic_sub_creator_json.json_id = topic_sub.json_id)\nLEFT JOIN json AS topic_sub_creator_content ON (topic_sub_creator_content.directory = topic_sub_creator_json.directory AND topic_sub_creator_content.file_name = 'content.json')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri AND comment.added < " + (Date.now() / 1000 + 120) + ")\nWHERE topic.type = \"group\"\nGROUP BY topic.topic_id\nHAVING last_action < " + (Date.now() / 1000 + 120);
+        query += "\nUNION ALL\n\nSELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment,\n MAX(topic_sub.added) AS last_added,\n CASE WHEN MAX(topic_sub.added) > MAX(comment.added) OR MAX(comment.added) IS NULL THEN MAX(topic_sub.added) ELSE MAX(comment.added) END as last_action,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,\n topic_sub.title AS topic_sub_title,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,\n CASE topic.topic_id || '_' || topic_creator_content.directory " + sql_sticky + " ELSE 0 END AS sticky\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN topic AS topic_sub ON (topic_sub.parent_topic_uri = topic.topic_id || '_' || topic_creator_content.directory)\nLEFT JOIN json AS topic_sub_creator_json ON (topic_sub_creator_json.json_id = topic_sub.json_id)\nLEFT JOIN json AS topic_sub_creator_content ON (topic_sub_creator_content.directory = topic_sub_creator_json.directory AND topic_sub_creator_content.file_name = 'content.json')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri AND comment.added < " + (Date.now() / 1000 + 120) + ")\nWHERE topic.type = \"group\"\nGROUP BY topic.topic_id\nHAVING last_action < " + (Date.now() / 1000 + 120);
       }
       if (!this.list_all && !this.parent_topic_uri) {
         query += " ORDER BY sticky DESC, last_action DESC LIMIT 30";
@@ -1402,7 +1410,7 @@ jQuery.extend( jQuery.easing,
             $(".topics-loading").remove();
           }
           if (_this.parent_topic_uri) {
-            $(".topics-title").html("<span class='parent-link'><a href='?Main'>Main</a> &rsaquo;</span> " + topic_parent.title);
+            $(".topics-title").html("<span class='parent-link'><a href='?Main'>" + "Main" + ("</a> &rsaquo;</span> " + topic_parent.title));
           }
           $(".topics").css("opacity", 1);
           if (topics.length === 0) {
@@ -1429,7 +1437,7 @@ jQuery.extend( jQuery.easing,
     };
 
     TopicList.prototype.applyTopicData = function(elem, topic, type) {
-      var body, last_action, title_hash, topic_uri, url, url_match, visited;
+      var body, last_action, subtopic_title_hash, subtopic_uri, title_hash, topic_uri, url, url_match, visited;
       if (type == null) {
         type = "list";
       }
@@ -1498,6 +1506,12 @@ jQuery.extend( jQuery.easing,
       }
       if (type === "show") {
         $(".added", elem).text(Time.since(topic.added));
+      }
+      if (topic.row_topic_sub_title) {
+        subtopic_title_hash = Text.toUrl(topic.row_topic_sub_title);
+        subtopic_uri = topic.row_topic_sub_uri;
+        $(".subtopic", elem).css("display", "block");
+        $(".subtopic-link", elem).attr("href", "?Topic:" + subtopic_uri + "/" + subtopic_title_hash).text(topic.row_topic_sub_title);
       }
       if (topic.topic_creator_address === Page.site_info.auth_address) {
         $(elem).attr("data-object", "Topic:" + topic_uri).attr("data-deletable", "yes");
@@ -1582,7 +1596,6 @@ jQuery.extend( jQuery.easing,
   window.TopicList = new TopicList();
 
 }).call(this);
-
 
 
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicShow.coffee ---- */
@@ -1670,7 +1683,7 @@ jQuery.extend( jQuery.easing,
             Page.cmd("dbQuery", [_this.queryTopic(parent_topic_id, parent_topic_user_address)], function(parent_res) {
               var parent_topic;
               parent_topic = parent_res[0];
-              return $(".topic-title").html("<span class='parent-link'><a href='?Main'>Main</a> &rsaquo;</span> <span class='parent-link'><a href='?Topics:" + parent_topic.row_topic_uri + "/" + (Text.toUrl(parent_topic.title)) + "'>" + parent_topic.title + "</a> &rsaquo;</span> " + _this.topic.title);
+              return $(".topic-title").html("<span class='parent-link'><a href='?Main'>" + "Main" + ("</a> &rsaquo;</span> <span class='parent-link'><a href='?Topics:" + parent_topic.row_topic_uri + "/" + (Text.toUrl(parent_topic.title)) + "'>" + parent_topic.title + "</a> &rsaquo;</span> " + _this.topic.title));
             });
           }
           $(".topic-full").css("opacity", 1);
@@ -1856,6 +1869,7 @@ jQuery.extend( jQuery.easing,
   window.TopicShow = new TopicShow();
 
 }).call(this);
+
 
 
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/User.coffee ---- */
