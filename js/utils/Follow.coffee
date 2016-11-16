@@ -12,6 +12,10 @@ class Follow extends Class
 			else
 				Page.cmd "wrapperNotification", ["info", "Please update your ZeroNet client to use this feature"]
 			return false
+		@elem.css "display", "inline-block"
+		@width_following = @elem.find(".text-following").width()
+		@width_follow = @elem.find(".text-follow").width()
+		@elem.css "display", "none"
 
 	init: =>
 		if not @feeds
@@ -54,8 +58,12 @@ class Follow extends Class
 	updateListitems: ->
 		if @menu.elem.find(".selected").length > 0
 			@elem.addClass "following"
+			@elem.find(".text-follow").width(0)
+			@elem.find(".text-following").width(@width_following+5)
 		else
 			@elem.removeClass "following"
+			@elem.find(".text-following").width(0)
+			@elem.find(".text-follow").width(@width_follow+5)
 
 
 	saveFeeds: ->
