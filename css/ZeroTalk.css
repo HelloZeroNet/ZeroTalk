@@ -136,6 +136,12 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .topic .link { font-size: 13px; color: #AAA; margin-bottom: 7px;   overflow: hidden; display: block; white-space: nowrap; text-overflow: ellipsis }
 .topic .info { font-size: 12px; color: #AAA; margin-bottom: 7px; margin-top: 10px }
 .topic .info span { font-weight: bold }
+.topic .subtopic { display: none; padding-left: 27px; /*padding-left: 18px; margin-left: 15px;*/ }
+/*.topic .subtopic:before { content: "━"; margin-left: -30px; width: 30px; display: inline-block; color: #AAA; }*/
+.topic .subtopic .icon {
+	display: inline-block; margin-right: 10px; background-size: 16px; background-repeat: no-repeat;
+	width: 16px; height: 16px; opacity: 0.4; vertical-align: -3px; margin-left: -26px;
+}
 .topic .comment-num { font-weight: bold; color: #666; border-bottom: 1px solid #AAA }
 .topic .comment-num:hover { border-bottom: 1px solid #333 }
 .topic blockquote { border-left: 5px solid #eee; padding: 5px; padding-left: 15px; margin: 10px 0px; background-color: #FBFBFB; }

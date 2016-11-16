@@ -128,7 +128,7 @@ class TopicList extends Class
 			 topic_creator_user.value AS topic_creator_user_name,
 			 topic_creator_content.directory AS topic_creator_address,
 			 topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,
-			 NULL AS row_topic_sub_uri,
+			 NULL AS row_topic_sub_uri, NULL AS row_topic_sub_title,
 			 (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,
 			 CASE topic.topic_id || '_' || topic_creator_content.directory #{sql_sticky} ELSE 0 END AS sticky
 			FROM topic
@@ -147,12 +147,15 @@ class TopicList extends Class
 				UNION ALL
 
 				SELECT
-				 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, MAX(topic_sub.added) AS last_added, CASE WHEN MAX(topic_sub.added) > MAX(comment.added) OR MAX(comment.added) IS NULL THEN MAX(topic_sub.added) ELSE MAX(comment.added) END as last_action,
+				 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment,
+				 MAX(topic_sub.added) AS last_added,
+				 CASE WHEN MAX(topic_sub.added) > MAX(comment.added) OR MAX(comment.added) IS NULL THEN MAX(topic_sub.added) ELSE MAX(comment.added) END as last_action,
 				 topic.*,
 				 topic_creator_user.value AS topic_creator_user_name,
 				 topic_creator_content.directory AS topic_creator_address,
 				 topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,
 				 topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,
+				 topic_sub.title AS topic_sub_title,
 				 (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,
 				 CASE topic.topic_id || '_' || topic_creator_content.directory #{sql_sticky} ELSE 0 END AS sticky
 				FROM topic
@@ -218,7 +221,7 @@ class TopicList extends Class
 
 			# Set sub-title listing title
 			if @parent_topic_uri
-				$(".topics-title").html("<span class='parent-link'><a href='?Main'>Main</a> &rsaquo;</span> #{topic_parent.title}")
+				$(".topics-title").html("<span class='parent-link'><a href='?Main'>" + "Main" + "</a> &rsaquo;</span> #{topic_parent.title}")
 
 			$(".topics").css("opacity", 1)
 
@@ -303,6 +306,7 @@ class TopicList extends Class
 			$(".score-inactive .score-num", elem).text topic.votes
 			$(".score-active .score-num", elem).text topic.votes+1
 		$(".score", elem).off("click").on "click", @submitTopicVote
+
 		# Visited
 		visited = Page.local_storage["topic.#{topic_uri}.visited"]
 		if not visited
@@ -311,6 +315,16 @@ class TopicList extends Class
 			elem.addClass("visit-newcomment")
 
 		if type == "show" then $(".added", elem).text Time.since(topic.added)
+
+		# Sub-topic
+		if topic.row_topic_sub_title
+			subtopic_title_hash = Text.toUrl(topic.row_topic_sub_title)
+			subtopic_uri = topic.row_topic_sub_uri
+			$(".subtopic", elem)
+				.css("display", "block")
+			$(".subtopic-link", elem)
+				.attr("href", "?Topic:#{subtopic_uri}/#{subtopic_title_hash}")
+				.text(topic.row_topic_sub_title)
 
 
 		# My topic
