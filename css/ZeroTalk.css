@@ -121,9 +121,10 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .topic { background-color: white; padding: 15px 25px; margin: 1px; padding-left: 110px; position: relative; }
 .topic-group { border-left: 2px solid #DB3207; margin-left: -2px; }
 .topic-group:before { content: "\203A"; float: right; padding: 18px 0px; font-size: 25px; color: #999; font-family: Tahoma }
-.topic-sticky:before {
-	content: "stickied"; float: right; font-size: 10px; margin-right: -25px; background-color: #F7DE6E; padding: 2px 5px; color: #827850;
-	text-transform: uppercase; letter-spacing: 0.5px; margin-top: 5px; margin-left: 5px;
+.topic .sticky-title { display: none }
+.topic-sticky .sticky-title {
+	float: right; font-size: 10px; margin-right: -25px; background-color: #F7DE6E; padding: 2px 5px; color: #827850;
+	text-transform: uppercase; letter-spacing: 0.5px; margin-top: 5px; margin-left: 5px; display: block;
 }
 .topic-sticky { margin-bottom: 5px; margin-top: -4px }
 .topic .image { position: absolute; margin-left: -72px; margin-top: 5px; opacity: 0.3 }

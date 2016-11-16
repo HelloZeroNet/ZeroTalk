@@ -89,7 +89,7 @@ class TopicShow extends Class
 				Page.cmd "dbQuery", [@queryTopic(parent_topic_id, parent_topic_user_address)], (parent_res) =>
 					parent_topic = parent_res[0]
 					$(".topic-title").html("
-						<span class='parent-link'><a href='?Main'>Main</a> &rsaquo;</span>
+						<span class='parent-link'><a href='?Main'>" + "Main" + "</a> &rsaquo;</span>
 						<span class='parent-link'><a href='?Topics:#{parent_topic.row_topic_uri}/#{Text.toUrl(parent_topic.title)}'>#{parent_topic.title}</a> &rsaquo;</span>
 						#{@topic.title}")
 
