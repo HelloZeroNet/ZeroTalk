@@ -1,7 +1,7 @@
 {
 	"Follow in Newsfeed": "在新闻源中关注",
 	"Following": "已关注",
-	"Comments in this topic": "这个新话题的评论",
+	"Comments in this topic": "这个话题的新评论",
 	"New topics": "新话题",
 	"New topics in this group": "本组的新话题",
 	"Username mentions": "提到的用户名",
@@ -30,7 +30,7 @@
 	" comment": " 条评论",
 	"0 comments": "0 条评论",
 	"last activity": "上次活动",
-	"&#9473; started by ": "&#9473; 开始于：",
+	"&#9473; started by ": "&#9473; 发布者 ",
 
 	" minutes ago": " 分钟前",
 	" hours ago": " 小时前",
