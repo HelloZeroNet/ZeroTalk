@@ -1,0 +1,40 @@
+{
+	"Follow in Newsfeed": "在新闻源中关注",
+	"Following": "已关注",
+	"Comments in this topic": "这个新话题的评论",
+	"New topics": "新话题",
+	"New topics in this group": "本组的新话题",
+	"Username mentions": "提到的用户名",
+	"All comments": "所有评论",
+
+	"Main": "Főoldal",
+	"Loading...": "加载中...",
+	" + Start new topic": " + 创建新话题",
+	"new topic": " 新话题",
+	"Topic title": " 话题标题",
+	"Topic description": " 话题描述",
+	"Add new topic": "添加新话题",
+
+	"Newest topics": "最新的话题",
+	"More topics": "更多话题",
+	"Sign in as...": "登陆为...",
+	"Submit comment": "提交评论",
+	"Please sign in": "请登录",
+	"new comment": "新评论",
+
+	"Reply": "重试",
+
+	"stickied": "已置顶",
+	" posted ": " 发表了 ",
+	"last ": "上次 ",
+	" comment": " 条评论",
+	"0 comments": "0 条评论",
+	"last activity": "上次活动",
+	"&#9473; started by ": "&#9473; 开始于：",
+
+	" minutes ago": " 分钟前",
+	" hours ago": " 小时前",
+	" days ago": " 天前",
+	"on ": "",
+	"Just now": "刚才"
+}
