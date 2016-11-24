@@ -1,10 +1,10 @@
 {
-	"Follow in Newsfeed": "Suivre dans le fil d'actualités",
+	"Follow in Newsfeed": "Suivre dans le fil d'actualité",
 	"Following": "Vous suivez",
-	"Comments in this topic": "Commentairess sur ce sujet",
+	"Comments in this topic": "Commentaires sur ce sujet",
 	"New topics": "Nouveaux sujets",
 	"New topics in this group": "Nouveaux sujets dans ce groupe",
-	"Username mentions": "Mentions d'utilisateur",
+	"Username mentions": "Mentions",
 	"All comments": "Tous les commentaires",
 
 	"Main": "Accueil",
@@ -15,10 +15,10 @@
 	"Topic description": "Description",
 	"Add new topic": "Créer nouveau sujet",
 
-	"Newest topics": "Derniers sujets",
+	"Newest topics": "Sujets  récents",
 	"More topics": "Plus de sujets",
 	"Sign in as...": "Se connecter en tant que...",
-	"Submit comment": "Soumettre commentaire",
+	"Submit comment": "Soumettre",
 	"Please sign in": "Veuillez vous connecter",
 	"new comment": "nouveau commentaire",
 
