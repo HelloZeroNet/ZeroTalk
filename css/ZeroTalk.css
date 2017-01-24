@@ -72,7 +72,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 	transition: all 0.5s ease-out ; pointer-events: none; border-bottom: 2px solid #666
 }
 
-.topmenu { font-size: 13px; margin-bottom: 14px; background-color: #EEE; padding: 5px; margin-left: -10px; margin-top: -10px; color: #666; }
+.topmenu { font-size: 14px; margin-bottom: 14px; background-color: #EEE; padding: 5px; margin-left: -10px; margin-top: -10px; color: #666; }
 .topmenu a { color: #333 }
 
 /* Head */
@@ -112,6 +112,8 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .topic-title { font-size: 35px; }
 .parent-link { font-size: 19px; font-weight: bold; line-height: 19px }
 .topic-new { overflow: hidden; backface-visibility: hidden; margin-bottom: 15px !important }
+.topic-new .message { background-color: #fffede; padding: 5px 10px; border: 1px solid #EEE; }
+
 .topic-new-link {
 	float: right; margin-top: 33px; margin-right: 1px; color: #AAA; padding: 6px 10px; white-space: nowrap;
 	overflow: hidden; background-color: rgba(245,245,245,0.9); z-index: 1; position: relative; transition: all 0.3s

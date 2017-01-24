@@ -1293,6 +1293,10 @@ jQuery.extend( jQuery.easing,
       this.loadTopics("noanim");
       $(".topic-new-link").on("click", (function(_this) {
         return function() {
+          if (Page.site_info.address === "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT") {
+            $(".topmenu").css("background-color", "#fffede");
+            $(".topic-new .message").css("display", "block");
+          }
           $(".topic-new").fancySlideDown();
           $(".topic-new-link").slideUp();
           return false;
@@ -1598,6 +1602,7 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicShow.coffee ---- */
 
 
@@ -1869,7 +1874,6 @@ jQuery.extend( jQuery.easing,
   window.TopicShow = new TopicShow();
 
 }).call(this);
-
 
 
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/User.coffee ---- */
