@@ -1397,6 +1397,7 @@ jQuery.extend( jQuery.easing,
               if (type !== "noanim") {
                 elem.cssSlideDown();
               }
+              _this.applyTopicListeners(elem, topic);
             }
             elem.insertAfter(last_elem);
             last_elem = elem;
@@ -1436,6 +1437,21 @@ jQuery.extend( jQuery.easing,
           if (cb) {
             return cb();
           }
+        };
+      })(this));
+    };
+
+    TopicList.prototype.applyTopicListeners = function(elem, topic) {
+      return $(".user_menu", elem).on("click", (function(_this) {
+        return function() {
+          var menu;
+          menu = new Menu($(".user_menu", elem));
+          menu.addItem("Mute this user", function() {
+            elem.fancySlideUp();
+            return Page.cmd("muteAdd", [topic.topic_creator_address, topic.topic_creator_user_name, "Topic: " + topic.title]);
+          });
+          menu.show();
+          return false;
         };
       })(this));
     };
@@ -1729,9 +1745,7 @@ jQuery.extend( jQuery.easing,
               if (type !== "noanim") {
                 elem.cssSlideDown();
               }
-              $(".reply", elem).on("click", function(e) {
-                return _this.buttonReply($(e.target).parents(".comment"));
-              });
+              _this.applyCommentListeners(elem, comment);
               $(".score", elem).attr("id", "comment_score_" + comment_uri).on("click", _this.submitCommentVote);
             }
             _this.applyCommentData(elem, comment);
@@ -1758,6 +1772,26 @@ jQuery.extend( jQuery.easing,
           if (cb) {
             return cb();
           }
+        };
+      })(this));
+    };
+
+    TopicShow.prototype.applyCommentListeners = function(elem, comment) {
+      $(".reply", elem).on("click", (function(_this) {
+        return function(e) {
+          return _this.buttonReply($(e.target).parents(".comment"));
+        };
+      })(this));
+      return $(".menu_3dot", elem).on("click", (function(_this) {
+        return function() {
+          var menu;
+          menu = new Menu($(".menu_3dot", elem));
+          menu.addItem("Mute this user", function() {
+            elem.fancySlideUp();
+            return Page.cmd("muteAdd", [comment.user_address, comment.user_name, "Comment: " + comment.body.slice(0, 21)]);
+          });
+          menu.show();
+          return false;
         };
       })(this));
     };

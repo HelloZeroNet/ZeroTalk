@@ -6,8 +6,8 @@
  "domain": "Talk.ZeroNetwork.bit",
  "files": {
   "css/all.css": {
-   "sha512": "1baeab2b22dca59d434800b5ffcbcf470520dc7f2eee7ee4a0a7ebc7e87468ef",
-   "size": 163041
+   "sha512": "a03c2d68cf86764e24a7d279ea1cbf8768179b0dd420c1c410849ebb24850d27",
+   "size": 164335
   },
   "data-default/users/content-default.json": {
    "sha512": "c1642cc2922a74c3e74991f0194e2acc46dc5e003207a0028dad63c75c41a0ec",
@@ -34,19 +34,47 @@
    "size": 310
   },
   "index.html": {
-   "sha512": "b9e56fbd13e655ec08c51fafba16ad07c41fdecd27886793556057edb497f71c",
-   "size": 7757
+   "sha512": "0b660c3850d012bce70874654006ef7d1c3d2acd9b8d05841c6815deeae0924c",
+   "size": 8183
   },
   "js/all.js": {
-   "sha512": "d52ed295f5849693ad2fa04396e2510936b6d1b8abcfdb4570f786e2e92f8bab",
-   "size": 227837
+   "sha512": "fab4bdc3cd088ca22e1986bbb2a94b5b245a3f979414faf2e42aa4d849899fad",
+   "size": 229286
   },
-  "languages/hu_HU.json": {
+  "languages/da.json": {
+   "sha512": "f1670f1095b803cb7c26964afd7f3c0e97bd5e3c789e6325b93d2aa35a44f911",
+   "size": 1190
+  },
+  "languages/fr.json": {
+   "sha512": "08c15f180ee8cc5c999ac7afda72700f5213dd8c88491f08911e5118e3a809c4",
+   "size": 1202
+  },
+  "languages/hu.json": {
    "sha512": "9a8e6178a4a30a5879173529934fcc6f68bf32f10c27d08f0d87d28f970822b1",
    "size": 1202
+  },
+  "languages/it.json": {
+   "sha512": "fb8f20094d6201b4013a785f6c31d5339a2c94fd86b0396d91c8f3bb8711c3e6",
+   "size": 1237
+  },
+  "languages/pl.json": {
+   "sha512": "d68b3b31cc68c8d2cc4f13aefac1053c3def536fe6440cbab48ac199f2f06481",
+   "size": 1285
+  },
+  "languages/uk.json": {
+   "sha512": "d8025af0fbdd7b586774d2fedb1dc8790dc7921bf8e058e370bd08b3b6b2555f",
+   "size": 1570
+  },
+  "languages/zh-tw.json": {
+   "sha512": "daa383726d9d65737bd149d60cb513fd3c5faeacd49be289a1b2b797e358235c",
+   "size": 1291
+  },
+  "languages/zh.json": {
+   "sha512": "aacc34809728cf3bad2696e83647bc1b1c60cebbd5f8c5755e770009eabedb6c",
+   "size": 1296
   }
  },
- "ignore": "((js|css)/(?!all.(js|css))|data/users/.*db|data/users/.*/.*|.*.py)",
+ "ignore": "((js|css)/(?!all.(js|css))|data/users/.*db|data/users/.*/.*|data/archived|.*.py)",
  "includes": {
   "data/users/content.json": {
    "signers": [],
@@ -54,7 +82,7 @@
   }
  },
  "inner_path": "content.json",
- "modified": 1479332094.372,
+ "modified": 1486640637,
  "postmessage_nonce_security": true,
  "settings": {
   "admin": "nofish",
@@ -65,12 +93,12 @@
   ]
  },
  "sign": [
-  78705863276140566526043447119699774979798118629924856253921216870930439782790,
-  24970072062396750030931811155449369282786409984270906024154901353105297792810
+  113917166604433124185737788231524946282831622280868767220101027589119471040001,
+  110163613661839846150017825662154327320827031036545347459280551497377855886772
  ],
  "signers_sign": "HG/6ljsXbej7laqD3JUGsa8IEgSGE+NZs2jg9reQ3vrlo0fTnoFESCNujVxRuY1ORor143LGSyjl8PkaRdU4gx8=",
  "signs": {
-  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "HOHLv0kUdd3iEacj6658ILDxB0hpS5ND/g1Z8JSXusl+QelydhZpINcEra61qNpsTBxqxpleE7tbkqG1J59YhZo="
+  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "HO3LE+B0goS2hqxq3u3bKNLHWhnCjbXGsFXZe6BqhsqMMoZfc1MmYZgWXx1HMH9QcTDPYC9dF9rlw9TN01yjJdc="
  },
  "signs_required": 1,
  "title": "ZeroTalk",
@@ -79,5 +107,5 @@
   "js/all.js"
  ],
  "viewport": "width=device-width, initial-scale=1.0",
- "zeronet_version": "0.5.0"
+ "zeronet_version": "0.5.2"
 }
