@@ -509,6 +509,7 @@ jQuery.extend( jQuery.easing,
       this.menu = new Menu(this.elem);
       this.feeds = {};
       this.follows = {};
+      this.elem.off("click");
       this.elem.on("click", (function(_this) {
         return function() {
           if (Page.server_info.rev > 850) {
@@ -533,7 +534,7 @@ jQuery.extend( jQuery.easing,
       if (!this.feeds) {
         return;
       }
-      return Page.cmd("feedListFollow", [], (function(_this) {
+      Page.cmd("feedListFollow", [], (function(_this) {
         return function(_at_follows) {
           var is_default_feed, menu_item, param, query, title, _ref, _ref1;
           _this.follows = _at_follows;
@@ -550,6 +551,14 @@ jQuery.extend( jQuery.easing,
           return _this.elem.css("display", "inline-block");
         };
       })(this));
+      return setTimeout(((function(_this) {
+        return function() {
+          if (typeof Page.site_info.feed_follow_num !== "undefined" && Page.site_info.feed_follow_num === null) {
+            _this.log("Following default feeds");
+            return _this.followDefaultFeeds();
+          }
+        };
+      })(this)), 100);
     };
 
     Follow.prototype.addFeed = function(title, query, is_default_feed, param) {
@@ -1618,7 +1627,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicShow.coffee ---- */
 
 
@@ -1838,6 +1846,7 @@ jQuery.extend( jQuery.easing,
 
     TopicShow.prototype.submitComment = function() {
       var body;
+      this.follow.feeds["Comments in this topic"][1].trigger("click");
       body = $(".comment-new #comment_body").val().trim();
       if (!body) {
         $(".comment-new #comment_body").focus();
@@ -1908,6 +1917,7 @@ jQuery.extend( jQuery.easing,
   window.TopicShow = new TopicShow();
 
 }).call(this);
+
 
 
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/User.coffee ---- */
@@ -2322,7 +2332,7 @@ jQuery.extend( jQuery.easing,
     };
 
     ZeroTalk.prototype.actionSetSiteInfo = function(res) {
-      var site_info;
+      var mentions_menu_elem, site_info, _ref;
       site_info = res.params;
       this.setSiteinfo(site_info);
       if (site_info.event && site_info.event[0] === "file_done" && site_info.event[1].match(/.*users.*data.json$/)) {
@@ -2337,6 +2347,16 @@ jQuery.extend( jQuery.easing,
             }
           };
         })(this));
+      } else if (((_ref = site_info.event) != null ? _ref[0] : void 0) === "cert_changed" && site_info.cert_user_id) {
+        TopicList.initFollowButton();
+        mentions_menu_elem = TopicList.follow.feeds["Username mentions"][1];
+        return setTimeout(((function(_this) {
+          return function() {
+            if (!mentions_menu_elem.hasClass("selected")) {
+              return mentions_menu_elem.trigger("click");
+            }
+          };
+        })(this)), 100);
       }
     };
 
