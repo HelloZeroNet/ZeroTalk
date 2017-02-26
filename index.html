@@ -9,7 +9,7 @@
  <base href="" target="_top" id="base">
  <script>
  setTimeout(function() {
- 	base.href = document.location.href.replace("/media", "").replace("index.html", "").replace(/([&?])wrapper=False/, "$1").replace(/&$/, "").replace(/[&?]wrapper_nonce=[A-Za-z0-9]+/, "") // Fix urls
+    base.href = document.location.href.replace("/media", "").replace("index.html", "").replace(/([&?])wrapper=False/, "$1").replace(/&$/, "").replace(/[&?]wrapper_nonce=[A-Za-z0-9]+/, "") // Fix urls
  }, 100) // 100ms later, to workaround double js download in chrome
  </script>
 </head>
@@ -51,8 +51,10 @@
   <a href="http://127.0.0.1:43110/1MxvDmGn5fipn7cyjXAMyMZPH3SyhwfZkw/">Italian</a> &middot;
   <a href="http://127.0.0.1:43110/1GRYnz73jSXoMMZNU3nSmbCFA3twuitcoo">Polish</a> &middot;
   <a href="http://127.0.0.1:43110/1LULE6frq3kw2vbhe4i6ArUTo4YT99Czbj">Português</a> &middot;
+  <a href="http://127.0.0.1:43110/1DKi1k1V3WAkKwxKqySDmknVNTccBmJ7Ku">Québec</a> &middot;
   <a href="http://127.0.0.1:43110/1Apr5ba6u9Nz6eFASmFrefGvyBKkM76QgE">Russian</a> &middot;
-  <a href="http://127.0.0.1:43110/1Nse6WcodQ5Mj6ZwvZvuyCVvQESwuxbCUy">中文</a>
+  <a href="http://127.0.0.1:43110/193psz3yGj7EH39nyKb4A2KKBXEHT49Csf">Ukrainian</a> &middot;
+  <a href="http://127.0.0.1:43110/NewGFWTalk.bit">中文论坛</a>
  </div>
 </div>
 
@@ -74,6 +76,7 @@
   <a href="#" class="image nolink"><div class="icon icon-topic-chat"></div></a>
   <h2 class="title"><input type="text" id="topic_title" class="text" placeholder="Topic title"></h2>
   <div class="body"><textarea id="topic_body" placeholder="Topic description"></textarea></div>
+  <div class="message" style="display: none">Please use English, you can reach other language forums at the top of this page</div>
   <div class="info"><a class="user_name user_name-my certselect" href="#Change+user" title='Change user'>user_name</a> &#9473; <span class="added">new topic</span></div>
   <a href="#Add+new+topic" class="button button-submit">Add new topic</a>
   <div style="clear: both"></div>
@@ -100,7 +103,7 @@
     </a>
     <a href="#" class="comment-num"></a>
     <span class="added">added</span>
-    <span>&#9473; started by <span class="user_name">user_name</span></span>
+    <span>&#9473; started by <a class="user_menu" href="#menu"><span class="user_name">user_name</span><span class="menu_3dot">⋮</span></a>
    </div>
   </div>
   <!-- EOF Template: Topic main -->
@@ -161,6 +164,7 @@
      <span class="score-active"> <span class="icon-up">^</span><span class="score-num">2</span> </span>
     </a>
     <a href="#Reply" class="reply"><div class="icon icon-reply"></div> <span class="reply-text">Reply</span></a>
+    <a href="#Menu" class="menu_3dot">⋮</a>
    </div>
    <div class="body">Body</div>
   </div>

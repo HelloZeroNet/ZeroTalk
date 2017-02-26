@@ -509,6 +509,7 @@ jQuery.extend( jQuery.easing,
       this.menu = new Menu(this.elem);
       this.feeds = {};
       this.follows = {};
+      this.elem.off("click");
       this.elem.on("click", (function(_this) {
         return function() {
           if (Page.server_info.rev > 850) {
@@ -533,7 +534,7 @@ jQuery.extend( jQuery.easing,
       if (!this.feeds) {
         return;
       }
-      return Page.cmd("feedListFollow", [], (function(_this) {
+      Page.cmd("feedListFollow", [], (function(_this) {
         return function(_at_follows) {
           var is_default_feed, menu_item, param, query, title, _ref, _ref1;
           _this.follows = _at_follows;
@@ -550,6 +551,14 @@ jQuery.extend( jQuery.easing,
           return _this.elem.css("display", "inline-block");
         };
       })(this));
+      return setTimeout(((function(_this) {
+        return function() {
+          if (typeof Page.site_info.feed_follow_num !== "undefined" && Page.site_info.feed_follow_num === null) {
+            _this.log("Following default feeds");
+            return _this.followDefaultFeeds();
+          }
+        };
+      })(this)), 100);
     };
 
     Follow.prototype.addFeed = function(title, query, is_default_feed, param) {
@@ -1293,6 +1302,10 @@ jQuery.extend( jQuery.easing,
       this.loadTopics("noanim");
       $(".topic-new-link").on("click", (function(_this) {
         return function() {
+          if (Page.site_info.address === "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT") {
+            $(".topmenu").css("background-color", "#fffede");
+            $(".topic-new .message").css("display", "block");
+          }
           $(".topic-new").fancySlideDown();
           $(".topic-new-link").slideUp();
           return false;
@@ -1393,6 +1406,7 @@ jQuery.extend( jQuery.easing,
               if (type !== "noanim") {
                 elem.cssSlideDown();
               }
+              _this.applyTopicListeners(elem, topic);
             }
             elem.insertAfter(last_elem);
             last_elem = elem;
@@ -1432,6 +1446,21 @@ jQuery.extend( jQuery.easing,
           if (cb) {
             return cb();
           }
+        };
+      })(this));
+    };
+
+    TopicList.prototype.applyTopicListeners = function(elem, topic) {
+      return $(".user_menu", elem).on("click", (function(_this) {
+        return function() {
+          var menu;
+          menu = new Menu($(".user_menu", elem));
+          menu.addItem("Mute this user", function() {
+            elem.fancySlideUp();
+            return Page.cmd("muteAdd", [topic.topic_creator_address, topic.topic_creator_user_name, "Topic: " + topic.title]);
+          });
+          menu.show();
+          return false;
         };
       })(this));
     };
@@ -1724,9 +1753,7 @@ jQuery.extend( jQuery.easing,
               if (type !== "noanim") {
                 elem.cssSlideDown();
               }
-              $(".reply", elem).on("click", function(e) {
-                return _this.buttonReply($(e.target).parents(".comment"));
-              });
+              _this.applyCommentListeners(elem, comment);
               $(".score", elem).attr("id", "comment_score_" + comment_uri).on("click", _this.submitCommentVote);
             }
             _this.applyCommentData(elem, comment);
@@ -1753,6 +1780,26 @@ jQuery.extend( jQuery.easing,
           if (cb) {
             return cb();
           }
+        };
+      })(this));
+    };
+
+    TopicShow.prototype.applyCommentListeners = function(elem, comment) {
+      $(".reply", elem).on("click", (function(_this) {
+        return function(e) {
+          return _this.buttonReply($(e.target).parents(".comment"));
+        };
+      })(this));
+      return $(".menu_3dot", elem).on("click", (function(_this) {
+        return function() {
+          var menu;
+          menu = new Menu($(".menu_3dot", elem));
+          menu.addItem("Mute this user", function() {
+            elem.fancySlideUp();
+            return Page.cmd("muteAdd", [comment.user_address, comment.user_name, "Comment: " + comment.body.slice(0, 21)]);
+          });
+          menu.show();
+          return false;
         };
       })(this));
     };
@@ -1799,6 +1846,7 @@ jQuery.extend( jQuery.easing,
 
     TopicShow.prototype.submitComment = function() {
       var body;
+      this.follow.feeds["Comments in this topic"][1].trigger("click");
       body = $(".comment-new #comment_body").val().trim();
       if (!body) {
         $(".comment-new #comment_body").focus();
@@ -2284,7 +2332,7 @@ jQuery.extend( jQuery.easing,
     };
 
     ZeroTalk.prototype.actionSetSiteInfo = function(res) {
-      var site_info;
+      var mentions_menu_elem, site_info, _ref;
       site_info = res.params;
       this.setSiteinfo(site_info);
       if (site_info.event && site_info.event[0] === "file_done" && site_info.event[1].match(/.*users.*data.json$/)) {
@@ -2299,6 +2347,16 @@ jQuery.extend( jQuery.easing,
             }
           };
         })(this));
+      } else if (((_ref = site_info.event) != null ? _ref[0] : void 0) === "cert_changed" && site_info.cert_user_id) {
+        TopicList.initFollowButton();
+        mentions_menu_elem = TopicList.follow.feeds["Username mentions"][1];
+        return setTimeout(((function(_this) {
+          return function() {
+            if (!mentions_menu_elem.hasClass("selected")) {
+              return mentions_menu_elem.trigger("click");
+            }
+          };
+        })(this)), 100);
       }
     };
 

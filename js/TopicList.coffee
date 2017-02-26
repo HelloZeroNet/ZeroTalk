@@ -28,6 +28,9 @@ class TopicList extends Class
 
 		# Show create new topic form
 		$(".topic-new-link").on "click", =>
+			if Page.site_info.address == "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT"
+				$(".topmenu").css("background-color", "#fffede")
+				$(".topic-new .message").css("display", "block")
 			$(".topic-new").fancySlideDown()
 			$(".topic-new-link").slideUp()
 			return false
@@ -200,6 +203,7 @@ class TopicList extends Class
 					elem = $(".topics-list .topic.template").clone().removeClass("template").attr("id", "topic_"+topic_uri)
 					if type != "noanim" then elem.cssSlideDown()
 
+					@applyTopicListeners(elem, topic)
 				elem.insertAfter(last_elem)
 				last_elem = elem
 
@@ -243,6 +247,15 @@ class TopicList extends Class
 
 			if cb then cb()
 
+	applyTopicListeners: (elem, topic) ->
+		# User hide
+		$(".user_menu", elem).on "click", =>
+			menu = new Menu($(".user_menu", elem))
+			menu.addItem "Mute this user", =>
+				elem.fancySlideUp()
+				Page.cmd "muteAdd", [topic.topic_creator_address, topic.topic_creator_user_name, "Topic: #{topic.title}"]
+			menu.show()
+			return false
 
 
 	applyTopicData: (elem, topic, type="list") ->
