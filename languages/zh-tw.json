@@ -38,5 +38,12 @@
 	"on ": "",
 	"Just now": "剛才",
 
-	"Please use English, you can reach other language forums at the top of this page": "請使用英語，你可以在頁面頂部到達其他語言的論壇"
+	"Please use English, you can reach other language forums at the top of this page": "請使用英語，你可以在頁面頂部到達其他語言的論壇",
+
+	"Mute this user": "屏蔽此用戶",
+
+	"Please, choose your account before upvoting.": "請在點贊前選擇你的帳戶",
+	"Every new user has limited space to store comments, topics and votes.\\n": "每個用戶有受限的空間來存儲評論、話題與投票。\\n",
+	"This indicator shows your used/total allowed KBytes.\\n": "該指示器顯示你已經使用/總共允許的千位元組。\\n",
+	"The site admin can increase it if you about to run out of it.": "如果你超出限制，網站管理員可以增加它。"
 }
