@@ -63,7 +63,7 @@ class TopicShow extends Class
 		  topic_creator_user.value AS topic_creator_user_name,
 		  topic_creator_content.directory AS topic_creator_address,
 		  topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,
-		  (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes
+		  (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory) AS votes
 		 FROM topic
 		  LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
 		  LEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')
@@ -111,7 +111,7 @@ class TopicShow extends Class
 			 comment.*,
 			 user.value AS user_name,
 			 user_json_content.directory AS user_address,
-			 (SELECT COUNT(*) FROM comment_vote WHERE comment_vote.comment_uri = comment.comment_id || '_' || user_json_content.directory)+1 AS votes
+			 (SELECT COUNT(*) FROM comment_vote WHERE comment_vote.comment_uri = comment.comment_id || '_' || user_json_content.directory) AS votes
 			FROM comment
 			 LEFT JOIN json AS user_json_data ON (user_json_data.json_id = comment.json_id)
 			 LEFT JOIN json AS user_json_content ON (user_json_content.directory = user_json_data.directory AND user_json_content.file_name = 'content.json')
