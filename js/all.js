@@ -536,11 +536,27 @@ jQuery.extend( jQuery.easing,
       }
       Page.cmd("feedListFollow", [], (function(_this) {
         return function(_at_follows) {
-          var is_default_feed, menu_item, param, query, title, _ref, _ref1;
+          var is_default_feed, menu_item, param, queries, query, title, _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
           _this.follows = _at_follows;
+          queries = {};
           _ref = _this.feeds;
           for (title in _ref) {
             _ref1 = _ref[title], query = _ref1[0], menu_item = _ref1[1], is_default_feed = _ref1[2], param = _ref1[3];
+            queries[query] = title;
+          }
+          _ref2 = _this.follows;
+          for (title in _ref2) {
+            _ref3 = _ref2[title], query = _ref3[0], param = _ref3[1];
+            _this.log(title, "->", queries[query]);
+            if (queries[query] && title !== queries[query]) {
+              _this.log("Renamed query", title, "->", queries[query]);
+              _this.follows[queries[query]] = _this.follows[title];
+              delete _this.follows[title];
+            }
+          }
+          _ref4 = _this.feeds;
+          for (title in _ref4) {
+            _ref5 = _ref4[title], query = _ref5[0], menu_item = _ref5[1], is_default_feed = _ref5[2], param = _ref5[3];
             if (_this.follows[title] && __indexOf.call(_this.follows[title][1], param) >= 0) {
               menu_item.addClass("selected");
             } else {
@@ -611,41 +627,36 @@ jQuery.extend( jQuery.easing,
     };
 
     Follow.prototype.saveFeeds = function() {
-      return Page.cmd("feedListFollow", [], (function(_this) {
-        return function(follows) {
-          var is_default_feed, item, menu_item, param, params, query, title, _ref, _ref1;
-          _this.follows = follows;
-          _ref = _this.feeds;
-          for (title in _ref) {
-            _ref1 = _ref[title], query = _ref1[0], menu_item = _ref1[1], is_default_feed = _ref1[2], param = _ref1[3];
-            if (follows[title]) {
-              params = (function() {
-                var _i, _len, _ref2, _results;
-                _ref2 = follows[title][1];
-                _results = [];
-                for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
-                  item = _ref2[_i];
-                  if (item !== param) {
-                    _results.push(item);
-                  }
-                }
-                return _results;
-              })();
-            } else {
-              params = [];
+      var is_default_feed, item, menu_item, param, params, query, title, _ref, _ref1;
+      _ref = this.feeds;
+      for (title in _ref) {
+        _ref1 = _ref[title], query = _ref1[0], menu_item = _ref1[1], is_default_feed = _ref1[2], param = _ref1[3];
+        if (this.follows[title]) {
+          params = (function() {
+            var _i, _len, _ref2, _results;
+            _ref2 = this.follows[title][1];
+            _results = [];
+            for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
+              item = _ref2[_i];
+              if (item !== param) {
+                _results.push(item);
+              }
             }
-            if (menu_item.hasClass("selected")) {
-              params.push(param);
-            }
-            if (params.length === 0) {
-              delete follows[title];
-            } else {
-              follows[title] = [query, params];
-            }
-          }
-          return Page.cmd("feedFollow", [follows]);
-        };
-      })(this));
+            return _results;
+          }).call(this);
+        } else {
+          params = [];
+        }
+        if (menu_item.hasClass("selected")) {
+          params.push(param);
+        }
+        if (params.length === 0) {
+          delete this.follows[title];
+        } else {
+          this.follows[title] = [query, params];
+        }
+      }
+      return Page.cmd("feedFollow", [this.follows]);
     };
 
     return Follow;
@@ -1130,6 +1141,17 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Translate.coffee ---- */
+
+
+(function() {
+  window._ = function(s) {
+    return s;
+  };
+
+}).call(this);
+
+
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/ZeroFrame.coffee ---- */
 
 
@@ -1334,7 +1356,7 @@ jQuery.extend( jQuery.easing,
       if (this.parent_topic_uri) {
         this.follow.addFeed("New topics in this group", "SELECT title AS title, body, added AS date_added, 'topic' AS type, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url, parent_topic_uri AS param FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) WHERE parent_topic_uri IN (:params)", true, this.parent_topic_uri);
       } else {
-        this.follow.addFeed("New topics", "SELECT title AS title, body, added AS date_added, 'topic' AS type, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) WHERE parent_topic_uri IS NULL", true);
+        this.follow.addFeed(_("New topics"), "SELECT title AS title, body, added AS date_added, 'topic' AS type, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) WHERE parent_topic_uri IS NULL", true);
         if (Page.site_info.cert_user_id) {
           username = Page.site_info.cert_user_id.replace(/@.*/, "");
           this.follow.addFeed("Username mentions", "SELECT 'mention' AS type, comment.added AS date_added, topic.title, commenter_user.value || ': ' || comment.body AS body, topic_creator_json.directory AS topic_creator_address, topic.topic_id || '_' || topic_creator_json.directory AS row_topic_uri, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) LEFT JOIN comment ON (comment.topic_uri = row_topic_uri) LEFT JOIN json AS commenter_json ON (commenter_json.json_id = comment.json_id) LEFT JOIN json AS commenter_content ON (commenter_content.directory = commenter_json.directory AND commenter_content.file_name = 'content.json') LEFT JOIN keyvalue AS commenter_user ON (commenter_user.json_id = commenter_content.json_id AND commenter_user.key = 'cert_user_id') WHERE comment.body LIKE '%[" + username + "%' OR comment.body LIKE '%@" + username + "%'", true);
@@ -1846,7 +1868,9 @@ jQuery.extend( jQuery.easing,
 
     TopicShow.prototype.submitComment = function() {
       var body;
-      this.follow.feeds["Comments in this topic"][1].trigger("click");
+      if (!this.follow.feeds["Comments in this topic"][1].hasClass("selected")) {
+        this.follow.feeds["Comments in this topic"][1].trigger("click");
+      }
       body = $(".comment-new #comment_body").val().trim();
       if (!body) {
         $(".comment-new #comment_body").focus();

@@ -213,7 +213,8 @@ class TopicShow extends Class
 
 
 	submitComment: ->
-		@follow.feeds["Comments in this topic"][1].trigger "click"
+		if not @follow.feeds["Comments in this topic"][1].hasClass("selected")
+			@follow.feeds["Comments in this topic"][1].trigger "click"
 		body = $(".comment-new #comment_body").val().trim()
 		if not body
 			$(".comment-new #comment_body").focus()

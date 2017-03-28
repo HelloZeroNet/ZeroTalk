@@ -65,7 +65,7 @@ class TopicList extends Class
 				WHERE parent_topic_uri IN (:params)
 			", true, @parent_topic_uri)
 		else
-			@follow.addFeed("New topics", "
+			@follow.addFeed(_("New topics"), "
 				SELECT
 				 title AS title,
 				 body,
