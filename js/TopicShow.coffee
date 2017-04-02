@@ -201,7 +201,11 @@ class TopicShow extends Class
 		body_add = "> [#{user_name}](\##{post_id}): "
 		elem_quote = $(".body", elem).clone()
 		$("blockquote", elem_quote).remove() # Remove other people's quotes
-		body_add+= elem_quote.text().trim("\n").replace(/\n/g, "\n> ")
+		selected_text = window.getSelection().toString()
+		if selected_text
+			body_add+= selected_text
+		else
+			body_add+= elem_quote.text().trim("\n").replace(/\n[\s\S]+/g, " [...]")
 		body_add+= "\n\n"
 
 

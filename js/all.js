@@ -1531,8 +1531,11 @@ jQuery.extend( jQuery.easing,
         if (topic.type === "group") {
           $(".comment-num", elem).text("last activity");
           $(".added", elem).text(Time.since(last_action));
-        } else if (topic.comments_num > 0) {
+        } else if (topic.comments_num === 1) {
           $(".comment-num", elem).text(topic.comments_num + " comment");
+          $(".added", elem).text("last " + Time.since(last_action));
+        } else if (topic.comments_num > 0) {
+          $(".comment-num", elem).text(topic.comments_num + " comments");
           $(".added", elem).text("last " + Time.since(last_action));
         } else {
           $(".comment-num", elem).text("0 comments");
@@ -1852,14 +1855,19 @@ jQuery.extend( jQuery.easing,
     };
 
     TopicShow.prototype.buttonReply = function(elem) {
-      var body_add, elem_quote, post_id, user_name;
+      var body_add, elem_quote, post_id, selected_text, user_name;
       this.log("Reply to", elem);
       user_name = $(".user_name", elem).text();
       post_id = elem.attr("id");
       body_add = "> [" + user_name + "](\#" + post_id + "): ";
       elem_quote = $(".body", elem).clone();
       $("blockquote", elem_quote).remove();
-      body_add += elem_quote.text().trim("\n").replace(/\n/g, "\n> ");
+      selected_text = window.getSelection().toString();
+      if (selected_text) {
+        body_add += selected_text;
+      } else {
+        body_add += elem_quote.text().trim("\n").replace(/\n[\s\S]+/g, " [...]");
+      }
       body_add += "\n\n";
       $(".comment-new #comment_body").val($(".comment-new #comment_body").val() + body_add);
       $(".comment-new #comment_body").trigger("input").focus();
