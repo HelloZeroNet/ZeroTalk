@@ -298,9 +298,12 @@ class TopicList extends Class
 			if topic.type == "group"
 				$(".comment-num", elem).text "last activity"
 				$(".added", elem).text Time.since(last_action)
-			else if topic.comments_num > 0
+			else if topic.comments_num == 1
 				$(".comment-num", elem).text "#{topic.comments_num} comment"
-				$(".added", elem).text "last "+Time.since(last_action)
+				$(".added", elem).text "last " + Time.since(last_action)
+			else if topic.comments_num > 0
+				$(".comment-num", elem).text "#{topic.comments_num} comments"
+				$(".added", elem).text "last " + Time.since(last_action)
 			else
 				$(".comment-num", elem).text "0 comments"
 				$(".added", elem).text Time.since(last_action)
