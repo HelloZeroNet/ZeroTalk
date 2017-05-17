@@ -6,8 +6,8 @@
  "domain": "Talk.ZeroNetwork.bit",
  "files": {
   "css/all.css": {
-   "sha512": "a03c2d68cf86764e24a7d279ea1cbf8768179b0dd420c1c410849ebb24850d27",
-   "size": 164335
+   "sha512": "f91aa9692272706e4d219939972cffa2a9a20ab66099fb8b24ee60e60c2929fa",
+   "size": 164580
   },
   "data-default/users/content-default.json": {
    "sha512": "c1642cc2922a74c3e74991f0194e2acc46dc5e003207a0028dad63c75c41a0ec",
@@ -34,44 +34,44 @@
    "size": 310
   },
   "index.html": {
-   "sha512": "0b660c3850d012bce70874654006ef7d1c3d2acd9b8d05841c6815deeae0924c",
-   "size": 8183
+   "sha512": "f4ab967e57548f862e3cd1d6b13a3925a7d13d426514faa73446afacb08accc5",
+   "size": 8305
   },
   "js/all.js": {
-   "sha512": "fab4bdc3cd088ca22e1986bbb2a94b5b245a3f979414faf2e42aa4d849899fad",
-   "size": 229286
+   "sha512": "dda3fdd5694cf7d2952460416d6d3646ed37c65ac412562f4bb3815a8f55dd9e",
+   "size": 231470
   },
   "languages/da.json": {
-   "sha512": "f1670f1095b803cb7c26964afd7f3c0e97bd5e3c789e6325b93d2aa35a44f911",
-   "size": 1190
+   "sha512": "4947ef2bb4f4d9551561057ec7d6dea9e881d211ca7f9c0bec7f2dc7493fa2ec",
+   "size": 1219
   },
   "languages/fr.json": {
-   "sha512": "08c15f180ee8cc5c999ac7afda72700f5213dd8c88491f08911e5118e3a809c4",
-   "size": 1202
+   "sha512": "79a84ab9d2d7589ba88f07d4d63a4aa922ba08f890bb7a0f2e0addc3c781b9b8",
+   "size": 1234
   },
   "languages/hu.json": {
-   "sha512": "9a8e6178a4a30a5879173529934fcc6f68bf32f10c27d08f0d87d28f970822b1",
-   "size": 1202
+   "sha512": "844c4036c6f8874d7ea82dd68e6337051099cd4674bed1ba647a0607ac878981",
+   "size": 1235
   },
   "languages/it.json": {
-   "sha512": "fb8f20094d6201b4013a785f6c31d5339a2c94fd86b0396d91c8f3bb8711c3e6",
-   "size": 1237
+   "sha512": "b3cad975a56f5226977a32047d0af2d8381176588040b31f4c4c4a6df1ed2fcb",
+   "size": 1265
   },
   "languages/pl.json": {
-   "sha512": "d68b3b31cc68c8d2cc4f13aefac1053c3def536fe6440cbab48ac199f2f06481",
-   "size": 1285
+   "sha512": "eb9d7572cf4c76ed71f1c4c15a766128203b574008ae5bfe6a12caefdbc033a6",
+   "size": 1623
   },
   "languages/uk.json": {
-   "sha512": "d8025af0fbdd7b586774d2fedb1dc8790dc7921bf8e058e370bd08b3b6b2555f",
-   "size": 1570
+   "sha512": "f4d991841471a155dcd48f492e5ec196f5a8630dd088ed3eaf0592e02da2c3b1",
+   "size": 1606
   },
   "languages/zh-tw.json": {
-   "sha512": "daa383726d9d65737bd149d60cb513fd3c5faeacd49be289a1b2b797e358235c",
-   "size": 1291
+   "sha512": "0e90a4bdcc5ef602050011b193d9038c766d2a72a0193118bd3bf0d0b80472d0",
+   "size": 1861
   },
   "languages/zh.json": {
-   "sha512": "aacc34809728cf3bad2696e83647bc1b1c60cebbd5f8c5755e770009eabedb6c",
-   "size": 1296
+   "sha512": "2d6dd282ea98cde7c9463e085dd7a25674b4ca2e5038d7a2b471acc13aadef80",
+   "size": 1863
   }
  },
  "ignore": "((js|css)/(?!all.(js|css))|data/users/.*db|data/users/.*/.*|data/archived|.*.py)",
@@ -82,7 +82,7 @@
   }
  },
  "inner_path": "content.json",
- "modified": 1486640637,
+ "modified": 1495022345,
  "postmessage_nonce_security": true,
  "settings": {
   "admin": "nofish",
@@ -93,12 +93,12 @@
   ]
  },
  "sign": [
-  113917166604433124185737788231524946282831622280868767220101027589119471040001,
-  110163613661839846150017825662154327320827031036545347459280551497377855886772
+  79666009546405479716485810906543178303793900100626319655824282495100954897292,
+  105644335041214860983954325689184732570700780437341456420414501352665210332554
  ],
- "signers_sign": "HG/6ljsXbej7laqD3JUGsa8IEgSGE+NZs2jg9reQ3vrlo0fTnoFESCNujVxRuY1ORor143LGSyjl8PkaRdU4gx8=",
+ "signers_sign": "G2/6ljsXbej7laqD3JUGsa8IEgSGE+NZs2jg9reQ3vrlXLgsYX67t9yRcqOuRnKxuC+4+XPo/XdVztlERvr9viI=",
  "signs": {
-  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "HO3LE+B0goS2hqxq3u3bKNLHWhnCjbXGsFXZe6BqhsqMMoZfc1MmYZgWXx1HMH9QcTDPYC9dF9rlw9TN01yjJdc="
+  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "HB8b2BVlExqPWqH1Lrr6+yJbDaj+VinqNmyRX8vSMSR8EaRkNI+fN5eNwa5h4CPvtI7xDCuLSC0w/i9N3EgEJPI="
  },
  "signs_required": 1,
  "title": "ZeroTalk",
@@ -107,5 +107,5 @@
   "js/all.js"
  ],
  "viewport": "width=device-width, initial-scale=1.0",
- "zeronet_version": "0.5.2"
+ "zeronet_version": "0.5.4"
 }

@@ -122,7 +122,11 @@ class TopicList extends Class
 			where = "WHERE topic.type IS NULL AND topic.parent_topic_uri IS NULL"
 		last_elem = $(".topics-list .topic.template")
 
-		sql_sticky = ("WHEN '#{topic_uri}' THEN 1" for topic_uri in Page.site_info.content.settings.topic_sticky_uris).join(" ")
+		if Page.site_info.content.settings.topic_sticky_uris?.length > 0
+			sql_sticky_whens = ("WHEN '#{topic_uri}' THEN 1" for topic_uri in Page.site_info.content.settings.topic_sticky_uris).join(" ")
+			sql_sticky = "CASE topic.topic_id || '_' || topic_creator_content.directory #{sql_sticky_whens} ELSE 0 END AS sticky"
+		else
+			sql_sticky = "0 AS sticky"
 
 		query = """
 			SELECT
@@ -133,7 +137,7 @@ class TopicList extends Class
 			 topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,
 			 NULL AS row_topic_sub_uri, NULL AS row_topic_sub_title,
 			 (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,
-			 CASE topic.topic_id || '_' || topic_creator_content.directory #{sql_sticky} ELSE 0 END AS sticky
+			 #{sql_sticky}
 			FROM topic
 			LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
 			LEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')
@@ -160,7 +164,7 @@ class TopicList extends Class
 				 topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,
 				 topic_sub.title AS topic_sub_title,
 				 (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,
-				 CASE topic.topic_id || '_' || topic_creator_content.directory #{sql_sticky} ELSE 0 END AS sticky
+				 #{sql_sticky}
 				FROM topic
 				LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
 				LEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')
