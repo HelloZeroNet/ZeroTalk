@@ -261,3 +261,10 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 	.topic-new-link { margin-top: 0px; }
 	.started { display: block;  position: absolute; right: 10px; bottom: 5px; }
 }
+
+@media screen and (max-width: 600px) {
+  .topic .started, .topic .dot, .topic .image { display: none; }
+  .topic .body, .topic .title, .topic .link, .topic .subtopic, .topic .info { margin-left: -100px; margin-right: -10px; }
+  .page-main .topic-group::before { float: right; position: absolute; right: 10px; }
+  html, body, p, th, td, li { font-size: medium !important; }
+}
