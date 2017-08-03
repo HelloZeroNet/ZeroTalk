@@ -267,4 +267,5 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
   .topic .body, .topic .title, .topic .link, .topic .subtopic, .topic .info { margin-left: -100px; margin-right: -10px; }
   .page-main .topic-group::before { float: right; position: absolute; right: 10px; }
   html, body, p, th, td, li { font-size: medium !important; }
+  .bottombar { left: 0px; right: 0px; overflow: auto; }
 }
