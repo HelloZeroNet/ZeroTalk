@@ -259,5 +259,13 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 	.topics-title { font-size: 24px; display: block; margin-bottom: 3px; margin-top: -2px; }
 	.feed-follow-list { margin-left: 8px; }
 	.topic-new-link { margin-top: 0px; }
-	.started { display: none }
+	.started { display: block;  position: absolute; right: 10px; bottom: 5px; }
+}
+
+@media screen and (max-width: 600px) {
+  .topic .started, .topic .dot, .topic .image { display: none; }
+  .topic .body, .topic .title, .topic .link, .topic .subtopic, .topic .info { margin-left: -100px; margin-right: -10px; }
+  .page-main .topic-group::before { float: right; position: absolute; right: 10px; }
+  html, body, p, th, td, li { font-size: medium !important; }
+  .bottombar { left: 0px; right: 0px; overflow: auto; }
 }
