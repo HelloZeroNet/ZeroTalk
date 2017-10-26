@@ -26,7 +26,7 @@ class ZeroTalk extends ZeroFrame
 
 	# Wrapper websocket connection ready
 	onOpenWebsocket: (e) =>
-		@cmd "wrapperSetViewport", "width=device-width, initial-scale=1.0"
+		@cmd "wrapperSetViewport", "width=device-width, initial-scale=0.8"
 		@cmd "wrapperGetLocalStorage", [], (res) =>
 			res ?= {}
 			@local_storage = res
