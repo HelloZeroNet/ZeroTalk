@@ -368,7 +368,7 @@ class TopicList extends Class
 		$(".topic-new .button-submit").addClass("loading")
 		User.getData (data) =>
 			topic = {
-				"topic_id": data.next_topic_id,
+				"topic_id": data.next_topic_id + Time.timestamp(),
 				"title": title,
 				"body": body,
 				"added": Time.timestamp()
