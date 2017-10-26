@@ -1595,11 +1595,14 @@ jQuery.extend( jQuery.easing,
         return function(data) {
           var topic;
           topic = {
-            "topic_id": data.next_topic_id,
+            "topic_id": data.next_topic_id + Time.timestamp(),
             "title": title,
             "body": body,
             "added": Time.timestamp()
           };
+          if (Page.site_info.address === "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT" && (title + body).match(/[\u3400-\u9FBF]/)) {
+            topic.parent_topic_uri = "10_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj";
+          }
           if (_this.parent_topic_uri) {
             topic.parent_topic_uri = _this.parent_topic_uri;
           }
@@ -1610,7 +1613,11 @@ jQuery.extend( jQuery.easing,
             $(".topic-new").slideUp();
             $(".topic-new-link").slideDown();
             setTimeout((function() {
-              return _this.loadTopics();
+              if (topic.parent_topic_uri && _this.parent_topic_uri !== topic.parent_topic_uri) {
+                return window.top.location = "?Topics:" + topic.parent_topic_uri;
+              } else {
+                return _this.loadTopics();
+              }
             }), 600);
             $(".topic-new #topic_body").val("");
             return $(".topic-new #topic_title").val("");
@@ -2119,33 +2126,33 @@ jQuery.extend( jQuery.easing,
 
 (function() {
   var ZeroTalk,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __hasProp = {}.hasOwnProperty;
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  ZeroTalk = (function(_super) {
-    __extends(ZeroTalk, _super);
+  ZeroTalk = (function(superClass) {
+    extend(ZeroTalk, superClass);
 
     function ZeroTalk() {
-      this.setSiteinfo = __bind(this.setSiteinfo, this);
-      this.actionSetSiteInfo = __bind(this.actionSetSiteInfo, this);
-      this.saveContent = __bind(this.saveContent, this);
-      this.getObject = __bind(this.getObject, this);
-      this.getContent = __bind(this.getContent, this);
-      this.onOpenWebsocket = __bind(this.onOpenWebsocket, this);
+      this.setSiteinfo = bind(this.setSiteinfo, this);
+      this.actionSetSiteInfo = bind(this.actionSetSiteInfo, this);
+      this.saveContent = bind(this.saveContent, this);
+      this.getObject = bind(this.getObject, this);
+      this.getContent = bind(this.getContent, this);
+      this.onOpenWebsocket = bind(this.onOpenWebsocket, this);
       return ZeroTalk.__super__.constructor.apply(this, arguments);
     }
 
     ZeroTalk.prototype.init = function() {
-      var textarea, _i, _len, _ref;
+      var i, len, ref, textarea;
       this.log("inited!");
       this.site_info = null;
       this.server_info = null;
       this.local_storage = {};
       this.site_address = null;
-      _ref = $("textarea");
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        textarea = _ref[_i];
+      ref = $("textarea");
+      for (i = 0, len = ref.length; i < len; i++) {
+        textarea = ref[i];
         this.autoExpand($(textarea));
       }
       return $(".editbar .icon-help").on("click", (function(_this) {
@@ -2159,7 +2166,7 @@ jQuery.extend( jQuery.easing,
     };
 
     ZeroTalk.prototype.onOpenWebsocket = function(e) {
-      this.cmd("wrapperSetViewport", "width=device-width, initial-scale=1.0");
+      this.cmd("wrapperSetViewport", "width=device-width, initial-scale=0.8");
       this.cmd("wrapperGetLocalStorage", [], (function(_this) {
         return function(res) {
           if (res == null) {
@@ -2209,11 +2216,11 @@ jQuery.extend( jQuery.easing,
     };
 
     ZeroTalk.prototype.addInlineEditors = function() {
-      var editor, elem, elems, _i, _len;
+      var editor, elem, elems, i, len;
       this.logStart("Adding inline editors");
       elems = $("[data-editable]");
-      for (_i = 0, _len = elems.length; _i < _len; _i++) {
-        elem = elems[_i];
+      for (i = 0, len = elems.length; i < len; i++) {
+        elem = elems[i];
         elem = $(elem);
         if (!elem.data("editor") && !elem.hasClass("editor")) {
           editor = new InlineEditor(elem, this.getContent, this.saveContent, this.getObject);
@@ -2239,7 +2246,7 @@ jQuery.extend( jQuery.easing,
     };
 
     ZeroTalk.prototype.saveContent = function(elem, content, cb) {
-      var delete_object, id, object, type, _ref;
+      var delete_object, id, object, ref, type;
       if (cb == null) {
         cb = false;
       }
@@ -2249,24 +2256,24 @@ jQuery.extend( jQuery.easing,
         delete_object = false;
       }
       object = this.getObject(elem);
-      _ref = object.data("object").split(":"), type = _ref[0], id = _ref[1];
+      ref = object.data("object").split(":"), type = ref[0], id = ref[1];
       return User.getData((function(_this) {
         return function(data) {
-          var comment, comment_id, comment_uri, topic, topic_creator_address, topic_id, topic_uri, user_address, _ref1, _ref2, _ref3, _ref4;
+          var comment, comment_id, comment_uri, ref1, ref2, ref3, ref4, topic, topic_creator_address, topic_id, topic_uri, user_address;
           if (type === "Topic") {
-            _ref1 = id.split("_"), topic_id = _ref1[0], user_address = _ref1[1];
+            ref1 = id.split("_"), topic_id = ref1[0], user_address = ref1[1];
             topic_id = parseInt(topic_id);
             topic = ((function() {
-              var _i, _len, _ref2, _results;
-              _ref2 = data.topic;
-              _results = [];
-              for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
-                topic = _ref2[_i];
+              var i, len, ref2, results;
+              ref2 = data.topic;
+              results = [];
+              for (i = 0, len = ref2.length; i < len; i++) {
+                topic = ref2[i];
                 if (topic.topic_id === topic_id) {
-                  _results.push(topic);
+                  results.push(topic);
                 }
               }
-              return _results;
+              return results;
             })())[0];
             if (delete_object) {
               data.topic.splice(data.topic.indexOf(topic), 1);
@@ -2275,21 +2282,21 @@ jQuery.extend( jQuery.easing,
             }
           }
           if (type === "Comment") {
-            _ref2 = id.split("@"), comment_uri = _ref2[0], topic_uri = _ref2[1];
-            _ref3 = comment_uri.split("_"), comment_id = _ref3[0], user_address = _ref3[1];
-            _ref4 = topic_uri.split("_"), topic_id = _ref4[0], topic_creator_address = _ref4[1];
+            ref2 = id.split("@"), comment_uri = ref2[0], topic_uri = ref2[1];
+            ref3 = comment_uri.split("_"), comment_id = ref3[0], user_address = ref3[1];
+            ref4 = topic_uri.split("_"), topic_id = ref4[0], topic_creator_address = ref4[1];
             comment_id = parseInt(comment_id);
             comment = ((function() {
-              var _i, _len, _ref5, _results;
-              _ref5 = data.comment[topic_uri];
-              _results = [];
-              for (_i = 0, _len = _ref5.length; _i < _len; _i++) {
-                comment = _ref5[_i];
+              var i, len, ref5, results;
+              ref5 = data.comment[topic_uri];
+              results = [];
+              for (i = 0, len = ref5.length; i < len; i++) {
+                comment = ref5[i];
                 if (comment.comment_id === comment_id) {
-                  _results.push(comment);
+                  results.push(comment);
                 }
               }
-              return _results;
+              return results;
             })())[0];
             if (delete_object) {
               data.comment[topic_uri].splice(data.comment[topic_uri].indexOf(comment), 1);
@@ -2369,7 +2376,7 @@ jQuery.extend( jQuery.easing,
     };
 
     ZeroTalk.prototype.actionSetSiteInfo = function(res) {
-      var mentions_menu_elem, site_info, _ref;
+      var mentions_menu_elem, ref, site_info;
       site_info = res.params;
       this.setSiteinfo(site_info);
       if (site_info.event && site_info.event[0] === "file_done" && site_info.event[1].match(/.*users.*data.json$/)) {
@@ -2384,7 +2391,7 @@ jQuery.extend( jQuery.easing,
             }
           };
         })(this));
-      } else if (((_ref = site_info.event) != null ? _ref[0] : void 0) === "cert_changed" && site_info.cert_user_id) {
+      } else if (((ref = site_info.event) != null ? ref[0] : void 0) === "cert_changed" && site_info.cert_user_id) {
         TopicList.initFollowButton();
         mentions_menu_elem = TopicList.follow.feeds["Username mentions"][1];
         return setTimeout(((function(_this) {
