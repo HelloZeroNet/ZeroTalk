@@ -373,6 +373,10 @@ class TopicList extends Class
 				"body": body,
 				"added": Time.timestamp()
 			}
+			# Check Chinese characters
+			if Page.site_info.address == "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT" and (title + body).match(/[\u3400-\u9FBF]/)
+				topic.parent_topic_uri = "10_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj"  # Auto create topic in separate sub-topic
+
 			if @parent_topic_uri then topic.parent_topic_uri = @parent_topic_uri
 			data.topic.push topic
 			data.next_topic_id += 1
@@ -381,7 +385,10 @@ class TopicList extends Class
 				$(".topic-new").slideUp()
 				$(".topic-new-link").slideDown()
 				setTimeout (=>
-					@loadTopics()
+					if topic.parent_topic_uri and @parent_topic_uri != topic.parent_topic_uri
+						window.top.location = "?Topics:" + topic.parent_topic_uri
+					else
+						@loadTopics()
 				), 600
 				$(".topic-new #topic_body").val("")
 				$(".topic-new #topic_title").val("")
