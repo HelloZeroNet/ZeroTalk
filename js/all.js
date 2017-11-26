@@ -1300,16 +1300,16 @@ jQuery.extend( jQuery.easing,
       this.submitTopicVote = bind(this.submitTopicVote, this);
       this.thread_sorter = null;
       this.parent_topic_uri = void 0;
-      this.list_all = false;
+      this.limit = 31;
       this.topic_parent_uris = {};
       this.topic_sticky_uris = {};
     }
 
     TopicList.prototype.actionList = function(parent_topic_id, parent_topic_user_address) {
-      var i, len, ref, topic_sticky_uri;
+      var j, len, ref, topic_sticky_uri;
       ref = Page.site_info.content.settings.topic_sticky_uris;
-      for (i = 0, len = ref.length; i < len; i++) {
-        topic_sticky_uri = ref[i];
+      for (j = 0, len = ref.length; j < len; j++) {
+        topic_sticky_uri = ref[j];
         this.topic_sticky_uris[topic_sticky_uri] = 1;
       }
       $(".topics-loading").cssLater("top", "0px", 200);
@@ -1341,7 +1341,7 @@ jQuery.extend( jQuery.easing,
       })(this));
       $(".topics-more").on("click", (function(_this) {
         return function() {
-          _this.list_all = true;
+          _this.limit += 100;
           $(".topics-more").text("Loading...");
           _this.loadTopics("noanim");
           return false;
@@ -1383,11 +1383,11 @@ jQuery.extend( jQuery.easing,
       last_elem = $(".topics-list .topic.template");
       if (((ref = Page.site_info.content.settings.topic_sticky_uris) != null ? ref.length : void 0) > 0) {
         sql_sticky_whens = ((function() {
-          var i, len, ref1, results;
+          var j, len, ref1, results;
           ref1 = Page.site_info.content.settings.topic_sticky_uris;
           results = [];
-          for (i = 0, len = ref1.length; i < len; i++) {
-            topic_uri = ref1[i];
+          for (j = 0, len = ref1.length; j < len; j++) {
+            topic_uri = ref1[j];
             results.push("WHEN '" + topic_uri + "' THEN 1");
           }
           return results;
@@ -1400,12 +1400,12 @@ jQuery.extend( jQuery.easing,
       if (!this.parent_topic_uri) {
         query += "\nUNION ALL\n\nSELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment,\n MAX(topic_sub.added) AS last_added,\n CASE WHEN MAX(topic_sub.added) > MAX(comment.added) OR MAX(comment.added) IS NULL THEN MAX(topic_sub.added) ELSE MAX(comment.added) END as last_action,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,\n topic_sub.title AS topic_sub_title,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,\n " + sql_sticky + "\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN topic AS topic_sub ON (topic_sub.parent_topic_uri = topic.topic_id || '_' || topic_creator_content.directory)\nLEFT JOIN json AS topic_sub_creator_json ON (topic_sub_creator_json.json_id = topic_sub.json_id)\nLEFT JOIN json AS topic_sub_creator_content ON (topic_sub_creator_content.directory = topic_sub_creator_json.directory AND topic_sub_creator_content.file_name = 'content.json')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri AND comment.added < " + (Date.now() / 1000 + 120) + ")\nWHERE topic.type = \"group\"\nGROUP BY topic.topic_id\nHAVING last_action < " + (Date.now() / 1000 + 120);
       }
-      if (!this.list_all && !this.parent_topic_uri) {
-        query += " ORDER BY sticky DESC, last_action DESC LIMIT 30";
+      if (!this.parent_topic_uri) {
+        query += " ORDER BY sticky DESC, last_action DESC LIMIT " + this.limit;
       }
       return Page.cmd("dbQuery", [query], (function(_this) {
         return function(topics) {
-          var elem, i, len, topic, topic_parent;
+          var elem, i, j, len, limited, topic, topic_parent;
           topics.sort(function(a, b) {
             var booster_a, booster_b;
             booster_a = booster_b = 0;
@@ -1417,7 +1417,8 @@ jQuery.extend( jQuery.easing,
             }
             return Math.max(b.last_comment + booster_b, b.last_added + booster_b) - Math.max(a.last_comment + booster_a, a.last_added + booster_a);
           });
-          for (i = 0, len = topics.length; i < len; i++) {
+          limited = false;
+          for (i = j = 0, len = topics.length; j < len; i = ++j) {
             topic = topics[i];
             topic_uri = topic.row_topic_uri;
             if (topic.last_added) {
@@ -1435,7 +1436,11 @@ jQuery.extend( jQuery.easing,
               }
               _this.applyTopicListeners(elem, topic);
             }
-            elem.insertAfter(last_elem);
+            if (i + 1 < _this.limit) {
+              elem.insertAfter(last_elem);
+            } else {
+              limited = true;
+            }
             last_elem = elem;
             _this.applyTopicData(elem, topic);
           }
@@ -1465,7 +1470,7 @@ jQuery.extend( jQuery.easing,
           } else {
             $(".message-big").css("display", "none");
           }
-          if (topics.length === 30) {
+          if (limited) {
             $(".topics-more").css("display", "block");
           } else {
             $(".topics-more").css("display", "none");

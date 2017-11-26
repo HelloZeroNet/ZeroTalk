@@ -2,7 +2,7 @@ class TopicList extends Class
 	constructor: ->
 		@thread_sorter = null
 		@parent_topic_uri = undefined
-		@list_all = false
+		@limit = 31
 		@topic_parent_uris = {}
 		@topic_sticky_uris = {}
 
@@ -41,7 +41,7 @@ class TopicList extends Class
 			return false
 
 		$(".topics-more").on "click", =>
-			@list_all = true
+			@limit += 100
 			$(".topics-more").text("Loading...")
 			@loadTopics("noanim")
 			return false
@@ -178,8 +178,8 @@ class TopicList extends Class
 				HAVING last_action < #{Date.now()/1000+120}
 			"""
 
-		if not @list_all and not @parent_topic_uri
-			query += " ORDER BY sticky DESC, last_action DESC LIMIT 30"
+		if not @parent_topic_uri
+			query += " ORDER BY sticky DESC, last_action DESC LIMIT #{@limit}"
 
 
 		Page.cmd "dbQuery", [query], (topics) =>
@@ -191,8 +191,9 @@ class TopicList extends Class
 				if window.TopicList.topic_sticky_uris[b.row_topic_uri]
 					booster_b = window.TopicList.topic_sticky_uris[b.row_topic_uri]*10000000
 				return Math.max(b.last_comment+booster_b, b.last_added+booster_b)-Math.max(a.last_comment+booster_a, a.last_added+booster_a)
+			limited = false
 
-			for topic in topics
+			for topic, i in topics
 				topic_uri = topic.row_topic_uri
 				if topic.last_added
 					topic.added = topic.last_added
@@ -208,9 +209,12 @@ class TopicList extends Class
 					if type != "noanim" then elem.cssSlideDown()
 
 					@applyTopicListeners(elem, topic)
-				elem.insertAfter(last_elem)
-				last_elem = elem
 
+				if i + 1 < @limit
+					elem.insertAfter(last_elem)
+				else
+					limited = true
+				last_elem = elem
 
 				@applyTopicData(elem, topic)
 
@@ -244,7 +248,7 @@ class TopicList extends Class
 			else
 				$(".message-big").css("display", "none")
 
-			if topics.length == 30
+			if limited
 				$(".topics-more").css("display", "block")
 			else
 				$(".topics-more").css("display", "none")
