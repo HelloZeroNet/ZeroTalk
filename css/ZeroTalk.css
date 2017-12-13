@@ -139,7 +139,8 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .topic .title input { color: #DB3207; font-weight: bold; font-size: 1em }
 .topic .owner { font-size: 12px; color: #BBB }
 .topic .body { line-height: 1.5em; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
-.topic .body p { margin: 0px }
+.topic .body > :first-child { margin-top: 0px }
+.topic .body > :last-child { margin-bottom: 0px }
 .topic .link { font-size: 13px; color: #AAA; margin-bottom: 7px;   overflow: hidden; display: block; white-space: nowrap; text-overflow: ellipsis }
 .topic .info { font-size: 12px; color: #AAA; margin-bottom: 7px; margin-top: 10px }
 .topic .info span { font-weight: bold }
