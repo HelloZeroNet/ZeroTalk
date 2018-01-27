@@ -1,6 +1,6 @@
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/Follow.css ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/css/Follow.css ---- */
 
 
 .icon-feed {
@@ -38,7 +38,7 @@
 .feed-follow-show:hover { border: 1px solid white }
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/InlineEditor.css ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/css/InlineEditor.css ---- */
 
 
 /* Editable */
@@ -85,7 +85,7 @@
 }
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/Menu.css ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/css/Menu.css ---- */
 
 
 .menu {
@@ -109,7 +109,8 @@
 }
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/ZeroTalk.css ---- */
+
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/css/ZeroTalk.css ---- */
 
 
 body { background-color: #F5F5F5; color: #333332; margin: 10px; padding: 0px; font-family: 'Roboto', sans-serif; height: 15000px; overflow: hidden; -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -o-backface-visibility: hidden; -ms-backface-visibility: hidden; backface-visibility: hidden ; }
@@ -253,7 +254,8 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .topic .title input { color: #DB3207; font-weight: bold; font-size: 1em }
 .topic .owner { font-size: 12px; color: #BBB }
 .topic .body { line-height: 1.5em; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
-.topic .body p { margin: 0px }
+.topic .body > :first-child { margin-top: 0px }
+.topic .body > :last-child { margin-bottom: 0px }
 .topic .link { font-size: 13px; color: #AAA; margin-bottom: 7px;   overflow: hidden; display: block; white-space: nowrap; text-overflow: ellipsis }
 .topic .info { font-size: 12px; color: #AAA; margin-bottom: 7px; margin-top: 10px }
 .topic .info span { font-weight: bold }
@@ -310,6 +312,12 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .comment .body blockquote a { color: #333 }
 .comment .body table { border-collapse: collapse; margin-bottom: 10px }
 .comment .body td, .comment .body th { padding: 5px 10px; border: 1px solid #EEE; border-collapse: collapse; text-align: left }
+.level_0 { }
+.level_1 { margin-left: 30px }
+.level_2 { margin-left: 60px }
+.level_3 { margin-left: 90px }
+.level_4 { margin-left: 120px }
+.level_5 { margin-left: 150px }
 
 .comment-new { margin-bottom: 5px }
 .comment-new .button-submit { }
@@ -373,6 +381,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 	.topics-title { font-size: 24px; display: block; margin-bottom: 3px; margin-top: -2px; }
 	.feed-follow-list { margin-left: 8px; }
 	.topic-new-link { margin-top: 0px; }
+	.started { display: block;  position: absolute; right: 10px; bottom: 5px; }
 }
 
 @media screen and (max-width: 600px) {
@@ -384,7 +393,8 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 }
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/fonts.css ---- */
+
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/css/fonts.css ---- */
 
 
 /* Base64 encoder: http://www.motobit.com/util/base64-decoder-encoder.asp */
@@ -429,7 +439,7 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/css/icons.css ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/css/icons.css ---- */
 
 
 .icon { display: inline-block; vertical-align: text-bottom; background-repeat: no-repeat; }

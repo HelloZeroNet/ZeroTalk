@@ -33,6 +33,7 @@
 		"comment": {
 			"cols": [
 				["comment_id", "INTEGER"],
+				["reply_to", "INTEGER"],
 				["body", "TEXT"],
 				["topic_uri", "TEXT"],
 				["added", "DATETIME"],

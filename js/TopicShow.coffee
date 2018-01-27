@@ -59,17 +59,17 @@ class TopicShow extends Class
 	queryTopic: (topic_id, topic_user_address) ->
 		return "
 		 SELECT
-		  topic.*,
-		  topic_creator_user.value AS topic_creator_user_name,
-		  topic_creator_content.directory AS topic_creator_address,
-		  topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,
-		  (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes
+			topic.*,
+			topic_creator_user.value AS topic_creator_user_name,
+			topic_creator_content.directory AS topic_creator_address,
+			topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,
+			(SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes
 		 FROM topic
-		  LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
-		  LEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')
-		  LEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')
+			LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
+			LEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')
+			LEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')
 		 WHERE
-		  topic.topic_id = #{topic_id} AND topic_creator_address = '#{topic_user_address}'
+			topic.topic_id = #{topic_id} AND topic_creator_address = '#{topic_user_address}'
 		 LIMIT 1"
 
 
@@ -127,17 +127,10 @@ class TopicShow extends Class
 			focused = $(":focus")
 			@logEnd "Loading comments..."
 			$(".comments .comment:not(.template)").attr("missing", "true")
-			for comment in comments
-				comment_uri = "#{comment.comment_id}_#{comment.user_address}"
-				elem = $("#comment_"+comment_uri)
-				if elem.length == 0 # Create if not exits
-					elem = $(".comment.template").clone().removeClass("template").attr("id", "comment_"+comment_uri).data("topic_uri", @topic_uri)
-					if type != "noanim"
-						elem.cssSlideDown()
-					@applyCommentListeners(elem, comment)
-					$(".score", elem).attr("id", "comment_score_#{comment_uri}").on "click", @submitCommentVote # Submit vote
-				@applyCommentData(elem, comment)
-				elem.appendTo(".comments").removeAttr("missing")
+
+			# do this recursively to render a tree
+			@renderComments(comments, null, ".comments", type, 0)
+			console.log(comments)
 
 			$("body").css({"overflow": "auto", "height": "auto"})
 			$(".comment[missing]").remove()
@@ -159,6 +152,46 @@ class TopicShow extends Class
 
 			if cb then cb()
 
+	renderComments: (all_comments, root_id, root_element, type, level) ->
+		# 1) find comments for the root
+		# 2) sort them by votes
+
+		comments = all_comments.filter (comment) => comment.reply_to == root_id
+		if !comments
+			return
+		comments = comments.sort (a, b) ->
+			(a.votes > b.votes) || (a.added < b.added)
+
+		console.log('comments '+level, comments)
+		
+		for comment in comments
+			comment_uri = "#{comment.comment_id}_#{comment.user_address}"
+			elem = $("#comment_"+comment_uri)
+
+			if elem.length == 0 # Create if not exits
+				elem = $(".comment.template").clone().removeClass("template").
+					attr("id", "comment_"+comment_uri).
+					data("topic_uri", @topic_uri)
+
+				if type != "noanim"
+					elem.cssSlideDown()
+
+				@applyCommentListeners(elem, comment)
+				$(".score", elem).attr("id", "comment_score_#{comment_uri}").on "click", @submitCommentVote # Submit vote
+
+				elem.addClass('level_'+level)
+				if level >= 5
+					$('.reply', elem).hide()
+
+			@applyCommentData(elem, comment)
+
+			elem.insertAfter(root_element).removeAttr("missing")
+
+			console.log('C', level)
+			# render children
+			@renderComments(all_comments, comment.comment_id, elem, type, level + 1)
+			console.log('D', level)
+
 	applyCommentListeners: (elem, comment) ->
 		$(".reply", elem).on "click", (e) => # Reply link
 			return @buttonReply $(e.target).parents(".comment")
@@ -173,7 +206,7 @@ class TopicShow extends Class
 
 
 	# Update elem based on data of comment dict
-	applyCommentData: (elem, comment) ->
+	applyCommentData: (elem, comment, level) ->
 		user_name = comment.user_name
 		$(".body", elem).html Text.toMarked(comment.body, {"sanitize": true})
 		$(".user_name", elem).text(user_name.replace(/@.*/, "")).css("color": Text.toColor(user_name)).attr("title", user_name+": "+comment.user_address)
@@ -208,10 +241,15 @@ class TopicShow extends Class
 			body_add+= elem_quote.text().trim("\n").replace(/\n[\s\S]+/g, " [...]")
 		body_add+= "\n\n"
 
-
-		$(".comment-new #comment_body").val( $(".comment-new #comment_body").val()+body_add )
-
+		#$(".comment-new #comment_body").val( $(".comment-new #comment_body").val()+body_add )
 		$(".comment-new #comment_body").trigger("input").focus() # Autosize
+
+		$(".comment-new .button-submit-form").text("Submit reply to #{user_name}")
+
+		# only set value of the id, currently says "comment_2_xyz"
+		$("#reply_to").val(post_id.split('_')[1])
+
+		# TODO add cancel button? <- see how reddit does it
 
 		return false
 
@@ -227,18 +265,25 @@ class TopicShow extends Class
 		$(".comment-new .button-submit").addClass("loading")
 
 		User.getData (data) =>
-			data.comment[@topic_uri] ?= []
-			data.comment[@topic_uri].push {
+			comment = {
 				"comment_id": data.next_comment_id,
 				"body": body,
-				"added": Time.timestamp()
+				"added": Time.timestamp(),
 			}
+			
+			if reply_to = $("#reply_to").val()
+				comment.reply_to = reply_to*1
+
+			data.comment[@topic_uri] ?= []
+			data.comment[@topic_uri].push(comment)
 			data.next_comment_id += 1
 			User.publishData data, (res) =>
 				$(".comment-new .button-submit").removeClass("loading")
 				if res == true
 					@log "File written"
 					@loadComments()
+					$(".comment-new .button-submit-form").text("Submit comment")
+					$("#reply_to").val('')
 					$(".comment-new #comment_body").val("").delay(600).animate({"height": 72}, {"duration": 1000, "easing": "easeInOutCubic"})
 
 

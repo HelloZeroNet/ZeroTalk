@@ -1,5 +1,6 @@
 class ZeroFrame extends Class
 	constructor: (url) ->
+		super(url)
 		@url = url
 		@waiting_cb = {}
 		@wrapper_nonce = document.location.href.replace(/.*wrapper_nonce=([A-Za-z0-9]+).*/, "$1")

@@ -197,6 +197,12 @@ input.text:focus, textarea:focus { border-color: #5FC0EA; outline: none; backgro
 .comment .body blockquote a { color: #333 }
 .comment .body table { border-collapse: collapse; margin-bottom: 10px }
 .comment .body td, .comment .body th { padding: 5px 10px; border: 1px solid #EEE; border-collapse: collapse; text-align: left }
+.level_0 { }
+.level_1 { margin-left: 30px }
+.level_2 { margin-left: 60px }
+.level_3 { margin-left: 90px }
+.level_4 { margin-left: 120px }
+.level_5 { margin-left: 150px }
 
 .comment-new { margin-bottom: 5px }
 .comment-new .button-submit { }

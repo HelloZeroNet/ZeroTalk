@@ -1,13 +1,101 @@
 {
- "address": "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT",
+ "address": "1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW",
  "background-color": "#F5F5F5",
  "cloneable": true,
- "description": "Decentralized forum with ZeroID",
+ "description": "Decentralized threadded forum with ZeroID",
  "domain": "Talk.ZeroNetwork.bit",
  "files": {
+  ".git/HEAD": {
+   "sha512": "76b199f1bffdc6d21547895431b0f85f3857df400225cbd1ae55e7ded09786a8",
+   "size": 23
+  },
+  ".git/config": {
+   "sha512": "eff1e8508af8ae47b2ad7cfc2095de1e1a3a4e0fdc3ac5bfa010ea7e6f448808",
+   "size": 283
+  },
+  ".git/description": {
+   "sha512": "f7e152f75b124c3e1c5d12f00427729d9eec4e2c1bf70d7606440a6600d00336",
+   "size": 73
+  },
+  ".git/hooks/applypatch-msg.sample": {
+   "sha512": "a31e790b1762b64fd2cca171455a054e9b52180481b15cc9c213e69edef960d1",
+   "size": 452
+  },
+  ".git/hooks/commit-msg.sample": {
+   "sha512": "d6bb7fa747f4625adf1877f546565cbe812ca7dd4168f7e9068e6732555d8737",
+   "size": 896
+  },
+  ".git/hooks/post-update.sample": {
+   "sha512": "473ad124642571656276bf83b9ff63ab1804d3c23a5bdae52391c6f70a894849",
+   "size": 189
+  },
+  ".git/hooks/pre-applypatch.sample": {
+   "sha512": "89fb811a9152509a01d4a156212e7ede5e957157e59e308176e08afa6c28fa88",
+   "size": 398
+  },
+  ".git/hooks/pre-commit.sample": {
+   "sha512": "dcd34b62af7fa9aebc213fb193eaf6e214474a9e5e2fe57ff52f12f2365d3cfc",
+   "size": 1704
+  },
+  ".git/hooks/pre-rebase.sample": {
+   "sha512": "bad3f48e56d7497bc2b04b2405195c067cb958c77b96583ae32921a2f0439b9b",
+   "size": 4898
+  },
+  ".git/hooks/prepare-commit-msg.sample": {
+   "sha512": "fbf15f12136a413dd590e57392e6122714d67456beed50d9ef285e40076a138a",
+   "size": 1239
+  },
+  ".git/hooks/update.sample": {
+   "sha512": "7f9f3448fae4e0269664adb06ff84583c9c4b5acd0a331caca6665fb8b6320d1",
+   "size": 3611
+  },
+  ".git/index": {
+   "sha512": "30edef6862d720b19f944998c58055861398a3022e44ae7f7ef243cdff9dcfa5",
+   "size": 4176
+  },
+  ".git/info/exclude": {
+   "sha512": "9828c6ecdf91bf117416e17f4ee9caee2e1e37b6fb00b9ff04035ace17a3089b",
+   "size": 240
+  },
+  ".git/logs/HEAD": {
+   "sha512": "2d671e29f31ebe0d82bf6b4f00dd52a909b5faf7aa17dcf774d0cad5aff81d34",
+   "size": 186
+  },
+  ".git/logs/refs/heads/master": {
+   "sha512": "2d671e29f31ebe0d82bf6b4f00dd52a909b5faf7aa17dcf774d0cad5aff81d34",
+   "size": 186
+  },
+  ".git/objects/pack/pack-909ad6e324622f6d1c505bfa2abbf84a4998d41e.idx": {
+   "sha512": "4c4ca8e4a09954fa3108a939faa358f534d6ee3f4d2af667f27b0e7a984827e7",
+   "size": 21344
+  },
+  ".git/objects/pack/pack-909ad6e324622f6d1c505bfa2abbf84a4998d41e.pack": {
+   "sha512": "265062a3157a4bdedf24ba80039a773558089aaebbb3e16f3054467a5f43cfa5",
+   "size": 899410
+  },
+  ".git/packed-refs": {
+   "sha512": "b9c752afed8e7a3dd0e9217e6e4c375f6b498853b3cc2efe4b75f25631c15d9c",
+   "size": 165
+  },
+  ".git/refs/heads/master": {
+   "sha512": "1653f6c03045089effb12fe64188b8913a830fbfebbc48178ad115b12f568eb5",
+   "size": 41
+  },
+  ".git/refs/remotes/origin/HEAD": {
+   "sha512": "0d686b330d5704fdbb9588d62bbddda273f86b24db52ddbdb73c0c304aabb8e6",
+   "size": 32
+  },
+  "LICENSE": {
+   "sha512": "d281feecb7d1218e1aea8269f288fcd63385da1a130681fadae77262637cb65f",
+   "size": 18027
+  },
+  "README.md": {
+   "sha512": "e1b4d5bf8c4d9a95da8a12341b232faf9d163bd6398de6711f4756c07f5f802c",
+   "size": 99
+  },
   "css/all.css": {
-   "sha512": "f91aa9692272706e4d219939972cffa2a9a20ab66099fb8b24ee60e60c2929fa",
-   "size": 164580
+   "sha512": "413e69750ab6d51f3752edc3599fc8f3100f16ffd2d17e107b42f0a25f56c581",
+   "size": 165295
   },
   "data-default/users/content-default.json": {
    "sha512": "c1642cc2922a74c3e74991f0194e2acc46dc5e003207a0028dad63c75c41a0ec",
@@ -34,44 +122,52 @@
    "size": 310
   },
   "index.html": {
-   "sha512": "8e205ea0a12826afe49e80592a4e94ac6c16bfaa5f6c7112085d9c249ad38e32",
-   "size": 8308
+   "sha512": "0f82c5fe053b8a82518308d8d1878b3ba513841dc0c105217ef53096d507ac72",
+   "size": 8366
   },
   "js/all.js": {
-   "sha512": "dda3fdd5694cf7d2952460416d6d3646ed37c65ac412562f4bb3815a8f55dd9e",
-   "size": 231470
+   "sha512": "ef19ea6b2ba4d4630e4426e9cabf4038a232093dc29190523fc3652a5f83984d",
+   "size": 192477
   },
   "languages/da.json": {
-   "sha512": "4947ef2bb4f4d9551561057ec7d6dea9e881d211ca7f9c0bec7f2dc7493fa2ec",
-   "size": 1219
+   "sha512": "822c90a229d428db7ad2a9e421bfb80f57bae8b58cb6fd45df407b1aee0fbd5f",
+   "size": 1178
   },
   "languages/fr.json": {
-   "sha512": "79a84ab9d2d7589ba88f07d4d63a4aa922ba08f890bb7a0f2e0addc3c781b9b8",
-   "size": 1234
+   "sha512": "43be0c5d823e5e3863e710ddc386ee6be596118472c47ad6150372e9d9e61391",
+   "size": 1193
   },
   "languages/hu.json": {
    "sha512": "844c4036c6f8874d7ea82dd68e6337051099cd4674bed1ba647a0607ac878981",
    "size": 1235
   },
   "languages/it.json": {
-   "sha512": "b3cad975a56f5226977a32047d0af2d8381176588040b31f4c4c4a6df1ed2fcb",
-   "size": 1265
+   "sha512": "79df61d1baa95dc9a1095296897cebfe1db0608effd4c0f7ae398b5d5dc702ab",
+   "size": 1224
   },
   "languages/pl.json": {
    "sha512": "eb9d7572cf4c76ed71f1c4c15a766128203b574008ae5bfe6a12caefdbc033a6",
    "size": 1623
   },
+  "languages/sk.json": {
+   "sha512": "4dc909c7fcec664dbd37c5c8f7129e91259f81157ca102ce55af6fc59264f887",
+   "size": 1205
+  },
   "languages/uk.json": {
-   "sha512": "f4d991841471a155dcd48f492e5ec196f5a8630dd088ed3eaf0592e02da2c3b1",
-   "size": 1606
+   "sha512": "0fb443d489b5dfc808cc565b4e0247dad1f4ed1ad72652bac82f4794ff4ec816",
+   "size": 1564
   },
   "languages/zh-tw.json": {
-   "sha512": "0e90a4bdcc5ef602050011b193d9038c766d2a72a0193118bd3bf0d0b80472d0",
-   "size": 1861
+   "sha512": "e0d65cdd6c244d85af64e37d8c3cfd3afceb6fef5217d0dc65bd5dedc9d8461b",
+   "size": 1811
   },
   "languages/zh.json": {
-   "sha512": "2d6dd282ea98cde7c9463e085dd7a25674b4ca2e5038d7a2b471acc13aadef80",
-   "size": 1863
+   "sha512": "6af6e63c4c15c860276024413fc4baf9fb74ca3d4f209dfc8860cdf7c8a07158",
+   "size": 1813
+  },
+  "npm-debug.log": {
+   "sha512": "aa7691ee96de154932c30af28b1057665c2b4ab72d5a2f40618297ec01c83702",
+   "size": 2128
   }
  },
  "ignore": "((js|css)/(?!all.(js|css))|data/users/.*db|data/users/.*/.*|data/archived|.*.py)",
@@ -82,30 +178,20 @@
   }
  },
  "inner_path": "content.json",
- "modified": 1495534127,
+ "modified": 1517071600,
  "postmessage_nonce_security": true,
  "settings": {
   "admin": "nofish",
   "admin_href": "http://127.0.0.1:43110/Mail.ZeroNetwork.bit/?to=nofish",
-  "topic_sticky_uris": [
-   "2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj",
-   "8_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj"
-  ]
+  "topic_sticky_uris": ["2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj", "8_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj"]
  },
- "sign": [
-  34570195314575724773194421641170479386596097819563278628113774150131154300723,
-  85654364444520478186506683007915265499527324850084136121532266661650383491804
- ],
- "signers_sign": "G2/6ljsXbej7laqD3JUGsa8IEgSGE+NZs2jg9reQ3vrlXLgsYX67t9yRcqOuRnKxuC+4+XPo/XdVztlERvr9viI=",
+ "signers_sign": "G7Ko4/yjSlcyctIapMcBv1FTJrx0G7FretQWYbHX0GuUbRyQfu6e6MzsC5IYfqVu60yrSRSka9t/yt1ZbT+kA8Q=",
  "signs": {
-  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "G3tpNQ3SKc9VrTy0U7cYYrRRZCu95pKR9yn/9i2wfkfGMeFAdUyyHldpiPU8Zm3z9cMUulIenfN+QGJJCDgQBFc="
+  "1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW": "G/+nsZ7fzDUZqzD5CiipzwcLN79LVA9Gaugh3sjF/DkpU9Hun0GqR+V/qs57aKW96vYq/k1GYTyYnOdWMGODUu4="
  },
  "signs_required": 1,
- "title": "ZeroTalk",
- "translate": [
-  "index.html",
-  "js/all.js"
- ],
+ "title": "ZeroHive",
+ "translate": ["index.html", "js/all.js"],
  "viewport": "width=device-width, initial-scale=1.0",
- "zeronet_version": "0.5.5"
+ "zeronet_version": "0.6.1"
 }
