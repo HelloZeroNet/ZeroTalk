@@ -1,0 +1,20 @@
+{
+	"next_topic_id": 1,
+	"topic": [],
+	"topic_vote": {},
+	"next_comment_id": 2,
+	"comment": {
+		"1517082649_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": [
+			{
+				"comment_id": 1,
+				"body": "wow! finally :)",
+				"added": 1517098664,
+				"reply_to": 1
+			}
+		]
+	},
+	"comment_vote": {
+		"1_16NS3rBdW9zpLmLSQoD8nLTtNVsRFtVBhd": 1,
+		"1_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": 1
+	}
+}

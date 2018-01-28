@@ -1,0 +1,17 @@
+{
+ "address": "1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW",
+ "cert_auth_type": "web",
+ "cert_sign": "GxbWo/ntc3GyBEQGhMPc/xaMHwsfXz7o0qQW16El4chcOFLWrU34plwYBoSbr787LjMBMwhnikdjkrq8JW3zc0A=",
+ "cert_user_id": "jamesholden@zeroid.bit",
+ "files": {
+  "data.json": {
+   "sha512": "24e8473e997034b670e40025af5d387c6b3c4cbde0927c3d4bbc9ec869161a98",
+   "size": 1140
+  }
+ },
+ "inner_path": "data/users/12w3zJ6gRrcAw2kSCQXDkorgqxuXnkKkF8/content.json",
+ "modified": 1517092819,
+ "signs": {
+  "12w3zJ6gRrcAw2kSCQXDkorgqxuXnkKkF8": "G/I7hPnv4SeA/3oQaJCPQHy3nK0nJPOww+pAKY+oRSszUThbvUoKU3x1qML1S0DpJ9ZJ/pHWy1AIbjaYJ5VwFeU="
+ }
+}

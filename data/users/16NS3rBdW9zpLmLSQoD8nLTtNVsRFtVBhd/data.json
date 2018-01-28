@@ -1,0 +1,21 @@
+{
+	"next_topic_id": 1,
+	"topic": [],
+	"topic_vote": {},
+	"next_comment_id": 2,
+	"comment": {
+		"1517082649_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": [
+			{
+				"comment_id": 1,
+				"body": "Replyception? Replyception.",
+				"added": 1517097631,
+				"reply_to": 3
+			}
+		]
+	},
+	"comment_vote": {
+		"23_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": 1,
+		"27_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": 1,
+		"3_12w3zJ6gRrcAw2kSCQXDkorgqxuXnkKkF8": 1
+	}
+}

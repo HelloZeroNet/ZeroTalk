@@ -2,20 +2,14 @@
 	"next_topic_id": 3,
 	"topic": [
 		{
-			"topic_id": 1517048694,
-			"title": "Threaded comments /upvotes test",
-			"body": "- comments can be replied to\n- replies are sorted by upvotes ",
-			"added": 1517048693
-		},
-		{
 			"topic_id": 1517082649,
-			"title": "Another topic",
+			"title": "Testing deploy",
 			"body": "abfdvds",
 			"added": 1517082647
 		}
 	],
 	"topic_vote": {},
-	"next_comment_id": 23,
+	"next_comment_id": 36,
 	"comment": {
 		"1517048694_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": [
 			{
@@ -143,11 +137,94 @@
 				"body": "2",
 				"added": 1517087571
 			}
+		],
+		"1517082649_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": [
+			{
+				"comment_id": 23,
+				"body": "I can haz comment?",
+				"added": 1517091356
+			},
+			{
+				"comment_id": 24,
+				"body": "testingggg",
+				"added": 1517091409
+			},
+			{
+				"comment_id": 25,
+				"body": "asdsa",
+				"added": 1517091441
+			},
+			{
+				"comment_id": 26,
+				"body": "asdsa",
+				"added": 1517091454
+			},
+			{
+				"comment_id": 27,
+				"body": "I can has reply?",
+				"added": 1517091709,
+				"reply_to": 23
+			},
+			{
+				"comment_id": "",
+				"body": "sadsa",
+				"added": 1517143408
+			},
+			{
+				"comment_id": "",
+				"body": "I can has a reply",
+				"added": 1517143442
+			},
+			{
+				"comment_id": "",
+				"body": "sadsad",
+				"added": 1517143605
+			},
+			{
+				"comment_id": "",
+				"body": "aaaaaaaaaaaaaaaaa",
+				"added": 1517143649
+			},
+			{
+				"comment_id": "",
+				"body": "replyy",
+				"added": 1517144015
+			},
+			{
+				"comment_id": "",
+				"body": "sadasdas",
+				"added": 1517144589
+			},
+			{
+				"comment_id": "4IOYTDt5UCLrj",
+				"body": "sadasds",
+				"added": 1517144645
+			},
+			{
+				"comment_id": "PA8cmovqdeRDs",
+				"body": "aaa",
+				"added": 1517144652,
+				"reply_to": "4IOYTDt5UCLrj"
+			}
+		],
+		"1517092142_1FzZsDQdh8wk71bDLxURPzmAt2FXehoNAB": [
+			{
+				"comment_id": 28,
+				"body": "hello there!",
+				"added": 1517092203
+			},
+			{
+				"comment_id": 29,
+				"body": "Up you go!",
+				"added": 1517092396,
+				"reply_to": 2
+			}
 		]
 	},
 	"comment_vote": {
 		"1_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": 1,
 		"13_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": 1,
-		"20_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": 1
+		"20_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": 1,
+		"2_12w3zJ6gRrcAw2kSCQXDkorgqxuXnkKkF8": 1
 	}
 }

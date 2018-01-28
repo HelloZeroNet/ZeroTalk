@@ -5,13 +5,13 @@
  "cert_user_id": "mnemonic@zeroid.bit",
  "files": {
   "data.json": {
-   "sha512": "af30f0a52d1b695221eee7e94ff008d5aaaa8539b28a5d5b233e6bfedf46400e",
-   "size": 2930
+   "sha512": "80a872227811b124de2c0b791bdd47307c0dc7cff03d620d7dccf3d9908bcaf0",
+   "size": 4245
   }
  },
  "inner_path": "data/users/1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE/content.json",
- "modified": 1517087899,
+ "modified": 1517144652,
  "signs": {
-  "1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": "G6Ml3OFOQno5R0qZz0V3rR9IQAlwxvwBN3Wg3vHw9SMhFmYssmxF0I86xjXL6gcYK9lZY8rYbwUj6VP5t9ycfo0="
+  "1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": "G3Vd6WfjyrQJt4e0GrjBTLq21RerAEGoFS9kqQ2a5Su6OGNtwiTtppBbvz7dF5xrD+qZFfRYjd+t4JMnAU92LaI="
  }
 }

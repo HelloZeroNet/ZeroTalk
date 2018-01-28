@@ -1,0 +1,26 @@
+{
+	"next_topic_id": 2,
+	"topic": [
+		{
+			"topic_id": 1517092142,
+			"title": "hello zerohive",
+			"body": "this is a test",
+			"added": 1517092141
+		}
+	],
+	"topic_vote": {},
+	"next_comment_id": 2,
+	"comment": {
+		"1517092142_1FzZsDQdh8wk71bDLxURPzmAt2FXehoNAB": [
+			{
+				"comment_id": 1,
+				"body": "excellent answer, please receive my upvote\nmy reply got nested under yours, did you see that?",
+				"added": 1517092287,
+				"reply_to": 2
+			}
+		]
+	},
+	"comment_vote": {
+		"2_12w3zJ6gRrcAw2kSCQXDkorgqxuXnkKkF8": 1
+	}
+}

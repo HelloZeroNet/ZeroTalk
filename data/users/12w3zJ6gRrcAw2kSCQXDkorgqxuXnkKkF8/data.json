@@ -1,0 +1,51 @@
+{
+	"next_topic_id": 1,
+	"topic": [],
+	"topic_vote": {
+		"1517092142_1FzZsDQdh8wk71bDLxURPzmAt2FXehoNAB": 1
+	},
+	"next_comment_id": 6,
+	"comment": {
+		"1517048694_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": [
+			{
+				"comment_id": 1,
+				"body": "have an upvote",
+				"added": 1517092143,
+				"reply_to": 1
+			},
+			{
+				"comment_id": 5,
+				"body": "This loads really slowly",
+				"added": 1517092501
+			}
+		],
+		"1517092142_1FzZsDQdh8wk71bDLxURPzmAt2FXehoNAB": [
+			{
+				"comment_id": 2,
+				"body": "this is a test answer :D upvote me !",
+				"added": 1517092203
+			},
+			{
+				"comment_id": 4,
+				"body": "I do ! Thus, you have an upvote, everyone gets an upvote !",
+				"added": 1517092437,
+				"reply_to": 1
+			}
+		],
+		"1517082649_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": [
+			{
+				"comment_id": 3,
+				"body": "You can haz upvote",
+				"added": 1517092239,
+				"reply_to": 23
+			}
+		]
+	},
+	"comment_vote": {
+		"1_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": 1,
+		"23_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": 1,
+		"1_1FzZsDQdh8wk71bDLxURPzmAt2FXehoNAB": 1,
+		"28_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": 1,
+		"29_1AnFGL613gYqFWm4Lhwdk6x5gCRe1tPFxE": 1
+	}
+}
