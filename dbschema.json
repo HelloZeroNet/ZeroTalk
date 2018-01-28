@@ -32,7 +32,7 @@
 		},
 		"comment": {
 			"cols": [
-				["comment_id", "INTEGER"],
+				["comment_id", "TEXT"],
 				["reply_to", "INTEGER"],
 				["body", "TEXT"],
 				["topic_uri", "TEXT"],

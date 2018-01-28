@@ -152,17 +152,23 @@ class TopicShow extends Class
 
 			if cb then cb()
 
-	renderComments: (all_comments, root_id, root_element, type, level) ->
+	renderComments: (all_comments, root_id, root_element, type, level, used_roots = []) ->
 		# 1) find comments for the root
 		# 2) sort them by votes
+		
+		if used_roots.indexOf(root_id) >= 0
+			console.warn('circular dependency detected on root_id', root_id)
+			console.warn('these are the comments', all_comments)
+			return
+
+		used_roots.push(root_id)
 
 		comments = all_comments.filter (comment) => comment.reply_to == root_id
-		if !comments
+		if comments.length == 0
 			return
+
 		comments = comments.sort (a, b) ->
 			(a.votes > b.votes) || (a.added < b.added)
-
-		console.log('comments '+level, comments)
 		
 		for comment in comments
 			comment_uri = "#{comment.comment_id}_#{comment.user_address}"
@@ -187,10 +193,9 @@ class TopicShow extends Class
 
 			elem.insertAfter(root_element).removeAttr("missing")
 
-			console.log('C', level)
 			# render children
-			@renderComments(all_comments, comment.comment_id, elem, type, level + 1)
-			console.log('D', level)
+			#if level <= 5
+			@renderComments(all_comments, comment.comment_id, elem, type, level + 1, used_roots)
 
 	applyCommentListeners: (elem, comment) ->
 		$(".reply", elem).on "click", (e) => # Reply link
@@ -253,6 +258,14 @@ class TopicShow extends Class
 
 		return false
 
+	randomId: (length) ->
+		text = ""
+		possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+		for i in [0..length]
+			text += possible.charAt(Math.floor(Math.random() * possible.length))
+			
+		return text
 
 	submitComment: ->
 		if not @follow.feeds["Comments in this topic"][1].hasClass("selected")
@@ -266,17 +279,16 @@ class TopicShow extends Class
 
 		User.getData (data) =>
 			comment = {
-				"comment_id": data.next_comment_id,
+				"comment_id": @randomId(12),
 				"body": body,
 				"added": Time.timestamp(),
 			}
 			
 			if reply_to = $("#reply_to").val()
-				comment.reply_to = reply_to*1
+				comment.reply_to = reply_to
 
 			data.comment[@topic_uri] ?= []
 			data.comment[@topic_uri].push(comment)
-			data.next_comment_id += 1
 			User.publishData data, (res) =>
 				$(".comment-new .button-submit").removeClass("loading")
 				if res == true

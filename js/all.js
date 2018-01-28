@@ -1702,23 +1702,28 @@ jQuery.extend( jQuery.easing,
       });
     }
 
-    renderComments(all_comments, root_id, root_element, type, level) {
-      var comment, comment_uri, comments, elem, i, len, results;
+    renderComments(all_comments, root_id, root_element, type, level, used_roots = []) {
+      var comment, comment_uri, comments, elem, j, len, results;
       // 1) find comments for the root
       // 2) sort them by votes
+      if (used_roots.indexOf(root_id) >= 0) {
+        console.warn('circular dependency detected on root_id', root_id);
+        console.warn('these are the comments', all_comments);
+        return;
+      }
+      used_roots.push(root_id);
       comments = all_comments.filter((comment) => {
         return comment.reply_to === root_id;
       });
-      if (!comments) {
+      if (comments.length === 0) {
         return;
       }
       comments = comments.sort(function(a, b) {
         return (a.votes > b.votes) || (a.added < b.added);
       });
-      console.log('comments ' + level, comments);
       results = [];
-      for (i = 0, len = comments.length; i < len; i++) {
-        comment = comments[i];
+      for (j = 0, len = comments.length; j < len; j++) {
+        comment = comments[j];
         comment_uri = `${comment.comment_id}_${comment.user_address}`;
         elem = $("#comment_" + comment_uri);
         if (elem.length === 0) { // Create if not exits
@@ -1735,10 +1740,9 @@ jQuery.extend( jQuery.easing,
         }
         this.applyCommentData(elem, comment);
         elem.insertAfter(root_element).removeAttr("missing");
-        console.log('C', level);
         // render children
-        this.renderComments(all_comments, comment.comment_id, elem, type, level + 1);
-        results.push(console.log('D', level));
+        //if level <= 5
+        results.push(this.renderComments(all_comments, comment.comment_id, elem, type, level + 1, used_roots));
       }
       return results;
     }
@@ -1810,6 +1814,16 @@ jQuery.extend( jQuery.easing,
       return false;
     }
 
+    randomId(length) {
+      var i, j, possible, ref, text;
+      text = "";
+      possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for (i = j = 0, ref = length; 0 <= ref ? j <= ref : j >= ref; i = 0 <= ref ? ++j : --j) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    }
+
     submitComment() {
       var body;
       if (!this.follow.feeds["Comments in this topic"][1].hasClass("selected")) {
@@ -1824,18 +1838,17 @@ jQuery.extend( jQuery.easing,
       return User.getData((data) => {
         var base, comment, name, reply_to;
         comment = {
-          "comment_id": data.next_comment_id,
+          "comment_id": this.randomId(12),
           "body": body,
           "added": Time.timestamp()
         };
         if (reply_to = $("#reply_to").val()) {
-          comment.reply_to = reply_to * 1;
+          comment.reply_to = reply_to;
         }
         if ((base = data.comment)[name = this.topic_uri] == null) {
           base[name] = [];
         }
         data.comment[this.topic_uri].push(comment);
-        data.next_comment_id += 1;
         return User.publishData(data, (res) => {
           $(".comment-new .button-submit").removeClass("loading");
           if (res === true) {
