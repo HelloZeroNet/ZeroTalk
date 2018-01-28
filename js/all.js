@@ -1,6 +1,6 @@
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/00-jquery.min.js ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/lib/00-jquery.min.js ---- */
 
 
 /*! jQuery v2.1.3 | (c) 2005, 2014 jQuery Foundation, Inc. | jquery.org/license */
@@ -10,13 +10,13 @@
 
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/highlight.pack.js ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/lib/highlight.pack.js ---- */
 
 
 !function(e){"undefined"!=typeof exports?e(exports):(window.hljs=e({}),"function"==typeof define&&define.amd&&define([],function(){return window.hljs}))}(function(e){function n(e){return e.replace(/&/gm,"&amp;").replace(/</gm,"&lt;").replace(/>/gm,"&gt;")}function t(e){return e.nodeName.toLowerCase()}function r(e,n){var t=e&&e.exec(n);return t&&0==t.index}function a(e){var n=(e.className+" "+(e.parentNode?e.parentNode.className:"")).split(/\s+/);return n=n.map(function(e){return e.replace(/^lang(uage)?-/,"")}),n.filter(function(e){return N(e)||/no(-?)highlight/.test(e)})[0]}function o(e,n){var t={};for(var r in e)t[r]=e[r];if(n)for(var r in n)t[r]=n[r];return t}function i(e){var n=[];return function r(e,a){for(var o=e.firstChild;o;o=o.nextSibling)3==o.nodeType?a+=o.nodeValue.length:1==o.nodeType&&(n.push({event:"start",offset:a,node:o}),a=r(o,a),t(o).match(/br|hr|img|input/)||n.push({event:"stop",offset:a,node:o}));return a}(e,0),n}function c(e,r,a){function o(){return e.length&&r.length?e[0].offset!=r[0].offset?e[0].offset<r[0].offset?e:r:"start"==r[0].event?e:r:e.length?e:r}function i(e){function r(e){return" "+e.nodeName+'="'+n(e.value)+'"'}l+="<"+t(e)+Array.prototype.map.call(e.attributes,r).join("")+">"}function c(e){l+="</"+t(e)+">"}function u(e){("start"==e.event?i:c)(e.node)}for(var s=0,l="",f=[];e.length||r.length;){var g=o();if(l+=n(a.substr(s,g[0].offset-s)),s=g[0].offset,g==e){f.reverse().forEach(c);do u(g.splice(0,1)[0]),g=o();while(g==e&&g.length&&g[0].offset==s);f.reverse().forEach(i)}else"start"==g[0].event?f.push(g[0].node):f.pop(),u(g.splice(0,1)[0])}return l+n(a.substr(s))}function u(e){function n(e){return e&&e.source||e}function t(t,r){return RegExp(n(t),"m"+(e.cI?"i":"")+(r?"g":""))}function r(a,i){if(!a.compiled){if(a.compiled=!0,a.k=a.k||a.bK,a.k){var c={},u=function(n,t){e.cI&&(t=t.toLowerCase()),t.split(" ").forEach(function(e){var t=e.split("|");c[t[0]]=[n,t[1]?Number(t[1]):1]})};"string"==typeof a.k?u("keyword",a.k):Object.keys(a.k).forEach(function(e){u(e,a.k[e])}),a.k=c}a.lR=t(a.l||/\b[A-Za-z0-9_]+\b/,!0),i&&(a.bK&&(a.b="\\b("+a.bK.split(" ").join("|")+")\\b"),a.b||(a.b=/\B|\b/),a.bR=t(a.b),a.e||a.eW||(a.e=/\B|\b/),a.e&&(a.eR=t(a.e)),a.tE=n(a.e)||"",a.eW&&i.tE&&(a.tE+=(a.e?"|":"")+i.tE)),a.i&&(a.iR=t(a.i)),void 0===a.r&&(a.r=1),a.c||(a.c=[]);var s=[];a.c.forEach(function(e){e.v?e.v.forEach(function(n){s.push(o(e,n))}):s.push("self"==e?a:e)}),a.c=s,a.c.forEach(function(e){r(e,a)}),a.starts&&r(a.starts,i);var l=a.c.map(function(e){return e.bK?"\\.?("+e.b+")\\.?":e.b}).concat([a.tE,a.i]).map(n).filter(Boolean);a.t=l.length?t(l.join("|"),!0):{exec:function(){return null}}}}r(e)}function s(e,t,a,o){function i(e,n){for(var t=0;t<n.c.length;t++)if(r(n.c[t].bR,e))return n.c[t]}function c(e,n){return r(e.eR,n)?e:e.eW?c(e.parent,n):void 0}function f(e,n){return!a&&r(n.iR,e)}function g(e,n){var t=x.cI?n[0].toLowerCase():n[0];return e.k.hasOwnProperty(t)&&e.k[t]}function p(e,n,t,r){var a=r?"":E.classPrefix,o='<span class="'+a,i=t?"":"</span>";return o+=e+'">',o+n+i}function d(){if(!w.k)return n(y);var e="",t=0;w.lR.lastIndex=0;for(var r=w.lR.exec(y);r;){e+=n(y.substr(t,r.index-t));var a=g(w,r);a?(B+=a[1],e+=p(a[0],n(r[0]))):e+=n(r[0]),t=w.lR.lastIndex,r=w.lR.exec(y)}return e+n(y.substr(t))}function h(){if(w.sL&&!R[w.sL])return n(y);var e=w.sL?s(w.sL,y,!0,L[w.sL]):l(y);return w.r>0&&(B+=e.r),"continuous"==w.subLanguageMode&&(L[w.sL]=e.top),p(e.language,e.value,!1,!0)}function v(){return void 0!==w.sL?h():d()}function b(e,t){var r=e.cN?p(e.cN,"",!0):"";e.rB?(M+=r,y=""):e.eB?(M+=n(t)+r,y=""):(M+=r,y=t),w=Object.create(e,{parent:{value:w}})}function m(e,t){if(y+=e,void 0===t)return M+=v(),0;var r=i(t,w);if(r)return M+=v(),b(r,t),r.rB?0:t.length;var a=c(w,t);if(a){var o=w;o.rE||o.eE||(y+=t),M+=v();do w.cN&&(M+="</span>"),B+=w.r,w=w.parent;while(w!=a.parent);return o.eE&&(M+=n(t)),y="",a.starts&&b(a.starts,""),o.rE?0:t.length}if(f(t,w))throw new Error('Illegal lexeme "'+t+'" for mode "'+(w.cN||"<unnamed>")+'"');return y+=t,t.length||1}var x=N(e);if(!x)throw new Error('Unknown language: "'+e+'"');u(x);for(var w=o||x,L={},M="",k=w;k!=x;k=k.parent)k.cN&&(M=p(k.cN,"",!0)+M);var y="",B=0;try{for(var C,j,I=0;;){if(w.t.lastIndex=I,C=w.t.exec(t),!C)break;j=m(t.substr(I,C.index-I),C[0]),I=C.index+j}m(t.substr(I));for(var k=w;k.parent;k=k.parent)k.cN&&(M+="</span>");return{r:B,value:M,language:e,top:w}}catch(A){if(-1!=A.message.indexOf("Illegal"))return{r:0,value:n(t)};throw A}}function l(e,t){t=t||E.languages||Object.keys(R);var r={r:0,value:n(e)},a=r;return t.forEach(function(n){if(N(n)){var t=s(n,e,!1);t.language=n,t.r>a.r&&(a=t),t.r>r.r&&(a=r,r=t)}}),a.language&&(r.second_best=a),r}function f(e){return E.tabReplace&&(e=e.replace(/^((<[^>]+>|\t)+)/gm,function(e,n){return n.replace(/\t/g,E.tabReplace)})),E.useBR&&(e=e.replace(/\n/g,"<br>")),e}function g(e,n,t){var r=n?x[n]:t,a=[e.trim()];return e.match(/(\s|^)hljs(\s|$)/)||a.push("hljs"),r&&a.push(r),a.join(" ").trim()}function p(e){var n=a(e);if(!/no(-?)highlight/.test(n)){var t;E.useBR?(t=document.createElementNS("http://www.w3.org/1999/xhtml","div"),t.innerHTML=e.innerHTML.replace(/\n/g,"").replace(/<br[ \/]*>/g,"\n")):t=e;var r=t.textContent,o=n?s(n,r,!0):l(r),u=i(t);if(u.length){var p=document.createElementNS("http://www.w3.org/1999/xhtml","div");p.innerHTML=o.value,o.value=c(u,i(p),r)}o.value=f(o.value),e.innerHTML=o.value,e.className=g(e.className,n,o.language),e.result={language:o.language,re:o.r},o.second_best&&(e.second_best={language:o.second_best.language,re:o.second_best.r})}}function d(e){E=o(E,e)}function h(){if(!h.called){h.called=!0;var e=document.querySelectorAll("pre code");Array.prototype.forEach.call(e,p)}}function v(){addEventListener("DOMContentLoaded",h,!1),addEventListener("load",h,!1)}function b(n,t){var r=R[n]=t(e);r.aliases&&r.aliases.forEach(function(e){x[e]=n})}function m(){return Object.keys(R)}function N(e){return R[e]||R[x[e]]}var E={classPrefix:"hljs-",tabReplace:null,useBR:!1,languages:void 0},R={},x={};return e.highlight=s,e.highlightAuto=l,e.fixMarkup=f,e.highlightBlock=p,e.configure=d,e.initHighlighting=h,e.initHighlightingOnLoad=v,e.registerLanguage=b,e.listLanguages=m,e.getLanguage=N,e.inherit=o,e.IR="[a-zA-Z][a-zA-Z0-9_]*",e.UIR="[a-zA-Z_][a-zA-Z0-9_]*",e.NR="\\b\\d+(\\.\\d+)?",e.CNR="(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)",e.BNR="\\b(0b[01]+)",e.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~",e.BE={b:"\\\\[\\s\\S]",r:0},e.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[e.BE]},e.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[e.BE]},e.PWM={b:/\b(a|an|the|are|I|I'm|isn't|don't|doesn't|won't|but|just|should|pretty|simply|enough|gonna|going|wtf|so|such)\b/},e.CLCM={cN:"comment",b:"//",e:"$",c:[e.PWM]},e.CBCM={cN:"comment",b:"/\\*",e:"\\*/",c:[e.PWM]},e.HCM={cN:"comment",b:"#",e:"$",c:[e.PWM]},e.NM={cN:"number",b:e.NR,r:0},e.CNM={cN:"number",b:e.CNR,r:0},e.BNM={cN:"number",b:e.BNR,r:0},e.CSSNM={cN:"number",b:e.NR+"(%|em|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|in|pt|pc|px|deg|grad|rad|turn|s|ms|Hz|kHz|dpi|dpcm|dppx)?",r:0},e.RM={cN:"regexp",b:/\//,e:/\/[gimuy]*/,i:/\n/,c:[e.BE,{b:/\[/,e:/\]/,r:0,c:[e.BE]}]},e.TM={cN:"title",b:e.IR,r:0},e.UTM={cN:"title",b:e.UIR,r:0},e});hljs.registerLanguage("cpp",function(t){var i={keyword:"false int float while private char catch export virtual operator sizeof dynamic_cast|10 typedef const_cast|10 const struct for static_cast|10 union namespace unsigned long volatile static protected bool template mutable if public friend do goto auto void enum else break extern using true class asm case typeid short reinterpret_cast|10 default double register explicit signed typename try this switch continue wchar_t inline delete alignof char16_t char32_t constexpr decltype noexcept nullptr static_assert thread_local restrict _Bool complex _Complex _Imaginaryintmax_t uintmax_t int8_t uint8_t int16_t uint16_t int32_t uint32_t  int64_t uint64_tint_least8_t uint_least8_t int_least16_t uint_least16_t int_least32_t uint_least32_tint_least64_t uint_least64_t int_fast8_t uint_fast8_t int_fast16_t uint_fast16_t int_fast32_tuint_fast32_t int_fast64_t uint_fast64_t intptr_t uintptr_t atomic_bool atomic_char atomic_scharatomic_uchar atomic_short atomic_ushort atomic_int atomic_uint atomic_long atomic_ulong atomic_llongatomic_ullong atomic_wchar_t atomic_char16_t atomic_char32_t atomic_intmax_t atomic_uintmax_tatomic_intptr_t atomic_uintptr_t atomic_size_t atomic_ptrdiff_t atomic_int_least8_t atomic_int_least16_tatomic_int_least32_t atomic_int_least64_t atomic_uint_least8_t atomic_uint_least16_t atomic_uint_least32_tatomic_uint_least64_t atomic_int_fast8_t atomic_int_fast16_t atomic_int_fast32_t atomic_int_fast64_tatomic_uint_fast8_t atomic_uint_fast16_t atomic_uint_fast32_t atomic_uint_fast64_t",built_in:"std string cin cout cerr clog stringstream istringstream ostringstream auto_ptr deque list queue stack vector map set bitset multiset multimap unordered_set unordered_map unordered_multiset unordered_multimap array shared_ptr abort abs acos asin atan2 atan calloc ceil cosh cos exit exp fabs floor fmod fprintf fputs free frexp fscanf isalnum isalpha iscntrl isdigit isgraph islower isprint ispunct isspace isupper isxdigit tolower toupper labs ldexp log10 log malloc memchr memcmp memcpy memset modf pow printf putchar puts scanf sinh sin snprintf sprintf sqrt sscanf strcat strchr strcmp strcpy strcspn strlen strncat strncmp strncpy strpbrk strrchr strspn strstr tanh tan vfprintf vprintf vsprintf"};return{aliases:["c","h","c++","h++"],k:i,i:"</",c:[t.CLCM,t.CBCM,t.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},t.CNM,{cN:"preprocessor",b:"#",e:"$",k:"if else elif endif define undef warning error line pragma",c:[{b:'include\\s*[<"]',e:'[>"]',k:"include",i:"\\n"},t.CLCM]},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:i,c:["self"]},{b:t.IR+"::"},{bK:"new throw return",r:0},{cN:"function",b:"("+t.IR+"\\s+)+"+t.IR+"\\s*\\(",rB:!0,e:/[{;=]/,eE:!0,k:i,c:[{b:t.IR+"\\s*\\(",rB:!0,c:[t.TM],r:0},{cN:"params",b:/\(/,e:/\)/,k:i,r:0,c:[t.CBCM]},t.CLCM,t.CBCM]}]}});hljs.registerLanguage("ruby",function(e){var b="[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?",r="and false then defined module in return redo if BEGIN retry end for true self when next until do begin unless END rescue nil else break undef not super class case require yield alias while ensure elsif or include attr_reader attr_writer attr_accessor",c={cN:"yardoctag",b:"@[A-Za-z]+"},a={cN:"value",b:"#<",e:">"},s={cN:"comment",v:[{b:"#",e:"$",c:[c]},{b:"^\\=begin",e:"^\\=end",c:[c],r:10},{b:"^__END__",e:"\\n$"}]},n={cN:"subst",b:"#\\{",e:"}",k:r},t={cN:"string",c:[e.BE,n],v:[{b:/'/,e:/'/},{b:/"/,e:/"/},{b:/`/,e:/`/},{b:"%[qQwWx]?\\(",e:"\\)"},{b:"%[qQwWx]?\\[",e:"\\]"},{b:"%[qQwWx]?{",e:"}"},{b:"%[qQwWx]?<",e:">"},{b:"%[qQwWx]?/",e:"/"},{b:"%[qQwWx]?%",e:"%"},{b:"%[qQwWx]?-",e:"-"},{b:"%[qQwWx]?\\|",e:"\\|"},{b:/\B\?(\\\d{1,3}|\\x[A-Fa-f0-9]{1,2}|\\u[A-Fa-f0-9]{4}|\\?\S)\b/}]},i={cN:"params",b:"\\(",e:"\\)",k:r},d=[t,a,s,{cN:"class",bK:"class module",e:"$|;",i:/=/,c:[e.inherit(e.TM,{b:"[A-Za-z_]\\w*(::\\w+)*(\\?|\\!)?"}),{cN:"inheritance",b:"<\\s*",c:[{cN:"parent",b:"("+e.IR+"::)?"+e.IR}]},s]},{cN:"function",bK:"def",e:" |$|;",r:0,c:[e.inherit(e.TM,{b:b}),i,s]},{cN:"constant",b:"(::)?(\\b[A-Z]\\w*(::)?)+",r:0},{cN:"symbol",b:e.UIR+"(\\!|\\?)?:",r:0},{cN:"symbol",b:":",c:[t,{b:b}],r:0},{cN:"number",b:"(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",r:0},{cN:"variable",b:"(\\$\\W)|((\\$|\\@\\@?)(\\w+))"},{b:"("+e.RSR+")\\s*",c:[a,s,{cN:"regexp",c:[e.BE,n],i:/\n/,v:[{b:"/",e:"/[a-z]*"},{b:"%r{",e:"}[a-z]*"},{b:"%r\\(",e:"\\)[a-z]*"},{b:"%r!",e:"![a-z]*"},{b:"%r\\[",e:"\\][a-z]*"}]}],r:0}];n.c=d,i.c=d;var l="[>?]>",u="[\\w#]+\\(\\w+\\):\\d+:\\d+>",N="(\\w+-)?\\d+\\.\\d+\\.\\d(p\\d+)?[^>]+>",o=[{b:/^\s*=>/,cN:"status",starts:{e:"$",c:d}},{cN:"prompt",b:"^("+l+"|"+u+"|"+N+")",starts:{e:"$",c:d}}];return{aliases:["rb","gemspec","podspec","thor","irb"],k:r,c:[s].concat(o).concat(d)}});hljs.registerLanguage("apache",function(e){var r={cN:"number",b:"[\\$%]\\d+"};return{aliases:["apacheconf"],cI:!0,c:[e.HCM,{cN:"tag",b:"</?",e:">"},{cN:"keyword",b:/\w+/,r:0,k:{common:"order deny allow setenv rewriterule rewriteengine rewritecond documentroot sethandler errordocument loadmodule options header listen serverroot servername"},starts:{e:/$/,r:0,k:{literal:"on off all"},c:[{cN:"sqbracket",b:"\\s\\[",e:"\\]$"},{cN:"cbracket",b:"[\\$%]\\{",e:"\\}",c:["self",r]},r,e.QSM]}}],i:/\S/}});hljs.registerLanguage("python",function(e){var r={cN:"prompt",b:/^(>>>|\.\.\.) /},b={cN:"string",c:[e.BE],v:[{b:/(u|b)?r?'''/,e:/'''/,c:[r],r:10},{b:/(u|b)?r?"""/,e:/"""/,c:[r],r:10},{b:/(u|r|ur)'/,e:/'/,r:10},{b:/(u|r|ur)"/,e:/"/,r:10},{b:/(b|br)'/,e:/'/},{b:/(b|br)"/,e:/"/},e.ASM,e.QSM]},l={cN:"number",r:0,v:[{b:e.BNR+"[lLjJ]?"},{b:"\\b(0o[0-7]+)[lLjJ]?"},{b:e.CNR+"[lLjJ]?"}]},c={cN:"params",b:/\(/,e:/\)/,c:["self",r,l,b]};return{aliases:["py","gyp"],k:{keyword:"and elif is global as in if from raise for except finally print import pass return exec else break not with class assert yield try while continue del or def lambda nonlocal|10 None True False",built_in:"Ellipsis NotImplemented"},i:/(<\/|->|\?)/,c:[r,l,b,e.HCM,{v:[{cN:"function",bK:"def",r:10},{cN:"class",bK:"class"}],e:/:/,i:/[${=;\n]/,c:[e.UTM,c]},{cN:"decorator",b:/@/,e:/$/},{b:/\b(print|exec)\(/}]}});hljs.registerLanguage("javascript",function(r){return{aliases:["js"],k:{keyword:"in if for while finally var new function do return void else break catch instanceof with throw case default try this switch continue typeof delete let yield const class",literal:"true false null undefined NaN Infinity",built_in:"eval isFinite isNaN parseFloat parseInt decodeURI decodeURIComponent encodeURI encodeURIComponent escape unescape Object Function Boolean Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError Number Math Date String RegExp Array Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require module console window document"},c:[{cN:"pi",r:10,v:[{b:/^\s*('|")use strict('|")/},{b:/^\s*('|")use asm('|")/}]},r.ASM,r.QSM,r.CLCM,r.CBCM,r.CNM,{b:"("+r.RSR+"|\\b(case|return|throw)\\b)\\s*",k:"return throw case",c:[r.CLCM,r.CBCM,r.RM,{b:/</,e:/>;/,r:0,sL:"xml"}],r:0},{cN:"function",bK:"function",e:/\{/,eE:!0,c:[r.inherit(r.TM,{b:/[A-Za-z$_][0-9A-Za-z$_]*/}),{cN:"params",b:/\(/,e:/\)/,c:[r.CLCM,r.CBCM],i:/["'\(]/}],i:/\[|%/},{b:/\$[(.]/},{b:"\\."+r.IR,r:0}]}});hljs.registerLanguage("coffeescript",function(e){var c={keyword:"in if for while finally new do return else break catch instanceof throw try this switch continue typeof delete debugger super then unless until loop of by when and or is isnt not",literal:"true false null undefined yes no on off",reserved:"case default function var void with const let enum export import native __hasProp __extends __slice __bind __indexOf",built_in:"npm require console print module global window document"},n="[A-Za-z$_][0-9A-Za-z$_]*",t={cN:"subst",b:/#\{/,e:/}/,k:c},r=[e.BNM,e.inherit(e.CNM,{starts:{e:"(\\s*/)?",r:0}}),{cN:"string",v:[{b:/'''/,e:/'''/,c:[e.BE]},{b:/'/,e:/'/,c:[e.BE]},{b:/"""/,e:/"""/,c:[e.BE,t]},{b:/"/,e:/"/,c:[e.BE,t]}]},{cN:"regexp",v:[{b:"///",e:"///",c:[t,e.HCM]},{b:"//[gim]*",r:0},{b:/\/(?![ *])(\\\/|.)*?\/[gim]*(?=\W|$)/}]},{cN:"property",b:"@"+n},{b:"`",e:"`",eB:!0,eE:!0,sL:"javascript"}];t.c=r;var i=e.inherit(e.TM,{b:n}),s="(\\(.*\\))?\\s*\\B[-=]>",o={cN:"params",b:"\\([^\\(]",rB:!0,c:[{b:/\(/,e:/\)/,k:c,c:["self"].concat(r)}]};return{aliases:["coffee","cson","iced"],k:c,i:/\/\*/,c:r.concat([{cN:"comment",b:"###",e:"###",c:[e.PWM]},e.HCM,{cN:"function",b:"^\\s*"+n+"\\s*=\\s*"+s,e:"[-=]>",rB:!0,c:[i,o]},{b:/[:\(,=]\s*/,r:0,c:[{cN:"function",b:s,e:"[-=]>",rB:!0,c:[o]}]},{cN:"class",bK:"class",e:"$",i:/[:="\[\]]/,c:[{bK:"extends",eW:!0,i:/[:="\[\]]/,c:[i]},i]},{cN:"attribute",b:n+":",e:":",rB:!0,rE:!0,r:0}])}});hljs.registerLanguage("http",function(){return{i:"\\S",c:[{cN:"status",b:"^HTTP/[0-9\\.]+",e:"$",c:[{cN:"number",b:"\\b\\d{3}\\b"}]},{cN:"request",b:"^[A-Z]+ (.*?) HTTP/[0-9\\.]+$",rB:!0,e:"$",c:[{cN:"string",b:" ",e:" ",eB:!0,eE:!0}]},{cN:"attribute",b:"^\\w",e:": ",eE:!0,i:"\\n|\\s|=",starts:{cN:"string",e:"$"}},{b:"\\n\\n",starts:{sL:"",eW:!0}}]}});hljs.registerLanguage("css",function(e){var c="[a-zA-Z-][a-zA-Z0-9_-]*",a={cN:"function",b:c+"\\(",rB:!0,eE:!0,e:"\\("};return{cI:!0,i:"[=/|']",c:[e.CBCM,{cN:"id",b:"\\#[A-Za-z0-9_-]+"},{cN:"class",b:"\\.[A-Za-z0-9_-]+",r:0},{cN:"attr_selector",b:"\\[",e:"\\]",i:"$"},{cN:"pseudo",b:":(:)?[a-zA-Z0-9\\_\\-\\+\\(\\)\\\"\\']+"},{cN:"at_rule",b:"@(font-face|page)",l:"[a-z-]+",k:"font-face page"},{cN:"at_rule",b:"@",e:"[{;]",c:[{cN:"keyword",b:/\S+/},{b:/\s/,eW:!0,eE:!0,r:0,c:[a,e.ASM,e.QSM,e.CSSNM]}]},{cN:"tag",b:c,r:0},{cN:"rules",b:"{",e:"}",i:"[^\\s]",r:0,c:[e.CBCM,{cN:"rule",b:"[^\\s]",rB:!0,e:";",eW:!0,c:[{cN:"attribute",b:"[A-Z\\_\\.\\-]+",e:":",eE:!0,i:"[^\\s]",starts:{cN:"value",eW:!0,eE:!0,c:[a,e.CSSNM,e.QSM,e.ASM,e.CBCM,{cN:"hexcolor",b:"#[0-9A-Fa-f]+"},{cN:"important",b:"!important"}]}}]}]}]}});hljs.registerLanguage("ini",function(e){return{cI:!0,i:/\S/,c:[{cN:"comment",b:";",e:"$"},{cN:"title",b:"^\\[",e:"\\]"},{cN:"setting",b:"^[a-z0-9\\[\\]_-]+[ \\t]*=[ \\t]*",e:"$",c:[{cN:"value",eW:!0,k:"on off true false yes no",c:[e.QSM,e.NM],r:0}]}]}});hljs.registerLanguage("objectivec",function(e){var t={keyword:"int float while char export sizeof typedef const struct for union unsigned long volatile static bool mutable if do return goto void enum else break extern asm case short default double register explicit signed typename this switch continue wchar_t inline readonly assign readwrite self @synchronized id typeof nonatomic super unichar IBOutlet IBAction strong weak copy in out inout bycopy byref oneway __strong __weak __block __autoreleasing @private @protected @public @try @property @end @throw @catch @finally @autoreleasepool @synthesize @dynamic @selector @optional @required",literal:"false true FALSE TRUE nil YES NO NULL",built_in:"NSString NSData NSDictionary CGRect CGPoint UIButton UILabel UITextView UIWebView MKMapView NSView NSViewController NSWindow NSWindowController NSSet NSUUID NSIndexSet UISegmentedControl NSObject UITableViewDelegate UITableViewDataSource NSThread UIActivityIndicator UITabbar UIToolBar UIBarButtonItem UIImageView NSAutoreleasePool UITableView BOOL NSInteger CGFloat NSException NSLog NSMutableString NSMutableArray NSMutableDictionary NSURL NSIndexPath CGSize UITableViewCell UIView UIViewController UINavigationBar UINavigationController UITabBarController UIPopoverController UIPopoverControllerDelegate UIImage NSNumber UISearchBar NSFetchedResultsController NSFetchedResultsChangeType UIScrollView UIScrollViewDelegate UIEdgeInsets UIColor UIFont UIApplication NSNotFound NSNotificationCenter NSNotification UILocalNotification NSBundle NSFileManager NSTimeInterval NSDate NSCalendar NSUserDefaults UIWindow NSRange NSArray NSError NSURLRequest NSURLConnection NSURLSession NSURLSessionDataTask NSURLSessionDownloadTask NSURLSessionUploadTask NSURLResponseUIInterfaceOrientation MPMoviePlayerController dispatch_once_t dispatch_queue_t dispatch_sync dispatch_async dispatch_once"},o=/[a-zA-Z@][a-zA-Z0-9_]*/,a="@interface @class @protocol @implementation";return{aliases:["m","mm","objc","obj-c"],k:t,l:o,i:"</",c:[e.CLCM,e.CBCM,e.CNM,e.QSM,{cN:"string",v:[{b:'@"',e:'"',i:"\\n",c:[e.BE]},{b:"'",e:"[^\\\\]'",i:"[^\\\\][^']"}]},{cN:"preprocessor",b:"#",e:"$",c:[{cN:"title",v:[{b:'"',e:'"'},{b:"<",e:">"}]}]},{cN:"class",b:"("+a.split(" ").join("|")+")\\b",e:"({|$)",eE:!0,k:a,l:o,c:[e.UTM]},{cN:"variable",b:"\\."+e.UIR,r:0}]}});hljs.registerLanguage("bash",function(e){var t={cN:"variable",v:[{b:/\$[\w\d#@][\w\d_]*/},{b:/\$\{(.*?)\}/}]},s={cN:"string",b:/"/,e:/"/,c:[e.BE,t,{cN:"variable",b:/\$\(/,e:/\)/,c:[e.BE]}]},a={cN:"string",b:/'/,e:/'/};return{aliases:["sh","zsh"],l:/-?[a-z\.]+/,k:{keyword:"if then else elif fi for while in do done case esac function",literal:"true false",built_in:"break cd continue eval exec exit export getopts hash pwd readonly return shift test times trap umask unset alias bind builtin caller command declare echo enable help let local logout mapfile printf read readarray source type typeset ulimit unalias set shopt autoload bg bindkey bye cap chdir clone comparguments compcall compctl compdescribe compfiles compgroups compquote comptags comptry compvalues dirs disable disown echotc echoti emulate fc fg float functions getcap getln history integer jobs kill limit log noglob popd print pushd pushln rehash sched setcap setopt stat suspend ttyctl unfunction unhash unlimit unsetopt vared wait whence where which zcompile zformat zftp zle zmodload zparseopts zprof zpty zregexparse zsocket zstyle ztcp",operator:"-ne -eq -lt -gt -f -d -e -s -l -a"},c:[{cN:"shebang",b:/^#![^\n]+sh\s*$/,r:10},{cN:"function",b:/\w[\w\d_]*\s*\(\s*\)\s*\{/,rB:!0,c:[e.inherit(e.TM,{b:/\w[\w\d_]*/})],r:0},e.HCM,e.NM,s,a,t]}});hljs.registerLanguage("markdown",function(){return{aliases:["md","mkdown","mkd"],c:[{cN:"header",v:[{b:"^#{1,6}",e:"$"},{b:"^.+?\\n[=-]{2,}$"}]},{b:"<",e:">",sL:"xml",r:0},{cN:"bullet",b:"^([*+-]|(\\d+\\.))\\s+"},{cN:"strong",b:"[*_]{2}.+?[*_]{2}"},{cN:"emphasis",v:[{b:"\\*.+?\\*"},{b:"_.+?_",r:0}]},{cN:"blockquote",b:"^>\\s+",e:"$"},{cN:"code",v:[{b:"`.+?`"},{b:"^( {4}|	)",e:"$",r:0}]},{cN:"horizontal_rule",b:"^[-\\*]{3,}",e:"$"},{b:"\\[.+?\\][\\(\\[].*?[\\)\\]]",rB:!0,c:[{cN:"link_label",b:"\\[",e:"\\]",eB:!0,rE:!0,r:0},{cN:"link_url",b:"\\]\\(",e:"\\)",eB:!0,eE:!0},{cN:"link_reference",b:"\\]\\[",e:"\\]",eB:!0,eE:!0}],r:10},{b:"^\\[.+\\]:",rB:!0,c:[{cN:"link_reference",b:"\\[",e:"\\]:",eB:!0,eE:!0,starts:{cN:"link_url",e:"$"}}]}]}});hljs.registerLanguage("java",function(e){var a=e.UIR+"(<"+e.UIR+">)?",t="false synchronized int abstract float private char boolean static null if const for true while long strictfp finally protected import native final void enum else break transient catch instanceof byte super volatile case assert short package default double public try this switch continue throws protected public private",c="(\\b(0b[01_]+)|\\b0[xX][a-fA-F0-9_]+|(\\b[\\d_]+(\\.[\\d_]*)?|\\.[\\d_]+)([eE][-+]?\\d+)?)[lLfF]?",r={cN:"number",b:c,r:0};return{aliases:["jsp"],k:t,i:/<\//,c:[{cN:"javadoc",b:"/\\*\\*",e:"\\*/",r:0,c:[{cN:"javadoctag",b:"(^|\\s)@[A-Za-z]+"}]},e.CLCM,e.CBCM,e.ASM,e.QSM,{cN:"class",bK:"class interface",e:/[{;=]/,eE:!0,k:"class interface",i:/[:"\[\]]/,c:[{bK:"extends implements"},e.UTM]},{bK:"new throw return",r:0},{cN:"function",b:"("+a+"\\s+)+"+e.UIR+"\\s*\\(",rB:!0,e:/[{;=]/,eE:!0,k:t,c:[{b:e.UIR+"\\s*\\(",rB:!0,r:0,c:[e.UTM]},{cN:"params",b:/\(/,e:/\)/,k:t,r:0,c:[e.ASM,e.QSM,e.CNM,e.CBCM]},e.CLCM,e.CBCM]},r,{cN:"annotation",b:"@[A-Za-z]+"}]}});hljs.registerLanguage("diff",function(){return{aliases:["patch"],c:[{cN:"chunk",r:10,v:[{b:/^\@\@ +\-\d+,\d+ +\+\d+,\d+ +\@\@$/},{b:/^\*\*\* +\d+,\d+ +\*\*\*\*$/},{b:/^\-\-\- +\d+,\d+ +\-\-\-\-$/}]},{cN:"header",v:[{b:/Index: /,e:/$/},{b:/=====/,e:/=====$/},{b:/^\-\-\-/,e:/$/},{b:/^\*{3} /,e:/$/},{b:/^\+\+\+/,e:/$/},{b:/\*{5}/,e:/\*{5}$/}]},{cN:"addition",b:"^\\+",e:"$"},{cN:"deletion",b:"^\\-",e:"$"},{cN:"change",b:"^\\!",e:"$"}]}});hljs.registerLanguage("perl",function(e){var t="getpwent getservent quotemeta msgrcv scalar kill dbmclose undef lc ma syswrite tr send umask sysopen shmwrite vec qx utime local oct semctl localtime readpipe do return format read sprintf dbmopen pop getpgrp not getpwnam rewinddir qqfileno qw endprotoent wait sethostent bless s|0 opendir continue each sleep endgrent shutdown dump chomp connect getsockname die socketpair close flock exists index shmgetsub for endpwent redo lstat msgctl setpgrp abs exit select print ref gethostbyaddr unshift fcntl syscall goto getnetbyaddr join gmtime symlink semget splice x|0 getpeername recv log setsockopt cos last reverse gethostbyname getgrnam study formline endhostent times chop length gethostent getnetent pack getprotoent getservbyname rand mkdir pos chmod y|0 substr endnetent printf next open msgsnd readdir use unlink getsockopt getpriority rindex wantarray hex system getservbyport endservent int chr untie rmdir prototype tell listen fork shmread ucfirst setprotoent else sysseek link getgrgid shmctl waitpid unpack getnetbyname reset chdir grep split require caller lcfirst until warn while values shift telldir getpwuid my getprotobynumber delete and sort uc defined srand accept package seekdir getprotobyname semop our rename seek if q|0 chroot sysread setpwent no crypt getc chown sqrt write setnetent setpriority foreach tie sin msgget map stat getlogin unless elsif truncate exec keys glob tied closedirioctl socket readlink eval xor readline binmode setservent eof ord bind alarm pipe atan2 getgrent exp time push setgrent gt lt or ne m|0 break given say state when",r={cN:"subst",b:"[$@]\\{",e:"\\}",k:t},s={b:"->{",e:"}"},n={cN:"variable",v:[{b:/\$\d/},{b:/[\$\%\@](\^\w\b|#\w+(\:\:\w+)*|{\w+}|\w+(\:\:\w*)*)/},{b:/[\$\%\@][^\s\w{]/,r:0}]},o={cN:"comment",b:"^(__END__|__DATA__)",e:"\\n$",r:5},i=[e.BE,r,n],c=[n,e.HCM,o,{cN:"comment",b:"^\\=\\w",e:"\\=cut",eW:!0},s,{cN:"string",c:i,v:[{b:"q[qwxr]?\\s*\\(",e:"\\)",r:5},{b:"q[qwxr]?\\s*\\[",e:"\\]",r:5},{b:"q[qwxr]?\\s*\\{",e:"\\}",r:5},{b:"q[qwxr]?\\s*\\|",e:"\\|",r:5},{b:"q[qwxr]?\\s*\\<",e:"\\>",r:5},{b:"qw\\s+q",e:"q",r:5},{b:"'",e:"'",c:[e.BE]},{b:'"',e:'"'},{b:"`",e:"`",c:[e.BE]},{b:"{\\w+}",c:[],r:0},{b:"-?\\w+\\s*\\=\\>",c:[],r:0}]},{cN:"number",b:"(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",r:0},{b:"(\\/\\/|"+e.RSR+"|\\b(split|return|print|reverse|grep)\\b)\\s*",k:"split return print reverse grep",r:0,c:[e.HCM,o,{cN:"regexp",b:"(s|tr|y)/(\\\\.|[^/])*/(\\\\.|[^/])*/[a-z]*",r:10},{cN:"regexp",b:"(m|qr)?/",e:"/[a-z]*",c:[e.BE],r:0}]},{cN:"sub",bK:"sub",e:"(\\s*\\(.*?\\))?[;{]",r:5},{cN:"operator",b:"-\\w\\b",r:0}];return r.c=c,s.c=c,{aliases:["pl"],k:t,c:c}});hljs.registerLanguage("makefile",function(e){var a={cN:"variable",b:/\$\(/,e:/\)/,c:[e.BE]};return{aliases:["mk","mak"],c:[e.HCM,{b:/^\w+\s*\W*=/,rB:!0,r:0,starts:{cN:"constant",e:/\s*\W*=/,eE:!0,starts:{e:/$/,r:0,c:[a]}}},{cN:"title",b:/^[\w]+:\s*$/},{cN:"phony",b:/^\.PHONY:/,e:/$/,k:".PHONY",l:/[\.\w]+/},{b:/^\t+/,e:/$/,r:0,c:[e.QSM,a]}]}});hljs.registerLanguage("cs",function(e){var r="abstract as base bool break byte case catch char checked const continue decimal default delegate do double else enum event explicit extern false finally fixed float for foreach goto if implicit in int interface internal is lock long null object operator out override params private protected public readonly ref sbyte sealed short sizeof stackalloc static string struct switch this true try typeof uint ulong unchecked unsafe ushort using virtual volatile void while async protected public private internal ascending descending from get group into join let orderby partial select set value var where yield",t=e.IR+"(<"+e.IR+">)?";return{aliases:["csharp"],k:r,i:/::/,c:[{cN:"comment",b:"///",e:"$",rB:!0,c:[{cN:"xmlDocTag",v:[{b:"///",r:0},{b:"<!--|-->"},{b:"</?",e:">"}]}]},e.CLCM,e.CBCM,{cN:"preprocessor",b:"#",e:"$",k:"if else elif endif define undef warning error line region endregion pragma checksum"},{cN:"string",b:'@"',e:'"',c:[{b:'""'}]},e.ASM,e.QSM,e.CNM,{bK:"class namespace interface",e:/[{;=]/,i:/[^\s:]/,c:[e.TM,e.CLCM,e.CBCM]},{bK:"new return throw await",r:0},{cN:"function",b:"("+t+"\\s+)+"+e.IR+"\\s*\\(",rB:!0,e:/[{;=]/,eE:!0,k:r,c:[{b:e.IR+"\\s*\\(",rB:!0,c:[e.TM],r:0},{cN:"params",b:/\(/,e:/\)/,k:r,r:0,c:[e.ASM,e.QSM,e.CNM,e.CBCM]},e.CLCM,e.CBCM]}]}});hljs.registerLanguage("json",function(e){var t={literal:"true false null"},i=[e.QSM,e.CNM],l={cN:"value",e:",",eW:!0,eE:!0,c:i,k:t},c={b:"{",e:"}",c:[{cN:"attribute",b:'\\s*"',e:'"\\s*:\\s*',eB:!0,eE:!0,c:[e.BE],i:"\\n",starts:l}],i:"\\S"},n={b:"\\[",e:"\\]",c:[e.inherit(l,{cN:null})],i:"\\S"};return i.splice(i.length,0,c,n),{c:i,k:t,i:"\\S"}});hljs.registerLanguage("nginx",function(e){var r={cN:"variable",v:[{b:/\$\d+/},{b:/\$\{/,e:/}/},{b:"[\\$\\@]"+e.UIR}]},b={eW:!0,l:"[a-z/_]+",k:{built_in:"on off yes no true false none blocked debug info notice warn error crit select break last permanent redirect kqueue rtsig epoll poll /dev/poll"},r:0,i:"=>",c:[e.HCM,{cN:"string",c:[e.BE,r],v:[{b:/"/,e:/"/},{b:/'/,e:/'/}]},{cN:"url",b:"([a-z]+):/",e:"\\s",eW:!0,eE:!0,c:[r]},{cN:"regexp",c:[e.BE,r],v:[{b:"\\s\\^",e:"\\s|{|;",rE:!0},{b:"~\\*?\\s+",e:"\\s|{|;",rE:!0},{b:"\\*(\\.[a-z\\-]+)+"},{b:"([a-z\\-]+\\.)+\\*"}]},{cN:"number",b:"\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(:\\d{1,5})?\\b"},{cN:"number",b:"\\b\\d+[kKmMgGdshdwy]*\\b",r:0},r]};return{aliases:["nginxconf"],c:[e.HCM,{b:e.UIR+"\\s",e:";|{",rB:!0,c:[{cN:"title",b:e.UIR,starts:b}],r:0}],i:"[^\\s\\}]"}});hljs.registerLanguage("sql",function(e){var t={cN:"comment",b:"--",e:"$"};return{cI:!0,i:/[<>]/,c:[{cN:"operator",bK:"begin end start commit rollback savepoint lock alter create drop rename call delete do handler insert load replace select truncate update set show pragma grant merge describe use explain help declare prepare execute deallocate savepoint release unlock purge reset change stop analyze cache flush optimize repair kill install uninstall checksum restore check backup",e:/;/,eW:!0,k:{keyword:"abs absolute acos action add adddate addtime aes_decrypt aes_encrypt after aggregate all allocate alter analyze and any are as asc ascii asin assertion at atan atan2 atn2 authorization authors avg backup before begin benchmark between bin binlog bit_and bit_count bit_length bit_or bit_xor both by cache call cascade cascaded case cast catalog ceil ceiling chain change changed char_length character_length charindex charset check checksum checksum_agg choose close coalesce coercibility collate collation collationproperty column columns columns_updated commit compress concat concat_ws concurrent connect connection connection_id consistent constraint constraints continue contributors conv convert convert_tz corresponding cos cot count count_big crc32 create cross cume_dist curdate current current_date current_time current_timestamp current_user cursor curtime data database databases datalength date_add date_format date_sub dateadd datediff datefromparts datename datepart datetime2fromparts datetimeoffsetfromparts day dayname dayofmonth dayofweek dayofyear deallocate declare decode default deferrable deferred degrees delayed delete des_decrypt des_encrypt des_key_file desc describe descriptor diagnostics difference disconnect distinct distinctrow div do domain double drop dumpfile each else elt enclosed encode encrypt end end-exec engine engines eomonth errors escape escaped event eventdata events except exception exec execute exists exp explain export_set extended external extract fast fetch field fields find_in_set first first_value floor flush for force foreign format found found_rows from from_base64 from_days from_unixtime full function get get_format get_lock getdate getutcdate global go goto grant grants greatest group group_concat grouping grouping_id gtid_subset gtid_subtract handler having help hex high_priority hosts hour ident_current ident_incr ident_seed identified identity if ifnull ignore iif ilike immediate in index indicator inet6_aton inet6_ntoa inet_aton inet_ntoa infile initially inner innodb input insert install instr intersect into is is_free_lock is_ipv4 is_ipv4_compat is_ipv4_mapped is_not is_not_null is_used_lock isdate isnull isolation join key kill language last last_day last_insert_id last_value lcase lead leading least leaves left len lenght level like limit lines ln load load_file local localtime localtimestamp locate lock log log10 log2 logfile logs low_priority lower lpad ltrim make_set makedate maketime master master_pos_wait match matched max md5 medium merge microsecond mid min minute mod mode module month monthname mutex name_const names national natural nchar next no no_write_to_binlog not now nullif nvarchar oct octet_length of old_password on only open optimize option optionally or ord order outer outfile output pad parse partial partition password patindex percent_rank percentile_cont percentile_disc period_add period_diff pi plugin position pow power pragma precision prepare preserve primary prior privileges procedure procedure_analyze processlist profile profiles public publishingservername purge quarter query quick quote quotename radians rand read references regexp relative relaylog release release_lock rename repair repeat replace replicate reset restore restrict return returns reverse revoke right rlike rollback rollup round row row_count rows rpad rtrim savepoint schema scroll sec_to_time second section select serializable server session session_user set sha sha1 sha2 share show sign sin size slave sleep smalldatetimefromparts snapshot some soname soundex sounds_like space sql sql_big_result sql_buffer_result sql_cache sql_calc_found_rows sql_no_cache sql_small_result sql_variant_property sqlstate sqrt square start starting status std stddev stddev_pop stddev_samp stdev stdevp stop str str_to_date straight_join strcmp string stuff subdate substr substring subtime subtring_index sum switchoffset sysdate sysdatetime sysdatetimeoffset system_user sysutcdatetime table tables tablespace tan temporary terminated tertiary_weights then time time_format time_to_sec timediff timefromparts timestamp timestampadd timestampdiff timezone_hour timezone_minute to to_base64 to_days to_seconds todatetimeoffset trailing transaction translation trigger trigger_nestlevel triggers trim truncate try_cast try_convert try_parse ucase uncompress uncompressed_length unhex unicode uninstall union unique unix_timestamp unknown unlock update upgrade upped upper usage use user user_resources using utc_date utc_time utc_timestamp uuid uuid_short validate_password_strength value values var var_pop var_samp variables variance varp version view warnings week weekday weekofyear weight_string when whenever where with work write xml xor year yearweek zon",literal:"true false null",built_in:"array bigint binary bit blob boolean char character date dec decimal float int integer interval number numeric real serial smallint varchar varying int8 serial8 text"},c:[{cN:"string",b:"'",e:"'",c:[e.BE,{b:"''"}]},{cN:"string",b:'"',e:'"',c:[e.BE,{b:'""'}]},{cN:"string",b:"`",e:"`",c:[e.BE]},e.CNM,e.CBCM,t]},e.CBCM,t]}});hljs.registerLanguage("xml",function(){var t="[A-Za-z0-9\\._:-]+",e={b:/<\?(php)?(?!\w)/,e:/\?>/,sL:"php",subLanguageMode:"continuous"},c={eW:!0,i:/</,r:0,c:[e,{cN:"attribute",b:t,r:0},{b:"=",r:0,c:[{cN:"value",c:[e],v:[{b:/"/,e:/"/},{b:/'/,e:/'/},{b:/[^\s\/>]+/}]}]}]};return{aliases:["html","xhtml","rss","atom","xsl","plist"],cI:!0,c:[{cN:"doctype",b:"<!DOCTYPE",e:">",r:10,c:[{b:"\\[",e:"\\]"}]},{cN:"comment",b:"<!--",e:"-->",r:10},{cN:"cdata",b:"<\\!\\[CDATA\\[",e:"\\]\\]>",r:10},{cN:"tag",b:"<style(?=\\s|>|$)",e:">",k:{title:"style"},c:[c],starts:{e:"</style>",rE:!0,sL:"css"}},{cN:"tag",b:"<script(?=\\s|>|$)",e:">",k:{title:"script"},c:[c],starts:{e:"</script>",rE:!0,sL:"javascript"}},e,{cN:"pi",b:/<\?\w+/,e:/\?>/,r:10},{cN:"tag",b:"</?",e:"/?>",c:[{cN:"title",b:/[^ \/><\n\t]+/,r:0},c]}]}});hljs.registerLanguage("php",function(e){var c={cN:"variable",b:"\\$+[a-zA-Z_-ÿ][a-zA-Z0-9_-ÿ]*"},i={cN:"preprocessor",b:/<\?(php)?|\?>/},a={cN:"string",c:[e.BE,i],v:[{b:'b"',e:'"'},{b:"b'",e:"'"},e.inherit(e.ASM,{i:null}),e.inherit(e.QSM,{i:null})]},n={v:[e.BNM,e.CNM]};return{aliases:["php3","php4","php5","php6"],cI:!0,k:"and include_once list abstract global private echo interface as static endswitch array null if endwhile or const for endforeach self var while isset public protected exit foreach throw elseif include __FILE__ empty require_once do xor return parent clone use __CLASS__ __LINE__ else break print eval new catch __METHOD__ case exception default die require __FUNCTION__ enddeclare final try switch continue endfor endif declare unset true false trait goto instanceof insteadof __DIR__ __NAMESPACE__ yield finally",c:[e.CLCM,e.HCM,{cN:"comment",b:"/\\*",e:"\\*/",c:[{cN:"phpdoc",b:"\\s@[A-Za-z]+"},i]},{cN:"comment",b:"__halt_compiler.+?;",eW:!0,k:"__halt_compiler",l:e.UIR},{cN:"string",b:"<<<['\"]?\\w+['\"]?$",e:"^\\w+;",c:[e.BE]},i,c,{b:/->+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/},{cN:"function",bK:"function",e:/[;{]/,eE:!0,i:"\\$|\\[|%",c:[e.UTM,{cN:"params",b:"\\(",e:"\\)",c:["self",c,e.CBCM,a,n]}]},{cN:"class",bK:"class interface",e:"{",eE:!0,i:/[:\(\$"]/,c:[{bK:"extends implements"},e.UTM]},{bK:"namespace",e:";",i:/[\.']/,c:[e.UTM]},{bK:"use",e:";",c:[e.UTM]},{b:"=>"},a,n]}});
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.cssanim.coffee ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/lib/jquery.cssanim.coffee ---- */
 
 
 (function() {
@@ -90,7 +90,7 @@
 }).call(this);
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.cssanim.js ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/lib/jquery.cssanim.js ---- */
 
 
 jQuery.cssHooks['scale'] = {
@@ -122,7 +122,7 @@ jQuery.fx.step.scale = function(fx) {
 };
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.csslater.coffee ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/lib/jquery.csslater.coffee ---- */
 
 
 (function() {
@@ -136,11 +136,8 @@ jQuery.fx.step.scale = function(fx) {
     return this;
   };
 
-  jQuery.fn.removeLater = function(time) {
+  jQuery.fn.removeLater = function(time = 500) {
     var elem;
-    if (time == null) {
-      time = 500;
-    }
     elem = this;
     setTimeout((function() {
       return elem.remove();
@@ -148,11 +145,8 @@ jQuery.fx.step.scale = function(fx) {
     return this;
   };
 
-  jQuery.fn.hideLater = function(time) {
+  jQuery.fn.hideLater = function(time = 500) {
     var elem;
-    if (time == null) {
-      time = 500;
-    }
     elem = this;
     setTimeout((function() {
       return elem.css("display", "none");
@@ -160,11 +154,8 @@ jQuery.fx.step.scale = function(fx) {
     return this;
   };
 
-  jQuery.fn.addClassLater = function(class_name, time) {
+  jQuery.fn.addClassLater = function(class_name, time = 5) {
     var elem;
-    if (time == null) {
-      time = 5;
-    }
     elem = this;
     setTimeout((function() {
       return elem.addClass(class_name);
@@ -172,11 +163,8 @@ jQuery.fx.step.scale = function(fx) {
     return this;
   };
 
-  jQuery.fn.removeClassLater = function(class_name, time) {
+  jQuery.fn.removeClassLater = function(class_name, time = 500) {
     var elem;
-    if (time == null) {
-      time = 500;
-    }
     elem = this;
     setTimeout((function() {
       return elem.removeClass(class_name);
@@ -184,11 +172,8 @@ jQuery.fx.step.scale = function(fx) {
     return this;
   };
 
-  jQuery.fn.cssLater = function(name, val, time) {
+  jQuery.fn.cssLater = function(name, val, time = 500) {
     var elem;
-    if (time == null) {
-      time = 500;
-    }
     elem = this;
     setTimeout((function() {
       return elem.css(name, val);
@@ -196,11 +181,8 @@ jQuery.fx.step.scale = function(fx) {
     return this;
   };
 
-  jQuery.fn.toggleClassLater = function(name, val, time) {
+  jQuery.fn.toggleClassLater = function(name, val, time = 10) {
     var elem;
-    if (time == null) {
-      time = 10;
-    }
     elem = this;
     setTimeout((function() {
       return elem.toggleClass(name, val);
@@ -211,7 +193,7 @@ jQuery.fx.step.scale = function(fx) {
 }).call(this);
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.easing.1.3.js ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/lib/jquery.easing.1.3.js ---- */
 
 
 /*
@@ -421,7 +403,7 @@ jQuery.extend( jQuery.easing,
  */
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/marked.min.js ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/lib/marked.min.js ---- */
 
 
 /**
@@ -432,179 +414,163 @@ jQuery.extend( jQuery.easing,
 (function(){var block={newline:/^\n+/,code:/^( {4}[^\n]+\n*)+/,fences:noop,hr:/^( *[-*_]){3,} *(?:\n+|$)/,heading:/^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)/,nptable:noop,lheading:/^([^\n]+)\n *(=|-){2,} *(?:\n+|$)/,blockquote:/^( *>[^\n]+(\n(?!def)[^\n]+)*\n*)+/,list:/^( *)(bull) [\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull )\n*|\s*$)/,html:/^ *(?:comment|closed|closing) *(?:\n{2,}|\s*$)/,def:/^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$)/,table:noop,paragraph:/^((?:[^\n]+\n?(?!hr|heading|lheading|blockquote|tag|def))+)\n*/,text:/^[^\n]+/};block.bullet=/(?:[*+-]|\d+\.)/;block.item=/^( *)(bull) [^\n]*(?:\n(?!\1bull )[^\n]*)*/;block.item=replace(block.item,"gm")(/bull/g,block.bullet)();block.list=replace(block.list)(/bull/g,block.bullet)("hr","\\n+(?=\\1?(?:[-*_] *){3,}(?:\\n+|$))")("def","\\n+(?="+block.def.source+")")();block.blockquote=replace(block.blockquote)("def",block.def)();block._tag="(?!(?:"+"a|em|strong|small|s|cite|q|dfn|abbr|data|time|code"+"|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo"+"|span|br|wbr|ins|del|img)\\b)\\w+(?!:/|[^\\w\\s@]*@)\\b";block.html=replace(block.html)("comment",/<!--[\s\S]*?-->/)("closed",/<(tag)[\s\S]+?<\/\1>/)("closing",/<tag(?:"[^"]*"|'[^']*'|[^'">])*?>/)(/tag/g,block._tag)();block.paragraph=replace(block.paragraph)("hr",block.hr)("heading",block.heading)("lheading",block.lheading)("blockquote",block.blockquote)("tag","<"+block._tag)("def",block.def)();block.normal=merge({},block);block.gfm=merge({},block.normal,{fences:/^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/,paragraph:/^/});block.gfm.paragraph=replace(block.paragraph)("(?!","(?!"+block.gfm.fences.source.replace("\\1","\\2")+"|"+block.list.source.replace("\\1","\\3")+"|")();block.tables=merge({},block.gfm,{nptable:/^ *(\S.*\|.*)\n *([-:]+ *\|[-| :]*)\n((?:.*\|.*(?:\n|$))*)\n*/,table:/^ *\|(.+)\n *\|( *[-:]+[-| :]*)\n((?: *\|.*(?:\n|$))*)\n*/});function Lexer(options){this.tokens=[];this.tokens.links={};this.options=options||marked.defaults;this.rules=block.normal;if(this.options.gfm){if(this.options.tables){this.rules=block.tables}else{this.rules=block.gfm}}}Lexer.rules=block;Lexer.lex=function(src,options){var lexer=new Lexer(options);return lexer.lex(src)};Lexer.prototype.lex=function(src){src=src.replace(/\r\n|\r/g,"\n").replace(/\t/g,"    ").replace(/\u00a0/g," ").replace(/\u2424/g,"\n");return this.token(src,true)};Lexer.prototype.token=function(src,top,bq){var src=src.replace(/^ +$/gm,""),next,loose,cap,bull,b,item,space,i,l;while(src){if(cap=this.rules.newline.exec(src)){src=src.substring(cap[0].length);if(cap[0].length>1){this.tokens.push({type:"space"})}}if(cap=this.rules.code.exec(src)){src=src.substring(cap[0].length);cap=cap[0].replace(/^ {4}/gm,"");this.tokens.push({type:"code",text:!this.options.pedantic?cap.replace(/\n+$/,""):cap});continue}if(cap=this.rules.fences.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"code",lang:cap[2],text:cap[3]});continue}if(cap=this.rules.heading.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"heading",depth:cap[1].length,text:cap[2]});continue}if(top&&(cap=this.rules.nptable.exec(src))){src=src.substring(cap[0].length);item={type:"table",header:cap[1].replace(/^ *| *\| *$/g,"").split(/ *\| */),align:cap[2].replace(/^ *|\| *$/g,"").split(/ *\| */),cells:cap[3].replace(/\n$/,"").split("\n")};for(i=0;i<item.align.length;i++){if(/^ *-+: *$/.test(item.align[i])){item.align[i]="right"}else if(/^ *:-+: *$/.test(item.align[i])){item.align[i]="center"}else if(/^ *:-+ *$/.test(item.align[i])){item.align[i]="left"}else{item.align[i]=null}}for(i=0;i<item.cells.length;i++){item.cells[i]=item.cells[i].split(/ *\| */)}this.tokens.push(item);continue}if(cap=this.rules.lheading.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"heading",depth:cap[2]==="="?1:2,text:cap[1]});continue}if(cap=this.rules.hr.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"hr"});continue}if(cap=this.rules.blockquote.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"blockquote_start"});cap=cap[0].replace(/^ *> ?/gm,"");this.token(cap,top,true);this.tokens.push({type:"blockquote_end"});continue}if(cap=this.rules.list.exec(src)){src=src.substring(cap[0].length);bull=cap[2];this.tokens.push({type:"list_start",ordered:bull.length>1});cap=cap[0].match(this.rules.item);next=false;l=cap.length;i=0;for(;i<l;i++){item=cap[i];space=item.length;item=item.replace(/^ *([*+-]|\d+\.) +/,"");if(~item.indexOf("\n ")){space-=item.length;item=!this.options.pedantic?item.replace(new RegExp("^ {1,"+space+"}","gm"),""):item.replace(/^ {1,4}/gm,"")}if(this.options.smartLists&&i!==l-1){b=block.bullet.exec(cap[i+1])[0];if(bull!==b&&!(bull.length>1&&b.length>1)){src=cap.slice(i+1).join("\n")+src;i=l-1}}loose=next||/\n\n(?!\s*$)/.test(item);if(i!==l-1){next=item.charAt(item.length-1)==="\n";if(!loose)loose=next}this.tokens.push({type:loose?"loose_item_start":"list_item_start"});this.token(item,false,bq);this.tokens.push({type:"list_item_end"})}this.tokens.push({type:"list_end"});continue}if(cap=this.rules.html.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:this.options.sanitize?"paragraph":"html",pre:cap[1]==="pre"||cap[1]==="script"||cap[1]==="style",text:cap[0]});continue}if(!bq&&top&&(cap=this.rules.def.exec(src))){src=src.substring(cap[0].length);this.tokens.links[cap[1].toLowerCase()]={href:cap[2],title:cap[3]};continue}if(top&&(cap=this.rules.table.exec(src))){src=src.substring(cap[0].length);item={type:"table",header:cap[1].replace(/^ *| *\| *$/g,"").split(/ *\| */),align:cap[2].replace(/^ *|\| *$/g,"").split(/ *\| */),cells:cap[3].replace(/(?: *\| *)?\n$/,"").split("\n")};for(i=0;i<item.align.length;i++){if(/^ *-+: *$/.test(item.align[i])){item.align[i]="right"}else if(/^ *:-+: *$/.test(item.align[i])){item.align[i]="center"}else if(/^ *:-+ *$/.test(item.align[i])){item.align[i]="left"}else{item.align[i]=null}}for(i=0;i<item.cells.length;i++){item.cells[i]=item.cells[i].replace(/^ *\| *| *\| *$/g,"").split(/ *\| */)}this.tokens.push(item);continue}if(top&&(cap=this.rules.paragraph.exec(src))){src=src.substring(cap[0].length);this.tokens.push({type:"paragraph",text:cap[1].charAt(cap[1].length-1)==="\n"?cap[1].slice(0,-1):cap[1]});continue}if(cap=this.rules.text.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"text",text:cap[0]});continue}if(src){throw new Error("Infinite loop on byte: "+src.charCodeAt(0))}}return this.tokens};var inline={escape:/^\\([\\`*{}\[\]()#+\-.!_>])/,autolink:/^<([^ >]+(@|:\/)[^ >]+)>/,url:noop,tag:/^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,link:/^!?\[(inside)\]\(href\)/,reflink:/^!?\[(inside)\]\s*\[([^\]]*)\]/,nolink:/^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/,strong:/^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/,em:/^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,code:/^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,br:/^ {2,}\n(?!\s*$)/,del:noop,text:/^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/};inline._inside=/(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/;inline._href=/\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/;inline.link=replace(inline.link)("inside",inline._inside)("href",inline._href)();inline.reflink=replace(inline.reflink)("inside",inline._inside)();inline.normal=merge({},inline);inline.pedantic=merge({},inline.normal,{strong:/^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,em:/^_(?=\S)([\s\S]*?\S)_(?!_)|^\*(?=\S)([\s\S]*?\S)\*(?!\*)/});inline.gfm=merge({},inline.normal,{escape:replace(inline.escape)("])","~|])")(),url:/^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/,del:/^~~(?=\S)([\s\S]*?\S)~~/,text:replace(inline.text)("]|","~]|")("|","|https?://|")()});inline.breaks=merge({},inline.gfm,{br:replace(inline.br)("{2,}","*")(),text:replace(inline.gfm.text)("{2,}","*")()});function InlineLexer(links,options){this.options=options||marked.defaults;this.links=links;this.rules=inline.normal;this.renderer=this.options.renderer||new Renderer;this.renderer.options=this.options;if(!this.links){throw new Error("Tokens array requires a `links` property.")}if(this.options.gfm){if(this.options.breaks){this.rules=inline.breaks}else{this.rules=inline.gfm}}else if(this.options.pedantic){this.rules=inline.pedantic}}InlineLexer.rules=inline;InlineLexer.output=function(src,links,options){var inline=new InlineLexer(links,options);return inline.output(src)};InlineLexer.prototype.output=function(src){var out="",link,text,href,cap;while(src){if(cap=this.rules.escape.exec(src)){src=src.substring(cap[0].length);out+=cap[1];continue}if(cap=this.rules.autolink.exec(src)){src=src.substring(cap[0].length);if(cap[2]==="@"){text=cap[1].charAt(6)===":"?this.mangle(cap[1].substring(7)):this.mangle(cap[1]);href=this.mangle("mailto:")+text}else{text=escape(cap[1]);href=text}out+=this.renderer.link(href,null,text);continue}if(!this.inLink&&(cap=this.rules.url.exec(src))){src=src.substring(cap[0].length);text=escape(cap[1]);href=text;out+=this.renderer.link(href,null,text);continue}if(cap=this.rules.tag.exec(src)){if(!this.inLink&&/^<a /i.test(cap[0])){this.inLink=true}else if(this.inLink&&/^<\/a>/i.test(cap[0])){this.inLink=false}src=src.substring(cap[0].length);out+=this.options.sanitize?escape(cap[0]):cap[0];continue}if(cap=this.rules.link.exec(src)){src=src.substring(cap[0].length);this.inLink=true;out+=this.outputLink(cap,{href:cap[2],title:cap[3]});this.inLink=false;continue}if((cap=this.rules.reflink.exec(src))||(cap=this.rules.nolink.exec(src))){src=src.substring(cap[0].length);link=(cap[2]||cap[1]).replace(/\s+/g," ");link=this.links[link.toLowerCase()];if(!link||!link.href){out+=cap[0].charAt(0);src=cap[0].substring(1)+src;continue}this.inLink=true;out+=this.outputLink(cap,link);this.inLink=false;continue}if(cap=this.rules.strong.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.strong(this.output(cap[2]||cap[1]));continue}if(cap=this.rules.em.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.em(this.output(cap[2]||cap[1]));continue}if(cap=this.rules.code.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.codespan(escape(cap[2],true));continue}if(cap=this.rules.br.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.br();continue}if(cap=this.rules.del.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.del(this.output(cap[1]));continue}if(cap=this.rules.text.exec(src)){src=src.substring(cap[0].length);out+=escape(this.smartypants(cap[0]));continue}if(src){throw new Error("Infinite loop on byte: "+src.charCodeAt(0))}}return out};InlineLexer.prototype.outputLink=function(cap,link){var href=escape(link.href),title=link.title?escape(link.title):null;return cap[0].charAt(0)!=="!"?this.renderer.link(href,title,this.output(cap[1])):this.renderer.image(href,title,escape(cap[1]))};InlineLexer.prototype.smartypants=function(text){if(!this.options.smartypants)return text;return text.replace(/--/g,"—").replace(/(^|[-\u2014/(\[{"\s])'/g,"$1‘").replace(/'/g,"’").replace(/(^|[-\u2014/(\[{\u2018\s])"/g,"$1“").replace(/"/g,"”").replace(/\.{3}/g,"…")};InlineLexer.prototype.mangle=function(text){var out="",l=text.length,i=0,ch;for(;i<l;i++){ch=text.charCodeAt(i);if(Math.random()>.5){ch="x"+ch.toString(16)}out+="&#"+ch+";"}return out};function Renderer(options){this.options=options||{}}Renderer.prototype.code=function(code,lang,escaped){if(this.options.highlight){var out=this.options.highlight(code,lang);if(out!=null&&out!==code){escaped=true;code=out}}if(!lang){return"<pre><code>"+(escaped?code:escape(code,true))+"\n</code></pre>"}return'<pre><code class="'+this.options.langPrefix+escape(lang,true)+'">'+(escaped?code:escape(code,true))+"\n</code></pre>\n"};Renderer.prototype.blockquote=function(quote){return"<blockquote>\n"+quote+"</blockquote>\n"};Renderer.prototype.html=function(html){return html};Renderer.prototype.heading=function(text,level,raw){return"<h"+level+' id="'+this.options.headerPrefix+raw.toLowerCase().replace(/[^\w]+/g,"-")+'">'+text+"</h"+level+">\n"};Renderer.prototype.hr=function(){return this.options.xhtml?"<hr/>\n":"<hr>\n"};Renderer.prototype.list=function(body,ordered){var type=ordered?"ol":"ul";return"<"+type+">\n"+body+"</"+type+">\n"};Renderer.prototype.listitem=function(text){return"<li>"+text+"</li>\n"};Renderer.prototype.paragraph=function(text){return"<p>"+text+"</p>\n"};Renderer.prototype.table=function(header,body){return"<table>\n"+"<thead>\n"+header+"</thead>\n"+"<tbody>\n"+body+"</tbody>\n"+"</table>\n"};Renderer.prototype.tablerow=function(content){return"<tr>\n"+content+"</tr>\n"};Renderer.prototype.tablecell=function(content,flags){var type=flags.header?"th":"td";var tag=flags.align?"<"+type+' style="text-align:'+flags.align+'">':"<"+type+">";return tag+content+"</"+type+">\n"};Renderer.prototype.strong=function(text){return"<strong>"+text+"</strong>"};Renderer.prototype.em=function(text){return"<em>"+text+"</em>"};Renderer.prototype.codespan=function(text){return"<code>"+text+"</code>"};Renderer.prototype.br=function(){return this.options.xhtml?"<br/>":"<br>"};Renderer.prototype.del=function(text){return"<del>"+text+"</del>"};Renderer.prototype.link=function(href,title,text){if(this.options.sanitize){try{var prot=decodeURIComponent(unescape(href)).replace(/[^\w:]/g,"").toLowerCase()}catch(e){return""}if(prot.indexOf("javascript:")===0){return""}}var out='<a href="'+href+'"';if(title){out+=' title="'+title+'"'}out+=">"+text+"</a>";return out};Renderer.prototype.image=function(href,title,text){var out='<img src="'+href+'" alt="'+text+'"';if(title){out+=' title="'+title+'"'}out+=this.options.xhtml?"/>":">";return out};function Parser(options){this.tokens=[];this.token=null;this.options=options||marked.defaults;this.options.renderer=this.options.renderer||new Renderer;this.renderer=this.options.renderer;this.renderer.options=this.options}Parser.parse=function(src,options,renderer){var parser=new Parser(options,renderer);return parser.parse(src)};Parser.prototype.parse=function(src){this.inline=new InlineLexer(src.links,this.options,this.renderer);this.tokens=src.reverse();var out="";while(this.next()){out+=this.tok()}return out};Parser.prototype.next=function(){return this.token=this.tokens.pop()};Parser.prototype.peek=function(){return this.tokens[this.tokens.length-1]||0};Parser.prototype.parseText=function(){var body=this.token.text;while(this.peek().type==="text"){body+="\n"+this.next().text}return this.inline.output(body)};Parser.prototype.tok=function(){switch(this.token.type){case"space":{return""}case"hr":{return this.renderer.hr()}case"heading":{return this.renderer.heading(this.inline.output(this.token.text),this.token.depth,this.token.text)}case"code":{return this.renderer.code(this.token.text,this.token.lang,this.token.escaped)}case"table":{var header="",body="",i,row,cell,flags,j;cell="";for(i=0;i<this.token.header.length;i++){flags={header:true,align:this.token.align[i]};cell+=this.renderer.tablecell(this.inline.output(this.token.header[i]),{header:true,align:this.token.align[i]})}header+=this.renderer.tablerow(cell);for(i=0;i<this.token.cells.length;i++){row=this.token.cells[i];cell="";for(j=0;j<row.length;j++){cell+=this.renderer.tablecell(this.inline.output(row[j]),{header:false,align:this.token.align[j]})}body+=this.renderer.tablerow(cell)}return this.renderer.table(header,body)}case"blockquote_start":{var body="";while(this.next().type!=="blockquote_end"){body+=this.tok()}return this.renderer.blockquote(body)}case"list_start":{var body="",ordered=this.token.ordered;while(this.next().type!=="list_end"){body+=this.tok()}return this.renderer.list(body,ordered)}case"list_item_start":{var body="";while(this.next().type!=="list_item_end"){body+=this.token.type==="text"?this.parseText():this.tok()}return this.renderer.listitem(body)}case"loose_item_start":{var body="";while(this.next().type!=="list_item_end"){body+=this.tok()}return this.renderer.listitem(body)}case"html":{var html=!this.token.pre&&!this.options.pedantic?this.inline.output(this.token.text):this.token.text;return this.renderer.html(html)}case"paragraph":{return this.renderer.paragraph(this.inline.output(this.token.text))}case"text":{return this.renderer.paragraph(this.parseText())}}};function escape(html,encode){return html.replace(!encode?/&(?!#?\w+;)/g:/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}function unescape(html){return html.replace(/&([#\w]+);/g,function(_,n){n=n.toLowerCase();if(n==="colon")return":";if(n.charAt(0)==="#"){return n.charAt(1)==="x"?String.fromCharCode(parseInt(n.substring(2),16)):String.fromCharCode(+n.substring(1))}return""})}function replace(regex,opt){regex=regex.source;opt=opt||"";return function self(name,val){if(!name)return new RegExp(regex,opt);val=val.source||val;val=val.replace(/(^|[^\[])\^/g,"$1");regex=regex.replace(name,val);return self}}function noop(){}noop.exec=noop;function merge(obj){var i=1,target,key;for(;i<arguments.length;i++){target=arguments[i];for(key in target){if(Object.prototype.hasOwnProperty.call(target,key)){obj[key]=target[key]}}}return obj}function marked(src,opt,callback){if(callback||typeof opt==="function"){if(!callback){callback=opt;opt=null}opt=merge({},marked.defaults,opt||{});var highlight=opt.highlight,tokens,pending,i=0;try{tokens=Lexer.lex(src,opt)}catch(e){return callback(e)}pending=tokens.length;var done=function(err){if(err){opt.highlight=highlight;return callback(err)}var out;try{out=Parser.parse(tokens,opt)}catch(e){err=e}opt.highlight=highlight;return err?callback(err):callback(null,out)};if(!highlight||highlight.length<3){return done()}delete opt.highlight;if(!pending)return done();for(;i<tokens.length;i++){(function(token){if(token.type!=="code"){return--pending||done()}return highlight(token.text,token.lang,function(err,code){if(err)return done(err);if(code==null||code===token.text){return--pending||done()}token.text=code;token.escaped=true;--pending||done()})})(tokens[i])}return}try{if(opt)opt=merge({},marked.defaults,opt);return Parser.parse(Lexer.lex(src,opt),opt)}catch(e){e.message+="\nPlease report this to https://github.com/chjj/marked.";if((opt||marked.defaults).silent){return"<p>An error occured:</p><pre>"+escape(e.message+"",true)+"</pre>"}throw e}}marked.options=marked.setOptions=function(opt){merge(marked.defaults,opt);return marked};marked.defaults={gfm:true,tables:true,breaks:false,pedantic:false,sanitize:false,smartLists:false,silent:false,highlight:null,langPrefix:"lang-",smartypants:false,headerPrefix:"",renderer:new Renderer,xhtml:false};marked.Parser=Parser;marked.parser=Parser.parse;marked.Renderer=Renderer;marked.Lexer=Lexer;marked.lexer=Lexer.lex;marked.InlineLexer=InlineLexer;marked.inlineLexer=InlineLexer.output;marked.parse=marked;if(typeof module!=="undefined"&&typeof exports==="object"){module.exports=marked}else if(typeof define==="function"&&define.amd){define(function(){return marked})}else{this.marked=marked}}).call(function(){return this||(typeof window!=="undefined"?window:global)}());
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Class.coffee ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/utils/Class.coffee ---- */
 
 
 (function() {
-  var Class,
-    __slice = [].slice;
+  var Class;
 
   Class = (function() {
-    function Class() {}
+    class Class {
+      log(...args) {
+        if (!this.trace) {
+          return;
+        }
+        if (typeof console === 'undefined') {
+          return;
+        }
+        args.unshift(`[${this.constructor.name}]`);
+        console.log(...args);
+        return this;
+      }
+
+      logStart(name, ...args) {
+        if (!this.trace) {
+          return;
+        }
+        this.logtimers || (this.logtimers = {});
+        this.logtimers[name] = +(new Date);
+        if (args.length > 0) {
+          this.log(`${name}`, ...args, "(started)");
+        }
+        return this;
+      }
+
+      logEnd(name, ...args) {
+        var ms;
+        ms = +(new Date) - this.logtimers[name];
+        this.log(`${name}`, ...args, `(Done in ${ms}ms)`);
+        return this;
+      }
+
+    };
 
     Class.prototype.trace = true;
 
-    Class.prototype.log = function() {
-      var args;
-      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-      if (!this.trace) {
-        return;
-      }
-      if (typeof console === 'undefined') {
-        return;
-      }
-      args.unshift("[" + this.constructor.name + "]");
-      console.log.apply(console, args);
-      return this;
-    };
-
-    Class.prototype.logStart = function() {
-      var args, name;
-      name = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-      if (!this.trace) {
-        return;
-      }
-      this.logtimers || (this.logtimers = {});
-      this.logtimers[name] = +(new Date);
-      if (args.length > 0) {
-        this.log.apply(this, ["" + name].concat(__slice.call(args), ["(started)"]));
-      }
-      return this;
-    };
-
-    Class.prototype.logEnd = function() {
-      var args, ms, name;
-      name = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-      ms = +(new Date) - this.logtimers[name];
-      this.log.apply(this, ["" + name].concat(__slice.call(args), ["(Done in " + ms + "ms)"]));
-      return this;
-    };
-
     return Class;
 
-  })();
+  }).call(this);
 
   window.Class = Class;
 
 }).call(this);
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Follow.coffee ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/utils/Follow.coffee ---- */
 
 
 (function() {
   var Follow,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __hasProp = {}.hasOwnProperty,
-    __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+    boundMethodCheck = function(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new Error('Bound instance method accessed before binding'); } },
+    indexOf = [].indexOf;
 
-  Follow = (function(_super) {
-    __extends(Follow, _super);
-
-    function Follow(_at_elem) {
-      this.elem = _at_elem;
-      this.handleMenuClick = __bind(this.handleMenuClick, this);
-      this.init = __bind(this.init, this);
+  Follow = class Follow extends Class {
+    constructor(elem) {
+      super();
+      this.init = this.init.bind(this);
+      this.handleMenuClick = this.handleMenuClick.bind(this);
+      this.elem = elem;
       this.menu = new Menu(this.elem);
       this.feeds = {};
       this.follows = {};
       this.elem.off("click");
-      this.elem.on("click", (function(_this) {
-        return function() {
-          if (Page.server_info.rev > 850) {
-            if (_this.elem.hasClass("following")) {
-              _this.showFeeds();
-            } else {
-              _this.followDefaultFeeds();
-            }
+      this.elem.on("click", () => {
+        if (Page.server_info.rev > 850) {
+          if (this.elem.hasClass("following")) {
+            this.showFeeds();
           } else {
-            Page.cmd("wrapperNotification", ["info", "Please update your ZeroNet client to use this feature"]);
+            this.followDefaultFeeds();
           }
-          return false;
-        };
-      })(this));
+        } else {
+          Page.cmd("wrapperNotification", ["info", "Please update your ZeroNet client to use this feature"]);
+        }
+        return false;
+      });
       this.elem.css("display", "inline-block");
       this.width_following = this.elem.find(".text-following").width();
       this.width_follow = this.elem.find(".text-follow").width();
       this.elem.css("display", "none");
     }
 
-    Follow.prototype.init = function() {
+    init() {
+      boundMethodCheck(this, Follow);
       if (!this.feeds) {
         return;
       }
-      Page.cmd("feedListFollow", [], (function(_this) {
-        return function(_at_follows) {
-          var is_default_feed, menu_item, param, queries, query, title, _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
-          _this.follows = _at_follows;
-          queries = {};
-          _ref = _this.feeds;
-          for (title in _ref) {
-            _ref1 = _ref[title], query = _ref1[0], menu_item = _ref1[1], is_default_feed = _ref1[2], param = _ref1[3];
-            queries[query] = title;
+      Page.cmd("feedListFollow", [], (follows) => {
+        var is_default_feed, menu_item, param, queries, query, ref, ref1, ref2, title;
+        this.follows = follows;
+        // Recover renamed queries (eg language change)
+        queries = {};
+        ref = this.feeds;
+        for (title in ref) {
+          [query, menu_item, is_default_feed, param] = ref[title];
+          queries[query] = title;
+        }
+        ref1 = this.follows;
+        for (title in ref1) {
+          [query, param] = ref1[title];
+          this.log(title, "->", queries[query]);
+          if (queries[query] && title !== queries[query]) {
+            this.log("Renamed query", title, "->", queries[query]);
+            this.follows[queries[query]] = this.follows[title];
+            delete this.follows[title];
           }
-          _ref2 = _this.follows;
-          for (title in _ref2) {
-            _ref3 = _ref2[title], query = _ref3[0], param = _ref3[1];
-            _this.log(title, "->", queries[query]);
-            if (queries[query] && title !== queries[query]) {
-              _this.log("Renamed query", title, "->", queries[query]);
-              _this.follows[queries[query]] = _this.follows[title];
-              delete _this.follows[title];
-            }
+        }
+        ref2 = this.feeds;
+        // Check selected queries
+        for (title in ref2) {
+          [query, menu_item, is_default_feed, param] = ref2[title];
+          if (this.follows[title] && indexOf.call(this.follows[title][1], param) >= 0) {
+            menu_item.addClass("selected");
+          } else {
+            menu_item.removeClass("selected");
           }
-          _ref4 = _this.feeds;
-          for (title in _ref4) {
-            _ref5 = _ref4[title], query = _ref5[0], menu_item = _ref5[1], is_default_feed = _ref5[2], param = _ref5[3];
-            if (_this.follows[title] && __indexOf.call(_this.follows[title][1], param) >= 0) {
-              menu_item.addClass("selected");
-            } else {
-              menu_item.removeClass("selected");
-            }
-          }
-          _this.updateListitems();
-          return _this.elem.css("display", "inline-block");
-        };
-      })(this));
-      return setTimeout(((function(_this) {
-        return function() {
-          if (typeof Page.site_info.feed_follow_num !== "undefined" && Page.site_info.feed_follow_num === null) {
-            _this.log("Following default feeds");
-            return _this.followDefaultFeeds();
-          }
-        };
-      })(this)), 100);
-    };
+        }
+        this.updateListitems();
+        return this.elem.css("display", "inline-block");
+      });
+      return setTimeout((() => {
+        if (typeof Page.site_info.feed_follow_num !== "undefined" && Page.site_info.feed_follow_num === null) { // Has not manipulated followings yet
+          this.log("Following default feeds");
+          return this.followDefaultFeeds();
+        }
+      }), 100);
+    }
 
-    Follow.prototype.addFeed = function(title, query, is_default_feed, param) {
+    addFeed(title, query, is_default_feed = false, param = "") {
       var menu_item;
-      if (is_default_feed == null) {
-        is_default_feed = false;
-      }
-      if (param == null) {
-        param = "";
-      }
       menu_item = this.menu.addItem(title, this.handleMenuClick);
       return this.feeds[title] = [query, menu_item, is_default_feed, param];
-    };
+    }
 
-    Follow.prototype.handleMenuClick = function(item) {
+    handleMenuClick(item) {
+      boundMethodCheck(this, Follow);
       item.toggleClass("selected");
       this.updateListitems();
       this.saveFeeds();
       return true;
-    };
+    }
 
-    Follow.prototype.showFeeds = function() {
+    showFeeds() {
       return this.menu.show();
-    };
+    }
 
-    Follow.prototype.followDefaultFeeds = function() {
-      var is_default_feed, menu_item, param, query, title, _ref, _ref1;
-      _ref = this.feeds;
-      for (title in _ref) {
-        _ref1 = _ref[title], query = _ref1[0], menu_item = _ref1[1], is_default_feed = _ref1[2], param = _ref1[3];
+    followDefaultFeeds() {
+      var is_default_feed, menu_item, param, query, ref, title;
+      ref = this.feeds;
+      for (title in ref) {
+        [query, menu_item, is_default_feed, param] = ref[title];
         if (is_default_feed) {
           menu_item.addClass("selected");
           this.log("Following", title);
@@ -612,9 +578,9 @@ jQuery.extend( jQuery.easing,
       }
       this.updateListitems();
       return this.saveFeeds();
-    };
+    }
 
-    Follow.prototype.updateListitems = function() {
+    updateListitems() {
       if (this.menu.elem.find(".selected").length > 0) {
         this.elem.addClass("following");
         this.elem.find(".text-follow").width(0);
@@ -624,123 +590,119 @@ jQuery.extend( jQuery.easing,
         this.elem.find(".text-following").width(0);
         return this.elem.find(".text-follow").width(this.width_follow + 5);
       }
-    };
+    }
 
-    Follow.prototype.saveFeeds = function() {
-      var is_default_feed, item, menu_item, param, params, query, title, _ref, _ref1;
-      _ref = this.feeds;
-      for (title in _ref) {
-        _ref1 = _ref[title], query = _ref1[0], menu_item = _ref1[1], is_default_feed = _ref1[2], param = _ref1[3];
+    saveFeeds() {
+      var is_default_feed, item, menu_item, param, params, query, ref, title;
+      ref = this.feeds;
+      for (title in ref) {
+        [query, menu_item, is_default_feed, param] = ref[title];
         if (this.follows[title]) {
           params = (function() {
-            var _i, _len, _ref2, _results;
-            _ref2 = this.follows[title][1];
-            _results = [];
-            for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
-              item = _ref2[_i];
+            var i, len, ref1, results;
+            ref1 = this.follows[title][1];
+            // Remove current param from follow list
+            results = [];
+            for (i = 0, len = ref1.length; i < len; i++) {
+              item = ref1[i];
               if (item !== param) {
-                _results.push(item);
+                results.push(item);
               }
             }
-            return _results;
+            return results;
           }).call(this);
         } else {
           params = [];
         }
-        if (menu_item.hasClass("selected")) {
+        if (menu_item.hasClass("selected")) { // Add if selected
           params.push(param);
         }
-        if (params.length === 0) {
+        if (params.length === 0) { // Empty params
           delete this.follows[title];
         } else {
           this.follows[title] = [query, params];
         }
       }
       return Page.cmd("feedFollow", [this.follows]);
-    };
+    }
 
-    return Follow;
-
-  })(Class);
+  };
 
   window.Follow = Follow;
 
 }).call(this);
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/InlineEditor.coffee ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/utils/InlineEditor.coffee ---- */
 
 
 (function() {
-  var InlineEditor,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  var InlineEditor;
 
-  InlineEditor = (function() {
-    function InlineEditor(_at_elem, _at_getContent, _at_saveContent, _at_getObject) {
-      this.elem = _at_elem;
-      this.getContent = _at_getContent;
-      this.saveContent = _at_saveContent;
-      this.getObject = _at_getObject;
-      this.cancelEdit = __bind(this.cancelEdit, this);
-      this.deleteObject = __bind(this.deleteObject, this);
-      this.saveEdit = __bind(this.saveEdit, this);
-      this.stopEdit = __bind(this.stopEdit, this);
-      this.startEdit = __bind(this.startEdit, this);
+  InlineEditor = class InlineEditor {
+    constructor(elem1, getContent, saveContent, getObject) {
+      this.startEdit = this.startEdit.bind(this);
+      this.stopEdit = this.stopEdit.bind(this);
+      this.saveEdit = this.saveEdit.bind(this);
+      this.deleteObject = this.deleteObject.bind(this);
+      this.cancelEdit = this.cancelEdit.bind(this);
+      this.elem = elem1;
+      this.getContent = getContent;
+      this.saveContent = saveContent;
+      this.getObject = getObject;
       this.edit_button = $("<a href='#Edit' class='editable-edit icon-edit'></a>");
       this.edit_button.on("click", this.startEdit);
       this.elem.addClass("editable").before(this.edit_button);
       this.editor = null;
-      this.elem.on("mouseenter", (function(_this) {
-        return function(e) {
-          var scrolltop, top;
-          _this.edit_button.css("opacity", "0.4");
-          scrolltop = $(window).scrollTop();
-          top = _this.edit_button.offset().top - parseInt(_this.edit_button.css("margin-top"));
-          if (scrolltop > top) {
-            return _this.edit_button.css("margin-top", scrolltop - top + e.clientY - 20);
-          } else {
-            return _this.edit_button.css("margin-top", "");
-          }
-        };
-      })(this));
-      this.elem.on("mouseleave", (function(_this) {
-        return function() {
-          return _this.edit_button.css("opacity", "");
-        };
-      })(this));
+      this.elem.on("mouseenter", (e) => {
+        var scrolltop, top;
+        this.edit_button.css("opacity", "0.4");
+        // Keep in display
+        scrolltop = $(window).scrollTop();
+        top = this.edit_button.offset().top - parseInt(this.edit_button.css("margin-top"));
+        if (scrolltop > top) {
+          return this.edit_button.css("margin-top", scrolltop - top + e.clientY - 20);
+        } else {
+          return this.edit_button.css("margin-top", "");
+        }
+      });
+      this.elem.on("mouseleave", () => {
+        return this.edit_button.css("opacity", "");
+      });
       if (this.elem.is(":hover")) {
         this.elem.trigger("mouseenter");
       }
     }
 
-    InlineEditor.prototype.startEdit = function() {
-      var _i, _results;
-      this.content_before = this.elem.html();
+    startEdit() {
+      var j, results;
+      this.content_before = this.elem.html(); // Save current to restore on cancel
       this.editor = $("<textarea class='editor'></textarea>");
       this.editor.val(this.getContent(this.elem, "raw"));
       this.elem.after(this.editor);
       $(".editbg").css("display", "block").cssLater("opacity", 0.9, 10);
       this.elem.html((function() {
-        _results = [];
-        for (_i = 1; _i <= 50; _i++){ _results.push(_i); }
-        return _results;
-      }).apply(this).join("fill the width"));
-      this.copyStyle(this.elem, this.editor);
-      this.elem.html(this.content_before);
-      this.autoExpand(this.editor);
-      this.elem.css("display", "none");
-      if ($(window).scrollTop() === 0) {
+        results = [];
+        for (j = 1; j <= 50; j++){ results.push(j); }
+        return results;
+      }).apply(this).join("fill the width")); // To make sure we span the editor as far as we can
+      this.copyStyle(this.elem, this.editor); // Copy elem style to editor
+      this.elem.html(this.content_before); // Restore content
+      this.autoExpand(this.editor); // Set editor to autoexpand
+      this.elem.css("display", "none"); // Hide elem
+      if ($(window).scrollTop() === 0) { // Focus textfield if scroll on top
         this.editor[0].selectionEnd = 0;
         this.editor.focus();
       }
-      $(".editable-edit").css("display", "none");
+      $(".editable-edit").css("display", "none"); // Hide all edit button until its not finished
       $(".editbar").css("display", "inline-block").addClassLater("visible", 10);
-      $(".publishbar").css("opacity", 0);
+      $(".publishbar").css("opacity", 0); // Hide publishbar
       $(".editbar .object").text(this.getObject(this.elem).data("object") + "." + this.elem.data("editable"));
       $(".editbar .button").removeClass("loading");
       $(".editbar .save").off("click").on("click", this.saveEdit);
       $(".editbar .delete").off("click").on("click", this.deleteObject);
       $(".editbar .cancel").off("click").on("click", this.cancelEdit);
+      // Deletable button show/hide
       if (this.getObject(this.elem).data("deletable")) {
         $(".editbar .delete").css("display", "").html("Delete " + this.getObject(this.elem).data("object").split(":")[0]);
       } else {
@@ -750,68 +712,64 @@ jQuery.extend( jQuery.easing,
         return 'Your unsaved blog changes will be lost!';
       };
       return false;
-    };
+    }
 
-    InlineEditor.prototype.stopEdit = function() {
+    stopEdit() {
       if (this.editor) {
         this.editor.remove();
       }
       this.editor = null;
       this.elem.css("display", "");
       $(".editbg").css("opacity", 0).cssLater("display", "none", 300);
-      $(".editable-edit").css("display", "");
-      $(".editbar").cssLater("display", "none", 1000).removeClass("visible");
-      $(".publishbar").css("opacity", 1);
+      $(".editable-edit").css("display", ""); // Show edit buttons
+      $(".editbar").cssLater("display", "none", 1000).removeClass("visible"); // Hide editbar
+      $(".publishbar").css("opacity", 1); // Show publishbar
       return window.onbeforeunload = null;
-    };
+    }
 
-    InlineEditor.prototype.saveEdit = function() {
+    saveEdit() {
       var content;
       content = this.editor.val();
       $(".editbar .save").addClass("loading");
-      this.saveContent(this.elem, content, (function(_this) {
-        return function(content_html) {
-          if (content_html) {
-            $(".editbar .save").removeClass("loading");
-            _this.stopEdit();
-            if (typeof content_html === "string") {
-              _this.elem.html(content_html);
-            }
-            return $('pre code').each(function(i, block) {
-              return hljs.highlightBlock(block);
-            });
-          } else {
-            return $(".editbar .save").removeClass("loading");
+      this.saveContent(this.elem, content, (content_html) => {
+        if (content_html) { // File write ok
+          $(".editbar .save").removeClass("loading");
+          this.stopEdit();
+          if (typeof content_html === "string") { // Returned the new content
+            this.elem.html(content_html);
           }
-        };
-      })(this));
+          return $('pre code').each(function(i, block) { // Higlight code blocks
+            return hljs.highlightBlock(block);
+          });
+        } else {
+          return $(".editbar .save").removeClass("loading");
+        }
+      });
       return false;
-    };
+    }
 
-    InlineEditor.prototype.deleteObject = function() {
+    deleteObject() {
       var object_type;
       object_type = this.getObject(this.elem).data("object").split(":")[0];
-      Page.cmd("wrapperConfirm", ["Are you sure you sure to delete this " + object_type + "?", "Delete"], (function(_this) {
-        return function(confirmed) {
-          $(".editbar .delete").addClass("loading");
-          return Page.saveContent(_this.getObject(_this.elem), null, function() {
-            return _this.stopEdit();
-          });
-        };
-      })(this));
+      Page.cmd("wrapperConfirm", [`Are you sure you sure to delete this ${object_type}?`, "Delete"], (confirmed) => {
+        $(".editbar .delete").addClass("loading");
+        return Page.saveContent(this.getObject(this.elem), null, () => {
+          return this.stopEdit();
+        });
+      });
       return false;
-    };
+    }
 
-    InlineEditor.prototype.cancelEdit = function() {
+    cancelEdit() {
       this.stopEdit();
       this.elem.html(this.content_before);
-      $('pre code').each(function(i, block) {
+      $('pre code').each(function(i, block) { // Higlight code blocks
         return hljs.highlightBlock(block);
       });
       return false;
-    };
+    }
 
-    InlineEditor.prototype.copyStyle = function(elem_from, elem_to) {
+    copyStyle(elem_from, elem_to) {
       var from_style;
       elem_to.addClass(elem_from[0].className);
       from_style = getComputedStyle(elem_from[0]);
@@ -832,14 +790,15 @@ jQuery.extend( jQuery.easing,
         color: from_style.color,
         letterSpacing: from_style.letterSpacing
       });
-      if (elem_from.innerWidth() < 1000) {
+      if (elem_from.innerWidth() < 1000) { // inline elems fix
         return elem_to.css("minWidth", elem_from.innerWidth());
       }
-    };
+    }
 
-    InlineEditor.prototype.autoExpand = function(elem) {
+    autoExpand(elem) {
       var editor;
       editor = elem[0];
+      // Autoexpand
       elem.height(1);
       elem.on("input", function() {
         if (editor.scrollHeight > elem.height()) {
@@ -847,6 +806,8 @@ jQuery.extend( jQuery.easing,
         }
       });
       elem.trigger("input");
+      
+      // Tab key support
       return elem.on('keydown', function(e) {
         var s, val;
         if (e.which === 9) {
@@ -857,33 +818,30 @@ jQuery.extend( jQuery.easing,
           return this.selectionEnd = s + 1;
         }
       });
-    };
+    }
 
-    return InlineEditor;
-
-  })();
+  };
 
   window.InlineEditor = InlineEditor;
 
 }).call(this);
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Menu.coffee ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/utils/Menu.coffee ---- */
 
 
 (function() {
-  var Menu,
-    __slice = [].slice;
+  var Menu;
 
-  Menu = (function() {
-    function Menu(_at_button) {
-      this.button = _at_button;
+  Menu = class Menu {
+    constructor(button) {
+      this.button = button;
       this.elem = $(".menu.template").clone().removeClass("template");
       this.elem.appendTo("body");
       this.items = [];
     }
 
-    Menu.prototype.show = function() {
+    show() {
       var button_pos;
       if (window.visible_menu && window.visible_menu.button[0] === this.button[0]) {
         window.visible_menu.hide();
@@ -901,43 +859,38 @@ jQuery.extend( jQuery.easing,
         }
         return window.visible_menu = this;
       }
-    };
+    }
 
-    Menu.prototype.hide = function() {
+    hide() {
       this.elem.removeClass("visible");
       this.button.removeClass("menu-active");
       return window.visible_menu = null;
-    };
+    }
 
-    Menu.prototype.addItem = function(title, cb) {
+    addItem(title, cb) {
       var item;
       item = $(".menu-item.template", this.elem).clone().removeClass("template");
       item.html(title);
-      item.on("click", (function(_this) {
-        return function() {
-          if (!cb(item)) {
-            _this.hide();
-          }
-          return false;
-        };
-      })(this));
+      item.on("click", () => {
+        if (!cb(item)) {
+          this.hide();
+        }
+        return false;
+      });
       item.appendTo(this.elem);
       this.items.push(item);
       return item;
-    };
+    }
 
-    Menu.prototype.log = function() {
-      var args;
-      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-      return console.log.apply(console, ["[Menu]"].concat(__slice.call(args)));
-    };
+    log(...args) {
+      return console.log("[Menu]", ...args);
+    }
 
-    return Menu;
-
-  })();
+  };
 
   window.Menu = Menu;
 
+  // Hide menu on outside click
   $("body").on("click", function(e) {
     if (window.visible_menu && e.target !== window.visible_menu.button[0] && $(e.target).parent()[0] !== window.visible_menu.elem[0]) {
       return window.visible_menu.hide();
@@ -947,7 +900,7 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/RateLimit.coffee ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/utils/RateLimit.coffee ---- */
 
 
 (function() {
@@ -960,14 +913,14 @@ jQuery.extend( jQuery.easing,
   window.RateLimit = function(interval, fn) {
     if (!limits[fn]) {
       call_after_interval[fn] = false;
-      fn();
+      fn(); // First call is not delayed
       return limits[fn] = setTimeout((function() {
         if (call_after_interval[fn]) {
           fn();
         }
         delete limits[fn];
         return delete call_after_interval[fn];
-      }), interval);
+      }), interval); // Called within iterval, delay the call
     } else {
       return call_after_interval[fn] = true;
     }
@@ -976,99 +929,77 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Text.coffee ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/utils/Text.coffee ---- */
 
 
 (function() {
-  var Renderer, Text,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __hasProp = {}.hasOwnProperty;
+  var Renderer, Text;
 
-  Renderer = (function(_super) {
-    __extends(Renderer, _super);
-
-    function Renderer() {
-      return Renderer.__super__.constructor.apply(this, arguments);
+  Renderer = class Renderer extends marked.Renderer {
+    image(href, title, text) {
+      return `<code>![${text}](${href})</code>`;
     }
 
-    Renderer.prototype.image = function(href, title, text) {
-      return "<code>![" + text + "](" + href + ")</code>";
-    };
+  };
 
-    return Renderer;
-
-  })(marked.Renderer);
-
-  Text = (function() {
-    function Text() {}
-
-    Text.prototype.toColor = function(text) {
-      var hash, i, _i, _ref;
+  Text = class Text {
+    toColor(text) {
+      var hash, i, j, ref;
       hash = 0;
-      for (i = _i = 0, _ref = text.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+      for (i = j = 0, ref = text.length - 1; 0 <= ref ? j <= ref : j >= ref; i = 0 <= ref ? ++j : --j) {
         hash += text.charCodeAt(i) * i;
       }
       return "hsl(" + (hash % 360) + ",30%,50%)";
+    }
 
-      /*
-      		for i in [0..2]
-      			value = (hash >> (i * 8)) & 0xFF
-      			color += ('00' + value.toString(16)).substr(-2)
-      		return color
-       */
-    };
-
-    Text.prototype.toMarked = function(text, options) {
-      if (options == null) {
-        options = {};
-      }
+    toMarked(text, options = {}) {
       options["gfm"] = true;
       options["breaks"] = true;
       options["renderer"] = renderer;
       text = this.fixReply(text);
       text = marked(text, options);
       return this.fixHtmlLinks(text);
-    };
+    }
 
-    Text.prototype.fixHtmlLinks = function(text) {
+    // Convert zeronet html links to relaitve
+    fixHtmlLinks(text) {
       var back;
       if (window.is_proxy) {
         back = text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="http://zero');
-        return back.replace(/http:\/\/zero\/([^\/]+\.bit)/g, "http://$1");
+        return back.replace(/http:\/\/zero\/([^\/]+\.bit)/g, "http://$1"); // Domain
       } else {
         return text.replace(/href="http:\/\/(127.0.0.1|localhost):43110/g, 'href="');
       }
-    };
+    }
 
-    Text.prototype.fixLink = function(link) {
+    // Convert a single link to relative
+    fixLink(link) {
       var back;
       if (window.is_proxy) {
         back = link.replace(/http:\/\/(127.0.0.1|localhost):43110/, 'http://zero');
-        return back.replace(/http:\/\/zero\/([^\/]+\.bit)/, "http://$1");
+        return back.replace(/http:\/\/zero\/([^\/]+\.bit)/, "http://$1"); // Domain
       } else {
         return link.replace(/http:\/\/(127.0.0.1|localhost):43110/, '');
       }
-    };
+    }
 
-    Text.prototype.toUrl = function(text) {
+    toUrl(text) {
       return text.replace(/[^A-Za-z0-9]/g, "+").replace(/[+]+/g, "+").replace(/[+]+$/, "");
-    };
+    }
 
-    Text.prototype.fixReply = function(text) {
+    fixReply(text) {
       return text.replace(/(>.*\n)([^\n>])/gm, "$1\n$2");
-    };
+    }
 
-    Text.prototype.toBitcoinAddress = function(text) {
+    toBitcoinAddress(text) {
       return text.replace(/[^A-Za-z0-9]/g, "");
-    };
+    }
 
-    Text.prototype.jsonEncode = function(obj) {
+    jsonEncode(obj) {
       return btoa(unescape(encodeURIComponent(JSON.stringify(obj, void 0, '\t'))));
-    };
+    }
 
-    return Text;
-
-  })();
+  };
 
   window.is_proxy = window.location.pathname === "/";
 
@@ -1079,39 +1010,34 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Time.coffee ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/utils/Time.coffee ---- */
 
 
 (function() {
   var Time;
 
-  Time = (function() {
-    function Time() {}
-
-    Time.prototype.since = function(time) {
+  Time = class Time {
+    since(time) {
       var back, now, secs;
       now = +(new Date) / 1000;
       secs = now - time;
       if (secs < 60) {
         back = "Just now";
       } else if (secs < 60 * 60) {
-        back = (Math.round(secs / 60)) + " minutes ago";
+        back = `${Math.round(secs / 60)} minutes ago`;
       } else if (secs < 60 * 60 * 24) {
-        back = (Math.round(secs / 60 / 60)) + " hours ago";
+        back = `${Math.round(secs / 60 / 60)} hours ago`;
       } else if (secs < 60 * 60 * 24 * 3) {
-        back = (Math.round(secs / 60 / 60 / 24)) + " days ago";
+        back = `${Math.round(secs / 60 / 60 / 24)} days ago`;
       } else {
         back = "on " + this.date(time);
       }
-      back = back.replace(/1 ([a-z]+)s/, "1 $1");
+      back = back.replace(/1 ([a-z]+)s/, "1 $1"); // 1 days ago fix
       return back;
-    };
+    }
 
-    Time.prototype.date = function(timestamp, format) {
+    date(timestamp, format = "short") {
       var display, parts;
-      if (format == null) {
-        format = "short";
-      }
       parts = (new Date(timestamp * 1000)).toString().split(" ");
       if (format === "short") {
         display = parts.slice(1, 4);
@@ -1119,29 +1045,24 @@ jQuery.extend( jQuery.easing,
         display = parts.slice(1, 5);
       }
       return display.join(" ").replace(/( [0-9]{4})/, ",$1");
-    };
+    }
 
-    Time.prototype.timestamp = function(date) {
-      if (date == null) {
-        date = "";
-      }
+    timestamp(date = "") {
       if (date === "now" || date === "") {
         return parseInt(+(new Date) / 1000);
       } else {
         return parseInt(Date.parse(date) / 1000);
       }
-    };
+    }
 
-    return Time;
-
-  })();
+  };
 
   window.Time = new Time;
 
 }).call(this);
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Translate.coffee ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/utils/Translate.coffee ---- */
 
 
 (function() {
@@ -1152,23 +1073,20 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/ZeroFrame.coffee ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/utils/ZeroFrame.coffee ---- */
 
 
 (function() {
   var ZeroFrame,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __hasProp = {}.hasOwnProperty;
+    boundMethodCheck = function(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new Error('Bound instance method accessed before binding'); } };
 
-  ZeroFrame = (function(_super) {
-    __extends(ZeroFrame, _super);
-
-    function ZeroFrame(url) {
-      this.onCloseWebsocket = __bind(this.onCloseWebsocket, this);
-      this.onOpenWebsocket = __bind(this.onOpenWebsocket, this);
-      this.onRequest = __bind(this.onRequest, this);
-      this.onMessage = __bind(this.onMessage, this);
+  ZeroFrame = class ZeroFrame extends Class {
+    constructor(url) {
+      super(url);
+      this.onMessage = this.onMessage.bind(this);
+      this.onRequest = this.onRequest.bind(this);
+      this.onOpenWebsocket = this.onOpenWebsocket.bind(this);
+      this.onCloseWebsocket = this.onCloseWebsocket.bind(this);
       this.url = url;
       this.waiting_cb = {};
       this.wrapper_nonce = document.location.href.replace(/.*wrapper_nonce=([A-Za-z0-9]+).*/, "$1");
@@ -1178,36 +1096,35 @@ jQuery.extend( jQuery.easing,
       this.init();
     }
 
-    ZeroFrame.prototype.init = function() {
+    init() {
       return this;
-    };
+    }
 
-    ZeroFrame.prototype.connect = function() {
+    connect() {
       this.target = window.parent;
       window.addEventListener("message", this.onMessage, false);
       this.cmd("innerReady");
-      window.addEventListener("beforeunload", (function(_this) {
-        return function(e) {
-          _this.log("save scrollTop", window.pageYOffset);
-          _this.history_state["scrollTop"] = window.pageYOffset;
-          return _this.cmd("wrapperReplaceState", [_this.history_state, null]);
-        };
-      })(this));
-      return this.cmd("wrapperGetState", [], (function(_this) {
-        return function(state) {
-          if (state != null) {
-            _this.history_state = state;
-          }
-          _this.log("restore scrollTop", state, window.pageYOffset);
-          if (window.pageYOffset === 0 && state) {
-            return window.scroll(window.pageXOffset, state.scrollTop);
-          }
-        };
-      })(this));
-    };
+      // Save scrollTop
+      window.addEventListener("beforeunload", (e) => {
+        this.log("save scrollTop", window.pageYOffset);
+        this.history_state["scrollTop"] = window.pageYOffset;
+        return this.cmd("wrapperReplaceState", [this.history_state, null]);
+      });
+      // Restore scrollTop
+      return this.cmd("wrapperGetState", [], (state) => {
+        if (state != null) {
+          this.history_state = state;
+        }
+        this.log("restore scrollTop", state, window.pageYOffset);
+        if (window.pageYOffset === 0 && state) {
+          return window.scroll(window.pageXOffset, state.scrollTop);
+        }
+      });
+    }
 
-    ZeroFrame.prototype.onMessage = function(e) {
+    onMessage(e) {
       var cmd, message;
+      boundMethodCheck(this, ZeroFrame);
       message = e.data;
       cmd = message.cmd;
       if (cmd === "response") {
@@ -1216,7 +1133,7 @@ jQuery.extend( jQuery.easing,
         } else {
           return this.log("Websocket callback not found:", message);
         }
-      } else if (cmd === "wrapperReady") {
+      } else if (cmd === "wrapperReady") { // Wrapper inited later
         return this.cmd("innerReady");
       } else if (cmd === "ping") {
         return this.response(message.id, "pong");
@@ -1227,37 +1144,29 @@ jQuery.extend( jQuery.easing,
       } else {
         return this.onRequest(cmd, message);
       }
-    };
+    }
 
-    ZeroFrame.prototype.onRequest = function(cmd, message) {
+    onRequest(cmd, message) {
+      boundMethodCheck(this, ZeroFrame);
       return this.log("Unknown request", message);
-    };
+    }
 
-    ZeroFrame.prototype.response = function(to, result) {
+    response(to, result) {
       return this.send({
         "cmd": "response",
         "to": to,
         "result": result
       });
-    };
+    }
 
-    ZeroFrame.prototype.cmd = function(cmd, params, cb) {
-      if (params == null) {
-        params = {};
-      }
-      if (cb == null) {
-        cb = null;
-      }
+    cmd(cmd, params = {}, cb = null) {
       return this.send({
         "cmd": cmd,
         "params": params
       }, cb);
-    };
+    }
 
-    ZeroFrame.prototype.send = function(message, cb) {
-      if (cb == null) {
-        cb = null;
-      }
+    send(message, cb = null) {
       message.wrapper_nonce = this.wrapper_nonce;
       message.id = this.next_message_id;
       this.next_message_id += 1;
@@ -1265,39 +1174,36 @@ jQuery.extend( jQuery.easing,
       if (cb) {
         return this.waiting_cb[message.id] = cb;
       }
-    };
+    }
 
-    ZeroFrame.prototype.onOpenWebsocket = function() {
+    onOpenWebsocket() {
+      boundMethodCheck(this, ZeroFrame);
       return this.log("Websocket open");
-    };
+    }
 
-    ZeroFrame.prototype.onCloseWebsocket = function() {
+    onCloseWebsocket() {
+      boundMethodCheck(this, ZeroFrame);
       return this.log("Websocket close");
-    };
+    }
 
-    return ZeroFrame;
-
-  })(Class);
+  };
 
   window.ZeroFrame = ZeroFrame;
 
 }).call(this);
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicList.coffee ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/TopicList.coffee ---- */
 
 
 (function() {
   var TopicList,
-    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    hasProp = {}.hasOwnProperty;
+    boundMethodCheck = function(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new Error('Bound instance method accessed before binding'); } };
 
-  TopicList = (function(superClass) {
-    extend(TopicList, superClass);
-
-    function TopicList() {
-      this.submitTopicVote = bind(this.submitTopicVote, this);
+  TopicList = class TopicList extends Class {
+    constructor() {
+      super();
+      this.submitTopicVote = this.submitTopicVote.bind(this);
       this.thread_sorter = null;
       this.parent_topic_uri = void 0;
       this.limit = 31;
@@ -1305,7 +1211,7 @@ jQuery.extend( jQuery.easing,
       this.topic_sticky_uris = {};
     }
 
-    TopicList.prototype.actionList = function(parent_topic_id, parent_topic_user_address) {
+    actionList(parent_topic_id, parent_topic_user_address) {
       var j, len, ref, topic_sticky_uri;
       ref = Page.site_info.content.settings.topic_sticky_uris;
       for (j = 0, len = ref.length; j < len; j++) {
@@ -1313,70 +1219,65 @@ jQuery.extend( jQuery.easing,
         this.topic_sticky_uris[topic_sticky_uri] = 1;
       }
       $(".topics-loading").cssLater("top", "0px", 200);
+      // Topic group listing
       if (parent_topic_id) {
         $(".topics-title").html("&nbsp;");
-        this.parent_topic_uri = parent_topic_id + "_" + parent_topic_user_address;
-        Page.local_storage["topic." + parent_topic_id + "_" + parent_topic_user_address + ".visited"] = Time.timestamp();
+        this.parent_topic_uri = `${parent_topic_id}_${parent_topic_user_address}`;
+        // Update visited info
+        Page.local_storage[`topic.${parent_topic_id}_${parent_topic_user_address}.visited`] = Time.timestamp();
         Page.cmd("wrapperSetLocalStorage", Page.local_storage);
       } else {
         $(".topics-title").html("Newest topics");
       }
       this.loadTopics("noanim");
-      $(".topic-new-link").on("click", (function(_this) {
-        return function() {
-          if (Page.site_info.address === "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT") {
-            $(".topmenu").css("background-color", "#fffede");
-            $(".topic-new .message").css("display", "block");
-          }
-          $(".topic-new").fancySlideDown();
-          $(".topic-new-link").slideUp();
-          return false;
-        };
-      })(this));
-      $(".topic-new .button-submit").on("click", (function(_this) {
-        return function() {
-          _this.submitCreateTopic();
-          return false;
-        };
-      })(this));
-      $(".topics-more").on("click", (function(_this) {
-        return function() {
-          _this.limit += 100;
-          $(".topics-more").text("Loading...");
-          _this.loadTopics("noanim");
-          return false;
-        };
-      })(this));
+      // Show create new topic form
+      $(".topic-new-link").on("click", () => {
+        if (Page.site_info.address === "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT") {
+          $(".topmenu").css("background-color", "#fffede");
+          $(".topic-new .message").css("display", "block");
+        }
+        $(".topic-new").fancySlideDown();
+        $(".topic-new-link").slideUp();
+        return false;
+      });
+      // Create new topic
+      $(".topic-new .button-submit").on("click", () => {
+        this.submitCreateTopic();
+        return false;
+      });
+      $(".topics-more").on("click", () => {
+        this.limit += 100;
+        $(".topics-more").text("Loading...");
+        this.loadTopics("noanim");
+        return false;
+      });
+      // Follow button
       return this.initFollowButton();
-    };
+    }
 
-    TopicList.prototype.initFollowButton = function() {
+    initFollowButton() {
       var username;
       this.follow = new Follow($(".feed-follow-list"));
-      if (this.parent_topic_uri) {
+      if (this.parent_topic_uri) { // Subtopic
         this.follow.addFeed("New topics in this group", "SELECT title AS title, body, added AS date_added, 'topic' AS type, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url, parent_topic_uri AS param FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) WHERE parent_topic_uri IN (:params)", true, this.parent_topic_uri);
       } else {
         this.follow.addFeed(_("New topics"), "SELECT title AS title, body, added AS date_added, 'topic' AS type, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) WHERE parent_topic_uri IS NULL", true);
         if (Page.site_info.cert_user_id) {
           username = Page.site_info.cert_user_id.replace(/@.*/, "");
-          this.follow.addFeed("Username mentions", "SELECT 'mention' AS type, comment.added AS date_added, topic.title, commenter_user.value || ': ' || comment.body AS body, topic_creator_json.directory AS topic_creator_address, topic.topic_id || '_' || topic_creator_json.directory AS row_topic_uri, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) LEFT JOIN comment ON (comment.topic_uri = row_topic_uri) LEFT JOIN json AS commenter_json ON (commenter_json.json_id = comment.json_id) LEFT JOIN json AS commenter_content ON (commenter_content.directory = commenter_json.directory AND commenter_content.file_name = 'content.json') LEFT JOIN keyvalue AS commenter_user ON (commenter_user.json_id = commenter_content.json_id AND commenter_user.key = 'cert_user_id') WHERE comment.body LIKE '%[" + username + "%' OR comment.body LIKE '%@" + username + "%'", true);
+          this.follow.addFeed("Username mentions", `SELECT 'mention' AS type, comment.added AS date_added, topic.title, commenter_user.value || ': ' || comment.body AS body, topic_creator_json.directory AS topic_creator_address, topic.topic_id || '_' || topic_creator_json.directory AS row_topic_uri, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) LEFT JOIN comment ON (comment.topic_uri = row_topic_uri) LEFT JOIN json AS commenter_json ON (commenter_json.json_id = comment.json_id) LEFT JOIN json AS commenter_content ON (commenter_content.directory = commenter_json.directory AND commenter_content.file_name = 'content.json') LEFT JOIN keyvalue AS commenter_user ON (commenter_user.json_id = commenter_content.json_id AND commenter_user.key = 'cert_user_id') WHERE comment.body LIKE '%[${username}%' OR comment.body LIKE '%@${username}%'`, true);
         }
         this.follow.addFeed("All comments", "SELECT 'comment' AS type, comment.added AS date_added, topic.title, commenter_user.value || ': ' || comment.body AS body, topic_creator_json.directory AS topic_creator_address, topic.topic_id || '_' || topic_creator_json.directory AS row_topic_uri, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) LEFT JOIN comment ON (comment.topic_uri = row_topic_uri) LEFT JOIN json AS commenter_json ON (commenter_json.json_id = comment.json_id) LEFT JOIN json AS commenter_content ON (commenter_content.directory = commenter_json.directory AND commenter_content.file_name = 'content.json') LEFT JOIN keyvalue AS commenter_user ON (commenter_user.json_id = commenter_content.json_id AND commenter_user.key = 'cert_user_id')");
       }
       return this.follow.init();
-    };
+    }
 
-    TopicList.prototype.loadTopics = function(type, cb) {
+    loadTopics(type = "list", cb = false) {
       var last_elem, query, ref, sql_sticky, sql_sticky_whens, topic_uri, where;
-      if (type == null) {
-        type = "list";
-      }
-      if (cb == null) {
-        cb = false;
-      }
       this.logStart("Load topics...");
-      if (this.parent_topic_uri) {
-        where = "WHERE parent_topic_uri = '" + this.parent_topic_uri + "' OR row_topic_uri = '" + this.parent_topic_uri + "'";
+      if (this.parent_topic_uri) { // Topic group listing
+        where = `WHERE parent_topic_uri = '${this.parent_topic_uri}' OR row_topic_uri = '${this.parent_topic_uri
+// Main listing
+}'`;
       } else {
         where = "WHERE topic.type IS NULL AND topic.parent_topic_uri IS NULL";
       }
@@ -1388,147 +1289,148 @@ jQuery.extend( jQuery.easing,
           results = [];
           for (j = 0, len = ref1.length; j < len; j++) {
             topic_uri = ref1[j];
-            results.push("WHEN '" + topic_uri + "' THEN 1");
+            results.push(`WHEN '${topic_uri}' THEN 1`);
           }
           return results;
         })()).join(" ");
-        sql_sticky = "CASE topic.topic_id || '_' || topic_creator_content.directory " + sql_sticky_whens + " ELSE 0 END AS sticky";
+        sql_sticky = `CASE topic.topic_id || '_' || topic_creator_content.directory ${sql_sticky_whens} ELSE 0 END AS sticky`;
       } else {
         sql_sticky = "0 AS sticky";
       }
-      query = "SELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, topic.added as last_added, CASE WHEN MAX(comment.added) IS NULL THEN topic.added ELSE MAX(comment.added) END as last_action,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n NULL AS row_topic_sub_uri, NULL AS row_topic_sub_title,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,\n " + sql_sticky + "\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_uri AND comment.added < " + (Date.now() / 1000 + 120) + ")\n" + where + "\nGROUP BY topic.topic_id, topic.json_id\nHAVING last_action < " + (Date.now() / 1000 + 120);
-      if (!this.parent_topic_uri) {
-        query += "\nUNION ALL\n\nSELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment,\n MAX(topic_sub.added) AS last_added,\n CASE WHEN MAX(topic_sub.added) > MAX(comment.added) OR MAX(comment.added) IS NULL THEN MAX(topic_sub.added) ELSE MAX(comment.added) END as last_action,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,\n topic_sub.title AS topic_sub_title,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,\n " + sql_sticky + "\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN topic AS topic_sub ON (topic_sub.parent_topic_uri = topic.topic_id || '_' || topic_creator_content.directory)\nLEFT JOIN json AS topic_sub_creator_json ON (topic_sub_creator_json.json_id = topic_sub.json_id)\nLEFT JOIN json AS topic_sub_creator_content ON (topic_sub_creator_content.directory = topic_sub_creator_json.directory AND topic_sub_creator_content.file_name = 'content.json')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri AND comment.added < " + (Date.now() / 1000 + 120) + ")\nWHERE topic.type = \"group\"\nGROUP BY topic.topic_id\nHAVING last_action < " + (Date.now() / 1000 + 120);
+      query = `SELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment, topic.added as last_added, CASE WHEN MAX(comment.added) IS NULL THEN topic.added ELSE MAX(comment.added) END as last_action,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n NULL AS row_topic_sub_uri, NULL AS row_topic_sub_title,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,\n ${sql_sticky}\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_uri AND comment.added < ${Date.now() / 1000 + 120})\n${where}\nGROUP BY topic.topic_id, topic.json_id\nHAVING last_action < ${Date.now() / 1000 + 120}`;
+      if (!this.parent_topic_uri) { // Union topic groups
+        query += `\nUNION ALL\n\nSELECT\n COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment,\n MAX(topic_sub.added) AS last_added,\n CASE WHEN MAX(topic_sub.added) > MAX(comment.added) OR MAX(comment.added) IS NULL THEN MAX(topic_sub.added) ELSE MAX(comment.added) END as last_action,\n topic.*,\n topic_creator_user.value AS topic_creator_user_name,\n topic_creator_content.directory AS topic_creator_address,\n topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,\n topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,\n topic_sub.title AS topic_sub_title,\n (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,\n ${sql_sticky}\nFROM topic\nLEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)\nLEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')\nLEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')\nLEFT JOIN topic AS topic_sub ON (topic_sub.parent_topic_uri = topic.topic_id || '_' || topic_creator_content.directory)\nLEFT JOIN json AS topic_sub_creator_json ON (topic_sub_creator_json.json_id = topic_sub.json_id)\nLEFT JOIN json AS topic_sub_creator_content ON (topic_sub_creator_content.directory = topic_sub_creator_json.directory AND topic_sub_creator_content.file_name = 'content.json')\nLEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri AND comment.added < ${Date.now() / 1000 + 120})\nWHERE topic.type = "group"\nGROUP BY topic.topic_id\nHAVING last_action < ${Date.now() / 1000 + 120}`;
       }
       if (!this.parent_topic_uri) {
-        query += " ORDER BY sticky DESC, last_action DESC LIMIT " + this.limit;
+        query += ` ORDER BY sticky DESC, last_action DESC LIMIT ${this.limit}`;
       }
-      return Page.cmd("dbQuery", [query], (function(_this) {
-        return function(topics) {
-          var elem, i, j, len, limited, topic, topic_parent;
-          topics.sort(function(a, b) {
-            var booster_a, booster_b;
-            booster_a = booster_b = 0;
-            if (window.TopicList.topic_sticky_uris[a.row_topic_uri]) {
-              booster_a = window.TopicList.topic_sticky_uris[a.row_topic_uri] * 10000000;
-            }
-            if (window.TopicList.topic_sticky_uris[b.row_topic_uri]) {
-              booster_b = window.TopicList.topic_sticky_uris[b.row_topic_uri] * 10000000;
-            }
-            return Math.max(b.last_comment + booster_b, b.last_added + booster_b) - Math.max(a.last_comment + booster_a, a.last_added + booster_a);
-          });
-          limited = false;
-          for (i = j = 0, len = topics.length; j < len; i = ++j) {
-            topic = topics[i];
-            topic_uri = topic.row_topic_uri;
-            if (topic.last_added) {
-              topic.added = topic.last_added;
-            }
-            if (_this.parent_topic_uri && topic_uri === _this.parent_topic_uri) {
-              topic_parent = topic;
-              continue;
-            }
-            elem = $("#topic_" + topic_uri);
-            if (elem.length === 0) {
-              elem = $(".topics-list .topic.template").clone().removeClass("template").attr("id", "topic_" + topic_uri);
-              if (type !== "noanim") {
-                elem.cssSlideDown();
-              }
-              _this.applyTopicListeners(elem, topic);
-            }
-            if (i + 1 < _this.limit) {
-              elem.insertAfter(last_elem);
-            } else {
-              limited = true;
-            }
-            last_elem = elem;
-            _this.applyTopicData(elem, topic);
+      return Page.cmd("dbQuery", [query], (topics) => {
+        var elem, i, j, len, limited, topic, topic_parent;
+        topics.sort(function(a, b) {
+          var booster_a, booster_b;
+          booster_a = booster_b = 0;
+          // Boost position to top for sticky topics
+          if (window.TopicList.topic_sticky_uris[a.row_topic_uri]) {
+            booster_a = window.TopicList.topic_sticky_uris[a.row_topic_uri] * 10000000;
           }
-          Page.addInlineEditors();
-          $("body").css({
-            "overflow": "auto",
-            "height": "auto"
-          });
-          _this.logEnd("Load topics...");
-          if (parseInt($(".topics-loading").css("top")) > -30) {
-            $(".topics-loading").css("top", "-30px");
+          if (window.TopicList.topic_sticky_uris[b.row_topic_uri]) {
+            booster_b = window.TopicList.topic_sticky_uris[b.row_topic_uri] * 10000000;
+          }
+          return Math.max(b.last_comment + booster_b, b.last_added + booster_b) - Math.max(a.last_comment + booster_a, a.last_added + booster_a);
+        });
+        limited = false;
+        for (i = j = 0, len = topics.length; j < len; i = ++j) {
+          topic = topics[i];
+          topic_uri = topic.row_topic_uri;
+          if (topic.last_added) {
+            topic.added = topic.last_added;
+          }
+          // Parent topic for group that we currently listing
+          if (this.parent_topic_uri && topic_uri === this.parent_topic_uri) {
+            topic_parent = topic;
+            continue; // Dont display it
+          }
+          elem = $("#topic_" + topic_uri);
+          if (elem.length === 0) { // Create if not exits yet
+            elem = $(".topics-list .topic.template").clone().removeClass("template").attr("id", "topic_" + topic_uri);
+            if (type !== "noanim") {
+              elem.cssSlideDown();
+            }
+            this.applyTopicListeners(elem, topic);
+          }
+          if (i + 1 < this.limit) {
+            elem.insertAfter(last_elem);
           } else {
-            $(".topics-loading").remove();
+            limited = true;
           }
-          if (_this.parent_topic_uri) {
-            $(".topics-title").html("<span class='parent-link'><a href='?Main'>" + "Main" + ("</a> &rsaquo;</span> " + topic_parent.title));
-          }
-          $(".topics").css("opacity", 1);
-          if (topics.length === 0) {
-            if (Page.site_info.bad_files) {
-              $(".message-big").text("Initial sync in progress...");
-            } else {
-              $(".message-big").text("Welcome to your own forum! :)");
-              $(".topic-new-link").trigger("click");
-            }
-            $(".message-big").css("display", "block").cssLater("opacity", 1);
+          last_elem = elem;
+          this.applyTopicData(elem, topic);
+        }
+        Page.addInlineEditors();
+        $("body").css({
+          "overflow": "auto",
+          "height": "auto" // Auto height body
+        });
+        this.logEnd("Load topics...");
+        // Hide loading
+        if (parseInt($(".topics-loading").css("top")) > -30) { // Loading visible, animate it
+          $(".topics-loading").css("top", "-30px");
+        } else {
+          $(".topics-loading").remove();
+        }
+        // Set sub-title listing title
+        if (this.parent_topic_uri) {
+          $(".topics-title").html("<span class='parent-link'><a href='?Main'>" + "Main" + `</a> &rsaquo;</span> ${topic_parent.title}`);
+        }
+        $(".topics").css("opacity", 1);
+        // Show loading / empty forum bigmessage
+        if (topics.length === 0) {
+          if (Page.site_info.bad_files) {
+            $(".message-big").text("Initial sync in progress...");
           } else {
-            $(".message-big").css("display", "none");
+            $(".message-big").text("Welcome to your own forum! :)");
+            $(".topic-new-link").trigger("click");
           }
-          if (limited) {
-            $(".topics-more").css("display", "block");
-          } else {
-            $(".topics-more").css("display", "none");
-          }
-          if (cb) {
-            return cb();
-          }
-        };
-      })(this));
-    };
+          $(".message-big").css("display", "block").cssLater("opacity", 1);
+        } else {
+          $(".message-big").css("display", "none");
+        }
+        if (limited) {
+          $(".topics-more").css("display", "block");
+        } else {
+          $(".topics-more").css("display", "none");
+        }
+        if (cb) {
+          return cb();
+        }
+      });
+    }
 
-    TopicList.prototype.applyTopicListeners = function(elem, topic) {
-      return $(".user_menu", elem).on("click", (function(_this) {
-        return function() {
-          var menu;
-          menu = new Menu($(".user_menu", elem));
-          menu.addItem("Mute this user", function() {
-            elem.fancySlideUp();
-            return Page.cmd("muteAdd", [topic.topic_creator_address, topic.topic_creator_user_name, "Topic: " + topic.title]);
-          });
-          menu.show();
-          return false;
-        };
-      })(this));
-    };
+    applyTopicListeners(elem, topic) {
+      // User hide
+      return $(".user_menu", elem).on("click", () => {
+        var menu;
+        menu = new Menu($(".user_menu", elem));
+        menu.addItem("Mute this user", () => {
+          elem.fancySlideUp();
+          return Page.cmd("muteAdd", [topic.topic_creator_address, topic.topic_creator_user_name, `Topic: ${topic.title}`]);
+        });
+        menu.show();
+        return false;
+      });
+    }
 
-    TopicList.prototype.applyTopicData = function(elem, topic, type) {
+    applyTopicData(elem, topic, type = "list") {
       var body, last_action, subtopic_title_hash, subtopic_uri, title_hash, topic_uri, url, url_match, visited;
-      if (type == null) {
-        type = "list";
-      }
       title_hash = Text.toUrl(topic.title);
       topic_uri = topic.row_topic_uri;
       $(".title .title-link", elem).text(topic.title);
-      $(".title .title-link, a.image, .comment-num", elem).attr("href", "?Topic:" + topic_uri + "/" + title_hash);
+      $(".title .title-link, a.image, .comment-num", elem).attr("href", `?Topic:${topic_uri}/${title_hash}`);
       elem.data("topic_uri", topic_uri);
+      // Get links in body
       body = topic.body;
       url_match = body.match(/http[s]{0,1}:\/\/[^"', \r\n)$]+/);
-      if (topic.type === "group") {
+      if (topic.type === "group") { // Group type topic
         $(elem).addClass("topic-group");
         $(".image .icon", elem).removeClass("icon-topic-chat").addClass("icon-topic-group");
         $(".link", elem).css("display", "none");
-        $(".title .title-link, a.image, .comment-num", elem).attr("href", "?Topics:" + topic_uri + "/" + title_hash);
-      } else if (url_match) {
+        //$(".info", elem).css("display", "none")
+        $(".title .title-link, a.image, .comment-num", elem).attr("href", `?Topics:${topic_uri}/${title_hash}`);
+      } else if (url_match) { // Link type topic
         url = url_match[0];
         if (type !== "show") {
-          body = body.replace(/http[s]{0,1}:\/\/[^"' \r\n)$]+$/g, "");
+          body = body.replace(/http[s]{0,1}:\/\/[^"' \r\n)$]+$/g, ""); // Remove links from end
         }
         $(".image .icon", elem).removeClass("icon-topic-chat").addClass("icon-topic-link");
         $(".link", elem).css("display", "").attr("href", Text.fixLink(url));
-        $(".link .link-url", elem).text(url);
+        $(".link .link-url", elem).text(url); // Normal type topic
       } else {
         $(".image .icon", elem).removeClass("icon-topic-link").addClass("icon-topic-chat");
         $(".link", elem).css("display", "none");
       }
-      if (type === "show") {
+      if (type === "show") { // Markdon syntax at topic show
         $(".body", elem).html(Text.toMarked(body, {
-          "sanitize": true
+          "sanitize": true // No format on listing
         }));
       } else {
         $(".body", elem).text(body);
@@ -1536,33 +1438,37 @@ jQuery.extend( jQuery.easing,
       if (window.TopicList.topic_sticky_uris[topic_uri]) {
         elem.addClass("topic-sticky");
       }
+      // Last activity and comment num
       if (type !== "show") {
         last_action = Math.max(topic.last_comment, topic.added);
         if (topic.type === "group") {
           $(".comment-num", elem).text("last activity");
           $(".added", elem).text(Time.since(last_action));
         } else if (topic.comments_num === 1) {
-          $(".comment-num", elem).text(topic.comments_num + " comment");
+          $(".comment-num", elem).text(`${topic.comments_num} comment`);
           $(".added", elem).text("last " + Time.since(last_action));
         } else if (topic.comments_num > 0) {
-          $(".comment-num", elem).text(topic.comments_num + " comments");
+          $(".comment-num", elem).text(`${topic.comments_num} comments`);
           $(".added", elem).text("last " + Time.since(last_action));
         } else {
           $(".comment-num", elem).text("0 comments");
           $(".added", elem).text(Time.since(last_action));
         }
       }
+      // Creator address and user name
       $(".user_name", elem).text(topic.topic_creator_user_name.replace(/@.*/, "")).attr("title", topic.topic_creator_user_name + ": " + topic.topic_creator_address);
+      // Apply topic score
       if (User.my_topic_votes[topic_uri]) {
         $(".score-inactive .score-num", elem).text(topic.votes - 1);
         $(".score-active .score-num", elem).text(topic.votes);
-        $(".score", elem).addClass("active");
+        $(".score", elem).addClass("active"); // Not voted on it
       } else {
         $(".score-inactive .score-num", elem).text(topic.votes);
         $(".score-active .score-num", elem).text(topic.votes + 1);
       }
       $(".score", elem).off("click").on("click", this.submitTopicVote);
-      visited = Page.local_storage["topic." + topic_uri + ".visited"];
+      // Visited
+      visited = Page.local_storage[`topic.${topic_uri}.visited`];
       if (!visited) {
         elem.addClass("visit-none");
       } else if (visited < last_action) {
@@ -1571,123 +1477,118 @@ jQuery.extend( jQuery.easing,
       if (type === "show") {
         $(".added", elem).text(Time.since(topic.added));
       }
+      // Sub-topic
       if (topic.row_topic_sub_title) {
         subtopic_title_hash = Text.toUrl(topic.row_topic_sub_title);
         subtopic_uri = topic.row_topic_sub_uri;
         $(".subtopic", elem).css("display", "block");
-        $(".subtopic-link", elem).attr("href", "?Topic:" + subtopic_uri + "/" + subtopic_title_hash).text(topic.row_topic_sub_title);
+        $(".subtopic-link", elem).attr("href", `?Topic:${subtopic_uri}/${subtopic_title_hash}`).text(topic.row_topic_sub_title);
       }
+      // My topic
       if (topic.topic_creator_address === Page.site_info.auth_address) {
-        $(elem).attr("data-object", "Topic:" + topic_uri).attr("data-deletable", "yes");
+        $(elem).attr("data-object", `Topic:${topic_uri}`).attr("data-deletable", "yes");
         $(".title .title-link", elem).attr("data-editable", "title").data("content", topic.title);
         return $(".body", elem).attr("data-editable", "body").data("content", topic.body);
       }
-    };
+    }
 
-    TopicList.prototype.submitCreateTopic = function() {
+    submitCreateTopic() {
       var body, title;
-      if (!Page.site_info.cert_user_id) {
+      // if not Page.hasOpenPort() then return false
+      if (!Page.site_info.cert_user_id) { // No selected cert
         Page.cmd("certSelect", [["zeroid.bit"]]);
         return false;
       }
       title = $(".topic-new #topic_title").val().trim();
       body = $(".topic-new #topic_body").val().trim();
+      //if not body then return $(".topic-new #topic_body").focus()
       if (!title) {
         return $(".topic-new #topic_title").focus();
       }
       $(".topic-new .button-submit").addClass("loading");
-      return User.getData((function(_this) {
-        return function(data) {
-          var topic;
-          topic = {
-            "topic_id": data.next_topic_id + Time.timestamp(),
-            "title": title,
-            "body": body,
-            "added": Time.timestamp()
-          };
-          if (Page.site_info.address === "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT" && (title + body).match(/[\u3400-\u9FBF]/)) {
-            topic.parent_topic_uri = "10_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj";
-          }
-          if (_this.parent_topic_uri) {
-            topic.parent_topic_uri = _this.parent_topic_uri;
-          }
-          data.topic.push(topic);
-          data.next_topic_id += 1;
-          return User.publishData(data, function(res) {
-            $(".topic-new .button-submit").removeClass("loading");
-            $(".topic-new").slideUp();
-            $(".topic-new-link").slideDown();
-            setTimeout((function() {
-              if (topic.parent_topic_uri && _this.parent_topic_uri !== topic.parent_topic_uri) {
-                return window.top.location = "?Topics:" + topic.parent_topic_uri;
-              } else {
-                return _this.loadTopics();
-              }
-            }), 600);
-            $(".topic-new #topic_body").val("");
-            return $(".topic-new #topic_title").val("");
-          });
+      return User.getData((data) => {
+        var topic;
+        topic = {
+          "topic_id": data.next_topic_id + Time.timestamp(),
+          "title": title,
+          "body": body,
+          "added": Time.timestamp()
         };
-      })(this));
-    };
+        // Check Chinese characters
+        if (Page.site_info.address === "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT" && (title + body).match(/[\u3400-\u9FBF]/)) {
+          topic.parent_topic_uri = "10_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj"; // Auto create topic in separate sub-topic
+        }
+        if (this.parent_topic_uri) {
+          topic.parent_topic_uri = this.parent_topic_uri;
+        }
+        data.topic.push(topic);
+        data.next_topic_id += 1;
+        return User.publishData(data, (res) => {
+          $(".topic-new .button-submit").removeClass("loading");
+          $(".topic-new").slideUp();
+          $(".topic-new-link").slideDown();
+          setTimeout((() => {
+            if (topic.parent_topic_uri && this.parent_topic_uri !== topic.parent_topic_uri) {
+              return window.top.location = "?Topics:" + topic.parent_topic_uri;
+            } else {
+              return this.loadTopics();
+            }
+          }), 600);
+          $(".topic-new #topic_body").val("");
+          return $(".topic-new #topic_title").val("");
+        });
+      });
+    }
 
-    TopicList.prototype.submitTopicVote = function(e) {
+    submitTopicVote(e) {
       var elem, inner_path;
-      if (!Page.site_info.cert_user_id) {
+      boundMethodCheck(this, TopicList);
+      if (!Page.site_info.cert_user_id) { // No selected cert
         Page.cmd("certSelect", [["zeroid.bit"]]);
         return false;
       }
       elem = $(e.currentTarget);
       elem.toggleClass("active").addClass("loading");
-      inner_path = "data/users/" + User.my_address + "/data.json";
-      User.getData((function(_this) {
-        return function(data) {
-          var topic_uri;
-          if (data.topic_vote == null) {
-            data.topic_vote = {};
-          }
-          topic_uri = elem.parents(".topic").data("topic_uri");
-          if (elem.hasClass("active")) {
-            data.topic_vote[topic_uri] = 1;
-          } else {
-            delete data.topic_vote[topic_uri];
-          }
-          return User.publishData(data, function(res) {
-            return elem.removeClass("loading");
-          });
-        };
-      })(this));
+      inner_path = `data/users/${User.my_address}/data.json`;
+      User.getData((data) => {
+        var topic_uri;
+        if (data.topic_vote == null) {
+          data.topic_vote = {};
+        }
+        topic_uri = elem.parents(".topic").data("topic_uri");
+        if (elem.hasClass("active")) {
+          data.topic_vote[topic_uri] = 1;
+        } else {
+          delete data.topic_vote[topic_uri];
+        }
+        return User.publishData(data, (res) => {
+          return elem.removeClass("loading");
+        });
+      });
       return false;
-    };
+    }
 
-    return TopicList;
-
-  })(Class);
+  };
 
   window.TopicList = new TopicList();
 
 }).call(this);
 
 
-
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicShow.coffee ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/TopicShow.coffee ---- */
 
 
 (function() {
   var TopicShow,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __hasProp = {}.hasOwnProperty;
+    boundMethodCheck = function(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new Error('Bound instance method accessed before binding'); } };
 
-  TopicShow = (function(_super) {
-    __extends(TopicShow, _super);
-
-    function TopicShow() {
-      this.submitCommentVote = __bind(this.submitCommentVote, this);
-      return TopicShow.__super__.constructor.apply(this, arguments);
+  TopicShow = class TopicShow extends Class {
+    constructor() {
+      super(...arguments);
+      this.submitCommentVote = this.submitCommentVote.bind(this);
     }
 
-    TopicShow.prototype.actionShow = function(topic_id, topic_user_address) {
+    actionShow(topic_id, topic_user_address) {
       var textarea;
       this.topic_id = topic_id;
       this.topic_user_address = topic_user_address;
@@ -1697,157 +1598,173 @@ jQuery.extend( jQuery.easing,
       $(".topic-title").css("display", "none");
       this.loadTopic();
       this.loadComments("noanim");
-      $(".comment-new .button-submit-form").on("click", (function(_this) {
-        return function() {
-          _this.submitComment();
-          return false;
-        };
-      })(this));
+      $(".comment-new .button-submit-form").on("click", () => {
+        this.submitComment();
+        return false;
+      });
       textarea = $(".comment-new #comment_body");
-      $(".comment-new #comment_body").on("input", (function(_this) {
-        return function() {
-          var current_size;
-          if (User.rules.max_size) {
-            if (textarea.val().length > 0) {
-              current_size = User.rules.current_size + textarea.val().length + 90;
-            } else {
-              current_size = User.rules.current_size;
-            }
-            return User.setCurrentSize(current_size);
+      $(".comment-new #comment_body").on("input", () => {
+        var current_size;
+        // Update used space
+        if (User.rules.max_size) {
+          if (textarea.val().length > 0) {
+            current_size = User.rules.current_size + textarea.val().length + 90;
+          } else {
+            current_size = User.rules.current_size;
           }
-        };
-      })(this));
-      $(".comments-more").on("click", (function(_this) {
-        return function() {
-          _this.list_all = true;
-          $(".comments-more").text("Loading...");
-          _this.loadComments("noanim");
-          return false;
-        };
-      })(this));
+          return User.setCurrentSize(current_size);
+        }
+      });
+      $(".comments-more").on("click", () => {
+        this.list_all = true;
+        $(".comments-more").text("Loading...");
+        this.loadComments("noanim");
+        return false;
+      });
+      // Follow button
       return this.initFollowButton();
-    };
+    }
 
-    TopicShow.prototype.initFollowButton = function() {
+    initFollowButton() {
       this.follow = new Follow($(".feed-follow-show"));
       this.follow.addFeed("Comments in this topic", "SELECT 'comment' AS type, comment.added AS date_added, topic.title, commenter_user.value || ': ' || comment.body AS body, topic_creator_json.directory AS topic_creator_address, topic.topic_id || '_' || topic_creator_json.directory AS row_topic_uri, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) LEFT JOIN comment ON (comment.topic_uri = row_topic_uri) LEFT JOIN json AS commenter_json ON (commenter_json.json_id = comment.json_id) LEFT JOIN json AS commenter_content ON (commenter_content.directory = commenter_json.directory AND commenter_content.file_name = 'content.json') LEFT JOIN keyvalue AS commenter_user ON (commenter_user.json_id = commenter_content.json_id AND commenter_user.key = 'cert_user_id') WHERE row_topic_uri IN (:params)", true, this.topic_uri);
       return this.follow.init();
-    };
+    }
 
-    TopicShow.prototype.queryTopic = function(topic_id, topic_user_address) {
-      return "SELECT topic.*, topic_creator_user.value AS topic_creator_user_name, topic_creator_content.directory AS topic_creator_address, topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri, (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) LEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json') LEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id') WHERE topic.topic_id = " + topic_id + " AND topic_creator_address = '" + topic_user_address + "' LIMIT 1";
-    };
+    queryTopic(topic_id, topic_user_address) {
+      return `SELECT topic.*, topic_creator_user.value AS topic_creator_user_name, topic_creator_content.directory AS topic_creator_address, topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri, (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) LEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json') LEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id') WHERE topic.topic_id = ${topic_id} AND topic_creator_address = '${topic_user_address}' LIMIT 1`;
+    }
 
-    TopicShow.prototype.loadTopic = function(cb) {
-      if (cb == null) {
-        cb = false;
-      }
+    loadTopic(cb = false) {
       this.logStart("Loading topic...");
-      $(".topic-full").attr("id", "topic_" + this.topic_uri);
-      return Page.cmd("dbQuery", [this.queryTopic(this.topic_id, this.topic_user_address)], (function(_this) {
-        return function(res) {
-          var parent_topic_id, parent_topic_user_address, _ref;
-          _this.topic = res[0];
-          TopicList.applyTopicData($(".topic-full"), _this.topic, "show");
-          if (_this.topic.parent_topic_uri) {
-            $(".topic-title").css("display", "");
-            _ref = _this.topic.parent_topic_uri.split("_"), parent_topic_id = _ref[0], parent_topic_user_address = _ref[1];
-            Page.cmd("dbQuery", [_this.queryTopic(parent_topic_id, parent_topic_user_address)], function(parent_res) {
-              var parent_topic;
-              parent_topic = parent_res[0];
-              return $(".topic-title").html("<span class='parent-link'><a href='?Main'>" + "Main" + ("</a> &rsaquo;</span> <span class='parent-link'><a href='?Topics:" + parent_topic.row_topic_uri + "/" + (Text.toUrl(parent_topic.title)) + "'>" + parent_topic.title + "</a> &rsaquo;</span> " + _this.topic.title));
-            });
-          }
-          $(".topic-full").css("opacity", 1);
-          $("body").addClass("page-topic");
-          _this.logEnd("Loading topic...");
-          if (cb) {
-            return cb();
-          }
-        };
-      })(this));
-    };
+      $(".topic-full").attr("id", `topic_${this.topic_uri}`);
+      return Page.cmd("dbQuery", [this.queryTopic(this.topic_id, this.topic_user_address)], (res) => {
+        var parent_topic_id, parent_topic_user_address;
+        this.topic = res[0];
+        TopicList.applyTopicData($(".topic-full"), this.topic, "show");
+        // Topic has parent, update title breadcrumb
+        if (this.topic.parent_topic_uri) {
+          $(".topic-title").css("display", "");
+          [parent_topic_id, parent_topic_user_address] = this.topic.parent_topic_uri.split("_");
+          Page.cmd("dbQuery", [this.queryTopic(parent_topic_id, parent_topic_user_address)], (parent_res) => {
+            var parent_topic;
+            parent_topic = parent_res[0];
+            return $(".topic-title").html("<span class='parent-link'><a href='?Main'>" + "Main" + `</a> &rsaquo;</span> <span class='parent-link'><a href='?Topics:${parent_topic.row_topic_uri}/${Text.toUrl(parent_topic.title)}'>${parent_topic.title}</a> &rsaquo;</span> ${this.topic.title}`);
+          });
+        }
+        $(".topic-full").css("opacity", 1);
+        $("body").addClass("page-topic");
+        this.logEnd("Loading topic...");
+        if (cb) {
+          return cb();
+        }
+      });
+    }
 
-    TopicShow.prototype.loadComments = function(type, cb) {
+    loadComments(type = "show", cb = false) {
       var query;
-      if (type == null) {
-        type = "show";
-      }
-      if (cb == null) {
-        cb = false;
-      }
       this.logStart("Loading comments...");
-      query = "SELECT comment.*, user.value AS user_name, user_json_content.directory AS user_address, (SELECT COUNT(*) FROM comment_vote WHERE comment_vote.comment_uri = comment.comment_id || '_' || user_json_content.directory)+1 AS votes FROM comment LEFT JOIN json AS user_json_data ON (user_json_data.json_id = comment.json_id) LEFT JOIN json AS user_json_content ON (user_json_content.directory = user_json_data.directory AND user_json_content.file_name = 'content.json') LEFT JOIN keyvalue AS user ON (user.json_id = user_json_content.json_id AND user.key = 'cert_user_id') WHERE comment.topic_uri = '" + this.topic_id + "_" + this.topic_user_address + "' AND added < " + (Date.now() / 1000 + 120) + " ORDER BY added DESC";
+      // Load comments
+      query = `SELECT comment.*, user.value AS user_name, user_json_content.directory AS user_address, (SELECT COUNT(*) FROM comment_vote WHERE comment_vote.comment_uri = comment.comment_id || '_' || user_json_content.directory)+1 AS votes FROM comment LEFT JOIN json AS user_json_data ON (user_json_data.json_id = comment.json_id) LEFT JOIN json AS user_json_content ON (user_json_content.directory = user_json_data.directory AND user_json_content.file_name = 'content.json') LEFT JOIN keyvalue AS user ON (user.json_id = user_json_content.json_id AND user.key = 'cert_user_id') WHERE comment.topic_uri = '${this.topic_id}_${this.topic_user_address}' AND added < ${Date.now() / 1000 + 120} ORDER BY added DESC`;
       if (!this.list_all) {
         query += " LIMIT 60";
       }
-      return Page.cmd("dbQuery", [query], (function(_this) {
-        return function(comments) {
-          var comment, comment_uri, elem, focused, _i, _len;
-          focused = $(":focus");
-          _this.logEnd("Loading comments...");
-          $(".comments .comment:not(.template)").attr("missing", "true");
-          for (_i = 0, _len = comments.length; _i < _len; _i++) {
-            comment = comments[_i];
-            comment_uri = comment.comment_id + "_" + comment.user_address;
-            elem = $("#comment_" + comment_uri);
-            if (elem.length === 0) {
-              elem = $(".comment.template").clone().removeClass("template").attr("id", "comment_" + comment_uri).data("topic_uri", _this.topic_uri);
-              if (type !== "noanim") {
-                elem.cssSlideDown();
-              }
-              _this.applyCommentListeners(elem, comment);
-              $(".score", elem).attr("id", "comment_score_" + comment_uri).on("click", _this.submitCommentVote);
-            }
-            _this.applyCommentData(elem, comment);
-            elem.appendTo(".comments").removeAttr("missing");
-          }
-          $("body").css({
-            "overflow": "auto",
-            "height": "auto"
-          });
-          $(".comment[missing]").remove();
-          Page.addInlineEditors();
-          if (comments.length === 60) {
-            $(".comments-more").css("display", "block");
-          } else {
-            $(".comments-more").css("display", "none");
-          }
-          if (comments.length > 0) {
-            Page.local_storage["topic." + _this.topic_id + "_" + _this.topic_user_address + ".visited"] = comments[0].added;
-          } else {
-            Page.local_storage["topic." + _this.topic_id + "_" + _this.topic_user_address + ".visited"] = _this.topic.added;
-          }
-          Page.cmd("wrapperSetLocalStorage", Page.local_storage);
-          focused.focus();
-          if (cb) {
-            return cb();
-          }
-        };
-      })(this));
-    };
+      return Page.cmd("dbQuery", [query], (comments) => {
+        var focused;
+        focused = $(":focus");
+        this.logEnd("Loading comments...");
+        $(".comments .comment:not(.template)").attr("missing", "true");
+        // do this recursively to render a tree
+        this.renderComments(comments, null, ".comments", type, 0);
+        console.log(comments);
+        $("body").css({
+          "overflow": "auto",
+          "height": "auto"
+        });
+        $(".comment[missing]").remove();
+        Page.addInlineEditors();
+        if (comments.length === 60) {
+          $(".comments-more").css("display", "block");
+        } else {
+          $(".comments-more").css("display", "none");
+        }
+        // Update last visited
+        if (comments.length > 0) {
+          Page.local_storage[`topic.${this.topic_id}_${this.topic_user_address}.visited`] = comments[0].added;
+        } else {
+          Page.local_storage[`topic.${this.topic_id}_${this.topic_user_address}.visited`] = this.topic.added;
+        }
+        Page.cmd("wrapperSetLocalStorage", Page.local_storage);
+        focused.focus();
+        if (cb) {
+          return cb();
+        }
+      });
+    }
 
-    TopicShow.prototype.applyCommentListeners = function(elem, comment) {
-      $(".reply", elem).on("click", (function(_this) {
-        return function(e) {
-          return _this.buttonReply($(e.target).parents(".comment"));
-        };
-      })(this));
-      return $(".menu_3dot", elem).on("click", (function(_this) {
-        return function() {
-          var menu;
-          menu = new Menu($(".menu_3dot", elem));
-          menu.addItem("Mute this user", function() {
-            elem.fancySlideUp();
-            return Page.cmd("muteAdd", [comment.user_address, comment.user_name, "Comment: " + comment.body.slice(0, 21)]);
-          });
-          menu.show();
-          return false;
-        };
-      })(this));
-    };
+    renderComments(all_comments, root_id, root_element, type, level, used_roots = []) {
+      var comment, comment_uri, comments, elem, j, len, results;
+      // 1) find comments for the root
+      // 2) sort them by votes
+      if (used_roots.indexOf(root_id) >= 0) {
+        console.warn('circular dependency detected on root_id', root_id);
+        console.warn('these are the comments', all_comments);
+        return;
+      }
+      used_roots.push(root_id);
+      comments = all_comments.filter((comment) => {
+        return comment.reply_to === root_id;
+      });
+      if (comments.length === 0) {
+        return;
+      }
+      comments = comments.sort(function(a, b) {
+        return (a.votes > b.votes) || (a.added < b.added);
+      });
+      results = [];
+      for (j = 0, len = comments.length; j < len; j++) {
+        comment = comments[j];
+        comment_uri = `${comment.comment_id}_${comment.user_address}`;
+        elem = $("#comment_" + comment_uri);
+        if (elem.length === 0) { // Create if not exits
+          elem = $(".comment.template").clone().removeClass("template").attr("id", "comment_" + comment_uri).data("topic_uri", this.topic_uri);
+          if (type !== "noanim") {
+            elem.cssSlideDown();
+          }
+          this.applyCommentListeners(elem, comment);
+          $(".score", elem).attr("id", `comment_score_${comment_uri}`).on("click", this.submitCommentVote); // Submit vote
+          elem.addClass('level_' + level);
+          if (level >= 5) {
+            $('.reply', elem).hide();
+          }
+        }
+        this.applyCommentData(elem, comment);
+        elem.insertAfter(root_element).removeAttr("missing");
+        // render children
+        //if level <= 5
+        results.push(this.renderComments(all_comments, comment.comment_id, elem, type, level + 1, used_roots));
+      }
+      return results;
+    }
 
-    TopicShow.prototype.applyCommentData = function(elem, comment) {
+    applyCommentListeners(elem, comment) {
+      $(".reply", elem).on("click", (e) => { // Reply link
+        return this.buttonReply($(e.target).parents(".comment"));
+      });
+      return $(".menu_3dot", elem).on("click", () => {
+        var menu;
+        menu = new Menu($(".menu_3dot", elem));
+        menu.addItem("Mute this user", () => {
+          elem.fancySlideUp();
+          return Page.cmd("muteAdd", [comment.user_address, comment.user_name, `Comment: ${comment.body.slice(0, 21)}`]);
+        });
+        menu.show();
+        return false;
+      });
+    }
+
+    // Update elem based on data of comment dict
+    applyCommentData(elem, comment, level) {
       var comment_uri, user_name;
       user_name = comment.user_name;
       $(".body", elem).html(Text.toMarked(comment.body, {
@@ -1861,25 +1778,26 @@ jQuery.extend( jQuery.easing,
       if (User.my_comment_votes[comment_uri]) {
         $(".score-inactive .score-num", elem).text(comment.votes - 1);
         $(".score-active .score-num", elem).text(comment.votes);
-        $(".score", elem).addClass("active");
+        $(".score", elem).addClass("active"); // Not voted on it
       } else {
         $(".score-inactive .score-num", elem).text(comment.votes);
         $(".score-active .score-num", elem).text(comment.votes + 1);
       }
+      // My comment
       if (comment.user_address === Page.site_info.auth_address) {
-        $(elem).attr("data-object", "Comment:" + comment_uri + "@" + this.topic_uri).attr("data-deletable", "yes");
+        $(elem).attr("data-object", `Comment:${comment_uri}@${this.topic_uri}`).attr("data-deletable", "yes");
         return $(".body", elem).attr("data-editable", "body").data("content", comment.body);
       }
-    };
+    }
 
-    TopicShow.prototype.buttonReply = function(elem) {
+    buttonReply(elem) {
       var body_add, elem_quote, post_id, selected_text, user_name;
       this.log("Reply to", elem);
       user_name = $(".user_name", elem).text();
       post_id = elem.attr("id");
-      body_add = "> [" + user_name + "](\#" + post_id + "): ";
+      body_add = `> [${user_name}](\#${post_id}): `;
       elem_quote = $(".body", elem).clone();
-      $("blockquote", elem_quote).remove();
+      $("blockquote", elem_quote).remove(); // Remove other people's quotes
       selected_text = window.getSelection().toString();
       if (selected_text) {
         body_add += selected_text;
@@ -1887,12 +1805,26 @@ jQuery.extend( jQuery.easing,
         body_add += elem_quote.text().trim("\n").replace(/\n[\s\S]+/g, " [...]");
       }
       body_add += "\n\n";
-      $(".comment-new #comment_body").val($(".comment-new #comment_body").val() + body_add);
-      $(".comment-new #comment_body").trigger("input").focus();
+      //$(".comment-new #comment_body").val( $(".comment-new #comment_body").val()+body_add )
+      $(".comment-new #comment_body").trigger("input").focus(); // Autosize
+      $(".comment-new .button-submit-form").text(`Submit reply to ${user_name}`);
+      // only set value of the id, currently says "comment_2_xyz"
+      $("#reply_to").val(post_id.split('_')[1]);
+      // TODO add cancel button? <- see how reddit does it
       return false;
-    };
+    }
 
-    TopicShow.prototype.submitComment = function() {
+    randomId(length) {
+      var i, j, possible, ref, text;
+      text = "";
+      possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for (i = j = 0, ref = length; 0 <= ref ? j <= ref : j >= ref; i = 0 <= ref ? ++j : --j) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    }
+
+    submitComment() {
       var body;
       if (!this.follow.feeds["Comments in this topic"][1].hasClass("selected")) {
         this.follow.feeds["Comments in this topic"][1].trigger("click");
@@ -1903,141 +1835,130 @@ jQuery.extend( jQuery.easing,
         return;
       }
       $(".comment-new .button-submit").addClass("loading");
-      return User.getData((function(_this) {
-        return function(data) {
-          var _base, _name;
-          if ((_base = data.comment)[_name = _this.topic_uri] == null) {
-            _base[_name] = [];
-          }
-          data.comment[_this.topic_uri].push({
-            "comment_id": data.next_comment_id,
-            "body": body,
-            "added": Time.timestamp()
-          });
-          data.next_comment_id += 1;
-          return User.publishData(data, function(res) {
-            $(".comment-new .button-submit").removeClass("loading");
-            if (res === true) {
-              _this.log("File written");
-              _this.loadComments();
-              return $(".comment-new #comment_body").val("").delay(600).animate({
-                "height": 72
-              }, {
-                "duration": 1000,
-                "easing": "easeInOutCubic"
-              });
-            }
-          });
+      return User.getData((data) => {
+        var base, comment, name, reply_to;
+        comment = {
+          "comment_id": this.randomId(12),
+          "body": body,
+          "added": Time.timestamp()
         };
-      })(this));
-    };
+        if (reply_to = $("#reply_to").val()) {
+          comment.reply_to = reply_to;
+        }
+        if ((base = data.comment)[name = this.topic_uri] == null) {
+          base[name] = [];
+        }
+        data.comment[this.topic_uri].push(comment);
+        return User.publishData(data, (res) => {
+          $(".comment-new .button-submit").removeClass("loading");
+          if (res === true) {
+            this.log("File written");
+            this.loadComments();
+            $(".comment-new .button-submit-form").text("Submit comment");
+            $("#reply_to").val('');
+            return $(".comment-new #comment_body").val("").delay(600).animate({
+              "height": 72
+            }, {
+              "duration": 1000,
+              "easing": "easeInOutCubic"
+            });
+          }
+        });
+      });
+    }
 
-    TopicShow.prototype.submitCommentVote = function(e) {
+    submitCommentVote(e) {
       var elem;
-      if (!Page.site_info.cert_user_id) {
+      boundMethodCheck(this, TopicShow);
+      if (!Page.site_info.cert_user_id) { // No selected cert
         Page.cmd("wrapperNotification", ["info", "Please, choose your account before upvoting."]);
         return false;
       }
       elem = $(e.currentTarget);
       elem.toggleClass("active").addClass("loading");
-      User.getData((function(_this) {
-        return function(data) {
-          var comment_uri;
-          if (data.comment_vote == null) {
-            data.comment_vote = {};
-          }
-          comment_uri = elem.attr("id").match("_([0-9]+_[A-Za-z0-9]+)$")[1];
-          if (elem.hasClass("active")) {
-            data.comment_vote[comment_uri] = 1;
-          } else {
-            delete data.comment_vote[comment_uri];
-          }
-          return User.publishData(data, function(res) {
-            return elem.removeClass("loading");
-          });
-        };
-      })(this));
+      User.getData((data) => {
+        var comment_uri;
+        if (data.comment_vote == null) {
+          data.comment_vote = {};
+        }
+        comment_uri = elem.attr("id").match("_([^_]+_[A-Za-z0-9]+)$")[1];
+        if (elem.hasClass("active")) {
+          data.comment_vote[comment_uri] = 1;
+        } else {
+          delete data.comment_vote[comment_uri];
+        }
+        return User.publishData(data, (res) => {
+          return elem.removeClass("loading");
+        });
+      });
       return false;
-    };
+    }
 
-    return TopicShow;
-
-  })(Class);
+  };
 
   window.TopicShow = new TopicShow();
 
 }).call(this);
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/User.coffee ---- */
+
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/User.coffee ---- */
 
 
 (function() {
-  var User,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __hasProp = {}.hasOwnProperty;
+  var User;
 
-  User = (function(_super) {
-    __extends(User, _super);
-
-    function User() {
+  User = class User extends Class {
+    constructor() {
+      super();
       this.my_topic_votes = {};
       this.my_comment_votes = {};
-      this.rules = {};
+      this.rules = {}; // Last result for fileRules command
       this.certselectButtons();
     }
 
-    User.prototype.updateMyInfo = function(cb) {
-      if (cb == null) {
-        cb = null;
-      }
+    updateMyInfo(cb = null) {
       this.log("Updating user info...", this.my_address);
       return this.updateMyVotes(cb);
-    };
+    }
 
-    User.prototype.updateMyVotes = function(cb) {
+    // Load my votes
+    updateMyVotes(cb = null) {
       var query;
-      if (cb == null) {
-        cb = null;
-      }
-      query = "SELECT 'topic_vote' AS type, topic_uri AS uri FROM json LEFT JOIN topic_vote USING (json_id) WHERE directory = \"" + Page.site_info.auth_address + "\" AND file_name = 'data.json'\nUNION\nSELECT 'comment_vote' AS type, comment_uri AS uri FROM json LEFT JOIN comment_vote USING (json_id) WHERE directory = \"" + Page.site_info.auth_address + "\" AND file_name = 'data.json'";
-      Page.cmd("dbQuery", [query], (function(_this) {
-        return function(votes) {
-          var vote, _i, _len, _results;
-          _results = [];
-          for (_i = 0, _len = votes.length; _i < _len; _i++) {
-            vote = votes[_i];
-            if (vote.type === "topic_vote") {
-              _results.push(_this.my_topic_votes[vote.uri] = true);
-            } else {
-              _results.push(_this.my_comment_votes[vote.uri] = true);
-            }
+      query = `SELECT 'topic_vote' AS type, topic_uri AS uri FROM json LEFT JOIN topic_vote USING (json_id) WHERE directory = "${Page.site_info.auth_address}" AND file_name = 'data.json'\nUNION\nSELECT 'comment_vote' AS type, comment_uri AS uri FROM json LEFT JOIN comment_vote USING (json_id) WHERE directory = "${Page.site_info.auth_address}" AND file_name = 'data.json'`;
+      Page.cmd("dbQuery", [query], (votes) => {
+        var i, len, results, vote;
+        results = [];
+        for (i = 0, len = votes.length; i < len; i++) {
+          vote = votes[i];
+          if (vote.type === "topic_vote") {
+            results.push(this.my_topic_votes[vote.uri] = true);
+          } else {
+            results.push(this.my_comment_votes[vote.uri] = true);
           }
-          return _results;
-        };
-      })(this));
+        }
+        return results;
+      });
       if (cb) {
         return cb();
       }
-    };
+    }
 
-    User.prototype.certselectButtons = function() {
-      return $(".certselect").on("click", (function(_this) {
-        return function() {
-          if (Page.server_info.rev < 160) {
-            Page.cmd("wrapperNotification", ["error", "Comments requires at least ZeroNet 0.3.0 Please upgade!"]);
-          } else {
-            Page.cmd("certSelect", [["zeroid.bit"]]);
-          }
-          return false;
-        };
-      })(this));
-    };
+    certselectButtons() {
+      return $(".certselect").on("click", () => {
+        if (Page.server_info.rev < 160) {
+          Page.cmd("wrapperNotification", ["error", "Comments requires at least ZeroNet 0.3.0 Please upgade!"]);
+        } else {
+          Page.cmd("certSelect", [["zeroid.bit"]]);
+        }
+        return false;
+      });
+    }
 
-    User.prototype.checkCert = function(type) {
+    checkCert(type) {
       var last_cert_user_id;
       last_cert_user_id = $(".user_name-my").text();
-      if ($(".comment-new .user_name").text() !== Page.site_info.cert_user_id || type === "updaterules") {
+      if ($(".comment-new .user_name").text() !== Page.site_info.cert_user_id || type === "updaterules") { // User changed
         if (Page.site_info.cert_user_id) {
           $(".comment-new").removeClass("comment-nocert");
           $(".user_name-my").text(Page.site_info.cert_user_id).css({
@@ -2047,28 +1968,27 @@ jQuery.extend( jQuery.easing,
           $(".comment-new").addClass("comment-nocert");
           $(".user_name-my").text("Please sign in");
         }
+        // Update used/allowed space
         if (Page.site_info.cert_user_id) {
-          return Page.cmd("fileRules", "data/users/" + Page.site_info.auth_address + "/content.json", (function(_this) {
-            return function(rules) {
-              _this.rules = rules;
-              if (rules.max_size) {
-                return _this.setCurrentSize(rules.current_size);
-              } else {
-                return _this.setCurrentSize(0);
-              }
-            };
-          })(this));
+          return Page.cmd("fileRules", `data/users/${Page.site_info.auth_address}/content.json`, (rules) => {
+            this.rules = rules;
+            if (rules.max_size) {
+              return this.setCurrentSize(rules.current_size);
+            } else {
+              return this.setCurrentSize(0);
+            }
+          });
         } else {
           return this.setCurrentSize(0);
         }
       }
-    };
+    }
 
-    User.prototype.setCurrentSize = function(current_size) {
+    setCurrentSize(current_size) {
       var current_size_kb, percent;
       if (current_size) {
         current_size_kb = current_size / 1000;
-        $(".user-size").text("used: " + (current_size_kb.toFixed(1)) + "k/" + (Math.round(this.rules.max_size / 1000)) + "k").attr("title", "Every new user has limited space to store comments, topics and votes.\n" + "This indicator shows your used/total allowed KBytes.\n" + "The site admin can increase it if you about to run out of it.");
+        $(".user-size").text(`used: ${current_size_kb.toFixed(1)}k/${Math.round(this.rules.max_size / 1000)}k`).attr("title", "Every new user has limited space to store comments, topics and votes.\n" + "This indicator shows your used/total allowed KBytes.\n" + "The site admin can increase it if you about to run out of it.");
         percent = Math.round(100 * current_size / this.rules.max_size);
         $(".user-size-used").css("width", percent + "%");
         if (percent > 80) {
@@ -2077,150 +1997,145 @@ jQuery.extend( jQuery.easing,
       } else {
         return $(".user-size").text("");
       }
-    };
+    }
 
-    User.prototype.getData = function(cb) {
+    getData(cb) {
       var inner_path;
-      inner_path = "data/users/" + Page.site_info.auth_address + "/data.json";
+      inner_path = `data/users/${Page.site_info.auth_address}/data.json`;
       return Page.cmd("fileGet", {
         "inner_path": inner_path,
         "required": false
-      }, (function(_this) {
-        return function(data) {
-          if (data) {
-            data = JSON.parse(data);
-          } else {
-            data = {
-              "next_topic_id": 1,
-              "topic": [],
-              "topic_vote": {},
-              "next_comment_id": 1,
-              "comment": {},
-              "comment_vote": {}
-            };
-          }
-          return cb(data);
-        };
-      })(this));
-    };
+      }, (data) => {
+        if (data) {
+          data = JSON.parse(data); // Default data
+        } else {
+          data = {
+            "next_topic_id": 1,
+            "topic": [],
+            "topic_vote": {},
+            "next_comment_id": 1,
+            "comment": {},
+            "comment_vote": {}
+          };
+        }
+        return cb(data);
+      });
+    }
 
-    User.prototype.publishData = function(data, cb) {
+    publishData(data, cb) {
       var inner_path;
-      inner_path = "data/users/" + Page.site_info.auth_address + "/data.json";
-      return Page.writePublish(inner_path, Text.jsonEncode(data), (function(_this) {
-        return function(res) {
-          _this.checkCert("updaterules");
-          if (cb) {
-            return cb(res);
-          }
-        };
-      })(this));
-    };
+      inner_path = `data/users/${Page.site_info.auth_address}/data.json`;
+      return Page.writePublish(inner_path, Text.jsonEncode(data), (res) => {
+        this.checkCert("updaterules"); // Update used space
+        if (cb) {
+          return cb(res);
+        }
+      });
+    }
 
-    return User;
-
-  })(Class);
+  };
 
   window.User = new User();
 
 }).call(this);
 
 
-/* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/ZeroTalk.coffee ---- */
+/* ---- /1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW/js/ZeroTalk.coffee ---- */
 
 
 (function() {
+  // Variable namings:
+  // comment_uri: #{comment_id}_#{topic_id}_#{topic_user_id}
+  // topic_uri: #{topic_id}_#{topic_user_id}
   var ZeroTalk,
-    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    hasProp = {}.hasOwnProperty;
+    boundMethodCheck = function(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new Error('Bound instance method accessed before binding'); } };
 
-  ZeroTalk = (function(superClass) {
-    extend(ZeroTalk, superClass);
-
-    function ZeroTalk() {
-      this.setSiteinfo = bind(this.setSiteinfo, this);
-      this.actionSetSiteInfo = bind(this.actionSetSiteInfo, this);
-      this.saveContent = bind(this.saveContent, this);
-      this.getObject = bind(this.getObject, this);
-      this.getContent = bind(this.getContent, this);
-      this.onOpenWebsocket = bind(this.onOpenWebsocket, this);
-      return ZeroTalk.__super__.constructor.apply(this, arguments);
+  ZeroTalk = class ZeroTalk extends ZeroFrame {
+    constructor() {
+      super(...arguments);
+      // Wrapper websocket connection ready
+      this.onOpenWebsocket = this.onOpenWebsocket.bind(this);
+      // Get content
+      this.getContent = this.getContent.bind(this);
+      // Returns the elem parent object
+      this.getObject = this.getObject.bind(this);
+      // Save content
+      this.saveContent = this.saveContent.bind(this);
+      // Siteinfo changed
+      this.actionSetSiteInfo = this.actionSetSiteInfo.bind(this);
+      this.setSiteinfo = this.setSiteinfo.bind(this);
     }
 
-    ZeroTalk.prototype.init = function() {
+    init() {
       var i, len, ref, textarea;
       this.log("inited!");
-      this.site_info = null;
-      this.server_info = null;
-      this.local_storage = {};
-      this.site_address = null;
+      this.site_info = null; // Last site info response
+      this.server_info = null; // Last server info response
+      this.local_storage = {}; // Visited topics
+      this.site_address = null; // Site bitcoin address
       ref = $("textarea");
+      
+      // Autoexpand
       for (i = 0, len = ref.length; i < len; i++) {
         textarea = ref[i];
         this.autoExpand($(textarea));
       }
-      return $(".editbar .icon-help").on("click", (function(_this) {
-        return function() {
-          $(".editbar .markdown-help").css("display", "block");
-          $(".editbar .markdown-help").toggleClassLater("visible", 10);
-          $(".editbar .icon-help").toggleClass("active");
-          return false;
-        };
-      })(this));
-    };
+      // Markdown help
+      return $(".editbar .icon-help").on("click", () => {
+        $(".editbar .markdown-help").css("display", "block");
+        $(".editbar .markdown-help").toggleClassLater("visible", 10);
+        $(".editbar .icon-help").toggleClass("active");
+        return false;
+      });
+    }
 
-    ZeroTalk.prototype.onOpenWebsocket = function(e) {
+    onOpenWebsocket(e) {
+      boundMethodCheck(this, ZeroTalk);
       this.cmd("wrapperSetViewport", "width=device-width, initial-scale=0.8");
-      this.cmd("wrapperGetLocalStorage", [], (function(_this) {
-        return function(res) {
-          if (res == null) {
-            res = {};
-          }
-          return _this.local_storage = res;
-        };
-      })(this));
-      this.cmd("siteInfo", {}, (function(_this) {
-        return function(site) {
-          _this.site_address = site.address;
-          _this.setSiteinfo(site);
-          return User.updateMyInfo(function() {
-            return _this.routeUrl(window.location.search.substring(1));
-          });
-        };
-      })(this));
-      return this.cmd("serverInfo", {}, (function(_this) {
-        return function(ret) {
-          var version;
-          _this.server_info = ret;
-          version = parseInt(_this.server_info.version.replace(/\./g, ""));
-          if (version < 31) {
-            return _this.cmd("wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.3.1, please update!"]);
-          }
-        };
-      })(this));
-    };
+      this.cmd("wrapperGetLocalStorage", [], (res) => {
+        if (res == null) {
+          res = {};
+        }
+        return this.local_storage = res;
+      });
+      this.cmd("siteInfo", {}, (site) => {
+        this.site_address = site.address;
+        this.setSiteinfo(site);
+        return User.updateMyInfo(() => {
+          return this.routeUrl(window.location.search.substring(1));
+        });
+      });
+      return this.cmd("serverInfo", {}, (ret) => { // Get server info
+        var version;
+        this.server_info = ret;
+        version = parseInt(this.server_info.version.replace(/\./g, ""));
+        if (version < 31) {
+          return this.cmd("wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.3.1, please update!"]);
+        }
+      });
+    }
 
-    ZeroTalk.prototype.onPageLoaded = function() {
-      return $("body").addClass("loaded");
-    };
+    // All page content loaded
+    onPageLoaded() {
+      return $("body").addClass("loaded"); // Back/forward button keep position support
+    }
 
-    ZeroTalk.prototype.routeUrl = function(url) {
+    routeUrl(url) {
       var match;
       this.log("Routing url:", url);
-      if (match = url.match(/Topic:([0-9]+)_([0-9a-zA-Z]+)/)) {
+      if (match = url.match(/Topic:([0-9]+)_([0-9a-zA-Z]+)/)) { // Topic
         $("body").addClass("page-topic");
         return TopicShow.actionShow(parseInt(match[1]), Text.toBitcoinAddress(match[2]));
-      } else if (match = url.match(/Topics:([0-9]+)_([0-9a-zA-Z]+)/)) {
+      } else if (match = url.match(/Topics:([0-9]+)_([0-9a-zA-Z]+)/)) { // Sub-topics
         $("body").addClass("page-topics");
         return TopicList.actionList(parseInt(match[1]), Text.toBitcoinAddress(match[2]));
       } else {
         $("body").addClass("page-main");
         return TopicList.actionList();
       }
-    };
+    }
 
-    ZeroTalk.prototype.addInlineEditors = function() {
+    addInlineEditors() {
       var editor, elem, elems, i, len;
       this.logStart("Adding inline editors");
       elems = $("[data-editable]");
@@ -2233,190 +2148,184 @@ jQuery.extend( jQuery.easing,
         }
       }
       return this.logEnd("Adding inline editors");
-    };
+    }
 
-    ZeroTalk.prototype.getContent = function(elem, raw) {
-      if (raw == null) {
-        raw = false;
-      }
+    getContent(elem, raw = false) {
+      boundMethodCheck(this, ZeroTalk);
       return elem.data("content");
-    };
+    }
 
-    ZeroTalk.prototype.getObject = function(elem) {
+    getObject(elem) {
+      boundMethodCheck(this, ZeroTalk);
       if (elem.data("object")) {
         return elem;
       } else {
         return elem.parents("[data-object]");
       }
-    };
+    }
 
-    ZeroTalk.prototype.saveContent = function(elem, content, cb) {
-      var delete_object, id, object, ref, type;
-      if (cb == null) {
-        cb = false;
-      }
-      if (elem.data("deletable") && content === null) {
+    saveContent(elem, content, cb = false) {
+      var delete_object, id, object, type;
+      boundMethodCheck(this, ZeroTalk);
+      if (elem.data("deletable") && content === null) { // Its a delete request
         delete_object = true;
       } else {
         delete_object = false;
       }
       object = this.getObject(elem);
-      ref = object.data("object").split(":"), type = ref[0], id = ref[1];
-      return User.getData((function(_this) {
-        return function(data) {
-          var comment, comment_id, comment_uri, ref1, ref2, ref3, ref4, topic, topic_creator_address, topic_id, topic_uri, user_address;
-          if (type === "Topic") {
-            ref1 = id.split("_"), topic_id = ref1[0], user_address = ref1[1];
-            topic_id = parseInt(topic_id);
-            topic = ((function() {
-              var i, len, ref2, results;
-              ref2 = data.topic;
-              results = [];
-              for (i = 0, len = ref2.length; i < len; i++) {
-                topic = ref2[i];
-                if (topic.topic_id === topic_id) {
-                  results.push(topic);
-                }
+      [type, id] = object.data("object").split(":");
+      return User.getData((data) => {
+        var comment, comment_id, comment_uri, topic, topic_creator_address, topic_id, topic_uri, user_address;
+        if (type === "Topic") {
+          [topic_id, user_address] = id.split("_");
+          topic_id = parseInt(topic_id);
+          topic = ((function() {
+            var i, len, ref, results;
+            ref = data.topic;
+            results = [];
+            for (i = 0, len = ref.length; i < len; i++) {
+              topic = ref[i];
+              if (topic.topic_id === topic_id) {
+                results.push(topic);
               }
-              return results;
-            })())[0];
-            if (delete_object) {
-              data.topic.splice(data.topic.indexOf(topic), 1);
-            } else {
-              topic[elem.data("editable")] = content;
             }
+            return results;
+          })())[0];
+          if (delete_object) { // Delete
+            data.topic.splice(data.topic.indexOf(topic), 1); // Update
+          } else {
+            topic[elem.data("editable")] = content;
           }
-          if (type === "Comment") {
-            ref2 = id.split("@"), comment_uri = ref2[0], topic_uri = ref2[1];
-            ref3 = comment_uri.split("_"), comment_id = ref3[0], user_address = ref3[1];
-            ref4 = topic_uri.split("_"), topic_id = ref4[0], topic_creator_address = ref4[1];
-            comment_id = parseInt(comment_id);
-            comment = ((function() {
-              var i, len, ref5, results;
-              ref5 = data.comment[topic_uri];
-              results = [];
-              for (i = 0, len = ref5.length; i < len; i++) {
-                comment = ref5[i];
-                if (comment.comment_id === comment_id) {
-                  results.push(comment);
-                }
+        }
+        if (type === "Comment") {
+          [comment_uri, topic_uri] = id.split("@");
+          [comment_id, user_address] = comment_uri.split("_");
+          [topic_id, topic_creator_address] = topic_uri.split("_");
+          comment_id = parseInt(comment_id);
+          comment = ((function() {
+            var i, len, ref, results;
+            ref = data.comment[topic_uri];
+            results = [];
+            for (i = 0, len = ref.length; i < len; i++) {
+              comment = ref[i];
+              if (comment.comment_id === comment_id) {
+                results.push(comment);
               }
-              return results;
-            })())[0];
-            if (delete_object) {
-              data.comment[topic_uri].splice(data.comment[topic_uri].indexOf(comment), 1);
-            } else {
-              comment[elem.data("editable")] = content;
             }
+            return results;
+          })())[0];
+          if (delete_object) { // Delete
+            data.comment[topic_uri].splice(data.comment[topic_uri].indexOf(comment), 1); // Update
+          } else {
+            comment[elem.data("editable")] = content;
           }
-          return User.publishData(data, function(res) {
-            if (res) {
-              if (delete_object) {
-                if (cb) {
-                  cb(true);
+        }
+        return User.publishData(data, (res) => {
+          if (res) {
+            if (delete_object) { // Delete
+              if (cb) {
+                cb(true);
+              }
+              return elem.fancySlideUp(); // Update
+            } else {
+              if (type === "Topic") {
+                if ($("body").hasClass("page-main") || $("body").hasClass("page-topics")) {
+                  TopicList.loadTopics("list", (function() {
+                    if (cb) {
+                      return cb(true);
+                    }
+                  }));
                 }
-                return elem.fancySlideUp();
-              } else {
-                if (type === "Topic") {
-                  if ($("body").hasClass("page-main") || $("body").hasClass("page-topics")) {
-                    TopicList.loadTopics("list", (function() {
-                      if (cb) {
-                        return cb(true);
-                      }
-                    }));
-                  }
-                  if ($("body").hasClass("page-topic")) {
-                    TopicShow.loadTopic((function() {
-                      if (cb) {
-                        return cb(true);
-                      }
-                    }));
-                  }
-                }
-                if (type === "Comment") {
-                  return TopicShow.loadComments("normal", (function() {
+                if ($("body").hasClass("page-topic")) {
+                  TopicShow.loadTopic((function() {
                     if (cb) {
                       return cb(true);
                     }
                   }));
                 }
               }
-            } else {
-              if (cb) {
-                return cb(false);
+              if (type === "Comment") {
+                return TopicShow.loadComments("normal", (function() {
+                  if (cb) {
+                    return cb(true);
+                  }
+                }));
               }
             }
-          });
-        };
-      })(this));
-    };
+          } else {
+            if (cb) {
+              return cb(false);
+            }
+          }
+        });
+      });
+    }
 
-    ZeroTalk.prototype.onRequest = function(cmd, message) {
-      if (cmd === "setSiteInfo") {
+    // Incoming request from ZeroNet API
+    onRequest(cmd, message) {
+      if (cmd === "setSiteInfo") { // Site updated
         return this.actionSetSiteInfo(message);
       } else {
         return this.log("Unknown command", message);
       }
-    };
+    }
 
-    ZeroTalk.prototype.writePublish = function(inner_path, data, cb) {
-      return this.cmd("fileWrite", [inner_path, data], (function(_this) {
-        return function(res) {
-          if (res !== "ok") {
-            _this.cmd("wrapperNotification", ["error", "File write error: " + res.error]);
-            cb(false);
-            return false;
+    writePublish(inner_path, data, cb) {
+      return this.cmd("fileWrite", [inner_path, data], (res) => {
+        if (res !== "ok") { // fileWrite failed
+          this.cmd("wrapperNotification", ["error", `File write error: ${res.error}`]);
+          cb(false);
+          return false;
+        }
+        return this.cmd("sitePublish", {
+          "inner_path": inner_path
+        }, (res) => {
+          if (res === "ok") {
+            return cb(true);
+          } else {
+            return cb(res);
           }
-          return _this.cmd("sitePublish", {
-            "inner_path": inner_path
-          }, function(res) {
-            if (res === "ok") {
-              return cb(true);
-            } else {
-              return cb(res);
-            }
-          });
-        };
-      })(this));
-    };
+        });
+      });
+    }
 
-    ZeroTalk.prototype.actionSetSiteInfo = function(res) {
+    actionSetSiteInfo(res) {
       var mentions_menu_elem, ref, site_info;
+      boundMethodCheck(this, ZeroTalk);
       site_info = res.params;
       this.setSiteinfo(site_info);
-      if (site_info.event && site_info.event[0] === "file_done" && site_info.event[1].match(/.*users.*data.json$/)) {
-        return RateLimit(500, (function(_this) {
-          return function() {
-            if ($("body").hasClass("page-topic")) {
-              TopicShow.loadTopic();
-              TopicShow.loadComments();
-            }
-            if ($("body").hasClass("page-main") || $("body").hasClass("page-topics")) {
-              return TopicList.loadTopics();
-            }
-          };
-        })(this));
+      if (site_info.event && site_info.event[0] === "file_done" && site_info.event[1].match(/.*users.*data.json$/)) { // Data changed
+        return RateLimit(500, () => {
+          if ($("body").hasClass("page-topic")) {
+            TopicShow.loadTopic();
+            TopicShow.loadComments();
+          }
+          if ($("body").hasClass("page-main") || $("body").hasClass("page-topics")) {
+            return TopicList.loadTopics();
+          }
+        });
       } else if (((ref = site_info.event) != null ? ref[0] : void 0) === "cert_changed" && site_info.cert_user_id) {
+        // Auto click follow username mentions on cert change
         TopicList.initFollowButton();
         mentions_menu_elem = TopicList.follow.feeds["Username mentions"][1];
-        return setTimeout(((function(_this) {
-          return function() {
-            if (!mentions_menu_elem.hasClass("selected")) {
-              return mentions_menu_elem.trigger("click");
-            }
-          };
-        })(this)), 100);
+        return setTimeout((() => {
+          if (!mentions_menu_elem.hasClass("selected")) {
+            return mentions_menu_elem.trigger("click");
+          }
+        }), 100);
       }
-    };
+    }
 
-    ZeroTalk.prototype.setSiteinfo = function(site_info) {
+    setSiteinfo(site_info) {
+      boundMethodCheck(this, ZeroTalk);
       this.site_info = site_info;
       return User.checkCert();
-    };
+    }
 
-    ZeroTalk.prototype.autoExpand = function(elem) {
+    autoExpand(elem) {
       var editor;
       editor = elem[0];
+      // Autoexpand
       if (elem.height() > 0) {
         elem.height(1);
       }
@@ -2430,7 +2339,7 @@ jQuery.extend( jQuery.easing,
           new_height += parseFloat(elem.css("borderBottomWidth"));
           new_height -= parseFloat(elem.css("paddingTop"));
           new_height -= parseFloat(elem.css("paddingBottom"));
-          min_height = parseFloat(elem.css("lineHeight")) * 2;
+          min_height = parseFloat(elem.css("lineHeight")) * 2; // 2 line minimum
           if (new_height < min_height) {
             new_height = min_height + 4;
           }
@@ -2442,11 +2351,9 @@ jQuery.extend( jQuery.easing,
       } else {
         return elem.height("48px");
       }
-    };
+    }
 
-    return ZeroTalk;
-
-  })(ZeroFrame);
+  };
 
   window.Page = new ZeroTalk();
 

@@ -96,7 +96,7 @@ class InlineEditor
 
 	deleteObject: =>
 		object_type = @getObject(@elem).data("object").split(":")[0]
-		Page.cmd "wrapperConfirm", ["Are you sure you sure to delete this #{object_type}?", "Delete"], (confirmed) => 
+		Page.cmd "wrapperConfirm", ["Are you sure you sure to delete this #{object_type}?", "Delete"], (confirmed) =>
 			$(".editbar .delete").addClass("loading")
 			Page.saveContent @getObject(@elem), null, =>
 				@stopEdit()

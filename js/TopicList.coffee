@@ -1,5 +1,6 @@
 class TopicList extends Class
 	constructor: ->
+		super()
 		@thread_sorter = null
 		@parent_topic_uri = undefined
 		@limit = 31

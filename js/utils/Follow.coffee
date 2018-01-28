@@ -1,5 +1,6 @@
 class Follow extends Class
 	constructor: (@elem) ->
+		super()
 		@menu = new Menu(@elem)
 		@feeds = {}
 		@follows = {}

@@ -1,8 +1,9 @@
 class User extends Class
 	constructor: ->
+		super()
 		@my_topic_votes = {}
 		@my_comment_votes = {}
-		@rules = {}  # Last result for fileRules command
+		@rules = {}	# Last result for fileRules command
 
 		@certselectButtons()
 
@@ -20,11 +21,11 @@ class User extends Class
 			SELECT 'comment_vote' AS type, comment_uri AS uri FROM json LEFT JOIN comment_vote USING (json_id) WHERE directory = "#{Page.site_info.auth_address}" AND file_name = 'data.json'
 		"""
 		Page.cmd "dbQuery", [query], (votes) =>
-		  	for vote in votes
-		  		if vote.type == "topic_vote"
-		  			@my_topic_votes[vote.uri] = true
-		  		else
-		  			@my_comment_votes[vote.uri] = true
+				for vote in votes
+					if vote.type == "topic_vote"
+						@my_topic_votes[vote.uri] = true
+					else
+						@my_comment_votes[vote.uri] = true
 			if cb then cb()
 
 
