@@ -1881,7 +1881,7 @@ jQuery.extend( jQuery.easing,
         if (data.comment_vote == null) {
           data.comment_vote = {};
         }
-        comment_uri = elem.attr("id").match("_([0-9]+_[A-Za-z0-9]+)$")[1];
+        comment_uri = elem.attr("id").match("_([^_]+_[A-Za-z0-9]+)$")[1];
         if (elem.hasClass("active")) {
           data.comment_vote[comment_uri] = 1;
         } else {
