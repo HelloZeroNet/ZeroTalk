@@ -83,10 +83,6 @@
   "languages/zh.json": {
    "sha512": "6af6e63c4c15c860276024413fc4baf9fb74ca3d4f209dfc8860cdf7c8a07158",
    "size": 1813
-  },
-  "npm-debug.log": {
-   "sha512": "aa7691ee96de154932c30af28b1057665c2b4ab72d5a2f40618297ec01c83702",
-   "size": 2128
   }
  },
  "ignore": "((js|css)/(?!all.(js|css))|data/users/.*db|data/users/.*/.*|data/archived|.*.py|.git)",
@@ -97,7 +93,7 @@
   }
  },
  "inner_path": "content.json",
- "modified": 1517147099,
+ "modified": 1517148490,
  "postmessage_nonce_security": true,
  "settings": {
   "admin": "mnemonic",
@@ -106,7 +102,7 @@
  },
  "signers_sign": "G7Ko4/yjSlcyctIapMcBv1FTJrx0G7FretQWYbHX0GuUbRyQfu6e6MzsC5IYfqVu60yrSRSka9t/yt1ZbT+kA8Q=",
  "signs": {
-  "1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW": "G9BCcoI3Kq4lmDfvM4vVoaIg4lcYJ6h66KVlldlLHjtdBaxIKdWn1N5/w6r7oNV2Vqof2MhqvJepPKjKIJh6P+g="
+  "1Hive8oUEeJeheQBLui2zgAxRq7hDasyEW": "HLKoCitl+VVr1bdU/oKlAwsB23MtKeGWc9d85h3bnVqJbh54OmEE1z1KFDIRokOWH4Wn9t8SiVynMk+p1aqHlCU="
  },
  "signs_required": 1,
  "title": "ZeroHive",
