@@ -25,9 +25,10 @@ class Menu
 
 	addItem: (title, cb) ->
 		item = $(".menu-item.template", @elem).clone().removeClass("template")
-		item.html(title)
+		item.text(title)
+
 		item.on "click", =>
-			if not cb(item)
+			if not cb?(item)
 				@hide()
 			return false
 		item.appendTo(@elem)

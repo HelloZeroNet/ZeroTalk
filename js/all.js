@@ -873,11 +873,11 @@ jQuery.extend( jQuery.easing,
 
 (function() {
   var Menu,
-    __slice = [].slice;
+    slice = [].slice;
 
   Menu = (function() {
-    function Menu(_at_button) {
-      this.button = _at_button;
+    function Menu(button) {
+      this.button = button;
       this.elem = $(".menu.template").clone().removeClass("template");
       this.elem.appendTo("body");
       this.items = [];
@@ -912,10 +912,10 @@ jQuery.extend( jQuery.easing,
     Menu.prototype.addItem = function(title, cb) {
       var item;
       item = $(".menu-item.template", this.elem).clone().removeClass("template");
-      item.html(title);
+      item.text(title);
       item.on("click", (function(_this) {
         return function() {
-          if (!cb(item)) {
+          if (!(typeof cb === "function" ? cb(item) : void 0)) {
             _this.hide();
           }
           return false;
@@ -928,8 +928,8 @@ jQuery.extend( jQuery.easing,
 
     Menu.prototype.log = function() {
       var args;
-      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-      return console.log.apply(console, ["[Menu]"].concat(__slice.call(args)));
+      args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+      return console.log.apply(console, ["[Menu]"].concat(slice.call(args)));
     };
 
     return Menu;
@@ -1669,21 +1669,20 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicShow.coffee ---- */
 
 
 (function() {
   var TopicShow,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __hasProp = {}.hasOwnProperty;
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  TopicShow = (function(_super) {
-    __extends(TopicShow, _super);
+  TopicShow = (function(superClass) {
+    extend(TopicShow, superClass);
 
     function TopicShow() {
-      this.submitCommentVote = __bind(this.submitCommentVote, this);
+      this.submitCommentVote = bind(this.submitCommentVote, this);
       return TopicShow.__super__.constructor.apply(this, arguments);
     }
 
@@ -1746,12 +1745,12 @@ jQuery.extend( jQuery.easing,
       $(".topic-full").attr("id", "topic_" + this.topic_uri);
       return Page.cmd("dbQuery", [this.queryTopic(this.topic_id, this.topic_user_address)], (function(_this) {
         return function(res) {
-          var parent_topic_id, parent_topic_user_address, _ref;
+          var parent_topic_id, parent_topic_user_address, ref;
           _this.topic = res[0];
           TopicList.applyTopicData($(".topic-full"), _this.topic, "show");
           if (_this.topic.parent_topic_uri) {
             $(".topic-title").css("display", "");
-            _ref = _this.topic.parent_topic_uri.split("_"), parent_topic_id = _ref[0], parent_topic_user_address = _ref[1];
+            ref = _this.topic.parent_topic_uri.split("_"), parent_topic_id = ref[0], parent_topic_user_address = ref[1];
             Page.cmd("dbQuery", [_this.queryTopic(parent_topic_id, parent_topic_user_address)], function(parent_res) {
               var parent_topic;
               parent_topic = parent_res[0];
@@ -1783,12 +1782,12 @@ jQuery.extend( jQuery.easing,
       }
       return Page.cmd("dbQuery", [query], (function(_this) {
         return function(comments) {
-          var comment, comment_uri, elem, focused, _i, _len;
+          var comment, comment_uri, elem, focused, i, len;
           focused = $(":focus");
           _this.logEnd("Loading comments...");
           $(".comments .comment:not(.template)").attr("missing", "true");
-          for (_i = 0, _len = comments.length; _i < _len; _i++) {
-            comment = comments[_i];
+          for (i = 0, len = comments.length; i < len; i++) {
+            comment = comments[i];
             comment_uri = comment.comment_id + "_" + comment.user_address;
             elem = $("#comment_" + comment_uri);
             if (elem.length === 0) {
@@ -1802,10 +1801,7 @@ jQuery.extend( jQuery.easing,
             _this.applyCommentData(elem, comment);
             elem.appendTo(".comments").removeAttr("missing");
           }
-          $("body").css({
-            "overflow": "auto",
-            "height": "auto"
-          });
+          Page.onPageLoaded();
           $(".comment[missing]").remove();
           Page.addInlineEditors();
           if (comments.length === 60) {
@@ -1840,6 +1836,9 @@ jQuery.extend( jQuery.easing,
           menu.addItem("Mute this user", function() {
             elem.fancySlideUp();
             return Page.cmd("muteAdd", [comment.user_address, comment.user_name, "Comment: " + comment.body.slice(0, 21)]);
+          });
+          menu.addItem("Permalink", function() {
+            return window.top.location = "#" + (elem.attr('id'));
           });
           menu.show();
           return false;
@@ -1905,9 +1904,9 @@ jQuery.extend( jQuery.easing,
       $(".comment-new .button-submit").addClass("loading");
       return User.getData((function(_this) {
         return function(data) {
-          var _base, _name;
-          if ((_base = data.comment)[_name = _this.topic_uri] == null) {
-            _base[_name] = [];
+          var base, name;
+          if ((base = data.comment)[name = _this.topic_uri] == null) {
+            base[name] = [];
           }
           data.comment[_this.topic_uri].push({
             "comment_id": data.next_comment_id,
@@ -1967,6 +1966,7 @@ jQuery.extend( jQuery.easing,
   window.TopicShow = new TopicShow();
 
 }).call(this);
+
 
 
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/User.coffee ---- */
@@ -2202,7 +2202,10 @@ jQuery.extend( jQuery.easing,
     };
 
     ZeroTalk.prototype.onPageLoaded = function() {
-      return $("body").addClass("loaded");
+      if (!$("body").hasClass("loaded")) {
+        $("body").addClass("loaded");
+        return Page.cmd("wrapperInnerLoaded");
+      }
     };
 
     ZeroTalk.prototype.routeUrl = function(url) {

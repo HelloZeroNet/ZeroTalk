@@ -6,8 +6,8 @@
  "domain": "Talk.ZeroNetwork.bit",
  "files": {
   "css/all.css": {
-   "sha512": "f91aa9692272706e4d219939972cffa2a9a20ab66099fb8b24ee60e60c2929fa",
-   "size": 164580
+   "sha512": "413e69750ab6d51f3752edc3599fc8f3100f16ffd2d17e107b42f0a25f56c581",
+   "size": 165295
   },
   "data-default/users/content-default.json": {
    "sha512": "c1642cc2922a74c3e74991f0194e2acc46dc5e003207a0028dad63c75c41a0ec",
@@ -38,8 +38,8 @@
    "size": 8308
   },
   "js/all.js": {
-   "sha512": "dda3fdd5694cf7d2952460416d6d3646ed37c65ac412562f4bb3815a8f55dd9e",
-   "size": 231470
+   "sha512": "6b7290b235d928924433014fe91884bda5f652b7a5c1ed9b69d8579a9a991117",
+   "size": 231379
   },
   "languages/da.json": {
    "sha512": "4947ef2bb4f4d9551561057ec7d6dea9e881d211ca7f9c0bec7f2dc7493fa2ec",
@@ -82,30 +82,20 @@
   }
  },
  "inner_path": "content.json",
- "modified": 1495534127,
+ "modified": 1501722498,
  "postmessage_nonce_security": true,
  "settings": {
   "admin": "nofish",
   "admin_href": "http://127.0.0.1:43110/Mail.ZeroNetwork.bit/?to=nofish",
-  "topic_sticky_uris": [
-   "2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj",
-   "8_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj"
-  ]
+  "topic_sticky_uris": ["2_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj", "8_1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj"]
  },
- "sign": [
-  34570195314575724773194421641170479386596097819563278628113774150131154300723,
-  85654364444520478186506683007915265499527324850084136121532266661650383491804
- ],
  "signers_sign": "G2/6ljsXbej7laqD3JUGsa8IEgSGE+NZs2jg9reQ3vrlXLgsYX67t9yRcqOuRnKxuC+4+XPo/XdVztlERvr9viI=",
  "signs": {
-  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "G3tpNQ3SKc9VrTy0U7cYYrRRZCu95pKR9yn/9i2wfkfGMeFAdUyyHldpiPU8Zm3z9cMUulIenfN+QGJJCDgQBFc="
+  "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT": "G6Jn9OYTOkDmWxV75E7jwamtoCLIrun9gkJViOOz03tHaDPrn51k86ewKYAVwnQ/mPqyiAO1lVNLHk22YUqVn8Q="
  },
  "signs_required": 1,
  "title": "ZeroTalk",
- "translate": [
-  "index.html",
-  "js/all.js"
- ],
- "viewport": "width=device-width, initial-scale=1.0",
- "zeronet_version": "0.5.5"
+ "translate": ["index.html", "js/all.js"],
+ "viewport": "width=device-width, initial-scale=0.8",
+ "zeronet_version": "0.5.7"
 }

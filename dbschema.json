@@ -38,7 +38,7 @@
 				["added", "DATETIME"],
 				["json_id", "INTEGER REFERENCES json (json_id)"]
 			],
-			"indexes": ["CREATE INDEX topic_uri ON comment(topic_uri)", "CREATE UNIQUE INDEX comment_key ON comment(json_id, comment_id)"],
+			"indexes": ["CREATE INDEX topic_uri ON comment(topic_uri)", "CREATE INDEX comment_added ON comment(added)", "CREATE UNIQUE INDEX comment_key ON comment(json_id, comment_id)"],
 			"schema_changed": 1
 		},
 		"comment_vote": {

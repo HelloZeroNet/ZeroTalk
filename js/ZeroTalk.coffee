@@ -46,7 +46,9 @@ class ZeroTalk extends ZeroFrame
 
 	# All page content loaded
 	onPageLoaded: ->
-		$("body").addClass("loaded") # Back/forward button keep position support
+		if not $("body").hasClass("loaded")
+			$("body").addClass("loaded") # Back/forward button keep position support
+			Page.cmd("wrapperInnerLoaded")
 
 
 	routeUrl: (url) ->

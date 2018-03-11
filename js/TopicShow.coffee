@@ -139,7 +139,7 @@ class TopicShow extends Class
 				@applyCommentData(elem, comment)
 				elem.appendTo(".comments").removeAttr("missing")
 
-			$("body").css({"overflow": "auto", "height": "auto"})
+			Page.onPageLoaded()
 			$(".comment[missing]").remove()
 
 			Page.addInlineEditors()
@@ -168,6 +168,8 @@ class TopicShow extends Class
 			menu.addItem "Mute this user", =>
 				elem.fancySlideUp()
 				Page.cmd "muteAdd", [comment.user_address, comment.user_name, "Comment: #{comment.body[0..20]}"]
+			menu.addItem "Permalink", =>
+				window.top.location = "##{elem.attr('id')}"
 			menu.show()
 			return false
 
