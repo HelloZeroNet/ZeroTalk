@@ -31,11 +31,19 @@
 	" comments": " komentáre",
 	"0 comments": "0 komentárov",
 	"last activity": "posledná aktivita",
-	"&#9473; started by ": "&#9473; začaté: ",
+	"&#9473; started by ": "&#9473; začal: ",
 
 	" minutes ago": " minút dozadu",
 	" hours ago": " hodín dozadu",
 	" days ago": " dní dozadu",
 	"on ": "",
-	"Just now": "Teraz"
+	"Just now": "Teraz",
+	"Forums: ": "Fóra: ",
+	"used: ": "Využitých: ",
+	
+	"on": "",
+	"Oct": "Okt",
+	"May": "Máj",
+	"Jun": "Jún",
+	"Jul": "Júl",
 }
