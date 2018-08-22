@@ -4,6 +4,7 @@
  "cloneable": true,
  "description": "Decentralized forum with ZeroID",
  "domain": "Talk.ZeroNetwork.bit",
+ "favicon": "favicon.png",
  "files": {
   "css/all.css": {
    "sha512": "413e69750ab6d51f3752edc3599fc8f3100f16ffd2d17e107b42f0a25f56c581",
