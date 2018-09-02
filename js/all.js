@@ -1634,7 +1634,7 @@ jQuery.extend( jQuery.easing,
     TopicList.prototype.submitTopicVote = function(e) {
       var elem, inner_path;
       if (!Page.site_info.cert_user_id) {
-        Page.cmd("certSelect", [["zeroid.bit"]]);
+        Page.cmd("certSelect", [["zeroid.bit", "kxoid.bit"]]);
         return false;
       }
       elem = $(e.currentTarget);
@@ -2027,7 +2027,7 @@ jQuery.extend( jQuery.easing,
           if (Page.server_info.rev < 160) {
             Page.cmd("wrapperNotification", ["error", "Comments requires at least ZeroNet 0.3.0 Please upgade!"]);
           } else {
-            Page.cmd("certSelect", [["zeroid.bit"]]);
+            Page.cmd("certSelect", [["zeroid.bit", "kxoid.bit"]]);
           }
           return false;
         };
