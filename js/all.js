@@ -1587,7 +1587,7 @@ jQuery.extend( jQuery.easing,
     TopicList.prototype.submitCreateTopic = function() {
       var body, title;
       if (!Page.site_info.cert_user_id) {
-        Page.cmd("certSelect", [["zeroid.bit"]]);
+        Page.cmd("certSelect", [["zeroid.bit", "kxoid.bit"]]);
         return false;
       }
       title = $(".topic-new #topic_title").val().trim();
