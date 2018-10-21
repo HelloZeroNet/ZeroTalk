@@ -31,17 +31,18 @@ class ZeroTalk extends ZeroFrame
 			res ?= {}
 			@local_storage = res
 
+		@cmd "serverInfo", {}, (ret) => # Get server info
+			@server_info = ret
+			version = parseInt(@server_info.version.replace(/\./g, ""))
+			if version < 31
+				@cmd "wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.3.1, please update!"]
+
 		@cmd "siteInfo", {}, (site) =>
 			@site_address = site.address
 			@setSiteinfo(site)
 			User.updateMyInfo =>
 				@routeUrl(window.location.search.substring(1))
 
-		@cmd "serverInfo", {}, (ret) => # Get server info
-			@server_info = ret
-			version = parseInt(@server_info.version.replace(/\./g, ""))
-			if version < 31
-				@cmd "wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.3.1, please update!"]
 
 
 	# All page content loaded
