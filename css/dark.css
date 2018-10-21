@@ -1,0 +1,56 @@
+.theme-dark { background-color: #2e2b32; color: #e1e1e1 }
+.theme-dark .head .logo { background-color: #2e5a61; color: #a4f3ff; }
+.theme-dark a { color: #83EFFF }
+.theme-dark a:hover { border-color: #83EFFF }
+.theme-dark .topmenu { background-color: #373844; color: #a7a8b8 }
+.theme-dark .topmenu a { color: #f0f0f0 }
+.theme-dark .topmenu.highlight { background-color: #83efff }
+.theme-dark .topmenu.highlight a { color: black; }
+.theme-dark .topic { background-color: #373844 }
+.theme-dark .topic .icon { filter: invert(1) }
+.theme-dark .topic .dot { color: #373844 }
+.theme-dark .topic.visit-none .dot { color: #686972 }
+.theme-dark .topic-new-link { background-color: #373844 }
+.theme-dark .topic .comment-num { color: #e4e4e4 }
+.theme-dark .user_name { color: #dedede }
+.theme-dark .link:hover .link-url { color: white }
+.theme-dark .score { border-color: #575862 }
+.theme-dark .score.active { border: 1px solid #2ecc71; }
+.theme-dark .comment { border-color: #1d1a22; background-color: #373844 }
+.theme-dark .comment .body blockquote a { color: white; }
+
+.theme-dark .button-submit { color: black; }
+.theme-dark .button:hover { border-color: #888301; }
+.theme-dark .button { color: black }
+.theme-dark .button-outline { background-color: transparent; border-color: #616a75; color: #85909e; }
+.theme-dark .button-outline:hover { border-color: #83EFFF; }
+.theme-dark .button.button-certselect { color: white; }
+.theme-dark .button.button-certselect:hover { border-bottom-color: #5D68FF }
+
+.theme-dark textarea, .theme-dark input.text { background-color: transparent; border-color: #4c5864; color: #F6FEF7 }
+.theme-dark .comment .reply .icon { opacity: 1 }
+.theme-dark .comment .reply:hover, .theme-dark .comment .mute:hover { color: white }
+.theme-dark .topics-more, .theme-dark .comments-more { border-color: #78d7e6 }
+.theme-dark .topics-more:hover, .theme-dark .comments-more:hover { background-color: #78d7e6; color: #2e2b32 }
+.theme-dark code { background-color: #232323; border-color: #0A0A0A; color: #d3d3d3; }
+.theme-dark .topic-new-link:hover { color: white }
+.theme-dark .topic-new .message { background-color: #83efff; border-color: transparent; color: #373844; }
+.theme-dark .user-size-used { color: #83EFFF }
+
+.theme-dark .feed-follow { border-color: #47505a }
+.theme-dark .feed-follow .text-following { color: #F6FEF7 }
+.theme-dark .feed-follow.following .text-following { color: #83EFFF }
+.theme-dark .feed-follow:hover { background-color: #333940; border-color: #83EFFF; color: #83EFFF }
+.theme-dark .menu-item { color: black }
+.theme-dark .menu-item:active, .theme-dark .menu-item:focus { color: white }
+.theme-dark .feed-follow .icon-feed { background-color: #83EFFF }
+.theme-dark .feed-follow .icon-feed:before { border-color: #83EFFF }
+.theme-dark .feed-follow .icon-feed:after { border-color: #83EFFF }
+.theme-dark .feed-follow-show { border-color: transparent; }
+
+.theme-dark .editbg { background-color: #36373c }
+.theme-dark .bottombar { background-color: rgba(56, 63, 70, 0.9) }
+.theme-dark .markdown-help { background-color: rgba(54, 53, 59, 0.76); }
+.theme-dark .icon-help { border-color: #83EFFF }
+.theme-dark .icon-help.active { background-color: #446b71; }
+.theme-dark .topic.visit-newcomment .dot { color: #81ebfb; }

@@ -29,5 +29,5 @@
 .feed-follow.following .icon-feed { background-color: #229A55; transition: none }
 .feed-follow.following .icon-feed:after, .feed-follow.following .icon-feed:before { border-color: #229A55; transition: none }
 
-.feed-follow-show { float: right; border: 1px solid white; padding: 0px; margin-top: 5px }
+.feed-follow-show { float: right; border: 1px solid white; margin-top: -5px; margin-right: -15px; }
 .feed-follow-show:hover { border: 1px solid white }
