@@ -7,14 +7,10 @@ class Text
 		hash = 0
 		for i in [0..text.length-1]
 			hash += text.charCodeAt(i)*i
-		return "hsl(" + (hash % 360) + ",30%,50%)";
-		###
-		for i in [0..2]
-			value = (hash >> (i * 8)) & 0xFF
-			color += ('00' + value.toString(16)).substr(-2)
-		return color
-		###
-
+		if Page.server_info?.user_settings?.theme == "dark"
+			return "hsl(" + (hash % 360) + ",80%,80%)"
+		else
+			return "hsl(" + (hash % 360) + ",30%,50%)"
 
 	toMarked: (text, options={}) ->
 		options["gfm"] = true
