@@ -1,6 +1,7 @@
 {
  "address": "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT",
  "background-color": "#F5F5F5",
+ "background-color-dark": "#2e2b32",
  "cloneable": true,
  "description": "Decentralized forum with ZeroID",
  "domain": "Talk.ZeroNetwork.bit",
