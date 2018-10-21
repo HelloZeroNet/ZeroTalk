@@ -29,7 +29,7 @@ class TopicList extends Class
 		# Show create new topic form
 		$(".topic-new-link").on "click", =>
 			if Page.site_info.address == "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT"
-				$(".topmenu").css("background-color", "#fffede")
+				$(".topmenu").addClass("highlight")
 				$(".topic-new .message").css("display", "block")
 			$(".topic-new").fancySlideDown()
 			$(".topic-new-link").slideUp()
