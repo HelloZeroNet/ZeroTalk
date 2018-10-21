@@ -673,19 +673,19 @@ jQuery.extend( jQuery.easing,
 
 (function() {
   var InlineEditor,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   InlineEditor = (function() {
-    function InlineEditor(_at_elem, _at_getContent, _at_saveContent, _at_getObject) {
-      this.elem = _at_elem;
-      this.getContent = _at_getContent;
-      this.saveContent = _at_saveContent;
-      this.getObject = _at_getObject;
-      this.cancelEdit = __bind(this.cancelEdit, this);
-      this.deleteObject = __bind(this.deleteObject, this);
-      this.saveEdit = __bind(this.saveEdit, this);
-      this.stopEdit = __bind(this.stopEdit, this);
-      this.startEdit = __bind(this.startEdit, this);
+    function InlineEditor(elem1, getContent, saveContent, getObject) {
+      this.elem = elem1;
+      this.getContent = getContent;
+      this.saveContent = saveContent;
+      this.getObject = getObject;
+      this.cancelEdit = bind(this.cancelEdit, this);
+      this.deleteObject = bind(this.deleteObject, this);
+      this.saveEdit = bind(this.saveEdit, this);
+      this.stopEdit = bind(this.stopEdit, this);
+      this.startEdit = bind(this.startEdit, this);
       this.edit_button = $("<a href='#Edit' class='editable-edit icon-edit'></a>");
       this.edit_button.on("click", this.startEdit);
       this.elem.addClass("editable").before(this.edit_button);
@@ -714,16 +714,16 @@ jQuery.extend( jQuery.easing,
     }
 
     InlineEditor.prototype.startEdit = function() {
-      var _i, _results;
+      var j, results;
       this.content_before = this.elem.html();
       this.editor = $("<textarea class='editor'></textarea>");
       this.editor.val(this.getContent(this.elem, "raw"));
       this.elem.after(this.editor);
       $(".editbg").css("display", "block").cssLater("opacity", 0.9, 10);
       this.elem.html((function() {
-        _results = [];
-        for (_i = 1; _i <= 50; _i++){ _results.push(_i); }
-        return _results;
+        results = [];
+        for (j = 1; j <= 50; j++){ results.push(j); }
+        return results;
       }).apply(this).join("fill the width"));
       this.copyStyle(this.elem, this.editor);
       this.elem.html(this.content_before);
@@ -884,15 +884,19 @@ jQuery.extend( jQuery.easing,
     }
 
     Menu.prototype.show = function() {
-      var button_pos;
+      var button_pos, left;
       if (window.visible_menu && window.visible_menu.button[0] === this.button[0]) {
         window.visible_menu.hide();
         return this.hide();
       } else {
         button_pos = this.button.offset();
+        left = button_pos.left;
+        if (left + this.elem.outerWidth() > $(document.body).width()) {
+          left = button_pos.left - this.elem.outerWidth() + this.button.outerWidth();
+        }
         this.elem.css({
-          "top": button_pos.top + this.button.outerHeight(),
-          "left": button_pos.left
+          "top": button_pos.top + this.button.outerHeight() + 10,
+          "left": left
         });
         this.button.addClass("menu-active");
         this.elem.addClass("visible");
@@ -981,11 +985,11 @@ jQuery.extend( jQuery.easing,
 
 (function() {
   var Renderer, Text,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __hasProp = {}.hasOwnProperty;
+    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  Renderer = (function(_super) {
-    __extends(Renderer, _super);
+  Renderer = (function(superClass) {
+    extend(Renderer, superClass);
 
     function Renderer() {
       return Renderer.__super__.constructor.apply(this, arguments);
@@ -1003,19 +1007,16 @@ jQuery.extend( jQuery.easing,
     function Text() {}
 
     Text.prototype.toColor = function(text) {
-      var hash, i, _i, _ref;
+      var hash, i, j, ref, ref1, ref2;
       hash = 0;
-      for (i = _i = 0, _ref = text.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+      for (i = j = 0, ref = text.length - 1; 0 <= ref ? j <= ref : j >= ref; i = 0 <= ref ? ++j : --j) {
         hash += text.charCodeAt(i) * i;
       }
-      return "hsl(" + (hash % 360) + ",30%,50%)";
-
-      /*
-      		for i in [0..2]
-      			value = (hash >> (i * 8)) & 0xFF
-      			color += ('00' + value.toString(16)).substr(-2)
-      		return color
-       */
+      if (((ref1 = Page.server_info) != null ? (ref2 = ref1.user_settings) != null ? ref2.theme : void 0 : void 0) === "dark") {
+        return "hsl(" + (hash % 360) + ",80%,80%)";
+      } else {
+        return "hsl(" + (hash % 360) + ",30%,50%)";
+      }
     };
 
     Text.prototype.toMarked = function(text, options) {
@@ -1077,6 +1078,7 @@ jQuery.extend( jQuery.easing,
   window.Text = new Text();
 
 }).call(this);
+
 
 
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Time.coffee ---- */
@@ -1157,18 +1159,18 @@ jQuery.extend( jQuery.easing,
 
 (function() {
   var ZeroFrame,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __hasProp = {}.hasOwnProperty;
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  ZeroFrame = (function(_super) {
-    __extends(ZeroFrame, _super);
+  ZeroFrame = (function(superClass) {
+    extend(ZeroFrame, superClass);
 
     function ZeroFrame(url) {
-      this.onCloseWebsocket = __bind(this.onCloseWebsocket, this);
-      this.onOpenWebsocket = __bind(this.onOpenWebsocket, this);
-      this.onRequest = __bind(this.onRequest, this);
-      this.onMessage = __bind(this.onMessage, this);
+      this.onCloseWebsocket = bind(this.onCloseWebsocket, this);
+      this.onOpenWebsocket = bind(this.onOpenWebsocket, this);
+      this.onRequest = bind(this.onRequest, this);
+      this.onMessage = bind(this.onMessage, this);
       this.url = url;
       this.waiting_cb = {};
       this.wrapper_nonce = document.location.href.replace(/.*wrapper_nonce=([A-Za-z0-9]+).*/, "$1");
@@ -1325,7 +1327,7 @@ jQuery.extend( jQuery.easing,
       $(".topic-new-link").on("click", (function(_this) {
         return function() {
           if (Page.site_info.address === "1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT") {
-            $(".topmenu").css("background-color", "#fffede");
+            $(".topmenu").addClass("highlight");
             $(".topic-new .message").css("display", "block");
           }
           $(".topic-new").fancySlideDown();
@@ -1968,7 +1970,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/User.coffee ---- */
 
 
@@ -2180,16 +2181,7 @@ jQuery.extend( jQuery.easing,
           return _this.local_storage = res;
         };
       })(this));
-      this.cmd("siteInfo", {}, (function(_this) {
-        return function(site) {
-          _this.site_address = site.address;
-          _this.setSiteinfo(site);
-          return User.updateMyInfo(function() {
-            return _this.routeUrl(window.location.search.substring(1));
-          });
-        };
-      })(this));
-      return this.cmd("serverInfo", {}, (function(_this) {
+      this.cmd("serverInfo", {}, (function(_this) {
         return function(ret) {
           var version;
           _this.server_info = ret;
@@ -2197,6 +2189,15 @@ jQuery.extend( jQuery.easing,
           if (version < 31) {
             return _this.cmd("wrapperNotification", ["error", "ZeroTalk requires ZeroNet 0.3.1, please update!"]);
           }
+        };
+      })(this));
+      return this.cmd("siteInfo", {}, (function(_this) {
+        return function(site) {
+          _this.site_address = site.address;
+          _this.setSiteinfo(site);
+          return User.updateMyInfo(function() {
+            return _this.routeUrl(window.location.search.substring(1));
+          });
         };
       })(this));
     };
