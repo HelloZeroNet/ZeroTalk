@@ -33,7 +33,7 @@ class TopicShow extends Class
 		# Follow button
 		@initFollowButton()
 
-	initFollowButton: ->
+	initFollowButton: (cb) ->
 		@follow = new Follow($(".feed-follow-show"))
 		@follow.addFeed("Comments in this topic", "
 			SELECT
@@ -53,7 +53,7 @@ class TopicShow extends Class
 			WHERE
 			 row_topic_uri IN (:params)
 		", true, @topic_uri)
-		@follow.init()
+		@follow.init(cb)
 
 
 	queryTopic: (topic_id, topic_user_address) ->

@@ -90,6 +90,7 @@
 }).call(this);
 
 
+
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.cssanim.js ---- */
 
 
@@ -209,6 +210,7 @@ jQuery.fx.step.scale = function(fx) {
   };
 
 }).call(this);
+
 
 
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/lib/jquery.easing.1.3.js ---- */
@@ -437,7 +439,7 @@ jQuery.extend( jQuery.easing,
 
 (function() {
   var Class,
-    __slice = [].slice;
+    slice = [].slice;
 
   Class = (function() {
     function Class() {}
@@ -446,7 +448,7 @@ jQuery.extend( jQuery.easing,
 
     Class.prototype.log = function() {
       var args;
-      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
       if (!this.trace) {
         return;
       }
@@ -460,23 +462,23 @@ jQuery.extend( jQuery.easing,
 
     Class.prototype.logStart = function() {
       var args, name;
-      name = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+      name = arguments[0], args = 2 <= arguments.length ? slice.call(arguments, 1) : [];
       if (!this.trace) {
         return;
       }
       this.logtimers || (this.logtimers = {});
       this.logtimers[name] = +(new Date);
       if (args.length > 0) {
-        this.log.apply(this, ["" + name].concat(__slice.call(args), ["(started)"]));
+        this.log.apply(this, ["" + name].concat(slice.call(args), ["(started)"]));
       }
       return this;
     };
 
     Class.prototype.logEnd = function() {
       var args, ms, name;
-      name = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+      name = arguments[0], args = 2 <= arguments.length ? slice.call(arguments, 1) : [];
       ms = +(new Date) - this.logtimers[name];
-      this.log.apply(this, ["" + name].concat(__slice.call(args), ["(Done in " + ms + "ms)"]));
+      this.log.apply(this, ["" + name].concat(slice.call(args), ["(Done in " + ms + "ms)"]));
       return this;
     };
 
@@ -489,23 +491,24 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Follow.coffee ---- */
 
 
 (function() {
   var Follow,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __hasProp = {}.hasOwnProperty,
-    __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty,
+    indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  Follow = (function(_super) {
-    __extends(Follow, _super);
+  Follow = (function(superClass) {
+    extend(Follow, superClass);
 
-    function Follow(_at_elem) {
-      this.elem = _at_elem;
-      this.handleMenuClick = __bind(this.handleMenuClick, this);
-      this.init = __bind(this.init, this);
+    function Follow(elem) {
+      this.elem = elem;
+      this.handleMenuClick = bind(this.handleMenuClick, this);
+      this.init = bind(this.init, this);
       this.menu = new Menu(this.elem);
       this.feeds = {};
       this.follows = {};
@@ -530,23 +533,26 @@ jQuery.extend( jQuery.easing,
       this.elem.css("display", "none");
     }
 
-    Follow.prototype.init = function() {
+    Follow.prototype.init = function(cb) {
       if (!this.feeds) {
+        if (typeof cb === "function") {
+          cb(false);
+        }
         return;
       }
       Page.cmd("feedListFollow", [], (function(_this) {
-        return function(_at_follows) {
-          var is_default_feed, menu_item, param, queries, query, title, _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
-          _this.follows = _at_follows;
+        return function(follows) {
+          var is_default_feed, menu_item, param, queries, query, ref, ref1, ref2, ref3, ref4, ref5, title;
+          _this.follows = follows;
           queries = {};
-          _ref = _this.feeds;
-          for (title in _ref) {
-            _ref1 = _ref[title], query = _ref1[0], menu_item = _ref1[1], is_default_feed = _ref1[2], param = _ref1[3];
+          ref = _this.feeds;
+          for (title in ref) {
+            ref1 = ref[title], query = ref1[0], menu_item = ref1[1], is_default_feed = ref1[2], param = ref1[3];
             queries[query] = title;
           }
-          _ref2 = _this.follows;
-          for (title in _ref2) {
-            _ref3 = _ref2[title], query = _ref3[0], param = _ref3[1];
+          ref2 = _this.follows;
+          for (title in ref2) {
+            ref3 = ref2[title], query = ref3[0], param = ref3[1];
             _this.log(title, "->", queries[query]);
             if (queries[query] && title !== queries[query]) {
               _this.log("Renamed query", title, "->", queries[query]);
@@ -554,17 +560,18 @@ jQuery.extend( jQuery.easing,
               delete _this.follows[title];
             }
           }
-          _ref4 = _this.feeds;
-          for (title in _ref4) {
-            _ref5 = _ref4[title], query = _ref5[0], menu_item = _ref5[1], is_default_feed = _ref5[2], param = _ref5[3];
-            if (_this.follows[title] && __indexOf.call(_this.follows[title][1], param) >= 0) {
+          ref4 = _this.feeds;
+          for (title in ref4) {
+            ref5 = ref4[title], query = ref5[0], menu_item = ref5[1], is_default_feed = ref5[2], param = ref5[3];
+            if (_this.follows[title] && indexOf.call(_this.follows[title][1], param) >= 0) {
               menu_item.addClass("selected");
             } else {
               menu_item.removeClass("selected");
             }
           }
           _this.updateListitems();
-          return _this.elem.css("display", "inline-block");
+          _this.elem.css("display", "inline-block");
+          return typeof cb === "function" ? cb(true) : void 0;
         };
       })(this));
       return setTimeout(((function(_this) {
@@ -601,10 +608,10 @@ jQuery.extend( jQuery.easing,
     };
 
     Follow.prototype.followDefaultFeeds = function() {
-      var is_default_feed, menu_item, param, query, title, _ref, _ref1;
-      _ref = this.feeds;
-      for (title in _ref) {
-        _ref1 = _ref[title], query = _ref1[0], menu_item = _ref1[1], is_default_feed = _ref1[2], param = _ref1[3];
+      var is_default_feed, menu_item, param, query, ref, ref1, title;
+      ref = this.feeds;
+      for (title in ref) {
+        ref1 = ref[title], query = ref1[0], menu_item = ref1[1], is_default_feed = ref1[2], param = ref1[3];
         if (is_default_feed) {
           menu_item.addClass("selected");
           this.log("Following", title);
@@ -627,22 +634,22 @@ jQuery.extend( jQuery.easing,
     };
 
     Follow.prototype.saveFeeds = function() {
-      var is_default_feed, item, menu_item, param, params, query, title, _ref, _ref1;
-      _ref = this.feeds;
-      for (title in _ref) {
-        _ref1 = _ref[title], query = _ref1[0], menu_item = _ref1[1], is_default_feed = _ref1[2], param = _ref1[3];
+      var is_default_feed, item, menu_item, param, params, query, ref, ref1, title;
+      ref = this.feeds;
+      for (title in ref) {
+        ref1 = ref[title], query = ref1[0], menu_item = ref1[1], is_default_feed = ref1[2], param = ref1[3];
         if (this.follows[title]) {
           params = (function() {
-            var _i, _len, _ref2, _results;
-            _ref2 = this.follows[title][1];
-            _results = [];
-            for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
-              item = _ref2[_i];
+            var i, len, ref2, results;
+            ref2 = this.follows[title][1];
+            results = [];
+            for (i = 0, len = ref2.length; i < len; i++) {
+              item = ref2[i];
               if (item !== param) {
-                _results.push(item);
+                results.push(item);
               }
             }
-            return _results;
+            return results;
           }).call(this);
         } else {
           params = [];
@@ -666,6 +673,7 @@ jQuery.extend( jQuery.easing,
   window.Follow = Follow;
 
 }).call(this);
+
 
 
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/InlineEditor.coffee ---- */
@@ -868,6 +876,7 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Menu.coffee ---- */
 
 
@@ -951,6 +960,7 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/RateLimit.coffee ---- */
 
 
@@ -978,6 +988,7 @@ jQuery.extend( jQuery.easing,
   };
 
 }).call(this);
+
 
 
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Text.coffee ---- */
@@ -1080,6 +1091,7 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Time.coffee ---- */
 
 
@@ -1142,6 +1154,7 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Translate.coffee ---- */
 
 
@@ -1151,6 +1164,7 @@ jQuery.extend( jQuery.easing,
   };
 
 }).call(this);
+
 
 
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/ZeroFrame.coffee ---- */
@@ -1283,6 +1297,7 @@ jQuery.extend( jQuery.easing,
   window.ZeroFrame = ZeroFrame;
 
 }).call(this);
+
 
 
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicList.coffee ---- */
@@ -1621,10 +1636,20 @@ jQuery.extend( jQuery.easing,
             $(".topic-new-link").slideDown();
             setTimeout((function() {
               if (topic.parent_topic_uri && _this.parent_topic_uri !== topic.parent_topic_uri) {
-                return window.top.location = "?Topics:" + topic.parent_topic_uri;
+                window.top.location = "?Topics:" + topic.parent_topic_uri;
               } else {
-                return _this.loadTopics();
+                _this.loadTopics();
               }
+              window.TopicShow.topic_uri = topic.topic_id + "_" + Page.site_info.auth_address;
+              return window.TopicShow.initFollowButton(function() {
+                var is_default_feed, menu_item, param, query, ref, ref1;
+                ref = window.TopicShow.follow.feeds;
+                for (title in ref) {
+                  ref1 = ref[title], query = ref1[0], menu_item = ref1[1], is_default_feed = ref1[2], param = ref1[3];
+                  menu_item.addClass("selected");
+                }
+                return window.TopicShow.follow.saveFeeds();
+              });
             }), 600);
             $(".topic-new #topic_body").val("");
             return $(".topic-new #topic_title").val("");
@@ -1730,10 +1755,10 @@ jQuery.extend( jQuery.easing,
       return this.initFollowButton();
     };
 
-    TopicShow.prototype.initFollowButton = function() {
+    TopicShow.prototype.initFollowButton = function(cb) {
       this.follow = new Follow($(".feed-follow-show"));
       this.follow.addFeed("Comments in this topic", "SELECT 'comment' AS type, comment.added AS date_added, topic.title, commenter_user.value || ': ' || comment.body AS body, topic_creator_json.directory AS topic_creator_address, topic.topic_id || '_' || topic_creator_json.directory AS row_topic_uri, '?Topic:' || topic.topic_id || '_' || topic_creator_json.directory AS url FROM topic LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id) LEFT JOIN comment ON (comment.topic_uri = row_topic_uri) LEFT JOIN json AS commenter_json ON (commenter_json.json_id = comment.json_id) LEFT JOIN json AS commenter_content ON (commenter_content.directory = commenter_json.directory AND commenter_content.file_name = 'content.json') LEFT JOIN keyvalue AS commenter_user ON (commenter_user.json_id = commenter_content.json_id AND commenter_user.key = 'cert_user_id') WHERE row_topic_uri IN (:params)", true, this.topic_uri);
-      return this.follow.init();
+      return this.follow.init(cb);
     };
 
     TopicShow.prototype.queryTopic = function(topic_id, topic_user_address) {
@@ -1972,16 +1997,17 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/User.coffee ---- */
 
 
 (function() {
   var User,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __hasProp = {}.hasOwnProperty;
+    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  User = (function(_super) {
-    __extends(User, _super);
+  User = (function(superClass) {
+    extend(User, superClass);
 
     function User() {
       this.my_topic_votes = {};
@@ -2006,17 +2032,17 @@ jQuery.extend( jQuery.easing,
       query = "SELECT 'topic_vote' AS type, topic_uri AS uri FROM json LEFT JOIN topic_vote USING (json_id) WHERE directory = \"" + Page.site_info.auth_address + "\" AND file_name = 'data.json'\nUNION\nSELECT 'comment_vote' AS type, comment_uri AS uri FROM json LEFT JOIN comment_vote USING (json_id) WHERE directory = \"" + Page.site_info.auth_address + "\" AND file_name = 'data.json'";
       Page.cmd("dbQuery", [query], (function(_this) {
         return function(votes) {
-          var vote, _i, _len, _results;
-          _results = [];
-          for (_i = 0, _len = votes.length; _i < _len; _i++) {
-            vote = votes[_i];
+          var i, len, results, vote;
+          results = [];
+          for (i = 0, len = votes.length; i < len; i++) {
+            vote = votes[i];
             if (vote.type === "topic_vote") {
-              _results.push(_this.my_topic_votes[vote.uri] = true);
+              results.push(_this.my_topic_votes[vote.uri] = true);
             } else {
-              _results.push(_this.my_comment_votes[vote.uri] = true);
+              results.push(_this.my_comment_votes[vote.uri] = true);
             }
           }
-          return _results;
+          return results;
         };
       })(this));
       if (cb) {
@@ -2127,6 +2153,7 @@ jQuery.extend( jQuery.easing,
   window.User = new User();
 
 }).call(this);
+
 
 
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/ZeroTalk.coffee ---- */

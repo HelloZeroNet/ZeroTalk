@@ -394,6 +394,12 @@ class TopicList extends Class
 						window.top.location = "?Topics:" + topic.parent_topic_uri
 					else
 						@loadTopics()
+					# Follow topic comments
+					window.TopicShow.topic_uri = "#{topic.topic_id}_#{Page.site_info.auth_address}"
+					window.TopicShow.initFollowButton =>
+						for title, [query, menu_item, is_default_feed, param] of window.TopicShow.follow.feeds
+							menu_item.addClass("selected")
+						window.TopicShow.follow.saveFeeds()
 				), 600
 				$(".topic-new #topic_body").val("")
 				$(".topic-new #topic_title").val("")

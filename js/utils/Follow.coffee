@@ -18,8 +18,9 @@ class Follow extends Class
 		@width_follow = @elem.find(".text-follow").width()
 		@elem.css "display", "none"
 
-	init: =>
+	init: (cb) =>
 		if not @feeds
+			cb?(false)
 			return
 
 		Page.cmd "feedListFollow", [], (@follows) =>
@@ -42,6 +43,7 @@ class Follow extends Class
 					menu_item.removeClass("selected")
 			@updateListitems()
 			@elem.css "display", "inline-block"
+			cb?(true)
 
 		setTimeout ( =>
 			if typeof(Page.site_info.feed_follow_num) != "undefined" and Page.site_info.feed_follow_num == null  # Has not manipulated followings yet
