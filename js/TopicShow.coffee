@@ -81,6 +81,7 @@ class TopicShow extends Class
 		Page.cmd "dbQuery", [@queryTopic(@topic_id, @topic_user_address)], (res) =>
 			@topic = res[0]
 			TopicList.applyTopicData($(".topic-full"), @topic, "show")
+			Page.cmd "wrapperSetTitle", "#{@topic.title} - ZeroTalk"
 
 			# Topic has parent, update title breadcrumb
 			if @topic.parent_topic_uri

@@ -233,6 +233,7 @@ class TopicList extends Class
 
 			# Set sub-title listing title
 			if @parent_topic_uri
+				Page.cmd "wrapperSetTitle", "#{topic_parent.title} - ZeroTalk"
 				$(".topics-title").html("<span class='parent-link'><a href='?Main'>" + "Main" + "</a> &rsaquo;</span> #{topic_parent.title}")
 
 			$(".topics").css("opacity", 1)

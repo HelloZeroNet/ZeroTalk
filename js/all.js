@@ -1080,7 +1080,6 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
-
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/utils/Time.coffee ---- */
 
 
@@ -1458,6 +1457,7 @@ jQuery.extend( jQuery.easing,
             $(".topics-loading").remove();
           }
           if (_this.parent_topic_uri) {
+            Page.cmd("wrapperSetTitle", topic_parent.title + " - ZeroTalk");
             $(".topics-title").html("<span class='parent-link'><a href='?Main'>" + "Main" + ("</a> &rsaquo;</span> " + topic_parent.title));
           }
           $(".topics").css("opacity", 1);
@@ -1671,6 +1671,7 @@ jQuery.extend( jQuery.easing,
 }).call(this);
 
 
+
 /* ---- /1TaLkFrMwvbNsooF4ioKAY9EuxTBTjipT/js/TopicShow.coffee ---- */
 
 
@@ -1750,6 +1751,7 @@ jQuery.extend( jQuery.easing,
           var parent_topic_id, parent_topic_user_address, ref;
           _this.topic = res[0];
           TopicList.applyTopicData($(".topic-full"), _this.topic, "show");
+          Page.cmd("wrapperSetTitle", _this.topic.title + " - ZeroTalk");
           if (_this.topic.parent_topic_uri) {
             $(".topic-title").css("display", "");
             ref = _this.topic.parent_topic_uri.split("_"), parent_topic_id = ref[0], parent_topic_user_address = ref[1];
