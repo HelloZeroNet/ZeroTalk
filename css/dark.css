@@ -18,6 +18,7 @@
 .theme-dark .score.active { border: 1px solid #2ecc71; }
 .theme-dark .comment { border-color: #1d1a22; background-color: #373844 }
 .theme-dark .comment .body blockquote a { color: white; }
+.theme-dark .topic blockquote { border-left-color: #83efff; background-color: #3d3e4a }
 
 .theme-dark .button-submit { color: black; }
 .theme-dark .button:hover { border-color: #888301; }
