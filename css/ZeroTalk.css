@@ -48,7 +48,7 @@ a.nolink:active { border-bottom: none }
 
 /* Input */
 input.text, textarea {
-	line-height: 1.5em; width: 100%; padding: 10px; font-family: 'Roboto', sans-serif; font-size: 16px;
+	resize: vertical; line-height: 1.5em; width: 100%; padding: 10px; font-family: 'Roboto', sans-serif; font-size: 16px;
 	transition: border 0.3s; border: 2px solid #eee; box-sizing: border-box;
 }
 textarea { overflow-y: auto }
