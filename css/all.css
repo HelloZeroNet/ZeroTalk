@@ -163,7 +163,7 @@ a.nolink:active { border-bottom: none }
 
 /* Input */
 input.text, textarea {
-	line-height: 1.5em; width: 100%; padding: 10px; font-family: 'Roboto', sans-serif; font-size: 16px;
+	resize: vertical; line-height: 1.5em; width: 100%; padding: 10px; font-family: 'Roboto', sans-serif; font-size: 16px;
 	-webkit-transition: border 0.3s; -moz-transition: border 0.3s; -o-transition: border 0.3s; -ms-transition: border 0.3s; transition: border 0.3s ; border: 2px solid #eee; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box ;
 }
 textarea { overflow-y: auto }
