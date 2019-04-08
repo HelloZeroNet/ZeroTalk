@@ -214,6 +214,7 @@ class TopicList extends Class
 					elem.insertAfter(last_elem)
 				else
 					limited = true
+					break
 				last_elem = elem
 
 				@applyTopicData(elem, topic)
