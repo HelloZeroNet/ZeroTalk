@@ -1456,6 +1456,7 @@ jQuery.extend( jQuery.easing,
               elem.insertAfter(last_elem);
             } else {
               limited = true;
+	      break;
             }
             last_elem = elem;
             _this.applyTopicData(elem, topic);
