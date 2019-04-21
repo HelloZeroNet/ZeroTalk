@@ -40,6 +40,21 @@ class TopicList extends Class
 			@submitCreateTopic()
 			return false
 
+		$(".topics_type").on "click", =>
+			menu = new Menu($(".topic_type"));
+			menu.addItem "Create a topic", =>
+				@topictype = "topic"
+				menu.hide()
+				$(".topic-new #topic_body").trigger("input").focus()
+				return true
+			menu.addItem "Create a group", =>
+				@topictype = "group"
+				menu.hide()
+				$(".topic-new #topic_body").trigger("input").focus()
+				return true
+			menu.show()
+			return false
+
 		$(".topics-more").on "click", =>
 			@limit += 100
 			$(".topics-more").text("Loading...")
