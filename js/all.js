@@ -1319,6 +1319,7 @@ jQuery.extend( jQuery.easing,
       this.limit = 31;
       this.topic_parent_uris = {};
       this.topic_sticky_uris = {};
+      this.topictype = "topic";
     }
 
     TopicList.prototype.actionList = function(parent_topic_id, parent_topic_user_address) {
