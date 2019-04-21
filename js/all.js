@@ -1363,12 +1363,14 @@ jQuery.extend( jQuery.easing,
             menu.addItem("Create a topic", function() {
                 _this.topictype = "topic";
                 menu.hide();
+                $(".topic-new .image .icon").removeClass("icon-topic-group").addClass("icon-topic-chat");
                 $(".topic-new #topic_body").trigger("input").focus();
                 return true;
             });
             menu.addItem("Create a group", function() {
                 _this.topictype = "group";
                 menu.hide();
+                $(".topic-new .image .icon").removeClass("icon-topic-chat").addClass("icon-topic-group");
                 $(".topic-new #topic_body").trigger("input").focus();
                 return true;
             });
