@@ -178,7 +178,7 @@ class TopicList extends Class
 				 topic_creator_content.directory AS topic_creator_address,
 				 topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,
 				 topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,
-				 topic_sub.title AS topic_sub_title,
+				 topic_sub.title AS row_topic_sub_title,
 				 (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,
 				 #{sql_sticky}
 				FROM topic
