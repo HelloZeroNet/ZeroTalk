@@ -154,7 +154,7 @@ class TopicList extends Class
 			 topic_creator_user.value AS topic_creator_user_name,
 			 topic_creator_content.directory AS topic_creator_address,
 			 topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,
-			 NULL AS row_topic_sub_uri, NULL AS row_topic_sub_title,
+			 NULL AS row_topic_sub_uri, NULL AS row_topic_sub_title, NULL AS row_topic_sub_type,
 			 (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,
 			 #{sql_sticky}
 			FROM topic
@@ -181,7 +181,7 @@ class TopicList extends Class
 				 topic_creator_content.directory AS topic_creator_address,
 				 topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,
 				 topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,
-				 topic_sub.title AS row_topic_sub_title,
+				 topic_sub.title AS row_topic_sub_title, topic_sub.type AS row_topic_sub_type,
 				 (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,
 				 #{sql_sticky}
 				FROM topic
@@ -196,7 +196,35 @@ class TopicList extends Class
 				GROUP BY topic.topic_id
 				HAVING last_action < #{Date.now()/1000+120}
 			"""
+		else
+			query += """
 
+				UNION ALL
+
+				SELECT
+				 COUNT(comment_id) AS comments_num, MAX(comment.added) AS last_comment,
+				 MAX(topic_sub.added) AS last_added,
+				 CASE WHEN MAX(topic_sub.added) > MAX(comment.added) OR MAX(comment.added) IS NULL THEN MAX(topic_sub.added) ELSE MAX(comment.added) END as last_action,
+				 topic.*,
+				 topic_creator_user.value AS topic_creator_user_name,
+				 topic_creator_content.directory AS topic_creator_address,
+				 topic.topic_id || '_' || topic_creator_content.directory AS row_topic_uri,
+				 topic_sub.topic_id || '_' || topic_sub_creator_content.directory AS row_topic_sub_uri,
+				 topic_sub.title AS row_topic_sub_title, topic_sub.type AS row_topic_sub_type,
+				 (SELECT COUNT(*) FROM topic_vote WHERE topic_vote.topic_uri = topic.topic_id || '_' || topic_creator_content.directory)+1 AS votes,
+				 #{sql_sticky}
+				FROM topic
+				LEFT JOIN json AS topic_creator_json ON (topic_creator_json.json_id = topic.json_id)
+				LEFT JOIN json AS topic_creator_content ON (topic_creator_content.directory = topic_creator_json.directory AND topic_creator_content.file_name = 'content.json')
+				LEFT JOIN keyvalue AS topic_creator_user ON (topic_creator_user.json_id = topic_creator_content.json_id AND topic_creator_user.key = 'cert_user_id')
+				LEFT JOIN topic AS topic_sub ON (topic_sub.parent_topic_uri = topic.topic_id || '_' || topic_creator_content.directory)
+				LEFT JOIN json AS topic_sub_creator_json ON (topic_sub_creator_json.json_id = topic_sub.json_id)
+				LEFT JOIN json AS topic_sub_creator_content ON (topic_sub_creator_content.directory = topic_sub_creator_json.directory AND topic_sub_creator_content.file_name = 'content.json')
+				LEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri AND comment.added < #{Date.now()/1000+120})
+				WHERE topic.type = "group" AND topic.parent_topic_uri = '" + this.parent_topic_uri + "'
+				GROUP BY topic.topic_id
+				HAVING last_action < #{Date.now()/1000+120}
+			"""
 
 		if not @parent_topic_uri
 			query += " ORDER BY sticky DESC, last_action DESC LIMIT #{@limit}"
@@ -367,9 +395,14 @@ class TopicList extends Class
 			subtopic_uri = topic.row_topic_sub_uri
 			$(".subtopic", elem)
 				.css("display", "block")
-			$(".subtopic-link", elem)
-				.attr("href", "?Topic:#{subtopic_uri}/#{subtopic_title_hash}")
-				.text(topic.row_topic_sub_title)
+			if topic.row_topic_sub_type === "group"
+				$(".subtopic-link", elem)
+					.attr("href", "?Topics:#{subtopic_uri}/#{subtopic_title_hash}")
+					.text(topic.row_topic_sub_title)
+			else
+				$(".subtopic-link", elem)
+					.attr("href", "?Topic:#{subtopic_uri}/#{subtopic_title_hash}")
+					.text(topic.row_topic_sub_title)
 
 
 		# My topic
