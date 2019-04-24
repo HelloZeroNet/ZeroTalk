@@ -1608,11 +1608,11 @@ jQuery.extend( jQuery.easing,
         subtopic_title_hash = Text.toUrl(topic.row_topic_sub_title);
         subtopic_uri = topic.row_topic_sub_uri;
         $(".subtopic", elem).css("display", "block");
-		if (topic.row_topic_sub_type === "group") {
-		    $(".subtopic-link", elem).attr("href", "?Topics:" + subtopic_uri + "/" + subtopic_title_hash).text(topic.row_topic_sub_title);
-		} else {
+        if (topic.row_topic_sub_type === "group") {
+            $(".subtopic-link", elem).attr("href", "?Topics:" + subtopic_uri + "/" + subtopic_title_hash).text(topic.row_topic_sub_title);
+        } else {
             $(".subtopic-link", elem).attr("href", "?Topic:" + subtopic_uri + "/" + subtopic_title_hash).text(topic.row_topic_sub_title);
-		}
+        }
       }
       if (topic.topic_creator_address === Page.site_info.auth_address) {
         $(elem).attr("data-object", "Topic:" + topic_uri).attr("data-deletable", "yes");
