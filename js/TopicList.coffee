@@ -192,7 +192,7 @@ class TopicList extends Class
 				LEFT JOIN json AS topic_sub_creator_json ON (topic_sub_creator_json.json_id = topic_sub.json_id)
 				LEFT JOIN json AS topic_sub_creator_content ON (topic_sub_creator_content.directory = topic_sub_creator_json.directory AND topic_sub_creator_content.file_name = 'content.json')
 				LEFT JOIN comment ON (comment.topic_uri = row_topic_sub_uri AND comment.added < #{Date.now()/1000+120})
-				WHERE topic.type = "group"
+				WHERE topic.parent_topic_uri IS NULL AND topic.type = "group"
 				GROUP BY topic.topic_id
 				HAVING last_action < #{Date.now()/1000+120}
 			"""
