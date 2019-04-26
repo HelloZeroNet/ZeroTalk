@@ -367,7 +367,7 @@ class TopicList extends Class
 
 		# Creator address and user name
 		$(".user_name", elem)
-			.text(topic.topic_creator_user_name.replace(/@.*/, ""))
+			.text(Text.formatUsername(topic.topic_creator_user_name))
 			.attr("title", topic.topic_creator_user_name+": "+topic.topic_creator_address)
 
 		# Apply topic score

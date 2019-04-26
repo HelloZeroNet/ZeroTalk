@@ -179,7 +179,7 @@ class TopicShow extends Class
 	applyCommentData: (elem, comment) ->
 		user_name = comment.user_name
 		$(".body", elem).html Text.toMarked(comment.body, {"sanitize": true})
-		$(".user_name", elem).text(user_name.replace(/@.*/, "")).css("color": Text.toColor(user_name)).attr("title", user_name+": "+comment.user_address)
+		$(".user_name", elem).text(Text.formatUsername(user_name)).css("color": Text.toColor(user_name)).attr("title", user_name+": "+comment.user_address)
 		$(".added", elem).text(Time.since(comment.added)).attr("title", Time.date(comment.added, "long"))
 
 		comment_uri = elem.attr("id").replace("comment_", "")

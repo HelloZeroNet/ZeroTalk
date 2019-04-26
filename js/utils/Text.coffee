@@ -53,6 +53,9 @@ class Text
 		return btoa(unescape(encodeURIComponent(JSON.stringify(obj, undefined, '\t'))))
 
 
+	formatUsername: (username) ->
+		return username.replace(/@zeroid.bit/, "")
+
 window.is_proxy = (window.location.pathname == "/")
 window.renderer = new Renderer()
 window.Text = new Text()
