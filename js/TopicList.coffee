@@ -395,7 +395,7 @@ class TopicList extends Class
 			subtopic_uri = topic.row_topic_sub_uri
 			$(".subtopic", elem)
 				.css("display", "block")
-			if topic.row_topic_sub_type === "group"
+			if topic.row_topic_sub_type == "group"
 				$(".subtopic-link", elem)
 					.attr("href", "?Topics:#{subtopic_uri}/#{subtopic_title_hash}")
 					.text(topic.row_topic_sub_title)
