@@ -48,7 +48,7 @@
 				["json_id", "INTEGER REFERENCES json (json_id)"]
 			],
 			"indexes": ["CREATE UNIQUE INDEX comment_vote_key ON comment_vote(comment_uri, json_id)", "CREATE INDEX comment_vote_uri ON comment_vote(comment_uri)"],
-			"schema_changed": 1
+			"schema_changed": 2
 		},
 		"topic_vote": {
 			"cols": [
@@ -57,7 +57,7 @@
 				["json_id", "INTEGER REFERENCES json (json_id)"]
 			],
 			"indexes": ["CREATE UNIQUE INDEX topic_vote_topic_key ON topic_vote(topic_uri, json_id)", "CREATE INDEX topic_vote_uri ON topic_vote(topic_uri)"],
-			"schema_changed": 1
+			"schema_changed": 2
 		}
 	},
 	"feeds": {
