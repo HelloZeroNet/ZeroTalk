@@ -258,7 +258,7 @@ class TopicShow extends Class
 			comment_uri = elem.attr("id").match("_([0-9]+_[A-Za-z0-9]+)$")[1]
 
 			if elem.hasClass("active")
-				data.comment_vote[comment_uri] = 1
+				data.comment_vote[comment_uri] = Math.floor(Date.now() / 1000)
 			else
 				delete data.comment_vote[comment_uri]
 

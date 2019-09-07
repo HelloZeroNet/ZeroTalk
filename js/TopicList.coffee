@@ -474,7 +474,7 @@ class TopicList extends Class
 			topic_uri = elem.parents(".topic").data("topic_uri")
 
 			if elem.hasClass("active")
-				data.topic_vote[topic_uri] = 1
+				data.topic_vote[topic_uri] = Math.floor(Date.now() / 1000)
 			else
 				delete data.topic_vote[topic_uri]
 			User.publishData data, (res) =>

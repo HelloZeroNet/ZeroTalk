@@ -6,9 +6,9 @@
 		".+/data.json": {
 			"to_table": [
 				{"node": "topic", "table": "topic"},
-				{"node": "topic_vote", "table": "topic_vote", "key_col": "topic_uri", "val_col": "vote"},
+				{"node": "topic_vote", "table": "topic_vote", "key_col": "topic_uri", "val_col": "added"},
 				{"node": "comment", "table": "comment", "key_col": "topic_uri"},
-				{"node": "comment_vote", "table": "comment_vote", "key_col": "comment_uri", "val_col": "vote"}
+				{"node": "comment_vote", "table": "comment_vote", "key_col": "comment_uri", "val_col": "added"}
 			],
 			"to_keyvalue": ["next_comment_id", "next_topic_id"]
 		},
@@ -44,7 +44,7 @@
 		"comment_vote": {
 			"cols": [
 				["comment_uri", "TEXT"],
-				["vote", "INTEGER"],
+				["added", "INTEGER"],
 				["json_id", "INTEGER REFERENCES json (json_id)"]
 			],
 			"indexes": ["CREATE UNIQUE INDEX comment_vote_key ON comment_vote(comment_uri, json_id)", "CREATE INDEX comment_vote_uri ON comment_vote(comment_uri)"],
@@ -53,7 +53,7 @@
 		"topic_vote": {
 			"cols": [
 				["topic_uri", "TEXT"],
-				["vote", "INTEGER"],
+				["added", "INTEGER"],
 				["json_id", "INTEGER REFERENCES json (json_id)"]
 			],
 			"indexes": ["CREATE UNIQUE INDEX topic_vote_topic_key ON topic_vote(topic_uri, json_id)", "CREATE INDEX topic_vote_uri ON topic_vote(topic_uri)"],
