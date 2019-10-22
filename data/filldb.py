@@ -30,7 +30,7 @@ for user_id in range(500):
 
 	# Fake topic upvotes
 	for i in range(random.randint(0,100)):
-		data_json["topic_vote"][random.choice(topic_uris)] = 1	
+		data_json["topic_vote"][random.choice(topic_uris)] = int(time.time())
 
 	# Fake comments: 0-100pcs
 	for i in range(random.randint(0,100)):
@@ -47,7 +47,7 @@ for user_id in range(500):
 
 	# Fake comment upvotes
 	for i in range(random.randint(0,100)):
-		data_json["comment_vote"][random.choice(comment_uris)] = 1	
+		data_json["comment_vote"][random.choice(comment_uris)] = int(time.time())
 	
 	# Save data.json
 	json.dump(data_json, open("users/%s/data.json" % user_dir, "wb"), indent=4)
