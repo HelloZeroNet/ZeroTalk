@@ -1,0 +1,41 @@
+{
+	"Follow in Newsfeed": "دنبال کردن در فیدخبری",
+	"Following": "دنبال کردن",
+	"Comments in this topic": "نظرات در این موضوع",
+	"New topics": "موضوع جدید",
+	"New topics in this group": "موضوع جدید در این گروه",
+	"Username mentions": "نام کاربری منشن شده",
+	"All comments": "همه‌ی نظرات",
+
+	"Main": "اصلی",
+	"Loading...": "درحال بارگذاری ...",
+	" + Start new topic": "ساخت یک موضوع جدید + ",
+	"new topic": "موضوع جدید",
+	"Topic title": "عنوان موضوع",
+	"Topic description": "توضیحات موضوع",
+	"Add new topic": "اضافه کردن موضوع جدید",
+
+	"Newest topics": "جدیدترین موضوع",
+	"More topics": "موضوعات بیشتر",
+	"Sign in as...": "ورود به عنوان ...",
+	"Submit comment": "ثبت نظر",
+	"Please sign in": "لطفا وارد شوید",
+	"new comment": "نظر جدید",
+
+	"Reply": "پاسخ",
+
+	"stickied": "چسبنده",
+	" posted ": " ارسال شده ",
+	"last ": "آخر ",
+	" comment": "نظر ",
+	" comments": " ",
+	"0 comments": "بدون نظر",
+	"last activity": "آخرین فعالیت",
+	"&#9473; started by ": "&#9473; شروع شده توسط ",
+
+	" minutes ago": " دقیقه پیش",
+	" hours ago": " ساعت قبل",
+	" days ago": " چند روز قبل",
+	"on ": "",
+	"Just now": "هم اکنون"
+}
